@@ -32,10 +32,19 @@
           {{ 'lifestyle-2' | placeholder_svg_tag: 'aeris-legal__image aeris-legal__placeholder' }}
         {% endif %}
       </div>
-      <h1 class="aeris-legal__title">{{ page_title }}</h1>
+      <h1 class="aeris-legal__title">
+        {%- if document == 'privacy' -%}
+          <span data-legal-title-lang="id">Kebijakan Privasi</span>
+          <span data-legal-title-lang="en" hidden>Privacy Policy</span>
+        {%- else -%}
+          <span data-legal-title-lang="id">Syarat dan Ketentuan</span>
+          <span data-legal-title-lang="en" hidden>Terms of Service</span>
+        {%- endif -%}
+      </h1>
     </aside>
 
     <div class="aeris-legal__content">
+      {% render 'aeris-legal-switch' %}
       {% if document == 'privacy' %}
         {% render 'aeris-legal-privacy' %}
       {% else %}
@@ -44,6 +53,7 @@
     </div>
   </div>
 </section>
+<script src="{{ 'aeris-legal.js' | asset_url }}" defer></script>
 
 {% schema %}
 {

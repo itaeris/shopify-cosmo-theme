@@ -203,14 +203,20 @@
       >
         {%- liquid
           assign aeris_track_page = false
+          assign aeris_legal_page = false
           if template.name == 'page'
             if page.handle == 'track-your-order' or page.handle == 'track-order'
               assign aeris_track_page = true
+            endif
+            if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy'
+              assign aeris_legal_page = true
             endif
           endif
         -%}
         {%- if aeris_track_page -%}
           {% render 'aeris-track-order' %}
+        {%- elsif aeris_legal_page -%}
+          {% render 'aeris-legal-layout' %}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}

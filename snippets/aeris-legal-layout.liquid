@@ -1,0 +1,45 @@
+{%- liquid
+  assign document = 'terms'
+  assign legal_image = 'Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg'
+  if page.handle == 'privacy-policy' or page.handle == 'privacy'
+    assign document = 'privacy'
+    assign legal_image = 'Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg'
+  endif
+-%}
+
+{{ 'aeris-legal.css' | asset_url | stylesheet_tag }}
+<section class="aeris-legal aeris-legal--{{ document }}">
+  <div class="aeris-legal__wrapper">
+    <aside class="aeris-legal__media">
+      <div class="aeris-legal__image-wrap">
+        <img
+          class="aeris-legal__image"
+          src="{{ legal_image | file_url }}"
+          alt="{% if document == 'privacy' %}Privacy Policy{% else %}Terms of Service{% endif %}"
+          width="1400"
+          height="1750"
+          loading="eager"
+        >
+      </div>
+      <h1 class="aeris-legal__title">
+        {%- if document == 'privacy' -%}
+          <span data-legal-title-lang="id">Kebijakan Privasi</span>
+          <span data-legal-title-lang="en" hidden>Privacy Policy</span>
+        {%- else -%}
+          <span data-legal-title-lang="id">Syarat dan Ketentuan</span>
+          <span data-legal-title-lang="en" hidden>Terms of Service</span>
+        {%- endif -%}
+      </h1>
+    </aside>
+
+    <div class="aeris-legal__content">
+      {% render 'aeris-legal-switch' %}
+      {% if document == 'privacy' %}
+        {% render 'aeris-legal-privacy' %}
+      {% else %}
+        {% render 'aeris-legal-terms' %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+<script src="{{ 'aeris-legal.js' | asset_url }}" defer></script>

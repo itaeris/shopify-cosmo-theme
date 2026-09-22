@@ -57,6 +57,45 @@
   line-height: 1.7;
 }
 
+.aeris-legal__switch {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 0 3.2rem;
+}
+
+.aeris-legal__switch-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #8a847e;
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.aeris-legal__switch-btn.is-active {
+  color: #1a1a1a;
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.aeris-legal__switch-sep {
+  color: #cfc8c1;
+  font-size: 1.2rem;
+}
+
+.aeris-legal__lang[hidden],
+.aeris-legal__lang.is-hidden,
+.aeris-legal__title [hidden],
+.aeris-legal__title .is-hidden {
+  display: none !important;
+}
+
 .aeris-legal__block + .aeris-legal__block {
   margin-top: 3.6rem;
 }
