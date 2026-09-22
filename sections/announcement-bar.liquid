@@ -1,7 +1,10 @@
 {% liquid
   assign enable_carousel = false
   assign autoplay = false
-  if section.blocks.size > 1
+  assign enable_marquee = section.settings.enable_marquee
+  if enable_marquee
+    assign enable_carousel = false
+  elsif section.blocks.size > 1
     assign enable_carousel = section.settings.enable_carousel
   endif
 
@@ -64,13 +67,87 @@
   .no-js .announcement-bar__row {
     display: block !important;
   }
+  .announcement-bar--marquee {
+    overflow: hidden;
+  }
+  .announcement-bar__marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+  .announcement-bar__marquee-track {
+    display: flex;
+    width: max-content;
+    animation: aeris-announcement-marquee var(--marquee-duration, 28s) linear infinite;
+  }
+  .announcement-bar__marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 2.8rem;
+    padding-inline-end: 2.8rem;
+    white-space: nowrap;
+  }
+  .announcement-bar__marquee-item {
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .announcement-bar__marquee-item p {
+    margin: 0;
+  }
+  .announcement-bar__marquee-sep {
+    opacity: 0.85;
+  }
+  @keyframes aeris-announcement-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .announcement-bar__marquee-track {
+      animation: none;
+    }
+  }
 {% endstyle %}
 
 {% if section.blocks.size > 0 %}
   <announcement-bar
-    class="announcement-bar relative color-{{ section.settings.color_schema }}{% if enable_carousel %} announcement-bar--carousel-enabled{% endif %}"
+    class="announcement-bar relative color-{{ section.settings.color_schema }}{% if enable_carousel %} announcement-bar--carousel-enabled{% endif %}{% if enable_marquee %} announcement-bar--marquee{% endif %}"
     data-section-type="announcement-bar"
+    {% if enable_marquee %}
+      style="--marquee-duration: {{ section.settings.marquee_speed | default: 28 }}s;"
+    {% endif %}
   >
+    {% if enable_marquee %}
+      <div class="announcement-bar__marquee">
+        <div class="announcement-bar__marquee-track">
+          {% for replica in (1..2) %}
+            <div class="announcement-bar__marquee-group" {% if replica == 2 %}aria-hidden="true"{% endif %}>
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'announcement' and block.settings.text != blank -%}
+                  {% liquid
+                    assign should_show = false
+                    if block.settings.homepage_only == false or request.page_type == 'index'
+                      assign should_show = true
+                    endif
+                    if block.settings.hide_on_page != blank and block.settings.hide_on_page contains handle
+                      assign should_show = false
+                    endif
+                  %}
+                  {% if should_show %}
+                    {% unless forloop.first %}
+                      <span class="announcement-bar__marquee-sep">·</span>
+                    {% endunless %}
+                    <div class="announcement-bar__marquee-item" {{ block.shopify_attributes }}>
+                      {{ block.settings.text }}
+                    </div>
+                  {% endif %}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
     <flickity-component
       class="announcement-bar__inner{% if enable_carousel %} flickity-enable{% else %} flickity-disable{% endif %}"
       data-slider-options='{"pageDots": false, "prevNextButtons": false, "cellSelector": ".announcement-bar__row", "wrapAround": true, "autoPlay": {{ autoplay }}, "adaptiveHeight": true, "pauseAutoPlayOnHover": true}'
@@ -131,6 +208,7 @@
         {%- endcase -%}
       {%- endfor -%}
     </flickity-component>
+    {% endif %}
     {% if section.settings.show_close_button and enable_carousel %}
       <button
         class="announcement-bar__close absolute btn btn--icon no-js-hidden"
@@ -192,6 +270,23 @@
       "id": "show_close_button",
       "label": "t:sections.announcement-bar.settings.show_close_button.label",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_marquee",
+      "label": "Running text",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Running text speed",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "default": 28,
+      "visible_if": "{{ section.settings.enable_marquee == true }}"
     },
     {
       "type": "header",

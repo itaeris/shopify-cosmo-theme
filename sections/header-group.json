@@ -17,7 +17,7 @@
         "announcement_bfeDTn": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Get Free Shipping With Minimum Purchase of IDR 500.000 | 10% OFF your first purchase use code <a href=\"#\" title=\"#\">WELCOME10</a></p>",
+            "text": "<p>Complimentary shipping with min spending of IDR 500,000</p>",
             "link": "",
             "homepage_only": false,
             "hide_on_page": "",
@@ -29,13 +29,13 @@
         "announcement_EqMdWP": {
           "type": "announcement",
           "settings": {
-            "text": "<p>New customers save 10% with code WELCOME10</p>",
+            "text": "<p>Get free Aeris special tumbler worth 700K with min purchase of 1Mio</p>",
             "link": "",
             "homepage_only": false,
             "hide_on_page": "",
             "show_on_mobile": true,
-            "show_on_tablet": false,
-            "show_on_desktop": false
+            "show_on_tablet": true,
+            "show_on_desktop": true
           }
         }
       },
@@ -44,12 +44,14 @@
         "announcement_EqMdWP"
       ],
       "custom_css": [
-        ".announcement-bar__row {padding: 7px 10px;}",
+        ".announcement-bar {padding: 8px 0; font-size: 1.1rem; letter-spacing: 0.08em;}",
         "a {font-weight: 500;}"
       ],
       "settings": {
         "color_schema": "inverse",
         "show_close_button": false,
+        "enable_marquee": true,
+        "marquee_speed": 28,
         "enable_carousel": false,
         "autoplay": false,
         "autorotate_speed": 4
