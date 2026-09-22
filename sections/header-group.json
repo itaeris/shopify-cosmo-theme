@@ -74,6 +74,9 @@
             "banner_show_arrows": true,
             "banner_show_dots": true,
             "link": "shopify://collections/all",
+            "banner_title": "Ultra Luxurious Bristles",
+            "banner_subtitle": "MERLOT is now available",
+            "banner_button_label": "SHOP NOW",
             "banner_width": 370
           }
         },
@@ -194,9 +197,9 @@
           "settings": {
             "background_image": "shopify://shop_images/Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg",
             "show_small_image": false,
-            "heading": "",
-            "subtitle": "<p>MERLOT, Wherever You Are</p>",
-            "button_text": "SHOP THE COLLECTION",
+            "heading": "MERLOT",
+            "subtitle": "<p>Unlock Your True Power</p>",
+            "button_text": "Discover now",
             "button_link": ""
           }
         },
@@ -204,7 +207,7 @@
           "type": "slide",
           "settings": {
             "background_image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
-            "show_small_image": true,
+            "show_small_image": false,
             "small_image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
             "heading": "MERLOT",
             "subtitle": "<p>Unlock Your True Power</p>",
@@ -214,8 +217,8 @@
         }
       },
       "block_order": [
-        "slide_WPaDFX",
-        "slide_37tKXQ"
+        "slide_37tKXQ",
+        "slide_WPaDFX"
       ],
       "name": "Aeris Campaign Slider",
       "settings": {
@@ -237,12 +240,12 @@
         "mobile_small_image_width": 140,
         "mobile_small_image_left": 18,
         "mobile_small_image_bottom": 190,
-        "content_right": 7,
-        "content_bottom": 8,
-        "heading_desktop_size": 72,
-        "heading_min_size": 46,
-        "mobile_heading_size": 46,
-        "heading_weight": "500"
+        "content_right": 8,
+        "content_bottom": 18,
+        "heading_desktop_size": 96,
+        "heading_min_size": 52,
+        "mobile_heading_size": 52,
+        "heading_weight": "700"
       }
     }
   },

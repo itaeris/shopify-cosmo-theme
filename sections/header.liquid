@@ -8,6 +8,28 @@
     assign transparent_header = false
   endunless
 -%}
+<style>
+  .site-header .f-site-nav__item--has-child:not(.f-site-nav__item--mega) > .f-site-nav__dropdown {
+    min-width: 22rem;
+    padding: 1.6rem 2.2rem;
+    border-radius: 1.6rem;
+    background: #fff;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .site-header .f-site-nav__item--has-child:not(.f-site-nav__item--mega) .f-site-nav__sub-link {
+    padding: 0.75rem 0;
+    color: #111 !important;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5 !important;
+    text-transform: capitalize;
+  }
+</style>
 <header
   data-section-id="{{ section.id }}"
   data-section-type="header"
@@ -1093,6 +1115,24 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.header.blocks.banner.settings.banner_link"
+        },
+        {
+          "type": "text",
+          "id": "banner_title",
+          "label": "Banner title",
+          "default": "Ultra Luxurious Bristles"
+        },
+        {
+          "type": "text",
+          "id": "banner_subtitle",
+          "label": "Banner subtitle",
+          "default": "MERLOT is now available"
+        },
+        {
+          "type": "text",
+          "id": "banner_button_label",
+          "label": "Banner link text",
+          "default": "SHOP NOW"
         },
         {
           "type": "range",

@@ -109,35 +109,65 @@
               class="mega-banner-slider__slide is-active"
               data-mega-banner-slide="0"
             >
-              {% if block.settings.link != blank %}
-                <a href="{{ block.settings.link }}">
-              {% endif %}
+              <div class="mega-banner-slider__media">
+                {% if block.settings.link != blank and block.settings.banner_button_label == blank %}
+                  <a href="{{ block.settings.link }}">
+                {% endif %}
 
-              <responsive-image
-                class="f-image mega-banner-slider__image"
-                data-image-loading
-                style="--aspect-ratio: {{ image_1.aspect_ratio }}"
-              >
-                <img
-                  srcset="
-                    {%- if image_1.width >= 165 -%}{{ image_1 | image_url: width: 165 }} 165w,{%- endif -%}
-                    {%- if image_1.width >= 360 -%}{{ image_1 | image_url: width: 360 }} 360w,{%- endif -%}
-                    {%- if image_1.width >= 533 -%}{{ image_1 | image_url: width: 533 }} 533w,{%- endif -%}
-                    {%- if image_1.width >= 720 -%}{{ image_1 | image_url: width: 720 }} 720w,{%- endif -%}
-                    {%- if image_1.width >= 940 -%}{{ image_1 | image_url: width: 940 }} 940w,{%- endif -%}
-                    {{ image_1 | image_url }} {{ image_1.width }}w
-                  "
-                  src="{{ image_1 | image_url: width: 533 }}"
-                  alt="{{ image_1.alt | escape }}"
-                  loading="lazy"
-                  width="{{ image_1.width }}"
-                  height="{{ image_1.height }}"
+                <responsive-image
+                  class="f-image mega-banner-slider__image"
+                  data-image-loading
+                  style="--aspect-ratio: {{ image_1.aspect_ratio }}"
                 >
-              </responsive-image>
+                  <img
+                    srcset="
+                      {%- if image_1.width >= 165 -%}{{ image_1 | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if image_1.width >= 360 -%}{{ image_1 | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if image_1.width >= 533 -%}{{ image_1 | image_url: width: 533 }} 533w,{%- endif -%}
+                      {%- if image_1.width >= 720 -%}{{ image_1 | image_url: width: 720 }} 720w,{%- endif -%}
+                      {%- if image_1.width >= 940 -%}{{ image_1 | image_url: width: 940 }} 940w,{%- endif -%}
+                      {{ image_1 | image_url }} {{ image_1.width }}w
+                    "
+                    src="{{ image_1 | image_url: width: 533 }}"
+                    alt="{{ image_1.alt | escape }}"
+                    loading="lazy"
+                    width="{{ image_1.width }}"
+                    height="{{ image_1.height }}"
+                  >
+                </responsive-image>
 
-              {% if block.settings.link != blank %}
-                </a>
-              {% endif %}
+                {% if block.settings.link != blank and block.settings.banner_button_label == blank %}
+                  </a>
+                {% endif %}
+
+                {% if block.settings.banner_title != blank
+                  or block.settings.banner_subtitle != blank
+                  or block.settings.banner_button_label != blank
+                %}
+                  <div class="mega-banner-slider__overlay">
+                    {% if block.settings.banner_title != blank %}
+                      <p class="mega-banner-slider__title">
+                        {{ block.settings.banner_title }}
+                      </p>
+                    {% endif %}
+
+                    {% if block.settings.banner_subtitle != blank %}
+                      <p class="mega-banner-slider__subtitle">
+                        {{ block.settings.banner_subtitle }}
+                      </p>
+                    {% endif %}
+
+                    {% if block.settings.banner_button_label != blank %}
+                      <a
+                        class="mega-banner-slider__link"
+                        href="{{ block.settings.link | default: '#' }}"
+                      >
+                        {{ block.settings.banner_button_label }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
             </div>
           {% endif %}
 
@@ -530,6 +560,58 @@
   .mega-banner-slider__slide a {
     display: block;
     width: 100%;
+  }
+
+  .mega-banner-slider__media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mega-banner-slider__overlay {
+    position: absolute;
+    left: 2.4rem;
+    right: 2.4rem;
+    bottom: 2.8rem;
+    z-index: 20;
+    color: #fff;
+    text-align: left;
+    pointer-events: none;
+  }
+
+  .mega-banner-slider__title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-heading-family);
+    font-size: clamp(2.2rem, 1.6vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  .mega-banner-slider__subtitle {
+    margin: 0.6rem 0 0;
+    color: #fff;
+    font-family: var(--font-heading-family);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  .mega-banner-slider__link {
+    display: inline-block;
+    width: auto;
+    margin-top: 2.4rem;
+    color: #fff !important;
+    font-family: var(--font-heading-family);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    pointer-events: auto;
   }
 
   .mega-banner-slider__image,
