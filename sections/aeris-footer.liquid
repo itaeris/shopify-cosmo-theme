@@ -1,0 +1,997 @@
+<section
+  id="AerisFooter-{{ section.id }}"
+  class="aeris-footer"
+  style="
+    --footer-bg: {{ section.settings.background_color }};
+    --footer-text: {{ section.settings.text_color }};
+  "
+>
+  <div class="aeris-footer__wrapper">
+
+    <!-- LEFT CAMPAIGN IMAGE -->
+    <div class="aeris-footer__campaign">
+      {% if section.settings.campaign_image != blank %}
+        {{
+          section.settings.campaign_image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            widths: '500, 750, 1000, 1200',
+            sizes: '(max-width: 749px) 100vw, 34vw',
+            class: 'aeris-footer__campaign-image'
+        }}
+      {% else %}
+        <div class="aeris-footer__campaign-placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="aeris-footer__content">
+
+      <!-- TIKTOK HEADING -->
+      <div class="aeris-footer__social-heading">
+        {% if section.settings.social_heading != blank %}
+          <span>{{ section.settings.social_heading }}</span>
+        {% endif %}
+
+        {% if section.settings.tiktok_username != blank %}
+          <a
+            href="{{ section.settings.tiktok_link | default: '#' }}"
+            {% if section.settings.tiktok_link != blank %}
+              target="_blank"
+              rel="noopener"
+            {% endif %}
+          >
+            {{ section.settings.tiktok_username }}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- IMAGE STRIP -->
+      <div class="aeris-footer__gallery">
+        {% for i in (1..6) %}
+          {% assign image_key = 'gallery_' | append: i %}
+          {% assign link_key = 'gallery_link_' | append: i %}
+
+          {% assign gallery_image = section.settings[image_key] %}
+          {% assign gallery_link = section.settings[link_key] %}
+
+          {% if gallery_image != blank %}
+            {% if gallery_link != blank %}
+              <a
+                href="{{ gallery_link }}"
+                class="aeris-footer__gallery-item"
+                target="_blank"
+                rel="noopener"
+              >
+            {% else %}
+              <div class="aeris-footer__gallery-item">
+            {% endif %}
+
+              {{
+                gallery_image
+                | image_url: width: 500
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '180, 260, 360, 500',
+                  sizes: '(max-width: 749px) 42vw, 11vw'
+              }}
+
+            {% if gallery_link != blank %}
+              </a>
+            {% else %}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- LOWER AREA -->
+      <div class="aeris-footer__lower">
+
+        <!-- NEWSLETTER + LOGO -->
+        <div class="aeris-footer__brand-column">
+
+          {% if section.settings.newsletter_heading != blank %}
+            <h3 class="aeris-footer__column-title">
+              {{ section.settings.newsletter_heading }}
+            </h3>
+          {% endif %}
+
+          {% form 'customer', class: 'aeris-footer__newsletter' %}
+            <input
+              type="hidden"
+              name="contact[tags]"
+              value="newsletter"
+            >
+
+            <div class="aeris-footer__newsletter-row">
+              <input
+                type="email"
+                name="contact[email]"
+                value="{% if customer %}{{ customer.email }}{% endif %}"
+                placeholder="{{ section.settings.email_placeholder }}"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                required
+              >
+
+              <button
+                type="submit"
+                aria-label="Subscribe"
+              >
+                →
+              </button>
+            </div>
+
+            {% if form.posted_successfully? %}
+              <p class="aeris-footer__form-message">
+                Thank you for subscribing.
+              </p>
+            {% endif %}
+
+            {% if form.errors %}
+              <p class="aeris-footer__form-message">
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </p>
+            {% endif %}
+          {% endform %}
+
+          {% if section.settings.privacy_text != blank %}
+            <div class="aeris-footer__privacy">
+              {{ section.settings.privacy_text }}
+            </div>
+          {% endif %}
+
+          <div class="aeris-footer__brand">
+            {% if section.settings.logo != blank %}
+              {{
+                section.settings.logo
+                | image_url: width: 400
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'aeris-footer__logo'
+              }}
+            {% else %}
+              <div class="aeris-footer__wordmark">
+                AERIS
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- SOCIAL LINKS -->
+          <div class="aeris-footer__socials">
+
+            {% if section.settings.instagram != blank %}
+              <a
+                href="{{ section.settings.instagram }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                IG
+              </a>
+            {% endif %}
+
+            {% if section.settings.tiktok != blank %}
+              <a
+                href="{{ section.settings.tiktok }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="TikTok"
+              >
+                TT
+              </a>
+            {% endif %}
+
+            {% if section.settings.facebook != blank %}
+              <a
+                href="{{ section.settings.facebook }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                FB
+              </a>
+            {% endif %}
+
+            {% if section.settings.pinterest != blank %}
+              <a
+                href="{{ section.settings.pinterest }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Pinterest"
+              >
+                P
+              </a>
+            {% endif %}
+
+            {% if section.settings.youtube != blank %}
+              <a
+                href="{{ section.settings.youtube }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+              >
+                YT
+              </a>
+            {% endif %}
+
+          </div>
+        </div>
+
+        <!-- SHOP -->
+        <div class="aeris-footer__menu-column">
+          {% if section.settings.shop_heading != blank %}
+            <h3 class="aeris-footer__column-title">
+              {{ section.settings.shop_heading }}
+            </h3>
+          {% endif %}
+
+          {% if section.settings.shop_menu != blank %}
+            <ul>
+              {% for link in section.settings.shop_menu.links %}
+                <li>
+                  <a href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- ABOUT -->
+        <div class="aeris-footer__menu-column">
+          {% if section.settings.about_heading != blank %}
+            <h3 class="aeris-footer__column-title">
+              {{ section.settings.about_heading }}
+            </h3>
+          {% endif %}
+
+          {% if section.settings.about_menu != blank %}
+            <ul>
+              {% for link in section.settings.about_menu.links %}
+                <li>
+                  <a href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+        <!-- INFORMATION -->
+        <div class="aeris-footer__menu-column">
+          {% if section.settings.info_heading != blank %}
+            <h3 class="aeris-footer__column-title">
+              {{ section.settings.info_heading }}
+            </h3>
+          {% endif %}
+
+          {% if section.settings.info_menu != blank %}
+            <ul>
+              {% for link in section.settings.info_menu.links %}
+                <li>
+                  <a href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<style>
+
+  #AerisFooter-{{ section.id }} {
+    width: 100%;
+    background: var(--footer-bg);
+    color: var(--footer-text);
+  }
+
+  #AerisFooter-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+
+  /* ==========================
+     MAIN LAYOUT
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__wrapper {
+    display: grid;
+    grid-template-columns: 33% 67%;
+    width: 100%;
+    min-height: 620px;
+  }
+
+
+  /* ==========================
+     LEFT IMAGE
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__campaign {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 620px;
+    overflow: hidden;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__campaign-image,
+  #AerisFooter-{{ section.id }} .aeris-footer__campaign-placeholder,
+  #AerisFooter-{{ section.id }} .aeris-footer__campaign-placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__campaign-image {
+    object-fit: cover;
+    object-position: center;
+  }
+
+
+  /* ==========================
+     RIGHT CONTENT
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__content {
+    padding: 34px 28px 36px;
+  }
+
+
+  /* ==========================
+     TIKTOK HEADER
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__social-heading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-bottom: 18px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__social-heading a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+
+  /* ==========================
+     GALLERY
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    width: 100%;
+
+    border: 2px solid transparent;
+    overflow: hidden;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__gallery-item {
+    position: relative;
+
+    display: block;
+
+    aspect-ratio: 1 / 1.12;
+
+    overflow: hidden;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__gallery-item img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__gallery-item:hover img {
+    transform: scale(1.035);
+  }
+
+
+  /* ==========================
+     LOWER SECTION
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__lower {
+    display: grid;
+
+    grid-template-columns:
+      minmax(280px, 1.6fr)
+      minmax(130px, 0.8fr)
+      minmax(140px, 0.85fr)
+      minmax(160px, 1fr);
+
+    gap: 48px;
+
+    margin-top: 36px;
+  }
+
+
+  /* ==========================
+     TITLES
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__column-title {
+    margin: 0 0 8px;
+
+    color: inherit;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 18px;
+    line-height: 1.15;
+
+    font-weight: 600;
+  }
+
+
+  /* ==========================
+     NEWSLETTER
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__newsletter-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    width: 100%;
+
+    border: 1px solid currentColor;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__newsletter input {
+    width: 100%;
+
+    padding: 7px 12px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: inherit;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__newsletter input::placeholder {
+    color: inherit;
+    opacity: 0.85;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__newsletter button {
+    width: 38px;
+
+    border: 0;
+
+    background: transparent;
+    color: inherit;
+
+    cursor: pointer;
+
+    font-size: 20px;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__privacy {
+    margin-top: 8px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__privacy p {
+    margin: 0;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__privacy a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__form-message {
+    margin: 7px 0 0;
+    font-size: 12px;
+  }
+
+
+  /* ==========================
+     MENUS
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__menu-column ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__menu-column li {
+    margin: 3px 0;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__menu-column a {
+    color: inherit;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.25;
+
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__menu-column a:hover {
+    opacity: 0.65;
+  }
+
+
+  /* ==========================
+     AERIS LOGO
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__brand {
+    margin-top: 110px;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__logo {
+    display: block;
+
+    width: auto;
+    max-width: 165px;
+    max-height: 55px;
+
+    object-fit: contain;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__wordmark {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 37px;
+    line-height: 1;
+
+    letter-spacing: 0.25em;
+    font-weight: 300;
+  }
+
+
+  /* ==========================
+     SOCIAL MEDIA
+  ========================== */
+
+  #AerisFooter-{{ section.id }} .aeris-footer__socials {
+    display: flex;
+    align-items: center;
+
+    gap: 19px;
+
+    margin-top: 16px;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__socials a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    opacity: 0.9;
+
+    transition: opacity 0.2s ease;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__socials a:hover {
+    opacity: 0.55;
+  }
+
+
+  /* ==========================
+     TABLET
+  ========================== */
+
+  @media screen and (max-width: 1100px) {
+
+    #AerisFooter-{{ section.id }} .aeris-footer__wrapper {
+      grid-template-columns: 36% 64%;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__lower {
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 36px 28px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__brand {
+      margin-top: 60px;
+    }
+
+  }
+
+
+  /* ==========================
+     MOBILE
+  ========================== */
+
+  @media screen and (max-width: 749px) {
+
+    #AerisFooter-{{ section.id }} .aeris-footer__wrapper {
+      display: block;
+
+      min-height: 0;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__campaign {
+      height: auto;
+      min-height: 0;
+
+      aspect-ratio: 4 / 5;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__content {
+      padding: 28px 18px 36px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__social-heading {
+      font-size: 21px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__gallery {
+      display: flex;
+
+      gap: 4px;
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+
+      scroll-snap-type: x mandatory;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__gallery-item {
+      flex: 0 0 44%;
+
+      scroll-snap-align: start;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__lower {
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 36px 20px;
+
+      margin-top: 32px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__brand-column {
+      grid-column: 1 / -1;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__menu-column:last-child {
+      grid-column: 1 / -1;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__brand {
+      margin-top: 42px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__menu-column a {
+      font-size: 16px;
+    }
+
+    #AerisFooter-{{ section.id }} .aeris-footer__wordmark {
+      font-size: 31px;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Aeris Custom Footer",
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#B7A08E"
+    },
+
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Campaign image"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "campaign_image",
+      "label": "Left campaign image"
+    },
+
+
+    {
+      "type": "header",
+      "content": "TikTok"
+    },
+
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Heading",
+      "default": "Follow our TikTok"
+    },
+
+    {
+      "type": "text",
+      "id": "tiktok_username",
+      "label": "TikTok username",
+      "default": "@aeris.beaute"
+    },
+
+    {
+      "type": "url",
+      "id": "tiktok_link",
+      "label": "TikTok profile link"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_1",
+      "label": "Image 1"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_1",
+      "label": "Image 1 link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_2",
+      "label": "Image 2"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_2",
+      "label": "Image 2 link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_3",
+      "label": "Image 3"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_3",
+      "label": "Image 3 link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_4",
+      "label": "Image 4"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_4",
+      "label": "Image 4 link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_5",
+      "label": "Image 5"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_5",
+      "label": "Image 5 link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "gallery_6",
+      "label": "Image 6"
+    },
+
+    {
+      "type": "url",
+      "id": "gallery_link_6",
+      "label": "Image 6 link"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Heading",
+      "default": "Stay Up To Date"
+    },
+
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Your Email"
+    },
+
+    {
+      "type": "richtext",
+      "id": "privacy_text",
+      "label": "Privacy text",
+      "default": "<p>By signing up you agree to our privacy policy.</p>"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Footer menus"
+    },
+
+    {
+      "type": "text",
+      "id": "shop_heading",
+      "label": "Shop heading",
+      "default": "SHOP"
+    },
+
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "Shop menu"
+    },
+
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "About heading",
+      "default": "ABOUT"
+    },
+
+    {
+      "type": "link_list",
+      "id": "about_menu",
+      "label": "About menu"
+    },
+
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Information heading",
+      "default": "INFORMATION"
+    },
+
+    {
+      "type": "link_list",
+      "id": "info_menu",
+      "label": "Information menu"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Social media"
+    },
+
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram"
+    },
+
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok"
+    },
+
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook"
+    },
+
+    {
+      "type": "url",
+      "id": "pinterest",
+      "label": "Pinterest"
+    },
+
+    {
+      "type": "url",
+      "id": "youtube",
+      "label": "YouTube"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Aeris Custom Footer"
+    }
+  ]
+}
+{% endschema %}

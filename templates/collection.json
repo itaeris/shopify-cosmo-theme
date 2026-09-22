@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_yHLVj3": {
+      "type": "breadcrumb",
+      "settings": {
+        "brc_container": "container",
+        "brc_text_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "slideshow_jK84VC": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_gMLqCY": {
+          "type": "slide",
+          "settings": {
+            "background": "shopify://shop_images/blendie-bar.jpg",
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#FFFFFF",
+            "title": "BRUSH CLEANSER",
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "description": "",
+            "desc_size": "text-desc-base",
+            "button_text_1": "",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        },
+        "slide_8gciht": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "Image slide",
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "description": "<p>Tell your brand's story through images</p>",
+            "desc_size": "text-desc-base",
+            "button_text_1": "Button label",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        },
+        "slide_pmPFGd": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image_overlay_opacity": 0,
+            "content_position": "center",
+            "text_alignment": "center",
+            "text_color": "#000000",
+            "title": "Image slide",
+            "heading_size": "h2",
+            "heading_color": "",
+            "subheading": "",
+            "description": "<p>Tell your brand's story through images</p>",
+            "desc_size": "text-desc-base",
+            "button_text_1": "Button label",
+            "button_link_1": "",
+            "button_style_1": "btn--primary",
+            "button_size_1": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_style_2": "btn--primary",
+            "button_size_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_gMLqCY",
+        "slide_8gciht",
+        "slide_pmPFGd"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "container",
+        "slideshow_height": "small",
+        "show_dots": true,
+        "show_nav": false,
+        "autoplay": false,
+        "autorotate_speed": 3,
+        "pagination_background": "light",
+        "controls_position": "center",
+        "pagination_style": "dots",
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand",
+        "custom_id": "",
+        "custom_class": "",
+        "enable_bg_zoom_effect": false
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "2643b661-c797-4a19-9705-c36d32909844": {
+          "type": "banner",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "5d532fbb-fa1b-4736-877b-efa6865180df": {
+          "type": "banner",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "banner_97XMtr": {
+          "type": "banner",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "2643b661-c797-4a19-9705-c36d32909844",
+        "5d532fbb-fa1b-4736-877b-efa6865180df",
+        "banner_97XMtr"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "text_alignment": "center",
+        "heading_size": "h2",
+        "show_breadcrumb": false,
+        "show_desc": true,
+        "show_collection_image": false,
+        "image_height": "medium",
+        "image_position": "use_image_as_background",
+        "image_overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [],
+      "settings": {
+        "container": "container",
+        "products_per_page": 15,
+        "columns": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_product_count": true,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "sidebar_position": "drawer",
+        "group_collapsible": true,
+        "default_state_collapsible": "expanded",
+        "open_first_group": false,
+        "filter_group_heading_size": "h6",
+        "show_results_count": true,
+        "filter_color_type": "inline",
+        "paginate_type": "number",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "breadcrumb_yHLVj3",
+    "slideshow_jK84VC",
+    "banner",
+    "product-grid"
+  ]
+}

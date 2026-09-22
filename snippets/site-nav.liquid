@@ -1,0 +1,775 @@
+{%- liquid
+  assign menu_id = section.settings.main_menu | default: 'main-menu'
+  assign dropdown_container = section.settings.container | default: 'container'
+  assign enable_mega_menu = section.settings.enable_mega_menu
+
+  assign menu_links = linklists[menu_id].links
+  assign menu_length = menu_links.size
+  if menu_part != blank
+    assign menu_length_modulo = menu_length | modulo: 2
+    assign split_index = menu_length | divided_by: 2
+    unless menu_length_modulo == 0
+      assign split_index = split_index | plus: 1
+    endunless
+  endif
+
+  assign space_class = ''
+  if menu_length >= 5
+    assign space_class = ' f-site-nav--space-md'
+  endif
+  if menu_length >= 8
+    assign space_class = ' f-site-nav--space-sm'
+  endif
+  if menu_length > 10
+    assign space_class = ' f-site-nav--space-xs'
+  endif
+
+  assign is_hover = false
+  if section.settings.dropdown_menu_trigger == 'hover'
+    assign is_hover = true
+  endif
+-%}
+{%- unless menu_id and menu_links.size == 0 -%}
+  <site-nav class="f-site-nav lg-down:hidden{{ space_class }}">
+    <ul class="f-site-nav__list flex flex-wrap h-full list-none" role="list">
+      {%- for link in menu_links -%}
+        {%- liquid
+          if menu_part == 'last' and forloop.index <= split_index
+            continue
+          endif
+          assign li_class = 'f-site-nav__item'
+          assign is_mega_item = true
+          assign three_level = false
+          assign has_mega_item = false
+          if link.links != blank
+            if link.levels == 2
+              assign three_level = true
+              assign is_mega_item = enable_mega_menu
+            endif
+          endif
+          assign title_handle = link.title | handleize
+          assign column = 6
+        -%}
+
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign menu_title = block.settings.heading | handleize
+            if menu_title == blank or menu_title != title_handle
+              continue
+            endif
+          -%}
+          {%- if menu_title == title_handle and enable_mega_menu -%}
+            {%- liquid
+              assign has_mega_item = true
+              assign column = block.settings.columns
+              if block.settings.container != 'inherit'
+                assign dropdown_container = block.settings.container
+              endif
+            -%}
+            {%- case block.type -%}
+              {%- when 'banner' -%}
+  {%- capture block_type -%}
+    {%- liquid
+      assign image_1 = block.settings.image
+      assign image_2 = block.settings.image_2
+      assign image_3 = block.settings.image_3
+      assign image_4 = block.settings.image_4
+
+      assign slide_count = 0
+
+      if image_1 != blank
+        assign slide_count = slide_count | plus: 1
+      endif
+
+      if image_2 != blank
+        assign slide_count = slide_count | plus: 1
+      endif
+
+      if image_3 != blank
+        assign slide_count = slide_count | plus: 1
+      endif
+
+      if image_4 != blank
+        assign slide_count = slide_count | plus: 1
+      endif
+    -%}
+
+    {% if slide_count > 0 %}
+      <div
+        id="MegaBannerSlider-{{ block.id }}"
+        class="f-site-nav__mega-addon f-site-nav__mega-addon--banner mega-banner-slider"
+        style="--banner-width: {{ block.settings.banner_width }}px"
+        data-autoplay="{{ block.settings.banner_autoplay }}"
+        data-speed="{{ block.settings.banner_autoplay_speed | times: 1000 }}"
+      >
+        <div class="mega-banner-slider__viewport">
+
+          {% if image_1 != blank %}
+            <div
+              class="mega-banner-slider__slide is-active"
+              data-mega-banner-slide="0"
+            >
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}">
+              {% endif %}
+
+              <responsive-image
+                class="f-image mega-banner-slider__image"
+                data-image-loading
+                style="--aspect-ratio: {{ image_1.aspect_ratio }}"
+              >
+                <img
+                  srcset="
+                    {%- if image_1.width >= 165 -%}{{ image_1 | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if image_1.width >= 360 -%}{{ image_1 | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if image_1.width >= 533 -%}{{ image_1 | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if image_1.width >= 720 -%}{{ image_1 | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if image_1.width >= 940 -%}{{ image_1 | image_url: width: 940 }} 940w,{%- endif -%}
+                    {{ image_1 | image_url }} {{ image_1.width }}w
+                  "
+                  src="{{ image_1 | image_url: width: 533 }}"
+                  alt="{{ image_1.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image_1.width }}"
+                  height="{{ image_1.height }}"
+                >
+              </responsive-image>
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+
+          {% if image_2 != blank %}
+            <div
+              class="mega-banner-slider__slide"
+              data-mega-banner-slide="1"
+            >
+              {% if block.settings.link_2 != blank %}
+                <a href="{{ block.settings.link_2 }}">
+              {% endif %}
+
+              <responsive-image
+                class="f-image mega-banner-slider__image"
+                data-image-loading
+                style="--aspect-ratio: {{ image_2.aspect_ratio }}"
+              >
+                <img
+                  src="{{ image_2 | image_url: width: 940 }}"
+                  alt="{{ image_2.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image_2.width }}"
+                  height="{{ image_2.height }}"
+                >
+              </responsive-image>
+
+              {% if block.settings.link_2 != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+
+          {% if image_3 != blank %}
+            <div
+              class="mega-banner-slider__slide"
+              data-mega-banner-slide="2"
+            >
+              {% if block.settings.link_3 != blank %}
+                <a href="{{ block.settings.link_3 }}">
+              {% endif %}
+
+              <responsive-image
+                class="f-image mega-banner-slider__image"
+                data-image-loading
+                style="--aspect-ratio: {{ image_3.aspect_ratio }}"
+              >
+                <img
+                  src="{{ image_3 | image_url: width: 940 }}"
+                  alt="{{ image_3.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image_3.width }}"
+                  height="{{ image_3.height }}"
+                >
+              </responsive-image>
+
+              {% if block.settings.link_3 != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+
+          {% if image_4 != blank %}
+            <div
+              class="mega-banner-slider__slide"
+              data-mega-banner-slide="3"
+            >
+              {% if block.settings.link_4 != blank %}
+                <a href="{{ block.settings.link_4 }}">
+              {% endif %}
+
+              <responsive-image
+                class="f-image mega-banner-slider__image"
+                data-image-loading
+                style="--aspect-ratio: {{ image_4.aspect_ratio }}"
+              >
+                <img
+                  src="{{ image_4 | image_url: width: 940 }}"
+                  alt="{{ image_4.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image_4.width }}"
+                  height="{{ image_4.height }}"
+                >
+              </responsive-image>
+
+              {% if block.settings.link_4 != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% if slide_count > 1 %}
+          {% if block.settings.banner_show_arrows %}
+            <button
+              class="mega-banner-slider__arrow mega-banner-slider__arrow--prev"
+              type="button"
+              aria-label="Previous banner"
+            >
+              ‹
+            </button>
+
+            <button
+              class="mega-banner-slider__arrow mega-banner-slider__arrow--next"
+              type="button"
+              aria-label="Next banner"
+            >
+              ›
+            </button>
+          {% endif %}
+
+          {% if block.settings.banner_show_dots %}
+            <div class="mega-banner-slider__dots">
+              {% for i in (1..slide_count) %}
+                <button
+                  type="button"
+                  class="mega-banner-slider__dot {% if forloop.first %}is-active{% endif %}"
+                  data-mega-banner-dot="{{ forloop.index0 }}"
+                  aria-label="Banner {{ forloop.index }}"
+                ></button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {%- endcapture -%}
+              {%- when 'product' -%}
+                {%- capture block_type -%}
+                  {%- liquid
+                    assign product_ids = 'product_1,product_2,product_3,product_4,product_5,product_6' | split: ','
+                    assign addon_column = block.settings.addon_column
+                  -%}
+                  <div
+                    id="Products-list-{{ block.id }}"
+                    class="f-site-nav__mega-addon f-site-nav__mega-addon--product w-full"
+                    style="--max-width: {{ addon_column }}%;"
+                  >
+                    <div class="w-full f-grid f-site-nav__mega-addon--wrapper" style="gap: 2rem;">
+                      {%- for product_id in product_ids -%}
+                        {% if block.settings[product_id] == blank %}{% continue %}{% endif %}
+                        <div class="f-column">
+                          {% render 'product-card',
+                            product: block.settings[product_id],
+                            show_vendor: false,
+                            show_product_option: false
+                          %}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endcapture -%}
+              {%- when 'collection' -%}
+                {%- capture block_type -%}
+                  {%- liquid
+                    assign collection_ids = 'collection_1,collection_2,collection_3,collection_4,collection_5,collection_6' | split: ','
+                    assign addon_column = block.settings.addon_column
+                    assign card_style = block.settings.card_style
+                    assign text_color = block.settings.text_color
+                    assign text_alignment = 'center'
+                    assign show_count = true
+                    assign image_ratio = 'adapt'
+                  -%}
+                  <div
+                    id="Collections-list-{{ block.id }}"
+                    class="f-site-nav__mega-addon f-site-nav__mega-addon--collection w-full"
+                    style="--max-width: {{ addon_column }}%;"
+                  >
+                    <div class="w-full f-grid f-site-nav__mega-addon--wrapper" style="gap: 3rem;">
+                      {%- for collection_id in collection_ids -%}
+                        {% if block.settings[collection_id] == blank %}{% continue %}{% endif %}
+                        {% render 'collection-card',
+                          collection: block.settings[collection_id],
+                          card_style: card_style,
+                          text_color: text_color,
+                          text_alignment: text_alignment,
+                          image_ratio: image_ratio,
+                          show_count: show_count
+                        %}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endcapture -%}
+              {%- when 'custom' -%}
+                {%- capture block_type -%}
+                  {%- liquid
+                    assign collection_ids = 'image_1,image_2,image_3,image_4,image_5' | split: ','
+                    assign addon_column = block.settings.addon_column
+                  -%}
+                  <div
+                    id="Image-list-{{ block.id }}"
+                    class="f-site-nav__mega-addon f-site-nav__mega-addon--collection w-full"
+                    style="--max-width: {{ addon_column }}%;"
+                  >
+                    <div class="w-full f-grid f-site-nav__mega-addon--wrapper" style="gap: 3rem;">
+                      {%- for i in (1..6) -%}
+                        {%- liquid
+                          assign image_id = 'image_' | append: i
+                          assign title_id = 'title_' | append: i
+                          assign desc_id = 'description_' | append: i
+                          assign link_id = 'url_' | append: i
+                          assign button_label_id = 'button_label_' | append: i
+                          assign button_style_id = 'button_style_' | append: i
+                          assign content_position_id = 'content_position_' | append: i
+                          assign heading_size_id = 'heading_size_' | append: i
+                          assign color_scheme_id = 'color_scheme_' | append: i
+                          assign image = block.settings[image_id]
+                          assign title = block.settings[title_id]
+                          assign description = block.settings[desc_id]
+                          assign button_label = block.settings[button_label_id]
+                          assign button_style = block.settings[button_style_id]
+                          assign content_position = block.settings[content_position_id]
+                          assign heading_size = block.settings[heading_size_id]
+                          assign color_scheme = block.settings[color_scheme_id]
+                          if image and link and title
+                            render 'custom-card', title: title, description: description, image: image, link: block.settings[link_id], color_scheme: color_scheme, heading_size: heading_size, button_label: button_label, button_style: button_style, content_position: content_position
+                          endif
+                        -%}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endcapture -%}
+              {%- else -%}
+                {%- capture block_type %}{% endcapture -%}
+            {%- endcase -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- liquid
+          if three_level != true and has_mega_item == false
+            assign is_mega_item = false
+          endif
+
+          if link.active
+            assign li_class = li_class | append: ' f-site-nav__item--current'
+          endif
+
+          if link.links != blank
+            assign li_class = li_class | append: ' f-site-nav__item--has-child'
+          endif
+
+          if is_mega_item and has_mega_item
+            assign li_class = li_class | append: ' f-site-nav__item--mega'
+          endif
+
+          assign has_dropdown = false
+          if link.links != blank
+            assign has_dropdown = true
+          elsif has_mega_item and block_type != blank
+            assign has_dropdown = true
+          endif
+
+          assign dropdown_html = ''
+        -%}
+        {%- if link.links != blank -%}
+          {%- liquid
+            unless is_mega_item and has_mega_item
+              assign dropdown_container = 'w-full'
+            endunless
+          -%}
+          {%- capture dropdown_html -%}
+            <div
+              class="f-site-nav__dropdown f-site-nav__dropdown--level2 color-{{ section.settings.menu_dropdown_color_schema }}{% if is_mega_item and has_mega_item %} no-js-hidden f-site-nav__dropdown--mega{% endif %}"
+              tabindex="-1"
+            >
+              <div class="{{ dropdown_container }}">
+                <div class="f-site-nav__dropdown-inner flex flex-wrap justify-center">
+                  <ul
+                    class="list-none w-full{% if is_mega_item and has_mega_item %} f-grid f-grid-{{- column -}}-cols{% endif %}"
+                    role="list"
+                    tabindex="-1"
+                  >
+                    {% for childlink in link.links %}
+                      <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
+                        <a
+                          href="{{ childlink.url }}"
+                          class="f-site-nav__sub-link focus-inset no-js-hidden"
+                          ><span>{{ childlink.title }}</span>
+                          {% if childlink.links != blank %}
+                            <span class="f-site-nav__arrow">
+                              {% comment %} theme-check-disable {% endcomment %}
+                              {{ 'icon-arrow-down-small.svg' | inline_asset_content }}
+                              {% comment %} theme-check-enable {% endcomment %}
+                            </span>
+                          {% endif %}
+                        </a>
+                        {% if childlink.links != blank %}
+                          <div
+                            id="HeaderMenu-SubMenuList-{{ forloop.index }}"
+                            class="f-site-nav__dropdown f-site-nav__dropdown--level3 {% unless is_mega_item and has_mega_item %} f-site-nav__dropdown--normal color-{{ section.settings.menu_dropdown_color_schema }}{% endunless %}"
+                            tabindex="-1"
+                          >
+                            <ul class="list-none" role="list" tabindex="-1">
+                              {% for grandlink in childlink.links %}
+                                <li class="f-site-nav__sub-item f-site-nav__sub-item--level3">
+                                  <a
+                                    href="{{ grandlink.url }}"
+                                    class="f-site-nav__sub-link focus-inset"
+                                  >
+                                    <span>{{ grandlink.title }}</span>
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% if has_mega_item == true and block_type != blank %}
+                    {{- block_type -}}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {%- endcapture -%}
+        {%- elsif has_mega_item and block_type != blank -%}
+          {%- capture dropdown_html -%}
+            <div
+              class="f-site-nav__dropdown f-site-nav__dropdown--level2 color-{{ section.settings.menu_dropdown_color_schema }}{% if is_mega_item and has_mega_item %} no-js-hidden f-site-nav__dropdown--mega{% endif %}"
+              tabindex="-1"
+            >
+              <div class="{{ dropdown_container }}">
+                <div class="f-site-nav__dropdown-inner flex flex-wrap justify-center">
+                  {{- block_type -}}
+                </div>
+              </div>
+            </div>
+          {%- endcapture -%}
+        {%- endif -%}
+        <li class="{{ li_class }}" data-index="{{ forloop.index0 }}">
+          {%- if is_hover or has_dropdown == false -%}
+            <a href="{{ link.url }}" class="f-site-nav__link focus-inset">
+              <span>{{- link.title -}}</span>
+              {%- if has_dropdown -%}
+                <span class="f-site-nav__arrow{% if is_mega_item and has_mega_item %} no-js-hidden{% endif %}">
+                  {% comment %} theme-check-disable {% endcomment %}
+                  {{ 'icon-arrow-down-small.svg' | inline_asset_content }}
+                  {% comment %} theme-check-enable {% endcomment %}
+                </span>
+              {%- endif -%}
+            </a>
+            {{ dropdown_html }}
+          {%- else -%}
+            <header-menu>
+              <details id="Details-menu-drawer-menu-item-{{ forloop.index0 }}">
+                <summary class="f-site-nav__link focus-inset">
+                  <span>{{- link.title -}}</span>
+                  <span class="f-site-nav__arrow{% if is_mega_item and has_mega_item %} no-js-hidden{% endif %}">
+                    {% comment %} theme-check-disable {% endcomment %}
+                    {{ 'icon-arrow-down-small.svg' | inline_asset_content }}
+                    {% comment %} theme-check-enable {% endcomment %}
+                  </span>
+                </summary>
+                {{ dropdown_html }}
+              </details>
+            </header-menu>
+          {%- endif -%}
+        </li>
+        {%- if menu_part == 'first' and forloop.index >= split_index -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    <style>
+  .mega-banner-slider {
+    position: relative;
+    width: var(--banner-width);
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .mega-banner-slider__viewport {
+    position: relative;
+    width: 100%;
+  }
+
+  .mega-banner-slider__slide {
+    display: none;
+    width: 100%;
+  }
+
+  .mega-banner-slider__slide.is-active {
+    display: block;
+    animation: megaBannerFade 0.45s ease;
+  }
+
+  .mega-banner-slider__slide a {
+    display: block;
+    width: 100%;
+  }
+
+  .mega-banner-slider__image,
+  .mega-banner-slider__image img {
+    display: block;
+    width: 100%;
+  }
+
+  .mega-banner-slider__image img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .mega-banner-slider__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.28);
+    color: #fff;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+      background .2s ease,
+      opacity .2s ease;
+  }
+
+  .mega-banner-slider__arrow:hover {
+    background: rgba(0,0,0,.55);
+  }
+
+  .mega-banner-slider__arrow--prev {
+    left: 10px;
+  }
+
+  .mega-banner-slider__arrow--next {
+    right: 10px;
+  }
+
+  .mega-banner-slider__dots {
+    position: absolute;
+    z-index: 5;
+
+    left: 50%;
+    bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    transform: translateX(-50%);
+  }
+
+  .mega-banner-slider__dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: 1px solid #fff;
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .mega-banner-slider__dot.is-active {
+    background: #fff;
+  }
+
+  .mega-banner-slider__arrow {
+  display: none !important;
+}
+
+  @keyframes megaBannerFade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+<script>
+  (() => {
+    function initMegaBannerSliders() {
+      const sliders = document.querySelectorAll(
+        '.mega-banner-slider:not([data-slider-initialized])'
+      );
+
+      sliders.forEach((slider) => {
+        slider.setAttribute('data-slider-initialized', 'true');
+
+        const slides = Array.from(
+          slider.querySelectorAll('.mega-banner-slider__slide')
+        );
+
+        const dots = Array.from(
+          slider.querySelectorAll('.mega-banner-slider__dot')
+        );
+
+        const previousButton = slider.querySelector(
+          '.mega-banner-slider__arrow--prev'
+        );
+
+        const nextButton = slider.querySelector(
+          '.mega-banner-slider__arrow--next'
+        );
+
+        if (slides.length <= 1) return;
+
+        let currentIndex = 0;
+        let timer = null;
+
+        const autoplay =
+          slider.dataset.autoplay === 'true';
+
+        const speed =
+          Number(slider.dataset.speed) || 5000;
+
+        function showSlide(index) {
+          currentIndex =
+            (index + slides.length) % slides.length;
+
+          slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle(
+              'is-active',
+              slideIndex === currentIndex
+            );
+          });
+
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle(
+              'is-active',
+              dotIndex === currentIndex
+            );
+          });
+        }
+
+        function nextSlide() {
+          showSlide(currentIndex + 1);
+        }
+
+        function previousSlide() {
+          showSlide(currentIndex - 1);
+        }
+
+        function stopAutoplay() {
+          if (timer) {
+            clearInterval(timer);
+            timer = null;
+          }
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+
+          if (autoplay) {
+            timer = setInterval(
+              nextSlide,
+              speed
+            );
+          }
+        }
+
+        nextButton?.addEventListener(
+          'click',
+          () => {
+            nextSlide();
+            startAutoplay();
+          }
+        );
+
+        previousButton?.addEventListener(
+          'click',
+          () => {
+            previousSlide();
+            startAutoplay();
+          }
+        );
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener(
+            'click',
+            () => {
+              showSlide(index);
+              startAutoplay();
+            }
+          );
+        });
+
+        slider.addEventListener(
+          'mouseenter',
+          stopAutoplay
+        );
+
+        slider.addEventListener(
+          'mouseleave',
+          startAutoplay
+        );
+
+        showSlide(0);
+        startAutoplay();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener(
+        'DOMContentLoaded',
+        initMegaBannerSliders
+      );
+    } else {
+      initMegaBannerSliders();
+    }
+
+    document.addEventListener(
+      'shopify:section:load',
+      initMegaBannerSliders
+    );
+  })();
+</script>
+  </site-nav>
+{%- endunless -%}

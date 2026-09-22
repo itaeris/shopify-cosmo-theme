@@ -1,0 +1,254 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header.name",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_bfeDTn": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Get Free Shipping With Minimum Purchase of IDR 500.000 | 10% OFF your first purchase use code <a href=\"#\" title=\"#\">WELCOME10</a></p>",
+            "link": "",
+            "homepage_only": false,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": true,
+            "show_on_desktop": true
+          }
+        },
+        "announcement_EqMdWP": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>New customers save 10% with code WELCOME10</p>",
+            "link": "",
+            "homepage_only": false,
+            "hide_on_page": "",
+            "show_on_mobile": true,
+            "show_on_tablet": false,
+            "show_on_desktop": false
+          }
+        }
+      },
+      "block_order": [
+        "announcement_bfeDTn",
+        "announcement_EqMdWP"
+      ],
+      "custom_css": [
+        ".announcement-bar__row {padding: 7px 10px;}",
+        "a {font-weight: 500;}"
+      ],
+      "settings": {
+        "color_schema": "inverse",
+        "show_close_button": false,
+        "enable_carousel": false,
+        "autoplay": false,
+        "autorotate_speed": 4
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "banner_AXMdXa": {
+          "type": "banner",
+          "settings": {
+            "heading": "NEW ARRIVAL",
+            "container": "inherit",
+            "columns": 3,
+            "image": "shopify://shop_images/Dropdown_visual.jpg",
+            "image_2": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "link_2": "",
+            "link_3": "",
+            "link_4": "",
+            "banner_autoplay": true,
+            "banner_autoplay_speed": 5,
+            "banner_show_arrows": true,
+            "banner_show_dots": true,
+            "link": "shopify://collections/all",
+            "banner_width": 370
+          }
+        },
+        "product_XbTx6a": {
+          "type": "product",
+          "settings": {
+            "heading": "BEST SELLER",
+            "container": "inherit",
+            "columns": 4,
+            "addon_column": 30,
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "collection_k7dmeV": {
+          "type": "collection",
+          "settings": {
+            "heading": "SHOP ALL",
+            "card_style": "1",
+            "text_color": "#000000",
+            "container": "inherit",
+            "columns": 4,
+            "addon_column": 100,
+            "collection_1": "makeup-tools",
+            "collection_2": "skincare-tools",
+            "collection_3": "hair-tools",
+            "collection_4": "wellness-tools",
+            "collection_5": "",
+            "collection_6": ""
+          }
+        },
+        "banner_dfG9hQ": {
+          "type": "banner",
+          "disabled": true,
+          "settings": {
+            "heading": "STORE LOCATIONS",
+            "container": "inherit",
+            "columns": 4,
+            "link_2": "",
+            "link_3": "",
+            "link_4": "",
+            "banner_autoplay": true,
+            "banner_autoplay_speed": 5,
+            "banner_show_arrows": true,
+            "banner_show_dots": true,
+            "link": "",
+            "banner_width": 320
+          }
+        },
+        "banner_ePTREQ": {
+          "type": "banner",
+          "disabled": true,
+          "settings": {
+            "heading": "ABOUT US",
+            "container": "inherit",
+            "columns": 2,
+            "link_2": "",
+            "link_3": "",
+            "link_4": "",
+            "banner_autoplay": true,
+            "banner_autoplay_speed": 5,
+            "banner_show_arrows": true,
+            "banner_show_dots": true,
+            "link": "",
+            "banner_width": 320
+          }
+        }
+      },
+      "block_order": [
+        "banner_AXMdXa",
+        "product_XbTx6a",
+        "collection_k7dmeV",
+        "banner_dfG9hQ",
+        "banner_ePTREQ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_schema": "",
+        "layout": "design-5",
+        "container": "container",
+        "sticky_header": true,
+        "sticky_type": "always",
+        "transparent_header": true,
+        "logo": "shopify://shop_images/Aeris_new_logo-01_compressed_10740930-bdfe-41a7-bfd5-49c5cdf0a98d.png",
+        "logo_transparent": "shopify://shop_images/AERIS_LOGO_-_white.png",
+        "logo_on_dropdown_menu": "shopify://shop_images/Aeris_new_logo-01_compressed_10740930-bdfe-41a7-bfd5-49c5cdf0a98d.png",
+        "logo_width": 105,
+        "logo_mobile_width": 86,
+        "main_menu": "main-menu",
+        "mobile_menu": "main-menu",
+        "menu_dropdown_color_schema": "background-1",
+        "dropdown_menu_trigger": "hover",
+        "enable_mega_menu": true,
+        "customer_account_menu": "customer-account-main-menu",
+        "show_search": true,
+        "show_cart": true,
+        "show_account": true,
+        "show_country_selector": false,
+        "show_language_selector": true,
+        "logo_mobile_position": "center",
+        "mobile_show_search": true,
+        "mobile_show_cart": true,
+        "mobile_show_account": true,
+        "mobile_show_social": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "aeris_merlot_hero_3JVyxa": {
+      "type": "aeris-merlot-hero",
+      "blocks": {
+        "slide_WPaDFX": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg",
+            "show_small_image": false,
+            "heading": "",
+            "subtitle": "<p>MERLOT, Wherever You Are</p>",
+            "button_text": "SHOP THE COLLECTION",
+            "button_link": ""
+          }
+        },
+        "slide_37tKXQ": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
+            "show_small_image": true,
+            "small_image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "heading": "MERLOT",
+            "subtitle": "<p>Unlock Your True Power</p>",
+            "button_text": "Discover now",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_WPaDFX",
+        "slide_37tKXQ"
+      ],
+      "name": "Aeris Campaign Slider",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 3,
+        "show_arrows": false,
+        "show_dots": false,
+        "desktop_height": 680,
+        "tablet_height": 600,
+        "mobile_height": 650,
+        "overlay_opacity": 10,
+        "small_image_width": 300,
+        "small_image_left": 32,
+        "small_image_bottom": 24,
+        "small_image_ratio": "4 / 3",
+        "small_image_radius": 0,
+        "small_image_border_width": 1,
+        "small_image_border_opacity": 40,
+        "mobile_small_image_width": 140,
+        "mobile_small_image_left": 18,
+        "mobile_small_image_bottom": 190,
+        "content_right": 7,
+        "content_bottom": 8,
+        "heading_desktop_size": 72,
+        "heading_min_size": 46,
+        "mobile_heading_size": 46,
+        "heading_weight": "500"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "aeris_merlot_hero_3JVyxa"
+  ]
+}
