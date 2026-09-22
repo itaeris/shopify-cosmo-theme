@@ -257,7 +257,7 @@
             <ul>
               {% for link in section.settings.about_menu.links %}
                 <li>
-                  <a href="{{ link.url }}">
+                  <a href="{% render 'aeris-menu-url', menu_link: link %}">
                     {{ link.title }}
                   </a>
                 </li>
@@ -276,13 +276,23 @@
 
           {% if section.settings.info_menu != blank %}
             <ul>
+              {%- assign aeris_has_track = false -%}
               {% for link in section.settings.info_menu.links %}
+                {%- assign aeris_info_handle = link.title | handleize -%}
+                {%- if aeris_info_handle == 'track-your-order' or aeris_info_handle == 'track-order' or link.url contains 'track-your-order' -%}
+                  {%- assign aeris_has_track = true -%}
+                {%- endif -%}
                 <li>
-                  <a href="{{ link.url }}">
+                  <a href="{% render 'aeris-menu-url', menu_link: link %}">
                     {{ link.title }}
                   </a>
                 </li>
               {% endfor %}
+              {%- unless aeris_has_track -%}
+                <li>
+                  <a href="/pages/track-your-order">Track Your Order</a>
+                </li>
+              {%- endunless -%}
             </ul>
           {% endif %}
         </div>

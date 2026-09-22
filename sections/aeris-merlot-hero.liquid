@@ -3,6 +3,15 @@
   if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy'
     assign hide_hero = true
   endif
+  if page.handle == 'about-us' or page.handle == 'our-story' or page.handle == 'about'
+    assign hide_hero = true
+  endif
+  if page.handle == 'track-your-order' or page.handle == 'track-order'
+    assign hide_hero = true
+  endif
+  if template.suffix == 'about-us' or template.suffix == 'our-story'
+    assign hide_hero = true
+  endif
   if template.name == 'collection' or template.name == 'list-collections'
     assign hide_hero = true
   endif

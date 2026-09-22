@@ -1,0 +1,78 @@
+<div
+  id="{{ section.id }}"
+  class="f-section__breadcrumb f-section-padding aeris-story-breadcrumb"
+  data-section-type="breadcrumb"
+  data-section-id="{{ section.id }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="{{ section.settings.container }}">
+    <nav class="breadcrumbs flex justify-{{ section.settings.alignment }}" role="navigation" aria-label="breadcrumbs">
+      <a href="{{ routes.root_url }}" title="Home">{{ 'general.breadcrumbs.home' | t }}</a>
+      <span aria-hidden="true" class="breadcrumbs--sep">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>About</span>
+      <span aria-hidden="true" class="breadcrumbs--sep">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="breadcrumbs--last">Our Story</span>
+    </nav>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Story breadcrumb",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        { "value": "container", "label": "Fixed" },
+        { "value": "container-fluid", "label": "Stretched" },
+        { "value": "container-full", "label": "Full width" }
+      ],
+      "default": "container",
+      "label": "Container"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "center",
+      "options": [
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "default": 8,
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "default": 8,
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    { "name": "Our Story breadcrumb" }
+  ]
+}
+{% endschema %}

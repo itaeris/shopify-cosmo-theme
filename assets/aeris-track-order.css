@@ -1,0 +1,144 @@
+.aeris-track {
+  background: #faf8f5;
+  color: #1a1a1a;
+}
+
+.aeris-track * {
+  box-sizing: border-box;
+}
+
+.aeris-track__inner {
+  width: min(52rem, calc(100% - 4.8rem));
+  margin: 0 auto;
+  padding: 10rem 0 12rem;
+  text-align: center;
+}
+
+.aeris-track__kicker {
+  margin: 0 0 2.4rem;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.aeris-track__title {
+  margin: 0 0 1.6rem;
+  color: inherit;
+  font-family: var(--font-mega-title-family, 'Libre Baskerville', Georgia, serif);
+  font-size: clamp(3.6rem, 5vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.aeris-track__intro {
+  margin: 0 auto 5.6rem;
+  max-width: 36rem;
+  color: #5c5752;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.aeris-track__form {
+  width: 100%;
+  text-align: left;
+}
+
+.aeris-track__field {
+  margin: 0 0 3.2rem;
+}
+
+.aeris-track__label {
+  display: block;
+  margin: 0 0 0.8rem;
+  color: #2b2724;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.aeris-track__required {
+  margin-left: 0.2rem;
+}
+
+.aeris-track__input {
+  display: block;
+  width: 100%;
+  padding: 0.4rem 0 1rem;
+  border: 0;
+  border-bottom: 1px solid #cfc8c1;
+  border-radius: 0;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  box-shadow: none;
+}
+
+.aeris-track__input:focus {
+  outline: none;
+  border-bottom-color: #1a1a1a;
+}
+
+.aeris-track__hint {
+  margin: 0.8rem 0 0;
+  color: #8a847e;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.aeris-track__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 5.2rem;
+  margin-top: 1.2rem;
+  padding: 1.4rem 2rem;
+  border: 0;
+  border-radius: 2px;
+  background: #3a322c;
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.aeris-track__submit:hover {
+  background: #2b251f;
+}
+
+.aeris-track__status {
+  margin: 0 0 2.4rem;
+  padding: 1.2rem 1.4rem;
+  background: #f1eee9;
+  color: #3a322c;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 767.98px) {
+  .aeris-track__inner {
+    width: min(52rem, calc(100% - 3.2rem));
+    padding: 6.4rem 0 8rem;
+  }
+
+  .aeris-track__title {
+    font-size: 3.4rem;
+  }
+
+  .aeris-track__intro {
+    margin-bottom: 4rem;
+  }
+}

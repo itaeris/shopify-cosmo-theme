@@ -1,0 +1,86 @@
+{{ 'aeris-track-order.css' | asset_url | stylesheet_tag }}
+
+<section class="aeris-track" aria-labelledby="AerisTrackTitle">
+  <div class="aeris-track__inner">
+    <p class="aeris-track__kicker">{{ shop.name }}</p>
+    <h1 class="aeris-track__title" id="AerisTrackTitle">Track your order</h1>
+    <p class="aeris-track__intro">
+      Enter your order number and the email address used at checkout.
+    </p>
+
+    {%- form 'contact', id: 'AerisTrackForm', class: 'aeris-track__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="aeris-track__status" role="status">
+          Thanks — we received your request. Check your inbox for the order confirmation email, or wait for our team to follow up.
+        </p>
+      {%- endif -%}
+
+      <input type="hidden" name="contact[subject]" value="Track your order">
+      <input
+        type="hidden"
+        name="contact[body]"
+        id="AerisTrackBody"
+        value="Please help me track my order."
+      >
+
+      <div class="aeris-track__field">
+        <label class="aeris-track__label" for="AerisTrackOrder">
+          Order Number <span class="aeris-track__required">*</span>
+        </label>
+        <input
+          class="aeris-track__input"
+          id="AerisTrackOrder"
+          name="contact[order number]"
+          type="text"
+          autocomplete="off"
+          required
+          aria-required="true"
+          aria-describedby="AerisTrackOrderHint"
+        >
+        <p class="aeris-track__hint" id="AerisTrackOrderHint">
+          You can find it in the order confirmation email we sent you.
+        </p>
+      </div>
+
+      <div class="aeris-track__field">
+        <label class="aeris-track__label" for="AerisTrackEmail">
+          Email <span class="aeris-track__required">*</span>
+        </label>
+        <input
+          class="aeris-track__input"
+          id="AerisTrackEmail"
+          name="contact[email]"
+          type="email"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          required
+          aria-required="true"
+          value="{% if customer %}{{ customer.email }}{% endif %}"
+        >
+      </div>
+
+      <button class="aeris-track__submit" type="submit">Track order</button>
+    {%- endform -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var form = document.getElementById('AerisTrackForm');
+    var order = document.getElementById('AerisTrackOrder');
+    var email = document.getElementById('AerisTrackEmail');
+    var body = document.getElementById('AerisTrackBody');
+    if (!form || !order || !email || !body) return;
+
+    form.addEventListener('submit', function () {
+      var orderValue = (order.value || '').trim();
+      var emailValue = (email.value || '').trim();
+      body.value =
+        'Please help me track this order.\nOrder number: ' +
+        orderValue +
+        '\nEmail: ' +
+        emailValue;
+    });
+  })();
+</script>

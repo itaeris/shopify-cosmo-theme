@@ -201,7 +201,19 @@
         role="main"
         tabindex="-1"
       >
-        {{ content_for_layout }}
+        {%- liquid
+          assign aeris_track_page = false
+          if template.name == 'page'
+            if page.handle == 'track-your-order' or page.handle == 'track-order'
+              assign aeris_track_page = true
+            endif
+          endif
+        -%}
+        {%- if aeris_track_page -%}
+          {% render 'aeris-track-order' %}
+        {%- else -%}
+          {{ content_for_layout }}
+        {%- endif -%}
       </main>
       {%- liquid
         if template.name == 'product'

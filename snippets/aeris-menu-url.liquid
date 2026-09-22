@@ -4,5 +4,11 @@
   if aeris_menu_handle == 'shop-all' or aeris_menu_handle == 'shopall'
     assign aeris_menu_url = '/collections/all-products'
   endif
+  if aeris_menu_handle == 'our-story' or aeris_menu_handle == 'ourstory'
+    assign aeris_menu_url = '/pages/about-us'
+  endif
+  if aeris_menu_handle == 'track-your-order' or aeris_menu_handle == 'track-order'
+    assign aeris_menu_url = '/pages/track-your-order'
+  endif
 -%}
 {{- aeris_menu_url -}}
