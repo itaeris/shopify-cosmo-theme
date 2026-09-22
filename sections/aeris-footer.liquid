@@ -236,7 +236,7 @@
             <ul>
               {% for link in section.settings.shop_menu.links %}
                 <li>
-                  <a href="{{ link.url }}">
+                  <a href="{% render 'aeris-menu-url', menu_link: link %}">
                     {{ link.title }}
                   </a>
                 </li>

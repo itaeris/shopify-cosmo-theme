@@ -280,7 +280,7 @@
                     {% endif %}
                     data-collapsible-parent
                   >
-                    <a href="{{ link.url }}" class="f-mobile-nav__link">
+                    <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-mobile-nav__link">
                       {{ link.title }}
                     </a>
                     {% if link.links != blank %}
@@ -316,7 +316,7 @@
                                 data-collapsible-parent
                               >
                                 <a
-                                  href="{{ childlink.url }}"
+                                  href="{% render 'aeris-menu-url', menu_link: childlink %}"
                                   class="f-mobile-nav__sub-link"
                                 >
                                   {{- childlink.title -}}
@@ -354,7 +354,7 @@
                                         {% for grandlink in childlink.links %}
                                           <li class="f-mobile-nav__sub-item f-mobile-nav__sub-item--level3">
                                             <a
-                                              href="{{ grandlink.url }}"
+                                              href="{% render 'aeris-menu-url', menu_link: grandlink %}"
                                               class="f-mobile-nav__sub-link"
                                             >
                                               {{- grandlink.title -}}

@@ -100,6 +100,7 @@
         "slide_pmPFGd"
       ],
       "name": "t:sections.slideshow.name",
+      "disabled": true,
       "settings": {
         "container": "container",
         "slideshow_height": "small",
@@ -116,6 +117,105 @@
         "custom_id": "",
         "custom_class": "",
         "enable_bg_zoom_effect": false
+      }
+    },
+    "collection_list_shop_all": {
+      "type": "collection-list",
+      "blocks": {
+        "cat_makeup": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "makeup-tools",
+            "image": "shopify://shop_images/TT_06952.jpg",
+            "title": "Makeup Brush"
+          }
+        },
+        "cat_sponges": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "skincare-tools",
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "title": "Sponges & Application"
+          }
+        },
+        "cat_bags": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wellness-tools",
+            "image": "shopify://shop_images/TT_02644.jpg",
+            "title": "Lifestyle bags"
+          }
+        },
+        "cat_hair": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hair-tools",
+            "image": "shopify://shop_images/Dropdown_visual.jpg",
+            "title": "Hair Tools"
+          }
+        },
+        "cat_gifting": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "brush-sets",
+            "image": "shopify://shop_images/AE828.jpg",
+            "title": "Gifting"
+          }
+        }
+      },
+      "block_order": [
+        "cat_makeup",
+        "cat_sponges",
+        "cat_bags",
+        "cat_hair",
+        "cat_gifting"
+      ],
+      "custom_css": [
+        ".collection-card__image {border-radius: 0;}",
+        ".collection-card__title {font-size: 1.4rem; letter-spacing: 0.01em;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "title_font": "body",
+        "title_size": "h6",
+        "card_style": "6",
+        "text_alignment": "left",
+        "text_color": "#222222",
+        "image_ratio": "1/1",
+        "show_count": false,
+        "inline_count": false,
+        "columns": 5,
+        "column_gap": "extra-small",
+        "row_gap": "small",
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_url": "",
+        "button_style": "btn--primary",
+        "enable_slider": false,
+        "show_dots": false,
+        "show_nav": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 24,
+        "padding_bottom": 16,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 8,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
       }
     },
     "banner": {
@@ -145,7 +245,6 @@
         "5d532fbb-fa1b-4736-877b-efa6865180df",
         "banner_97XMtr"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container",
@@ -194,6 +293,7 @@
   "order": [
     "breadcrumb_yHLVj3",
     "slideshow_jK84VC",
+    "collection_list_shop_all",
     "banner",
     "product-grid"
   ]

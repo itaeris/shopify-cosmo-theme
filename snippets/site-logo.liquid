@@ -97,7 +97,7 @@
                                 <li>
                                   {%- if childlink.links == blank -%}
                                     <a
-                                      href="{{ childlink.url }}"
+                                      href="{% render 'aeris-menu-url', menu_link: childlink %}"
                                       class="menu-drawer__menu-item list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                       {% if childlink.current %}
                                         aria-current="page"
@@ -132,7 +132,7 @@
                                           {%- for grandchildlink in childlink.links -%}
                                             <li>
                                               <a
-                                                href="{{ grandchildlink.url }}"
+                                                href="{% render 'aeris-menu-url', menu_link: grandchildlink %}"
                                                 class="menu-drawer__menu-item list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                                 {% if grandchildlink.current %}
                                                   aria-current="page"
@@ -154,7 +154,7 @@
                       </details>
                     {%- else -%}
                       <a
-                        href="{{ link.url }}"
+                        href="{% render 'aeris-menu-url', menu_link: link %}"
                         class="menu-drawer__menu-item list-menu__item focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
                         {% if link.current %}
                           aria-current="page"

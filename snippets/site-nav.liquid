@@ -445,9 +445,9 @@
                     {% for childlink in link.links %}
                       <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
                         <a
-                          href="{{ childlink.url }}"
+                          href="{% render 'aeris-menu-url', menu_link: childlink %}"
                           class="f-site-nav__sub-link focus-inset no-js-hidden"
-                          ><span>{{ childlink.title }}</span>
+                        ><span>{{ childlink.title }}</span>
                           {% if childlink.links != blank %}
                             <span class="f-site-nav__arrow">
                               {% comment %} theme-check-disable {% endcomment %}
@@ -466,7 +466,7 @@
                               {% for grandlink in childlink.links %}
                                 <li class="f-site-nav__sub-item f-site-nav__sub-item--level3">
                                   <a
-                                    href="{{ grandlink.url }}"
+                                    href="{% render 'aeris-menu-url', menu_link: grandlink %}"
                                     class="f-site-nav__sub-link focus-inset"
                                   >
                                     <span>{{ grandlink.title }}</span>
@@ -502,7 +502,7 @@
         {%- endif -%}
         <li class="{{ li_class }}" data-index="{{ forloop.index0 }}">
           {%- if is_hover or has_dropdown == false -%}
-            <a href="{{ link.url }}" class="f-site-nav__link focus-inset">
+            <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-site-nav__link focus-inset">
               <span>{{- link.title -}}</span>
               {%- if has_dropdown -%}
                 <span class="f-site-nav__arrow{% if is_mega_item and has_mega_item %} no-js-hidden{% endif %}">

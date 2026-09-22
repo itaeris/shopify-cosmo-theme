@@ -1,0 +1,104 @@
+.aeris-legal {
+  width: 100%;
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.aeris-legal * {
+  box-sizing: border-box;
+}
+
+.aeris-legal__wrapper {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.86fr) minmax(320px, 1.14fr);
+  gap: 4.8rem 6.4rem;
+  align-items: start;
+  width: min(1280px, calc(100% - 8rem));
+  margin: 0 auto;
+  padding: 4.8rem 0 8rem;
+}
+
+.aeris-legal__media {
+  position: sticky;
+  top: calc(var(--f-header-height, 72px) + 2.4rem);
+}
+
+.aeris-legal__image-wrap {
+  overflow: hidden;
+  border-radius: 2.8rem;
+  background: #f3f1ee;
+}
+
+.aeris-legal__image,
+.aeris-legal__placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.aeris-legal__title {
+  margin: 2rem 0 0;
+  color: inherit;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.aeris-legal__content,
+.aeris-legal__rte {
+  max-width: 62rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.aeris-legal__block + .aeris-legal__block {
+  margin-top: 3.6rem;
+}
+
+.aeris-legal__content h2,
+.aeris-legal__rte h2 {
+  margin: 0 0 1.4rem;
+  color: inherit;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.aeris-legal__content p,
+.aeris-legal__rte p {
+  margin: 0 0 1.4rem;
+}
+
+.aeris-legal__content a,
+.aeris-legal__rte a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media screen and (max-width: 989px) {
+  .aeris-legal__wrapper {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+    width: min(100% - 3.2rem, 72rem);
+    padding: 3.2rem 0 5.6rem;
+  }
+
+  .aeris-legal__media {
+    position: static;
+  }
+
+  .aeris-legal__image,
+  .aeris-legal__placeholder {
+    aspect-ratio: 16 / 11;
+  }
+}

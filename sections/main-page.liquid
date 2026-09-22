@@ -1,13 +1,58 @@
-<div class="f-section {{ section.settings.container }}">
-  <h1 class="f__page-title text-center h2">
-    {{ page.title | escape }}
-  </h1>
-  <div class="container">
-    <div class="rte">
-      {{ page.content }}
+{%- liquid
+  assign is_legal_page = false
+  if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy'
+    assign is_legal_page = true
+  endif
+-%}
+
+{% if is_legal_page %}
+  {{ 'aeris-legal.css' | asset_url | stylesheet_tag }}
+  {%- liquid
+    assign document = 'terms'
+    assign page_title = 'Terms of Service'
+    assign legal_image = 'Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg'
+    if page.handle == 'privacy-policy' or page.handle == 'privacy'
+      assign document = 'privacy'
+      assign page_title = 'Privacy Policy'
+      assign legal_image = 'Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg'
+    endif
+  -%}
+  <section class="aeris-legal aeris-legal--{{ document }}">
+    <div class="aeris-legal__wrapper">
+      <aside class="aeris-legal__media">
+        <div class="aeris-legal__image-wrap">
+          <img
+            class="aeris-legal__image"
+            src="{{ legal_image | file_url }}"
+            alt="{{ page_title | escape }}"
+            width="1400"
+            height="1750"
+            loading="eager"
+          >
+        </div>
+        <h1 class="aeris-legal__title">{{ page_title }}</h1>
+      </aside>
+      <div class="aeris-legal__content">
+        {% if document == 'privacy' %}
+          {% render 'aeris-legal-privacy' %}
+        {% else %}
+          {% render 'aeris-legal-terms' %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% else %}
+  <div class="f-section {{ section.settings.container }}">
+    <h1 class="f__page-title text-center h2">
+      {{ page.title | escape }}
+    </h1>
+    <div class="container">
+      <div class="rte">
+        {{ page.content }}
+      </div>
     </div>
   </div>
-</div>
+{% endif %}
 
 {% schema %}
 {

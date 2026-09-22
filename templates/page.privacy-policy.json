@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aeris_legal": {
+      "type": "aeris-legal-page",
+      "settings": {
+        "document": "privacy",
+        "heading": "Privacy Policy",
+        "image": "shopify://shop_images/Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "aeris_legal"
+  ]
+}

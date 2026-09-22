@@ -1,0 +1,8 @@
+{%- liquid
+  assign aeris_menu_url = menu_link.url | default: '#'
+  assign aeris_menu_handle = menu_link.title | handleize
+  if aeris_menu_handle == 'shop-all' or aeris_menu_handle == 'shopall'
+    assign aeris_menu_url = '/collections/all-products'
+  endif
+-%}
+{{- aeris_menu_url -}}

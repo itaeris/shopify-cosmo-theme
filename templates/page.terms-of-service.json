@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aeris_legal": {
+      "type": "aeris-legal-page",
+      "settings": {
+        "document": "terms",
+        "heading": "Terms of Service",
+        "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "aeris_legal"
+  ]
+}

@@ -1,3 +1,17 @@
+{%- liquid
+  assign hide_hero = false
+  if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy'
+    assign hide_hero = true
+  endif
+  if template.name == 'collection' or template.name == 'list-collections'
+    assign hide_hero = true
+  endif
+-%}
+{% if hide_hero %}
+  <style>
+    #shopify-section-{{ section.id }} { display: none !important; }
+  </style>
+{% else %}
 <section
   id="AerisHero-{{ section.id }}"
   class="aeris-hero"
@@ -714,6 +728,7 @@
     );
   })();
 </script>
+{% endif %}
 
 {% schema %}
 {
