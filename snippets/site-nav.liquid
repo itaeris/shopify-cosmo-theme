@@ -139,34 +139,6 @@
                 {% if block.settings.link != blank and block.settings.banner_button_label == blank %}
                   </a>
                 {% endif %}
-
-                {% if block.settings.banner_title != blank
-                  or block.settings.banner_subtitle != blank
-                  or block.settings.banner_button_label != blank
-                %}
-                  <div class="mega-banner-slider__overlay">
-                    {% if block.settings.banner_title != blank %}
-                      <p class="mega-banner-slider__title">
-                        {{ block.settings.banner_title }}
-                      </p>
-                    {% endif %}
-
-                    {% if block.settings.banner_subtitle != blank %}
-                      <p class="mega-banner-slider__subtitle">
-                        {{ block.settings.banner_subtitle }}
-                      </p>
-                    {% endif %}
-
-                    {% if block.settings.banner_button_label != blank %}
-                      <a
-                        class="mega-banner-slider__link"
-                        href="{{ block.settings.link | default: '#' }}"
-                      >
-                        {{ block.settings.banner_button_label }}
-                      </a>
-                    {% endif %}
-                  </div>
-                {% endif %}
               </div>
             </div>
           {% endif %}
@@ -262,6 +234,34 @@
           {% endif %}
 
         </div>
+
+        {% if block.settings.banner_title != blank
+          or block.settings.banner_subtitle != blank
+          or block.settings.banner_button_label != blank
+        %}
+          <div class="mega-banner-slider__overlay">
+            {% if block.settings.banner_title != blank %}
+              <p class="mega-banner-slider__title">
+                {{ block.settings.banner_title }}
+              </p>
+            {% endif %}
+
+            {% if block.settings.banner_subtitle != blank %}
+              <p class="mega-banner-slider__subtitle">
+                {{ block.settings.banner_subtitle }}
+              </p>
+            {% endif %}
+
+            {% if block.settings.banner_button_label != blank %}
+              <a
+                class="mega-banner-slider__link"
+                href="{{ block.settings.link | default: '#' }}"
+              >
+                {{ block.settings.banner_button_label }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
 
         {% if slide_count > 1 %}
           {% if block.settings.banner_show_arrows %}
@@ -571,7 +571,7 @@
     position: absolute;
     left: 2.4rem;
     right: 2.4rem;
-    bottom: 2.8rem;
+    bottom: 6.2rem;
     z-index: 20;
     color: #fff;
     text-align: left;
@@ -601,7 +601,7 @@
   .mega-banner-slider__link {
     display: inline-block;
     width: auto;
-    margin-top: 2.4rem;
+    margin-top: 1.4rem;
     color: #fff !important;
     font-family: var(--font-heading-family);
     font-size: 1.3rem;
@@ -628,7 +628,7 @@
   .mega-banner-slider__arrow {
     position: absolute;
     top: 50%;
-    z-index: 5;
+    z-index: 25;
 
     width: 32px;
     height: 32px;
@@ -671,7 +671,7 @@
 
   .mega-banner-slider__dots {
     position: absolute;
-    z-index: 5;
+    z-index: 25;
 
     left: 50%;
     bottom: 10px;

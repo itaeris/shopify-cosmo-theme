@@ -92,6 +92,8 @@
   padding: 1.5rem;
   width: 100%;
   min-height: 100%;
+  border-radius: 1.6rem;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .f-testimonial--unbalanced {
@@ -102,7 +104,17 @@
   margin-top: 0.8rem;
 }
 .f-testimonial--unbalanced .f-testimonial__icon {
-  margin: 1.2rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.8rem 0 0;
+  color: var(--color-star, #c4a574);
+}
+.f-testimonial--unbalanced .f-testimonial__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-star, #c4a574);
+  fill: currentColor;
 }
 .f-testimonial--unbalanced .f-testimonial__icon--quote {
   position: static;

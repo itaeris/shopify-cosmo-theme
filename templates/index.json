@@ -970,66 +970,66 @@
         "testimonial_dkXHLB": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>My skin has never felt this soft! 💖 Was it magic? No. Did it work wonders? No, but I’m glowing like never before! 🌸 🌟</p>",
             "author": "Jared S.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         },
         "testimonial_t94aYa": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>Did I apply a filter? No. Does my 💆 skin look flawless? No, but this glow is giving effortlessly airbrushed vibes! ✨️❤️</p>",
             "author": "Alisa A.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         },
         "testimonial_gjAVzh": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>Did I drink enough water? No. Does 💦 my skin feel hydrated? No, but it’s softer, plumper, and dewier than ever! 🤗 🙌</p>",
             "author": "Sophie R.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         },
         "testimonial_CGEMdm": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>My skin has never felt this soft! 💖 Was it magic? No. Did it work wonders? No, but I’m glowing like never before! 🌸 🌟</p>",
             "author": "Jared S.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         },
         "testimonial_tUweFx": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>Did I apply a filter? No. Does my 💆 skin look flawless? No, but this glow is giving effortlessly airbrushed vibes! ✨️❤️</p>",
             "author": "Alisa A.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         },
         "testimonial_6VYtEh": {
           "type": "testimonial",
           "settings": {
-            "icon": "none",
+            "icon": "5-stars",
             "text": "<p>Did I drink enough water? No. Does 💦 my skin feel hydrated? No, but it’s softer, plumper, and dewier than ever! 🤗 🙌</p>",
             "author": "Sophie R.",
             "bio": "",
-            "show_image": true,
+            "show_image": false,
             "product": ""
           }
         }
@@ -1055,7 +1055,7 @@
         "heading_color": "",
         "description": "",
         "design": "unbalanced",
-        "stars_color": "#222222",
+        "stars_color": "#C4A574",
         "card_color_schema": "scheme-6",
         "columns": 4,
         "column_gap": "medium",
@@ -1139,8 +1139,9 @@
             "image_width": 37,
             "layout": "layout6",
             "text_color": "#ffffff",
-            "image_ratio": "adapt",
-            "image_overlay_opacity": 30,
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "image_ratio": "1/1",
+            "image_overlay_opacity": 36,
             "sub_heading": "",
             "heading": "Still need help?",
             "highlight_style": "none",
@@ -1149,7 +1150,7 @@
             "heading_color": "",
             "description": "<p>Shoot our team an email & we’ll get<br/> back to you ASAP</p>",
             "button_label": "Contact Us",
-            "button_link": "",
+            "button_link": "/pages/contact",
             "button_style": "btn--white",
             "animations": "inherit"
           }
@@ -1163,7 +1164,10 @@
         "content_6yxfN4",
         "image_card_w8hfGh"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".collapsible-tabs__image-col .f-card {border-radius: 0; overflow: hidden;}",
+        ".collapsible-tabs__image-col .btn {border-radius: 999px;}"
+      ],
       "settings": {
         "container": "container",
         "color_schema": "",
@@ -1195,65 +1199,73 @@
         "image_hQzAtj": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Dropdown_visual.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_bWKed8": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/TT_06952.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_6PmFiW": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/ABA_0261copy.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_XtaE3H": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/AE828.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_qiWqB9": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/TT_02644.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_NGKGkA": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_cEjarh": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         },
         "image_Lxaz6J": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
             "text": "",
             "text_size": "medium",
-            "link": ""
+            "link": "https://www.instagram.com/aerisbeaute/"
           }
         }
       },
@@ -1267,7 +1279,9 @@
         "image_cEjarh",
         "image_Lxaz6J"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".metro-column .btn, .section__header .btn {border-radius: 999px;}"
+      ],
       "settings": {
         "container": "container-full",
         "color_schema": "background-1",
@@ -1279,13 +1293,13 @@
         "heading_size": "h1",
         "heading_color": "",
         "subheading": "Follow Us",
-        "description": "<p>Tag <strong>@cosmo</strong> in your Instagram photos for a <br/>chance to be featured here.</p>",
+        "description": "<p>Tag <strong>@aerisbeaute</strong> in your Instagram photos for a <br/>chance to be featured here.</p>",
         "button_label": "follow us",
-        "button_link": "",
+        "button_link": "https://www.instagram.com/aerisbeaute/",
         "button_style": "btn--primary",
-        "image_ratio": "adapt",
+        "image_ratio": "1/1",
         "columns": 4,
-        "column_gap": "double-extra-small",
+        "column_gap": "none",
         "layout": "metro",
         "metro_item_color_schema": "scheme-9",
         "enable_slider": false,
