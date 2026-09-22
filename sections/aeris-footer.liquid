@@ -173,7 +173,7 @@
                 rel="noopener"
                 aria-label="Instagram"
               >
-                IG
+                {% render 'icon-instagram', size: 'extra-medium' %}
               </a>
             {% endif %}
 
@@ -184,7 +184,7 @@
                 rel="noopener"
                 aria-label="TikTok"
               >
-                TT
+                {% render 'icon-tiktok', size: 'extra-medium', class: 'f-icon-tiktok' %}
               </a>
             {% endif %}
 
@@ -195,7 +195,7 @@
                 rel="noopener"
                 aria-label="Facebook"
               >
-                FB
+                {% render 'icon-facebook', size: 'extra-medium' %}
               </a>
             {% endif %}
 
@@ -206,7 +206,7 @@
                 rel="noopener"
                 aria-label="Pinterest"
               >
-                P
+                {% render 'icon-pinterest', size: 'extra-medium' %}
               </a>
             {% endif %}
 
@@ -217,7 +217,7 @@
                 rel="noopener"
                 aria-label="YouTube"
               >
-                YT
+                {% render 'icon-youtube', size: 'extra-medium' %}
               </a>
             {% endif %}
 
@@ -383,10 +383,10 @@
   #AerisFooter-{{ section.id }} .aeris-footer__gallery {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
 
     width: 100%;
 
-    border: 2px solid transparent;
     overflow: hidden;
   }
 
@@ -395,7 +395,7 @@
 
     display: block;
 
-    aspect-ratio: 1 / 1.12;
+    aspect-ratio: 1 / 1;
 
     overflow: hidden;
   }
@@ -604,15 +604,17 @@
 
     color: inherit;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-
     text-decoration: none;
 
     opacity: 0.9;
 
     transition: opacity 0.2s ease;
+  }
+
+  #AerisFooter-{{ section.id }} .aeris-footer__socials svg {
+    width: 16px;
+    height: 16px;
+    margin: 0;
   }
 
   #AerisFooter-{{ section.id }} .aeris-footer__socials a:hover {
