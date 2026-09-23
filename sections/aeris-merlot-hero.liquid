@@ -39,6 +39,9 @@
   if page.handle == 'faqs' or page.handle == 'faq' or template.suffix == 'faqs'
     assign hide_hero = true
   endif
+  if template.name == 'login'
+    assign hide_hero = true
+  endif
 -%}
 {% if hide_hero %}
   <style>

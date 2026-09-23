@@ -1,7 +1,17 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="f-section">
+<div class="aeris-login">
+  <div class="aeris-login__media">
+    <img
+      src="{{ 'TT_02644.jpg' | file_img_url: '1600x' }}"
+      alt=""
+      width="1600"
+      height="1600"
+    >
+  </div>
+  <div class="aeris-login__panel">
   <div class="f-customer f-customer__login">
+    <p class="aeris-login__kicker">Aeris Beauté</p>
     <h1 id="recover" class="text-center" tabindex="-1">
       {{ 'customer.recover_password.title' | t }}
     </h1>
@@ -57,6 +67,13 @@
     <h1 id="login" class="text-center" tabindex="-1">
       {{ 'customer.login_page.title' | t }}
     </h1>
+    <p class="aeris-login__note">
+      {%- if request.locale.iso_code == 'id' -%}
+        Masuk untuk melihat pesanan, rewards, dan barang tersimpan.
+      {%- else -%}
+        Sign in to view your orders, rewards, and saved pieces.
+      {%- endif -%}
+    </p>
     <p class="create-account-link">{{ 'customer.login_page.no_account_text' | t }} <a href="{{ routes.account_register_url }}" class="btn btn--underline btn-view-details">{{ 'customer.login_page.create_account' | t }}</a></p>
     <div>
       {%- if recover_success == true -%}
@@ -145,4 +162,105 @@
       </div>
     {%- endif -%}
   </div>
+  </div>
 </div>
+
+<style>
+  .aeris-login {
+    display: grid;
+    background: #f6f3ee;
+    color: #1c1c1c;
+  }
+  .aeris-login__media {
+    min-height: 28rem;
+    overflow: hidden;
+    background: #e7e1d8;
+  }
+  .aeris-login__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+    display: block;
+  }
+  .aeris-login__panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8rem 2.4rem 6.4rem;
+  }
+  .aeris-login .f-customer {
+    width: min(100%, 42rem);
+    max-width: 42rem;
+    margin: 0;
+    padding: 0;
+  }
+  .aeris-login__kicker {
+    margin: 0 0 1.2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8a8178;
+  }
+  .aeris-login h1 {
+    margin: 0;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(4rem, 5vw, 5.6rem);
+    letter-spacing: 0.01em;
+    color: #1c1c1c;
+  }
+  .aeris-login__note {
+    max-width: 34rem;
+    margin: 1.2rem auto 0;
+    color: #5c564f;
+    line-height: 1.6;
+  }
+  .aeris-login .create-account-link {
+    margin: 1.6rem 0 2.8rem;
+  }
+  #recover:target ~ .aeris-login__note {
+    display: none;
+  }
+  .aeris-login .form-control {
+    border-radius: 999px;
+    border-color: #e3dbd2;
+    background: #fff;
+  }
+  .aeris-login .form-field.relative {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .aeris-login .form-field.relative .form-control {
+    width: 100%;
+  }
+  .aeris-login a[href="#recover"] {
+    position: static;
+    top: auto;
+    inset-inline-end: auto;
+    transform: none;
+    margin: 1rem 0.6rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #6f6862;
+  }
+  .aeris-login .btn--primary {
+    width: 100%;
+    border-radius: 999px;
+    background: #1c1c1c;
+    color: #fff;
+  }
+  @media (min-width: 990px) {
+    .aeris-login {
+      grid-template-columns: minmax(36rem, 46%) minmax(0, 1fr);
+      min-height: calc(100vh - 8rem);
+    }
+    .aeris-login__media {
+      min-height: 100%;
+    }
+  }
+</style>
