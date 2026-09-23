@@ -4,6 +4,21 @@
   if aeris_menu_handle == 'shop-all' or aeris_menu_handle == 'shopall'
     assign aeris_menu_url = '/collections/all-products'
   endif
+  if aeris_menu_handle == 'brushes-tools' or aeris_menu_handle == 'brushes-and-tools'
+    assign aeris_menu_url = '/collections/accessories'
+  endif
+  if aeris_menu_handle == 'brush-cleaner' or aeris_menu_handle == 'brush-cleanser'
+    assign aeris_menu_url = '/collections/cleansers'
+  endif
+  if aeris_menu_handle == 'hair-tools'
+    assign aeris_menu_url = '/collections/hair-tools'
+  endif
+  if aeris_menu_handle == 'lifestyle-bags'
+    assign aeris_menu_url = '/collections/wellness-tools'
+  endif
+  if aeris_menu_handle == 'bundles'
+    assign aeris_menu_url = '/collections/gift-sets'
+  endif
   if aeris_menu_handle == 'our-story' or aeris_menu_handle == 'ourstory'
     assign aeris_menu_url = '/pages/about-us'
   endif

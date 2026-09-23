@@ -215,7 +215,67 @@
         "divider_width": "container",
         "custom_id": "",
         "custom_class": "",
-        "animations": "inherit"
+        "animations": "inherit",
+        "visible_collections": "all-products"
+      }
+    },
+    "aeris_collection_hero": {
+      "type": "aeris-collection-hero",
+      "blocks": {
+        "chip_all": {
+          "type": "chip",
+          "settings": {
+            "title": "All",
+            "link": "/collections/accessories",
+            "image": "shopify://shop_images/TT_06952.jpg"
+          }
+        },
+        "chip_face": {
+          "type": "chip",
+          "settings": {
+            "title": "Face Brushes",
+            "link": "/collections/brushes",
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg"
+          }
+        },
+        "chip_eye": {
+          "type": "chip",
+          "settings": {
+            "title": "Eye Brushes",
+            "link": "/collections/makeup-tools",
+            "image": "shopify://shop_images/AE828.jpg"
+          }
+        },
+        "chip_sets": {
+          "type": "chip",
+          "settings": {
+            "title": "Brush Sets",
+            "link": "/collections/aeris-brush-sets",
+            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg"
+          }
+        },
+        "chip_tools": {
+          "type": "chip",
+          "settings": {
+            "title": "Tools",
+            "link": "/collections/puffs",
+            "image": "shopify://shop_images/blendie-bar.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "chip_all",
+        "chip_face",
+        "chip_eye",
+        "chip_sets",
+        "chip_tools"
+      ],
+      "settings": {
+        "accessories_image": "shopify://shop_images/TT_06952.jpg",
+        "cleansers_image": "shopify://shop_images/blendie-bar.jpg",
+        "hair_image": "shopify://shop_images/Dropdown_visual.jpg",
+        "bags_image": "shopify://shop_images/TT_02644.jpg",
+        "bundles_image": "shopify://shop_images/AE828.jpg"
       }
     },
     "banner": {
@@ -292,6 +352,7 @@
   },
   "order": [
     "breadcrumb_yHLVj3",
+    "aeris_collection_hero",
     "slideshow_jK84VC",
     "collection_list_shop_all",
     "banner",

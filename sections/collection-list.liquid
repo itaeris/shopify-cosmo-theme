@@ -50,8 +50,21 @@
   if button_label != blank and show_all_button_on_top
     assign motion_delay = motion_delay | plus: 50
   endif
--%}
 
+  assign aeris_show_list = true
+  assign visible_collections = section.settings.visible_collections | strip
+  if visible_collections != blank and collection != blank
+    assign aeris_show_list = false
+    assign visible_handles = visible_collections | split: ','
+    for visible_handle in visible_handles
+      assign clean_handle = visible_handle | strip
+      if collection.handle == clean_handle
+        assign aeris_show_list = true
+      endif
+    endfor
+  endif
+-%}
+{%- if aeris_show_list -%}
 {% style %}
   #{{ section_id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
@@ -130,6 +143,7 @@
     {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.collection-list.name",
@@ -137,6 +151,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "visible_collections",
+      "label": "Only show on collection handles",
+      "info": "Comma-separated handles. Leave blank to show on every page."
+    },
     {
       "type": "header",
       "content": "t:sections.common.general.name"
