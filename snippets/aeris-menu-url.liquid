@@ -10,5 +10,8 @@
   if aeris_menu_handle == 'track-your-order' or aeris_menu_handle == 'track-order'
     assign aeris_menu_url = '/pages/track-your-order'
   endif
+  if aeris_menu_handle == 'contact-us' or aeris_menu_handle == 'contact' or aeris_menu_handle == 'contactus'
+    assign aeris_menu_url = '/pages/contact-us'
+  endif
 -%}
 {{- aeris_menu_url -}}

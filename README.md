@@ -16,33 +16,83 @@ Jangan push langsung ke theme live. Review dulu di Copy of Cosmo, baru publish d
 - Node.js 18+
 - Liquid, JSON templates, CSS
 
-## Setup
+## Setup di device baru
+
+Prasyarat:
+
+- Node.js 18+ (`node -v`)
+- npm (`npm -v`)
+- Git
+- Akses staff ke store `aerisbeaute.myshopify.com`
+
+CLI Shopify di-install **lokal di project** (`npx`), tidak perlu `npm install -g`. Session login disimpan di `.shopify-user/` (sudah di-gitignore), bukan di home user OS — supaya tidak bentrok permission di WSL/Linux.
+
+### 1. Clone dan install
 
 ```bash
+git clone <repo-url>
+cd shopify-cosmo
 npm install
 ```
 
-Login ke akun Shopify yang punya akses store Aeris:
+### 2. Login Shopify (sekali per device)
+
+Pakai `HOME` ke folder project supaya token CLI tidak ditulis ke `~/.config`:
 
 ```bash
+# macOS / Linux / WSL
+mkdir -p .shopify-user
+HOME="$PWD/.shopify-user" npx shopify auth login
+```
+
+Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force -Path .shopify-user
+$env:HOME = "$PWD\.shopify-user"
 npx shopify auth login
 ```
 
-Jalankan development server (sync live ke theme unpublished):
+Login dengan akun yang punya akses Aeris. Browser akan terbuka untuk authorize.
+
+### 3. Jalankan localhost
 
 ```bash
-npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362
+# macOS / Linux / WSL
+HOME="$PWD/.shopify-user" npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362
 ```
 
-Atau pakai script:
+Windows PowerShell:
 
-```bash
-npm run theme:dev
+```powershell
+$env:HOME = "$PWD\.shopify-user"
+npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362
 ```
 
 Storefront password-protected. CLI akan minta **store password** (bukan password akun Shopify).
 
-Preview lokal: http://127.0.0.1:9292
+Preview: [http://127.0.0.1:9292](http://127.0.0.1:9292)
+
+Kalau 9292 kepakai, CLI naik ke 9293. Jangan publish — command ini sync ke theme **Copy of Cosmo** unpublished.
+
+Biarkan terminal ini tetap jalan saat edit. File Liquid/JSON/CSS sync otomatis.
+
+### 4. Cek sudah benar
+
+- Terminal menampilkan `Synced` setelah edit
+- Buka `http://127.0.0.1:9292` — header Aeris, bukan theme live
+- URL admin preview: `https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362`
+
+### Perintah lain (device yang sudah login)
+
+```bash
+HOME="$PWD/.shopify-user" npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362
+HOME="$PWD/.shopify-user" npx shopify theme push --store aerisbeaute.myshopify.com --theme 150027960362
+```
+
+Atau `npm run theme:pull` / `npm run theme:push` — tetap set `HOME` dulu seperti di atas.
+
+Store dan theme default ada di `shopify.theme.toml`.
 
 ## Perintah lain
 

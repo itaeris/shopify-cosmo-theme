@@ -1,0 +1,121 @@
+{{ 'aeris-contact.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign contact_image = 'Dropdown_visual.jpg'
+  assign whatsapp_link = settings.social_whatsapp_link
+  if whatsapp_link == blank
+    assign whatsapp_link = 'https://wa.me/'
+  endif
+-%}
+
+<section class="aeris-contact" aria-labelledby="AerisContactTitle">
+  <div class="aeris-contact__breadcrumb">
+    <div class="container">
+      <nav class="breadcrumbs flex justify-center" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}" title="Home">{{ 'general.breadcrumbs.home' | t }}</a>
+        <span aria-hidden="true" class="breadcrumbs--sep">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="breadcrumbs--last">Contact Us</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="aeris-contact__intro">
+    <div class="aeris-contact__media">
+      <img
+        class="aeris-contact__image"
+        src="{{ contact_image | file_url }}"
+        alt="Contact Us"
+        width="1400"
+        height="1050"
+        loading="eager"
+      >
+    </div>
+    <div class="aeris-contact__copy">
+      <p class="aeris-contact__kicker">Contact Us</p>
+      <h1 class="aeris-contact__title" id="AerisContactTitle">Need Help?<br>Reach Out To Us!</h1>
+      <p class="aeris-contact__hours">Mon-Fri: 9am - 6pm GMT+8</p>
+      <a class="aeris-contact__whatsapp" href="{{ whatsapp_link }}" target="_blank" rel="noopener">
+        Contact our Whatsapp
+      </a>
+    </div>
+  </div>
+
+  <div class="aeris-contact__form-wrap">
+    <h2 class="aeris-contact__form-title">Partnership Inquiry</h2>
+
+    {%- form 'contact', id: 'AerisContactForm', class: 'aeris-contact__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="aeris-contact__status" role="status">
+          Thank you — your message has been sent. We’ll get back to you soon.
+        </p>
+      {%- endif -%}
+
+      <input type="hidden" name="contact[subject]" value="Partnership Inquiry">
+
+      <div class="aeris-contact__row">
+        <div class="aeris-contact__field">
+          <label class="visually-hidden" for="AerisContactName">Name</label>
+          <input
+            class="aeris-contact__input"
+            id="AerisContactName"
+            name="contact[name]"
+            type="text"
+            autocomplete="name"
+            placeholder="Name"
+            required
+            aria-required="true"
+            value="{% if customer %}{{ customer.name }}{% endif %}"
+          >
+        </div>
+        <div class="aeris-contact__field">
+          <label class="visually-hidden" for="AerisContactPhone">Phone</label>
+          <input
+            class="aeris-contact__input"
+            id="AerisContactPhone"
+            name="contact[phone]"
+            type="tel"
+            autocomplete="tel"
+            placeholder="Phone"
+          >
+        </div>
+      </div>
+
+      <div class="aeris-contact__field">
+        <label class="visually-hidden" for="AerisContactEmail">Email</label>
+        <input
+          class="aeris-contact__input"
+          id="AerisContactEmail"
+          name="contact[email]"
+          type="email"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          placeholder="Email"
+          required
+          aria-required="true"
+          value="{% if customer %}{{ customer.email }}{% endif %}"
+        >
+      </div>
+
+      <div class="aeris-contact__field">
+        <label class="visually-hidden" for="AerisContactMessage">Your message</label>
+        <textarea
+          class="aeris-contact__textarea"
+          id="AerisContactMessage"
+          name="contact[body]"
+          placeholder="Your message"
+          required
+          aria-required="true"
+        ></textarea>
+      </div>
+
+      <div class="aeris-contact__submit-wrap">
+        <button class="aeris-contact__submit" type="submit">Submit now</button>
+      </div>
+    {%- endform -%}
+  </div>
+</section>

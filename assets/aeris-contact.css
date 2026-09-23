@@ -1,0 +1,195 @@
+.aeris-contact {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.aeris-contact * {
+  box-sizing: border-box;
+}
+
+.aeris-contact__breadcrumb {
+  padding: 2.4rem 0 1.6rem;
+}
+
+.aeris-contact__breadcrumb .breadcrumbs {
+  justify-content: center;
+}
+
+.aeris-contact__intro {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr);
+  gap: 0;
+  align-items: stretch;
+  width: min(1280px, calc(100% - 8rem));
+  margin: 0 auto 7.2rem;
+  background: #f6f3ee;
+}
+
+.aeris-contact__media {
+  min-height: 42rem;
+  overflow: hidden;
+}
+
+.aeris-contact__image,
+.aeris-contact__placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aeris-contact__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6.4rem 7.2rem;
+}
+
+.aeris-contact__kicker {
+  margin: 0 0 1.6rem;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.aeris-contact__title {
+  margin: 0 0 2.4rem;
+  color: inherit;
+  font-family: var(--font-mega-title-family, 'Libre Baskerville', Georgia, serif);
+  font-size: clamp(3.2rem, 4vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.aeris-contact__hours {
+  margin: 0 0 2.4rem;
+  color: #3a3530;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.aeris-contact__whatsapp {
+  color: inherit;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.aeris-contact__form-wrap {
+  width: min(77rem, calc(100% - 4.8rem));
+  margin: 0 auto;
+  padding: 0 0 10rem;
+  text-align: center;
+}
+
+.aeris-contact__form-title {
+  margin: 0 0 4.8rem;
+  font-family: var(--font-mega-title-family, 'Libre Baskerville', Georgia, serif);
+  font-size: clamp(2.8rem, 3.4vw, 3.6rem);
+  font-weight: 400;
+}
+
+.aeris-contact__form {
+  text-align: left;
+}
+
+.aeris-contact__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aeris-contact__field {
+  margin-bottom: 2rem;
+}
+
+.aeris-contact__input,
+.aeris-contact__textarea {
+  display: block;
+  width: 100%;
+  padding: 1.5rem 2.2rem;
+  border: 1px solid #ddd8d2;
+  border-radius: 999px;
+  background: #fff;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  box-shadow: none;
+}
+
+.aeris-contact__textarea {
+  min-height: 12rem;
+  border-radius: 2.4rem;
+  resize: vertical;
+}
+
+.aeris-contact__input:focus,
+.aeris-contact__textarea:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.aeris-contact__input::placeholder,
+.aeris-contact__textarea::placeholder {
+  color: #8a847e;
+}
+
+.aeris-contact__submit-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.aeris-contact__submit {
+  min-width: 18rem;
+  min-height: 5.2rem;
+  padding: 1.4rem 3.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.aeris-contact__submit:hover {
+  background: #2b251f;
+}
+
+.aeris-contact__status {
+  margin: 0 0 2.4rem;
+  padding: 1.2rem 1.4rem;
+  background: #f1eee9;
+  color: #3a322c;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 989px) {
+  .aeris-contact__intro {
+    grid-template-columns: 1fr;
+    width: min(100% - 3.2rem, 72rem);
+    margin-bottom: 5.6rem;
+  }
+
+  .aeris-contact__media {
+    min-height: 28rem;
+  }
+
+  .aeris-contact__copy {
+    padding: 4rem 2.4rem 4.8rem;
+  }
+
+  .aeris-contact__row {
+    grid-template-columns: 1fr;
+  }
+}
