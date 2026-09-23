@@ -201,6 +201,7 @@
         "announcement_iNPwCT",
         "divider_dT9nDr"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "scheme-7",
@@ -252,6 +253,7 @@
         "tab_zJhbwC",
         "tab_tNBxrX"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "background-1",
@@ -323,6 +325,7 @@
         "@media (min-width: 1024px) and (max-width: 1279px) {.highlight-text-image__image {--image-width: 80px !important; }}",
         "@media (min-width: 1280px) {.text-heading {max-width: 93rem; }}"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_scheme": "",
@@ -387,6 +390,7 @@
         "image_with_text_CBnmn7",
         "image_card_ieEBwH"
       ],
+      "disabled": true,
       "settings": {
         "color_schema": "",
         "section_header_padding_bottom": "medium",
