@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "aeris-store-locations",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

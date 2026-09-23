@@ -93,6 +93,13 @@
                               {{ link.title | escape }}
                             </button>
                             <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                              {%- if link.handle == 'store-locations' or link.handle == 'store-location' -%}
+                                <li>
+                                  <a href="/pages/store-location" class="menu-drawer__menu-item list-menu__item focus-inset">
+                                    ALL
+                                  </a>
+                                </li>
+                              {%- endif -%}
                               {%- for childlink in link.links -%}
                                 <li>
                                   {%- if childlink.links == blank -%}

@@ -442,6 +442,13 @@
                     role="list"
                     tabindex="-1"
                   >
+                    {%- if link.handle == 'store-locations' or link.handle == 'store-location' -%}
+                      <li class="f-site-nav__sub-item">
+                        <a href="/pages/store-location" class="f-site-nav__sub-link focus-inset no-js-hidden">
+                          <span>ALL</span>
+                        </a>
+                      </li>
+                    {%- endif -%}
                     {% for childlink in link.links %}
                       <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
                         <a

@@ -308,6 +308,11 @@
                         </span>
                         <div class="f-mobile-nav__dropdown" data-content>
                           <ul class="list-none w-full">
+                            {%- if link.handle == 'store-locations' or link.handle == 'store-location' -%}
+                              <li class="f-mobile-nav__subitem">
+                                <a href="/pages/store-location" class="f-mobile-nav__sub-link">ALL</a>
+                              </li>
+                            {%- endif -%}
                             {% for childlink in link.links %}
                               <li
                                 class="f-mobile-nav__subitem{% if childlink.links != blank %} f-mobile-nav__sub-item--has-child{% endif %}"

@@ -1,0 +1,142 @@
+.aeris-stores {
+  background: #fff;
+  color: #1a1a1a;
+  padding-bottom: 6.4rem;
+}
+
+.aeris-stores * {
+  box-sizing: border-box;
+}
+
+.aeris-stores__breadcrumb {
+  padding: 2.8rem 0 2.4rem;
+}
+
+.aeris-stores__breadcrumb .breadcrumbs {
+  justify-content: center;
+  gap: 0.8rem;
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+}
+
+.aeris-stores__layout {
+  display: grid;
+  grid-template-columns: minmax(26rem, 34rem) minmax(0, 1fr);
+  gap: 2.4rem;
+  align-items: start;
+  padding-top: 1.2rem;
+}
+
+.aeris-stores__field {
+  display: block;
+}
+
+.aeris-stores__label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.aeris-stores__select {
+  width: 100%;
+  min-height: 4.2rem;
+  padding: 0.8rem 3.2rem 0.8rem 1.2rem;
+  border: 1px solid #d9d4ce;
+  border-radius: 0;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%231a1a1a' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1.2rem center;
+  color: #1a1a1a;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  appearance: none;
+}
+
+.aeris-stores__count {
+  margin: 1.6rem 0 1.2rem;
+  color: #6f6a64;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+}
+
+.aeris-stores__card {
+  padding: 1.6rem 0;
+  border-top: 1px solid #ece7e1;
+}
+
+.aeris-stores__card h2 {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.aeris-stores__card p {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+}
+
+.aeris-stores__card a {
+  display: inline-flex;
+  margin-top: 0.8rem;
+  color: inherit;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.aeris-stores__maps {
+  display: grid;
+  gap: 1.6rem;
+  min-height: 52rem;
+}
+
+.aeris-stores__map {
+  overflow: hidden;
+  min-height: 32rem;
+  background: #f4f0ea;
+  border: 1px solid #ece7e1;
+}
+
+.aeris-stores__map iframe {
+  display: block;
+  width: 100%;
+  height: 32rem;
+  border: 0;
+}
+
+.aeris-stores__map[hidden],
+.aeris-stores__card[hidden] {
+  display: none;
+}
+
+.aeris-stores.is-single .aeris-stores__maps {
+  position: sticky;
+  top: 8rem;
+}
+
+.aeris-stores.is-single .aeris-stores__map,
+.aeris-stores.is-single .aeris-stores__map iframe {
+  height: 62rem;
+  min-height: 62rem;
+}
+
+@media (max-width: 989px) {
+  .aeris-stores__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .aeris-stores.is-single .aeris-stores__maps,
+  .aeris-stores.is-single .aeris-stores__map,
+  .aeris-stores.is-single .aeris-stores__map iframe {
+    position: static;
+    height: 36rem;
+    min-height: 36rem;
+  }
+}

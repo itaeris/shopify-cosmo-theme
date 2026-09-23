@@ -206,6 +206,7 @@
           assign aeris_track_page = false
           assign aeris_legal_page = false
           assign aeris_contact_page = false
+          assign aeris_stores_page = false
           if template.name == 'page'
             if page.handle == 'track-your-order' or page.handle == 'track-order'
               assign aeris_track_page = true
@@ -216,6 +217,12 @@
             if page.handle == 'contact-us' or page.handle == 'contact' or page.handle == 'contactus'
               assign aeris_contact_page = true
             endif
+            if page.handle == 'store-locations' or page.handle == 'store-location' or template.suffix == 'store-locations' or template.suffix == 'store-location'
+              assign aeris_stores_page = true
+            endif
+          endif
+          if request.path == '/pages/store-locations' or request.path == '/pages/store-location'
+            assign aeris_stores_page = true
           endif
         -%}
         {%- if aeris_track_page -%}
@@ -224,6 +231,8 @@
           {% render 'aeris-legal-layout' %}
         {%- elsif aeris_contact_page -%}
           {% render 'aeris-contact' %}
+        {%- elsif aeris_stores_page -%}
+          {% section 'aeris-store-locations' %}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}

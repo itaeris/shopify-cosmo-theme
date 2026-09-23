@@ -12,6 +12,12 @@
   if page.handle == 'contact-us' or page.handle == 'contact' or page.handle == 'contactus'
     assign hide_hero = true
   endif
+  if page.handle == 'store-locations' or page.handle == 'store-location' or template.suffix == 'store-locations'
+    assign hide_hero = true
+  endif
+  if request.path == '/pages/store-locations' or request.path == '/pages/store-location'
+    assign hide_hero = true
+  endif
   if template.suffix == 'about-us' or template.suffix == 'our-story'
     assign hide_hero = true
   endif
