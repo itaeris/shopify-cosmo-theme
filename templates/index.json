@@ -445,6 +445,27 @@
         "animations": "inherit"
       }
     },
+    "aeris_onyx_collection_k4nXm2": {
+      "type": "aeris-onyx-collection",
+      "settings": {
+        "banner_background": "#f3eee8",
+        "banner_text_color": "#111111",
+        "banner_title": "The Onyx 2.0 Collection",
+        "featured_product": "the-onyx-2-0-15pc-face-eye-brush-set",
+        "featured_title": "The Onyx 2.0 Collection",
+        "featured_subtitle": "Complete Set",
+        "featured_text": "Our Best Selling Brush for everyday use",
+        "atc_label": "ADD TO BAG",
+        "learn_more_label": "LEARN MORE",
+        "grid_heading": "THE ONYX 2.0 COLLECTION",
+        "product_1": "the-onyx-2-0-15pc-face-eye-brush-set",
+        "title_1": "ONYX 2.0 COMPLETE SET",
+        "text_1": "15 pcs makeup brush",
+        "product_2": "the-onyx-2-0-individuals",
+        "title_2": "ONYX 2.0 SINGLE BRUSH",
+        "text_2": "Choose from 15 single brushes"
+      }
+    },
     "collection_tabs_X9GTqT": {
       "type": "collection-tabs",
       "blocks": {
@@ -1350,6 +1371,7 @@
     "highlight_text_with_image_7HqYxB",
     "uneven_image_cards_K7Ynjh",
     "favorite_collection_hXrDpg",
+    "aeris_onyx_collection_k4nXm2",
     "collection_tabs_X9GTqT",
     "collection_list_aLDhXA",
     "press_cqLPj3",

@@ -1,0 +1,542 @@
+{%- liquid
+  assign featured = section.settings.featured_product
+  assign featured_variant = featured.selected_or_first_available_variant
+  assign banner_image = section.settings.banner_image
+  if banner_image == blank and featured != blank
+    assign banner_image = featured.featured_image
+  endif
+
+  assign featured_title = section.settings.featured_title | default: featured.title
+  assign featured_url = section.settings.learn_more_link | default: featured.url
+  if featured_url == blank and featured != blank
+    assign featured_url = featured.url
+  endif
+
+  assign product_form_id = 'AerisOnyxForm-' | append: section.id
+-%}
+
+<section
+  id="AerisOnyx-{{ section.id }}"
+  class="aeris-onyx"
+  style="--onyx-banner-bg: {{ section.settings.banner_background }}; --onyx-banner-text: {{ section.settings.banner_text_color }};"
+>
+  <div class="aeris-onyx__banner">
+    {%- if section.settings.banner_title != blank -%}
+      <h2 class="aeris-onyx__banner-title">{{ section.settings.banner_title }}</h2>
+    {%- endif -%}
+
+    {%- if banner_image != blank -%}
+      <div class="aeris-onyx__lineup">
+        {{
+          banner_image
+          | image_url: width: 2400
+          | image_tag:
+            loading: 'lazy',
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            class: 'aeris-onyx__lineup-image'
+        }}
+      </div>
+    {%- endif -%}
+
+    {%- if featured != blank -%}
+      <div class="aeris-onyx__feature">
+        {%- if featured_title != blank -%}
+          <p class="aeris-onyx__feature-title">{{ featured_title }}</p>
+        {%- endif -%}
+        {%- if section.settings.featured_subtitle != blank -%}
+          <p class="aeris-onyx__feature-subtitle">{{ section.settings.featured_subtitle }}</p>
+        {%- endif -%}
+        {%- if section.settings.featured_text != blank -%}
+          <p class="aeris-onyx__feature-text">{{ section.settings.featured_text }}</p>
+        {%- endif -%}
+
+        <div class="aeris-onyx__cta">
+          <product-form class="aeris-onyx__form" data-notification-type="toast">
+            {%- form 'product',
+              featured,
+              id: product_form_id,
+              class: 'aeris-onyx__product-form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ featured_variant.id }}"
+                disabled
+              >
+              <div class="aeris-onyx__atc">
+                <button
+                  type="submit"
+                  name="add"
+                  class="aeris-onyx__atc-btn"
+                  {% unless featured_variant.available %}
+                    disabled
+                  {% endunless %}
+                >
+                  <span>
+                    {%- if featured_variant.available -%}
+                      {{ section.settings.atc_label }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                </button>
+                <span class="aeris-onyx__atc-price">
+                  {{ featured_variant.price | money_with_currency }}
+                </span>
+              </div>
+            {%- endform -%}
+          </product-form>
+
+          {%- if section.settings.learn_more_label != blank and featured_url != blank -%}
+            <a class="aeris-onyx__learn" href="{{ featured_url }}">
+              {{ section.settings.learn_more_label }}
+              <span aria-hidden="true">→</span>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="aeris-onyx__collection">
+    <div class="container">
+      {%- if section.settings.grid_heading != blank -%}
+        <h2 class="aeris-onyx__grid-heading">{{ section.settings.grid_heading }}</h2>
+      {%- endif -%}
+
+      <div class="aeris-onyx__grid">
+        {%- for i in (1..2) -%}
+          {%- liquid
+            if i == 1
+              assign card_product = section.settings.product_1
+              assign card_title = section.settings.title_1
+              assign card_text = section.settings.text_1
+              assign card_image = section.settings.image_1
+            else
+              assign card_product = section.settings.product_2
+              assign card_title = section.settings.title_2
+              assign card_text = section.settings.text_2
+              assign card_image = section.settings.image_2
+            endif
+
+            if card_product == blank
+              continue
+            endif
+
+            if card_title == blank
+              assign card_title = card_product.title
+            endif
+
+            if card_image == blank
+              assign card_image = card_product.featured_media
+            endif
+
+            assign card_price = card_product.price
+            assign show_from = false
+            if card_product.price_varies
+              assign show_from = true
+              assign card_price = card_product.price_min
+            endif
+          -%}
+          <article class="aeris-onyx__card">
+            <a class="aeris-onyx__card-media" href="{{ card_product.url }}">
+              {%- if card_image != blank -%}
+                {{
+                  card_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '400, 600, 800, 1200',
+                    sizes: '(min-width: 768px) 36vw, 100vw',
+                    class: 'aeris-onyx__card-image'
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'aeris-onyx__card-placeholder' }}
+              {%- endif -%}
+            </a>
+            <div class="aeris-onyx__card-info">
+              <div class="aeris-onyx__card-row">
+                <h3 class="aeris-onyx__card-title">
+                  <a href="{{ card_product.url }}">{{ card_title }}</a>
+                </h3>
+                {%- if card_product.metafields.reviews.rating.value != blank -%}
+                  <p class="aeris-onyx__card-rating">
+                    <span aria-hidden="true">★</span>
+                    {{ card_product.metafields.reviews.rating.value.rating | round: 1 }}
+                    {%- if card_product.metafields.reviews.rating_count != blank -%}
+                      <span>({{ card_product.metafields.reviews.rating_count }})</span>
+                    {%- endif -%}
+                  </p>
+                {%- endif -%}
+              </div>
+              {%- if card_text != blank -%}
+                <p class="aeris-onyx__card-text">{{ card_text }}</p>
+              {%- endif -%}
+              <p class="aeris-onyx__card-price">
+                {%- if show_from -%}
+                  <span>Starting from </span>
+                {%- endif -%}
+                {{ card_price | money_with_currency }}
+              </p>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #AerisOnyx-{{ section.id }} {
+    background: #fff;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__banner {
+    background: var(--onyx-banner-bg);
+    color: var(--onyx-banner-text);
+    text-align: center;
+    padding: 6.4rem 2.4rem 5.6rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__banner-title {
+    margin: 0 auto 4.8rem;
+    max-width: 64rem;
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 2.4vw, 3.4rem);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__lineup {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 5.6rem;
+    max-width: 110rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__lineup-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 34rem;
+    object-fit: contain;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-title,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-subtitle,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-text {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-title {
+    font-size: clamp(1.8rem, 1.6vw, 2.2rem);
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-subtitle,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__feature-text {
+    font-size: 1.5rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__cta {
+    margin-top: 1.8rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__form,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__product-form {
+    display: block;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    max-width: 36rem;
+    margin: 0 auto;
+    border: 1px solid currentColor;
+    background: transparent;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc-btn,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 4rem;
+    padding: 0.8rem 1.2rem;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc-btn {
+    cursor: pointer;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__atc-price {
+    border-left: 1px solid currentColor;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__learn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.4rem;
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__collection {
+    padding: 6.4rem 0 8rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__grid-heading {
+    margin: 0 0 3.2rem;
+    font-family: var(--font-heading-family);
+    font-size: clamp(2rem, 2vw, 2.6rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem 4rem;
+    max-width: 86rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-media {
+    display: block;
+    overflow: hidden;
+    background: #f4f0ea;
+    aspect-ratio: 1 / 1;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-image,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-info {
+    padding-top: 1.6rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.8rem 1.2rem;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-title {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-rating {
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-text,
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-price {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-body-family);
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__card-price {
+    margin-top: 1.2rem;
+  }
+
+  @media (min-width: 768px) {
+    #AerisOnyx-{{ section.id }} .aeris-onyx__banner {
+      padding: 8rem 4rem 7.2rem;
+    }
+
+    #AerisOnyx-{{ section.id }} .aeris-onyx__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Onyx collection",
+  "tag": "section",
+  "class": "aeris-onyx-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "color",
+      "id": "banner_background",
+      "label": "Background",
+      "default": "#f3eee8"
+    },
+    {
+      "type": "color",
+      "id": "banner_text_color",
+      "label": "Text",
+      "default": "#111111"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Title",
+      "default": "The Onyx 2.0 Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Lineup image",
+      "info": "Leave empty to use the featured product image."
+    },
+    {
+      "type": "header",
+      "content": "Featured product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Title override"
+    },
+    {
+      "type": "text",
+      "id": "featured_subtitle",
+      "label": "Subtitle",
+      "default": "Complete Set"
+    },
+    {
+      "type": "text",
+      "id": "featured_text",
+      "label": "Description",
+      "default": "Our Best Selling Brush for everyday use"
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Add to bag label",
+      "default": "ADD TO BAG"
+    },
+    {
+      "type": "text",
+      "id": "learn_more_label",
+      "label": "Learn more label",
+      "default": "LEARN MORE"
+    },
+    {
+      "type": "url",
+      "id": "learn_more_link",
+      "label": "Learn more link"
+    },
+    {
+      "type": "header",
+      "content": "Product grid"
+    },
+    {
+      "type": "text",
+      "id": "grid_heading",
+      "label": "Heading",
+      "default": "THE ONYX 2.0 COLLECTION"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Product 1 title"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Product 1 description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Product 1 image"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Product 2 title"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Product 2 description"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Product 2 image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Onyx collection"
+    }
+  ]
+}
+{% endschema %}
