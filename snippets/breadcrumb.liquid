@@ -73,17 +73,34 @@
       {% elsif template contains 'collection' and collection.handle %}
         {% liquid
           assign aeris_crumb_title = collection.title
+          assign aeris_brush_child = false
           if collection.handle == 'new-in'
             assign aeris_crumb_title = 'New Arrivals'
+          endif
+          if collection.handle == 'brushes'
+            assign aeris_crumb_title = 'Face Brushes'
+            assign aeris_brush_child = true
+          endif
+          if collection.handle == 'aeris-brush-sets' or collection.handle == 'brush-sets'
+            assign aeris_crumb_title = 'Brush Sets'
+            assign aeris_brush_child = true
+          endif
+          if collection.handle == 'puffs'
+            assign aeris_crumb_title = 'Sponges & Tools'
+            assign aeris_brush_child = true
           endif
         %}
         {% if collection.handle != 'all' %}
           <span aria-hidden="true" class="breadcrumbs--sep">
             {{- separator_icon -}}
           </span>
-          <a href="{{ routes.all_products_collection_url }}">
-            {{- 'general.breadcrumbs.collections' | t -}}
-          </a>
+          {% if aeris_brush_child %}
+            <a href="/collections/accessories">All Brushes & Tools</a>
+          {% else %}
+            <a href="{{ routes.all_products_collection_url }}">
+              {{- 'general.breadcrumbs.collections' | t -}}
+            </a>
+          {% endif %}
         {% endif %}
         <span aria-hidden="true" class="breadcrumbs--sep">
           {{- separator_icon -}}
