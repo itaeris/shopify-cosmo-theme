@@ -447,23 +447,48 @@
     },
     "aeris_onyx_collection_k4nXm2": {
       "type": "aeris-onyx-collection",
+      "blocks": {
+        "slide_month": {
+          "type": "feature",
+          "settings": {
+            "label": "Product of the month",
+            "product": "the-onyx-2-0-15pc-face-eye-brush-set",
+            "title": "The Onyx 2.0 Collection",
+            "subtitle": "Complete Set",
+            "text": "Our best selling brush for everyday use"
+          }
+        },
+        "slide_beginner": {
+          "type": "feature",
+          "settings": {
+            "label": "Beginner friendly",
+            "product": "the-coral-travel-7-pcs-face-eye-brush-set",
+            "title": "The Coral Travel",
+            "subtitle": "7 pcs Complete Set",
+            "text": "A compact set to start your routine"
+          }
+        },
+        "slide_best": {
+          "type": "feature",
+          "settings": {
+            "label": "Best sellers",
+            "product": "aeris-beaute-the-signature-4-in-1-brush",
+            "title": "The Signature 4-In-1 Brush",
+            "subtitle": "Everyday essential",
+            "text": "One brush for powder, blush, contour, and highlight"
+          }
+        }
+      },
+      "block_order": [
+        "slide_month",
+        "slide_beginner",
+        "slide_best"
+      ],
       "settings": {
-        "banner_background": "#f3eee8",
-        "banner_text_color": "#111111",
-        "banner_title": "The Onyx 2.0 Collection",
-        "featured_product": "the-onyx-2-0-15pc-face-eye-brush-set",
-        "featured_title": "The Onyx 2.0 Collection",
-        "featured_subtitle": "Complete Set",
-        "featured_text": "Our Best Selling Brush for everyday use",
+        "background": "#f3eee8",
+        "text_color": "#111111",
         "atc_label": "ADD TO BAG",
-        "learn_more_label": "LEARN MORE",
-        "grid_heading": "THE ONYX 2.0 COLLECTION",
-        "product_1": "the-onyx-2-0-15pc-face-eye-brush-set",
-        "title_1": "ONYX 2.0 COMPLETE SET",
-        "text_1": "15 pcs makeup brush",
-        "product_2": "the-onyx-2-0-individuals",
-        "title_2": "ONYX 2.0 SINGLE BRUSH",
-        "text_2": "Choose from 15 single brushes"
+        "learn_more_label": "LEARN MORE"
       }
     },
     "collection_tabs_X9GTqT": {
