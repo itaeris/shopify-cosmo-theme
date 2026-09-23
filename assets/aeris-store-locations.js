@@ -17,7 +17,7 @@
         });
         if (count) {
           count.textContent = root.querySelectorAll(
-            ".aeris-stores__card:not([hidden])"
+            ".aeris-stores__row:not([hidden])"
           ).length;
         }
       };

@@ -16,7 +16,7 @@
   </div>
 
   <div class="aeris-stores__layout container">
-    <aside class="aeris-stores__list">
+    <div class="aeris-stores__toolbar">
       <label class="aeris-stores__field">
         <span class="aeris-stores__label">Location</span>
         <select class="aeris-stores__select" data-store-filter aria-label="Location">
@@ -29,36 +29,15 @@
         </select>
       </label>
       <p class="aeris-stores__count">Search results: <span data-store-count>5</span></p>
+    </div>
 
-      <article class="aeris-stores__card" data-store="pakuwon" id="pakuwon">
+    <div class="aeris-stores__row" data-store="pakuwon" id="pakuwon">
+      <article class="aeris-stores__card">
         <h2>Pakuwon Mall Surabaya</h2>
         <p>1st Floor</p>
         <a href="https://maps.app.goo.gl/nhRCmUkAZh7Vcz6T6" target="_blank" rel="noopener">Get directions</a>
       </article>
-      <article class="aeris-stores__card" data-store="paskal" id="paskal">
-        <h2>23 Paskal Bandung</h2>
-        <p>1st Floor</p>
-        <a href="https://maps.app.goo.gl/mz1tQorGt5v1yQaNA" target="_blank" rel="noopener">Get directions</a>
-      </article>
-      <article class="aeris-stores__card" data-store="living-world" id="living-world">
-        <h2>Living World Denpasar</h2>
-        <p>LG Floor</p>
-        <a href="https://maps.app.goo.gl/PYLWAmisi9onfd8u6" target="_blank" rel="noopener">Get directions</a>
-      </article>
-      <article class="aeris-stores__card" data-store="trans-studio" id="trans-studio">
-        <h2>Trans Studio Mall Makassar</h2>
-        <p>LG Floor</p>
-        <a href="https://maps.app.goo.gl/X5fcoQzs5WaNEVcj8" target="_blank" rel="noopener">Get directions</a>
-      </article>
-      <article class="aeris-stores__card" data-store="dp-mall" id="dp-mall">
-        <h2>DP Mall Semarang</h2>
-        <p>1st Floor</p>
-        <a href="https://maps.app.goo.gl/kiRqoKyvWrTVo4He6" target="_blank" rel="noopener">Get directions</a>
-      </article>
-    </aside>
-
-    <div class="aeris-stores__maps">
-      <div class="aeris-stores__map" data-store="pakuwon">
+      <div class="aeris-stores__map">
         <iframe
           title="Pakuwon Mall Surabaya"
           src="https://maps.google.com/maps?q=-7.2893106,112.6756551&hl=en&z=16&output=embed"
@@ -67,7 +46,14 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div class="aeris-stores__map" data-store="paskal">
+    </div>
+    <div class="aeris-stores__row" data-store="paskal" id="paskal">
+      <article class="aeris-stores__card">
+        <h2>23 Paskal Bandung</h2>
+        <p>1st Floor</p>
+        <a href="https://maps.app.goo.gl/mz1tQorGt5v1yQaNA" target="_blank" rel="noopener">Get directions</a>
+      </article>
+      <div class="aeris-stores__map">
         <iframe
           title="23 Paskal Bandung"
           src="https://maps.google.com/maps?q=-6.9150838,107.597611&hl=en&z=16&output=embed"
@@ -76,7 +62,14 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div class="aeris-stores__map" data-store="living-world">
+    </div>
+    <div class="aeris-stores__row" data-store="living-world" id="living-world">
+      <article class="aeris-stores__card">
+        <h2>Living World Denpasar</h2>
+        <p>LG Floor</p>
+        <a href="https://maps.app.goo.gl/PYLWAmisi9onfd8u6" target="_blank" rel="noopener">Get directions</a>
+      </article>
+      <div class="aeris-stores__map">
         <iframe
           title="Living World Denpasar"
           src="https://maps.google.com/maps?q=-8.6341481,115.232232&hl=en&z=16&output=embed"
@@ -85,7 +78,14 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div class="aeris-stores__map" data-store="trans-studio">
+    </div>
+    <div class="aeris-stores__row" data-store="trans-studio" id="trans-studio">
+      <article class="aeris-stores__card">
+        <h2>Trans Studio Mall Makassar</h2>
+        <p>LG Floor</p>
+        <a href="https://maps.app.goo.gl/X5fcoQzs5WaNEVcj8" target="_blank" rel="noopener">Get directions</a>
+      </article>
+      <div class="aeris-stores__map">
         <iframe
           title="Trans Studio Mall Makassar"
           src="https://maps.google.com/maps?q=-5.1592364,119.3942716&hl=en&z=16&output=embed"
@@ -94,7 +94,14 @@
           allowfullscreen
         ></iframe>
       </div>
-      <div class="aeris-stores__map" data-store="dp-mall">
+    </div>
+    <div class="aeris-stores__row" data-store="dp-mall" id="dp-mall">
+      <article class="aeris-stores__card">
+        <h2>DP Mall Semarang</h2>
+        <p>1st Floor</p>
+        <a href="https://maps.app.goo.gl/kiRqoKyvWrTVo4He6" target="_blank" rel="noopener">Get directions</a>
+      </article>
+      <div class="aeris-stores__map">
         <iframe
           title="DP Mall Semarang"
           src="https://maps.google.com/maps?q=-6.9830844,110.4122422&hl=en&z=16&output=embed"
