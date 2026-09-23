@@ -27,7 +27,7 @@
 .aeris-track__title {
   margin: 0 0 1.6rem;
   color: inherit;
-  font-family: var(--font-mega-title-family, 'Libre Baskerville', Georgia, serif);
+  font-family: var(--font-heading-family);
   font-size: clamp(3.6rem, 5vw, 5.2rem);
   font-weight: 400;
   letter-spacing: -0.02em;

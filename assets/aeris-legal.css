@@ -41,7 +41,7 @@
 .aeris-legal__title {
   margin: 2rem 0 0;
   color: inherit;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-heading-family);
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.18em;
@@ -52,7 +52,7 @@
 .aeris-legal__content,
 .aeris-legal__rte {
   max-width: 62rem;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-body-family);
   font-size: 1.5rem;
   line-height: 1.7;
 }
@@ -70,7 +70,7 @@
   background: none;
   color: #8a847e;
   cursor: pointer;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-body-family);
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.14em;
@@ -104,7 +104,7 @@
 .aeris-legal__rte h2 {
   margin: 0 0 1.4rem;
   color: inherit;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-heading-family);
   font-size: 1.15rem;
   font-weight: 400;
   letter-spacing: 0.16em;

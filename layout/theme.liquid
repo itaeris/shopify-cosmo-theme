@@ -59,6 +59,7 @@
 
     {% render 'meta-tags' %}
     {% render 'critical-css' %}
+    {% render 'aeris-fonts' %}
     {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% comment %}theme-check-disable{% endcomment %}

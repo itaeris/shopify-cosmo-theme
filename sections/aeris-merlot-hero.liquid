@@ -288,7 +288,7 @@
 
     color: #fff;
 
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading-family);
     font-size: clamp(
       {{ section.settings.heading_min_size }}px,
       {{ section.settings.heading_desktop_size | divided_by: 12.0 }}vw,
@@ -306,7 +306,7 @@
 
     color: #fff;
 
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-family: var(--font-heading-family);
     font-size: clamp(22px, 2.6vw, 40px);
     line-height: 1.15;
     font-style: normal;
@@ -344,7 +344,7 @@
     border: none;
     border-radius: 999px;
 
-    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-family: var(--font-body-family);
     font-size: 18px;
     line-height: 1.2;
     font-style: normal;
@@ -383,7 +383,7 @@
     background: rgba(0, 0, 0, 0.25);
     color: #fff;
 
-    font-family: Arial, sans-serif;
+    font-family: var(--font-body-family);
     font-size: 34px;
     line-height: 1;
 
