@@ -45,6 +45,12 @@
     <title>
       {%- if template.suffix == 'personalisation' -%}
         Personalisation
+      {%- elsif template.suffix == 'rewards' -%}
+        Rewards Program
+      {%- elsif template.suffix == 'aeris-circle' -%}
+        Aeris Circle
+      {%- elsif template.name == 'blog' and blog.handle == 'list' -%}
+        Journal
       {%- else -%}
         {{ page_title }}
       {%- endif -%}

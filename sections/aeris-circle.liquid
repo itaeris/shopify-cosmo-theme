@@ -1,0 +1,298 @@
+<section class="aeris-circle">
+  <div class="aeris-circle__banner">
+    <img src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}" alt="" width="2000" height="800">
+    <div class="aeris-circle__banner-copy">
+      <nav class="aeris-circle__crumbs" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">›</span>
+        <span>Aeris Circle</span>
+      </nav>
+      <h1>Aeris Circle</h1>
+    </div>
+  </div>
+
+  <div class="aeris-circle__wrap">
+    <div class="aeris-circle__intro">
+      <p>Join our Aeris Circle to earn exclusive benefits, earn commissions, connect with makeup lovers, connect with us on a more personal level, star on our socials and so much more.</p>
+      <a class="aeris-circle__btn" href="/pages/contact-us">Apply now</a>
+    </div>
+
+    <div class="aeris-circle__benefits">
+      <p class="aeris-circle__kicker">Find where you fit in</p>
+      <h2>Benefits + qualifications</h2>
+      <div class="aeris-circle__cards">
+        <article>
+          <img src="{{ 'TT_06952.jpg' | file_img_url: '900x' }}" alt="Aeris Circle for creators" width="900" height="1125">
+          <h3>Aeris Circle for creators</h3>
+          <p>For makeup enthusiasts, content creators and beauty lovers. Share your love for Aeris and receive:</p>
+          <ul>
+            <li>Commissions and sales from your Aeris posts</li>
+            <li>Spotlight on Aeris social channels</li>
+            <li>Full-sized products and exclusive samples</li>
+          </ul>
+          <a class="aeris-circle__btn" href="/pages/contact-us">Apply now</a>
+          <p class="aeris-circle__note">Creators should share an active public profile.</p>
+        </article>
+        <article>
+          <img src="{{ 'AE828.jpg' | file_img_url: '900x' }}" alt="Aeris Circle for artists" width="900" height="1125">
+          <h3>Aeris Circle for artists</h3>
+          <p>For professional makeup artists, beauty industry professionals and students. Tap into your Aeris partnership and receive:</p>
+          <ul>
+            <li>Commissions and sales from your Aeris posts</li>
+            <li>Spotlight on Aeris social channels</li>
+            <li>Invites to industry events, shows and masterclasses</li>
+            <li>A direct line to the Aeris team</li>
+          </ul>
+          <a class="aeris-circle__btn" href="/pages/contact-us">Apply now</a>
+          <p class="aeris-circle__note">Artists can apply with a studio or portfolio.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="aeris-circle__faq">
+      <h2>Aeris Circle FAQs</h2>
+      <details>
+        <summary>Who can join Aeris Circle?</summary>
+        <p>Creators and makeup artists who want to share Aeris with their community or clients.</p>
+      </details>
+      <details>
+        <summary>How do I apply?</summary>
+        <p>Use Apply now and send your details. The Aeris team reviews each application.</p>
+      </details>
+      <details>
+        <summary>Do I need a public social profile to apply?</summary>
+        <p>Creators should share the channels where they post. Artists can apply with their studio or portfolio.</p>
+      </details>
+      <details>
+        <summary>How long will it take to hear back about my application?</summary>
+        <p>Applications are reviewed in the order they arrive. You will get an email either way.</p>
+      </details>
+      <details>
+        <summary>What happens after I apply?</summary>
+        <p>If you are accepted, you receive next steps for your track, creator or artist.</p>
+      </details>
+      <details>
+        <summary>What are the benefits of joining the program?</summary>
+        <p>Benefits depend on your track, and can include commissions, samples, features, and early access.</p>
+      </details>
+      <details>
+        <summary>What types of tasks will I have to complete?</summary>
+        <p>Tasks follow the brief in your acceptance email. They are agreed before you start.</p>
+      </details>
+      <details>
+        <summary>How do I earn rewards?</summary>
+        <p>Rewards follow the qualifying activity in your acceptance email. They are not automatic for every post.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .aeris-circle {
+    padding-bottom: 6rem;
+    color: #1c1c1c;
+  }
+  .aeris-circle__banner {
+    position: relative;
+    width: min(1080px, calc(100% - 3.2rem));
+    height: 168px;
+    margin: 1.6rem auto 0;
+    overflow: hidden;
+    background: #1c1c1c;
+  }
+  .aeris-circle__banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    display: block;
+  }
+  .aeris-circle__banner-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 1.6rem 1.6rem;
+    background: rgba(0, 0, 0, 0.42);
+    color: #fff;
+    text-align: center;
+  }
+  .aeris-circle__crumbs {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+  .aeris-circle__crumbs a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .aeris-circle__banner h1 {
+    margin: auto;
+    color: #fff;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.8rem, 4vw, 4.4rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .aeris-circle__wrap {
+    width: min(1080px, calc(100% - 3.2rem));
+    margin: 0 auto;
+  }
+  .aeris-circle__intro {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 2.8rem 1.6rem 0;
+    text-align: center;
+  }
+  .aeris-circle__intro p {
+    margin: 0 0 1.8rem;
+    line-height: 1.6;
+  }
+  .aeris-circle__btn {
+    display: inline-block;
+    padding: 0.85rem 1.6rem;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .aeris-circle__benefits {
+    padding-top: 3.6rem;
+    text-align: center;
+  }
+  .aeris-circle__kicker {
+    margin: 0 0 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+  .aeris-circle h2,
+  .aeris-circle h3 {
+    margin: 0;
+    color: #1c1c1c;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .aeris-circle__benefits h2 {
+    font-size: 2.2rem;
+  }
+  .aeris-circle__cards {
+    display: grid;
+    gap: 2.4rem;
+    margin-top: 2.4rem;
+    text-align: left;
+  }
+  .aeris-circle__cards img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+  }
+  .aeris-circle__cards h3 {
+    margin-top: 1.6rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .aeris-circle__cards p,
+  .aeris-circle__cards ul {
+    margin: 1rem 0 0;
+    line-height: 1.55;
+  }
+  .aeris-circle__cards ul {
+    padding-left: 1.6rem;
+  }
+  .aeris-circle__cards .aeris-circle__btn {
+    margin: 1.6rem auto 0;
+  }
+  .aeris-circle__cards article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .aeris-circle__cards article > p,
+  .aeris-circle__cards article > ul {
+    width: 100%;
+  }
+  .aeris-circle__note {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #6b6b6b;
+    text-align: center;
+  }
+  .aeris-circle__faq {
+    margin-top: 4.8rem;
+    padding-top: 1rem;
+  }
+  .aeris-circle__faq h2 {
+    margin-bottom: 1.6rem;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  .aeris-circle__faq details {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .aeris-circle__faq details:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .aeris-circle__faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 1.3rem 0.2rem;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    list-style: none;
+  }
+  .aeris-circle__faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .aeris-circle__faq summary::after {
+    content: "+";
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .aeris-circle__faq details[open] summary::after {
+    content: "–";
+  }
+  .aeris-circle__faq details p {
+    margin: 0 0 1.2rem;
+    max-width: 70rem;
+  }
+  @media (min-width: 750px) {
+    .aeris-circle__banner {
+      height: 210px;
+    }
+    .aeris-circle__cards {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.8rem;
+    }
+    .aeris-circle__cards img {
+      height: 520px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Aeris Circle",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aeris Circle"
+    }
+  ]
+}
+{% endschema %}

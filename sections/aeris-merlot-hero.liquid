@@ -30,6 +30,12 @@
   if template.name == 'collection' or template.name == 'list-collections' or template.name == 'product'
     assign hide_hero = true
   endif
+  if template.name == 'blog' or template.name == 'article'
+    assign hide_hero = true
+  endif
+  if template.suffix == 'rewards' or template.suffix == 'aeris-circle'
+    assign hide_hero = true
+  endif
 -%}
 {% if hide_hero %}
   <style>

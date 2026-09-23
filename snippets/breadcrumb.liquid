@@ -118,11 +118,17 @@
           <span class="breadcrumbs--last">{{ aeris_crumb_title }}</span>
         {% endif %}
       {% elsif template == 'blog' %}
+        {%- liquid
+          assign aeris_blog_label = blog.title
+          if blog.handle == 'list'
+            assign aeris_blog_label = 'Aeris Journal'
+          endif
+        -%}
         <span aria-hidden="true" class="breadcrumbs--sep">
           {{- separator_icon -}}
         </span>
         {% if current_tags %}
-          {{ blog.title | link_to: blog.url }}
+          {{ aeris_blog_label | link_to: blog.url }}
           <span aria-hidden="true" class="breadcrumbs--sep">
             {{- separator_icon -}}
           </span>
@@ -130,13 +136,19 @@
             {{- current_tags | join: ' + ' -}}
           </span>
         {% else %}
-          <span>{{ blog.title }}</span>
+          <span>{{ aeris_blog_label }}</span>
         {% endif %}
       {% elsif template == 'article' %}
+        {%- liquid
+          assign aeris_blog_label = blog.title
+          if blog.handle == 'list'
+            assign aeris_blog_label = 'Aeris Journal'
+          endif
+        -%}
         <span aria-hidden="true" class="breadcrumbs--sep">
           {{- separator_icon -}}
         </span>
-        {{ blog.title | link_to: blog.url }}
+        {{ aeris_blog_label | link_to: blog.url }}
         <span aria-hidden="true" class="breadcrumbs--sep">
           {{- separator_icon -}}
         </span>

@@ -24,7 +24,7 @@
         "4b2c9fb3-a8fe-4d0a-8af2-59b1b04b3549": {
           "type": "heading",
           "settings": {
-            "heading": "{{ blog.title }}",
+            "heading": "Journal",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
@@ -34,7 +34,7 @@
         "template--17157701173474__df76fe26-74fb-4b82-ae64-dd5a28fbe65c-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>The latest trends in eco-friendly workout wear, tips for living a more <br/>sustainable lifestyle, and stories of women.</p>"
+            "text": "<p>Discover expert tips, insightful articles, and in-depth guides<br/>that will help you achieve your makeup ritual</p>"
           }
         }
       },
@@ -68,7 +68,7 @@
         "posts_per_row": 3,
         "column_gap": "medium",
         "row_gap": "large",
-        "article_image_aspect_ratio": "adapt",
+        "article_image_aspect_ratio": "4/3",
         "article_heading_size": "h3",
         "show_date": true,
         "show_excerpt": true,

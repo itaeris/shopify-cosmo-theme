@@ -23,9 +23,15 @@
       >
         {%- for article in blog.articles -%}
           <div class="f-column">
+            {%- liquid
+              assign aeris_card_ratio = section.settings.article_image_aspect_ratio
+              if blog.handle == 'list'
+                assign aeris_card_ratio = '1.333'
+              endif
+            -%}
             {%- render 'article-card',
               article: article,
-              image_aspect_ratio: section.settings.article_image_aspect_ratio,
+              image_aspect_ratio: aeris_card_ratio,
               show_date: section.settings.show_date,
               show_excerpt: section.settings.show_excerpt,
               show_readmore: section.settings.show_readmore,

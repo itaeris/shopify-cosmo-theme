@@ -55,5 +55,14 @@
   if aeris_menu_handle == 'personalization' or aeris_menu_handle == 'personalisation'
     assign aeris_menu_url = '/collections/all-products?view=personalisation'
   endif
+  if aeris_menu_handle == 'journal' or aeris_menu_handle == 'aeris-journal'
+    assign aeris_menu_url = '/blogs/list'
+  endif
+  if aeris_menu_handle == 'rewards-program' or aeris_menu_handle == 'reward-program' or aeris_menu_handle == 'rewards'
+    assign aeris_menu_url = '/pages/about?view=rewards'
+  endif
+  if aeris_menu_handle == 'aeris-circle'
+    assign aeris_menu_url = '/pages/affiliate?view=aeris-circle'
+  endif
 -%}
 {{- aeris_menu_url -}}
