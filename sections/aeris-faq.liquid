@@ -1,0 +1,261 @@
+<section class="aeris-faq">
+  <div class="aeris-faq__crumbs">
+    <nav aria-label="breadcrumbs">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span aria-hidden="true">›</span>
+      <span>FAQs</span>
+    </nav>
+  </div>
+
+  <div class="aeris-faq__head">
+    <h1>Discover more in our FAQ</h1>
+    <p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>
+  </div>
+
+  <div class="aeris-faq__layout">
+    <aside class="aeris-faq__help">
+      <img src="{{ 'TT_02644.jpg' | file_img_url: '900x' }}" alt="" width="900" height="1200">
+      <div>
+        <h2>Still need help?</h2>
+        <p>Shoot our team an email &amp; we'll get back to you ASAP</p>
+        <a href="/pages/contact-us">Contact us</a>
+      </div>
+    </aside>
+
+    <div class="aeris-faq__list">
+      <h2 class="aeris-faq__group">Products</h2>
+      <details open>
+        <summary>Are Aeris products vegan and cruelty-free?</summary>
+        <p>Yes. All Aeris products are 100% vegan and cruelty-free.</p>
+      </details>
+      <details>
+        <summary>When will my pre-order arrive?</summary>
+        <p>Pre-orders typically take 2–4 weeks to ship, depending on the item. The product description lists the estimated delivery time.</p>
+      </details>
+      <details>
+        <summary>How are orders with both pre-order and ready-stock items handled?</summary>
+        <p>Ready-stock items are held and shipped together once the pre-order item is ready. If a pre-order has a 21-day processing time, the whole order ships in about 21 days. If you want your ready-stock items sooner, place them as a separate order.</p>
+      </details>
+      <details>
+        <summary>Can I return or exchange my item?</summary>
+        <p>Yes. If an item is defective or damaged, we will exchange it for a new one. Contact us with the details so we can start the exchange.</p>
+      </details>
+      <details>
+        <summary>How do I process a return?</summary>
+        <p>For the full returns and exchange steps, visit our <a href="/pages/returns">Returns</a> page, or contact us and we will guide you.</p>
+      </details>
+      <details>
+        <summary>Can I combine discount codes?</summary>
+        <p>Only one promotion or discount code can be applied per order. Promotional codes cannot be combined with other offers or free-shipping discounts.</p>
+      </details>
+      <details>
+        <summary>Do you have an offline store?</summary>
+        <p>Yes. You can visit us at our <a href="/pages/store-location">store locations</a>.</p>
+      </details>
+
+      <h2 class="aeris-faq__group">Shipping</h2>
+      <details>
+        <summary>Do you ship internationally?</summary>
+        <p>Yes, we ship worldwide.</p>
+      </details>
+      <details>
+        <summary>Will I be charged shipping on an international order even if I meet the minimum?</summary>
+        <p>Yes. Any weight or size over the free-shipping limit is charged at checkout. Bulky or heavy items, including extra boxes and accessories, are excluded from free shipping.</p>
+      </details>
+      <details>
+        <summary>How does delivery to Singapore work?</summary>
+        <p>Orders over 400 SGD can be charged local import taxes and customs duties. To reduce delays, split a large purchase into separate orders under 400 SGD, and keep each order within the stated weight limit.</p>
+      </details>
+      <details>
+        <summary>When will you ship my order?</summary>
+        <p>We dispatch orders Monday through Friday. We do not ship on Saturday, Sunday, or public holidays.</p>
+        <p>Gojek and instant delivery are processed Monday through Friday, 10:00 AM–3:00 PM. Same-day delivery needs the order and payment confirmed before 1:00 PM. Someone should be available at the address to receive the package.</p>
+      </details>
+      <details>
+        <summary>How long does domestic shipping take?</summary>
+        <p>Allow 2–4 business days after payment confirmation for us to verify the payment, finish quality control, and pack the order. Once it ships, you receive a confirmation email with tracking details.</p>
+      </details>
+      <details>
+        <summary>How long does international shipping take?</summary>
+        <p>International orders typically arrive within 5–15 business days after dispatch. Customs clearance can add time. Any customs duties or import taxes are the buyer's responsibility.</p>
+      </details>
+      <details>
+        <summary>How can I track my order?</summary>
+        <p>The tracking number is sent to your registered email within 24 hours of shipment. Domestic orders use JNE, and international orders use DHL. You can also <a href="/pages/track-your-order">track your order</a> on our site.</p>
+      </details>
+      <details>
+        <summary>Do you offer same-day shipping?</summary>
+        <p>Yes, for Jakarta addresses only, on orders completed before 10:00 AM on business days, via Gojek.</p>
+      </details>
+
+      <h2 class="aeris-faq__group">Payment</h2>
+      <details>
+        <summary>What if my order is cancelled?</summary>
+        <p>Orders are cancelled automatically if payment is not completed within the 24-hour payment window.</p>
+      </details>
+      <details>
+        <summary>Where can I find my order confirmation?</summary>
+        <p>A confirmation email is sent once the order is placed. If you cannot find it, check your spam folder or contact us and we will resend it. You can also see the order status by signing in to your account.</p>
+      </details>
+      <details>
+        <summary>What payment methods do you accept?</summary>
+        <p>We accept credit card, bank transfer, QRIS, GoPay, and ShopeePay.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .aeris-faq {
+    padding: 2.4rem 0 6rem;
+    color: #1c1c1c;
+  }
+  .aeris-faq__crumbs nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+  }
+  .aeris-faq__crumbs a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .aeris-faq__head {
+    max-width: 72rem;
+    margin: 1.6rem auto 0;
+    padding: 0 1.6rem;
+    text-align: center;
+  }
+  .aeris-faq__head h1 {
+    margin: 0;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(3rem, 4vw, 4.2rem);
+  }
+  .aeris-faq__head p {
+    margin: 0.8rem 0 0;
+    line-height: 1.6;
+  }
+  .aeris-faq__layout {
+    width: min(1180px, calc(100% - 3.2rem));
+    margin: 3.2rem auto 0;
+    display: grid;
+    gap: 2.4rem;
+    align-items: start;
+  }
+  .aeris-faq__help {
+    position: relative;
+    min-height: 42rem;
+    overflow: hidden;
+    background: #2a241c;
+    color: #fff;
+    text-align: center;
+  }
+  .aeris-faq__help img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .aeris-faq__help div {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 42rem;
+    padding: 2.4rem 2rem;
+    background: rgba(0, 0, 0, 0.35);
+  }
+  .aeris-faq__help h2 {
+    margin: 0;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    font-size: 3.2rem;
+    color: #fff;
+  }
+  .aeris-faq__help p {
+    max-width: 22rem;
+    margin: 0.8rem 0 1.6rem;
+    line-height: 1.5;
+  }
+  .aeris-faq__help a {
+    display: inline-block;
+    padding: 1rem 2.2rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #1c1c1c;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+  .aeris-faq__group {
+    margin: 2.4rem 0 0.4rem;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+  }
+  .aeris-faq__group:first-child {
+    margin-top: 0;
+  }
+  .aeris-faq__list details {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .aeris-faq__list summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 1.6rem 0;
+    cursor: pointer;
+    font-size: 1.6rem;
+    list-style: none;
+  }
+  .aeris-faq__list summary::-webkit-details-marker {
+    display: none;
+  }
+  .aeris-faq__list summary::after {
+    content: "+";
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .aeris-faq__list details[open] summary::after {
+    content: "–";
+  }
+  .aeris-faq__list details p {
+    margin: 0 0 1.4rem;
+    max-width: 68rem;
+    line-height: 1.6;
+  }
+  .aeris-faq__list details a {
+    color: inherit;
+  }
+  @media (min-width: 990px) {
+    .aeris-faq__layout {
+      grid-template-columns: 28rem minmax(0, 1fr);
+      gap: 4.8rem;
+    }
+    .aeris-faq__help {
+      position: sticky;
+      top: 8rem;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Aeris FAQ",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aeris FAQ"
+    }
+  ]
+}
+{% endschema %}

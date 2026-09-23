@@ -51,6 +51,8 @@
         Aeris Circle
       {%- elsif template.name == 'blog' and blog.handle == 'list' -%}
         Journal
+      {%- elsif page.handle == 'faqs' or page.handle == 'faq' -%}
+        FAQs
       {%- else -%}
         {{ page_title }}
       {%- endif -%}
@@ -218,6 +220,7 @@
           assign aeris_contact_page = false
           assign aeris_stores_page = false
           assign aeris_personal_page = false
+          assign aeris_faq_page = false
           if template.name == 'page'
             if page.handle == 'track-your-order' or page.handle == 'track-order'
               assign aeris_track_page = true
@@ -238,6 +241,9 @@
           if page.handle == 'personalisation' or page.handle == 'personalization'
             assign aeris_personal_page = true
           endif
+          if page.handle == 'faqs' or page.handle == 'faq' or template.suffix == 'faqs'
+            assign aeris_faq_page = true
+          endif
           if request.path == '/pages/personalisation' or request.path == '/pages/personalization'
             assign aeris_personal_page = true
           endif
@@ -252,6 +258,8 @@
           {% section 'aeris-store-locations' %}
         {%- elsif aeris_personal_page -%}
           {% section 'aeris-personalisation' %}
+        {%- elsif aeris_faq_page -%}
+          {% section 'aeris-faq' %}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}
