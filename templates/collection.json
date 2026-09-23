@@ -389,7 +389,7 @@
         "show_breadcrumb": false,
         "show_desc": true,
         "show_collection_image": false,
-        "image_height": "medium",
+        "image_height": "small",
         "image_position": "use_image_as_background",
         "image_overlay_opacity": 0,
         "padding_top": 0,

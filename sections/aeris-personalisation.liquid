@@ -1,0 +1,211 @@
+{%- liquid
+  assign bag = all_products['coco-vanity-bag']
+  assign pouch = all_products['aeris-beaute-clear-smart-travel-pouch']
+-%}
+<section class="aeris-personal">
+  <div class="aeris-personal__crumbs">
+    <div class="container">
+      <nav class="breadcrumbs flex justify-center" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span class="breadcrumbs--sep" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <a href="{{ routes.all_products_collection_url }}">Collection</a>
+        <span class="breadcrumbs--sep" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="breadcrumbs--last">Personalisation</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="aeris-personal__banner">
+    <img
+      src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}"
+      alt="Personalisation"
+      width="2000"
+      height="800"
+    >
+    <h1>Personalisation</h1>
+  </div>
+
+  <div class="aeris-personal__intro container">
+    <h2>Add a personal touch</h2>
+    <p>Elevate your Vanity Bag or gift with a personalised monogram and bag charm. Simply, select personalisation before adding to bag.</p>
+  </div>
+
+  <div class="aeris-personal__steps container">
+    <a class="aeris-personal__step" href="{{ bag.url | default: '/products/coco-vanity-bag' }}">
+      <img src="{{ 'TT_02644.jpg' | file_img_url: '900x' }}" alt="Select Coco Vanity Bag color" width="900" height="1100">
+      <span>1. Select Coco Vanity Bag color</span>
+    </a>
+    <a class="aeris-personal__step" href="{{ bag.url | default: '/products/coco-vanity-bag' }}">
+      <img src="{{ 'AE828.jpg' | file_img_url: '900x' }}" alt="Monogram your bag" width="900" height="1100">
+      <span>2. Monogram your bag</span>
+    </a>
+    <a class="aeris-personal__step" href="{{ pouch.url | default: '/products/aeris-beaute-clear-smart-travel-pouch' }}">
+      {%- if pouch.featured_image -%}
+        <img src="{{ pouch.featured_image | image_url: width: 900 }}" alt="Choose your charm" width="900" height="1100">
+      {%- else -%}
+        <img src="{{ 'AE828.jpg' | file_img_url: '900x' }}" alt="Choose your charm" width="900" height="1100">
+      {%- endif -%}
+      <span>3. Choose your charm</span>
+    </a>
+  </div>
+
+  {%- if bag != blank or pouch != blank -%}
+    <div class="aeris-personal__products container">
+      <h2>Start with your bag</h2>
+      <div class="aeris-personal__product-row">
+        {%- if bag != blank -%}
+          <a href="{{ bag.url }}">
+            {%- if bag.featured_image -%}
+              <img src="{{ bag.featured_image | image_url: width: 800 }}" alt="{{ bag.title | escape }}" width="800" height="800">
+            {%- endif -%}
+            <span>{{ bag.title }}</span>
+          </a>
+        {%- endif -%}
+        {%- if pouch != blank -%}
+          <a href="{{ pouch.url }}">
+            {%- if pouch.featured_image -%}
+              <img src="{{ pouch.featured_image | image_url: width: 800 }}" alt="{{ pouch.title | escape }}" width="800" height="800">
+            {%- endif -%}
+            <span>{{ pouch.title }}</span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% style %}
+  .aeris-personal__crumbs {
+    padding: 2.4rem 0 1.6rem;
+  }
+  .aeris-personal__banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #1c1c1c;
+  }
+  .aeris-personal__banner img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .aeris-personal__banner h1 {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(3.2rem, 4vw, 5.6rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .aeris-personal__intro {
+    padding: 4.8rem 1.6rem 1.6rem;
+    text-align: center;
+    max-width: 760px;
+  }
+  .aeris-personal__intro h2,
+  .aeris-personal__products h2 {
+    margin: 0 0 1.2rem;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    font-size: 2.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .aeris-personal__intro p {
+    margin: 0 auto;
+    max-width: 62rem;
+    line-height: 1.6;
+  }
+  .aeris-personal__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    gap: 1.6rem;
+    max-width: 920px;
+    margin-inline: auto;
+    padding: 2.4rem 1.6rem 0.8rem;
+  }
+  .aeris-personal__step {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+  }
+  .aeris-personal__step img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #f4f1ec;
+  }
+  .aeris-personal__step span {
+    display: block;
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .aeris-personal__products {
+    padding: 3.2rem 1.6rem 5rem;
+    text-align: center;
+  }
+  .aeris-personal__product-row {
+    display: flex;
+    justify-content: center;
+    gap: 2.4rem;
+  }
+  .aeris-personal__product-row a {
+    width: 140px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .aeris-personal__product-row img {
+    width: 140px;
+    height: 160px;
+    object-fit: contain;
+    background: transparent;
+  }
+  .aeris-personal__product-row span {
+    display: block;
+    margin-top: 1rem;
+  }
+  @media (min-width: 750px) {
+    .aeris-personal__banner {
+      height: 340px;
+    }
+    .aeris-personal__steps {
+      grid-template-columns: repeat(3, minmax(0, 280px));
+      gap: 1.6rem;
+    }
+    .aeris-personal__step img {
+      height: 320px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Aeris personalisation",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aeris personalisation"
+    }
+  ]
+}
+{% endschema %}

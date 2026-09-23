@@ -18,6 +18,12 @@
   if request.path == '/pages/store-locations' or request.path == '/pages/store-location'
     assign hide_hero = true
   endif
+  if page.handle == 'personalisation' or page.handle == 'personalization'
+    assign hide_hero = true
+  endif
+  if request.path == '/pages/personalisation' or request.path == '/pages/personalization'
+    assign hide_hero = true
+  endif
   if template.suffix == 'about-us' or template.suffix == 'our-story'
     assign hide_hero = true
   endif

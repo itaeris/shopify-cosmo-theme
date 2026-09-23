@@ -43,7 +43,11 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
+      {%- if template.suffix == 'personalisation' -%}
+        Personalisation
+      {%- else -%}
+        {{ page_title }}
+      {%- endif -%}
       {%- if current_tags %}
         &ndash; tagged "{{ current_tags | join: ', ' }}"
       {%- endif -%}
@@ -207,6 +211,7 @@
           assign aeris_legal_page = false
           assign aeris_contact_page = false
           assign aeris_stores_page = false
+          assign aeris_personal_page = false
           if template.name == 'page'
             if page.handle == 'track-your-order' or page.handle == 'track-order'
               assign aeris_track_page = true
@@ -224,6 +229,12 @@
           if request.path == '/pages/store-locations' or request.path == '/pages/store-location'
             assign aeris_stores_page = true
           endif
+          if page.handle == 'personalisation' or page.handle == 'personalization'
+            assign aeris_personal_page = true
+          endif
+          if request.path == '/pages/personalisation' or request.path == '/pages/personalization'
+            assign aeris_personal_page = true
+          endif
         -%}
         {%- if aeris_track_page -%}
           {% render 'aeris-track-order' %}
@@ -233,6 +244,8 @@
           {% render 'aeris-contact' %}
         {%- elsif aeris_stores_page -%}
           {% section 'aeris-store-locations' %}
+        {%- elsif aeris_personal_page -%}
+          {% section 'aeris-personalisation' %}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}

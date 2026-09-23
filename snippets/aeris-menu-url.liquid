@@ -37,5 +37,23 @@
   if aeris_menu_handle == 'store-locations' or aeris_menu_handle == 'store-location'
     assign aeris_menu_url = '/pages/store-location'
   endif
+  if aeris_menu_handle == 'surabaya'
+    assign aeris_menu_url = '/pages/store-location#pakuwon'
+  endif
+  if aeris_menu_handle == 'bandung'
+    assign aeris_menu_url = '/pages/store-location#paskal'
+  endif
+  if aeris_menu_handle == 'bali'
+    assign aeris_menu_url = '/pages/store-location#living-world'
+  endif
+  if aeris_menu_handle == 'makassar'
+    assign aeris_menu_url = '/pages/store-location#trans-studio'
+  endif
+  if aeris_menu_handle == 'semarang'
+    assign aeris_menu_url = '/pages/store-location#dp-mall'
+  endif
+  if aeris_menu_handle == 'personalization' or aeris_menu_handle == 'personalisation'
+    assign aeris_menu_url = '/collections/all-products?view=personalisation'
+  endif
 -%}
 {{- aeris_menu_url -}}
