@@ -3,6 +3,9 @@
   assign image_height = section.settings.image_height
   assign text_alignment = section.settings.text_alignment
   assign collection_desc = collection.description
+  if collection.handle == 'best-sellers-1' and collection_desc == blank
+    assign collection_desc = 'Explore our curated best sellers and award winning products, from makeup brushes, to lifestyle products'
+  endif
   assign collection_image = collection.featured_image
   assign show_collection_image = section.settings.show_collection_image
   assign image_position = section.settings.image_position

@@ -219,6 +219,80 @@
         "visible_collections": "all-products"
       }
     },
+    "collection_list_best_sellers": {
+      "type": "collection-list",
+      "blocks": {
+        "cat_makeup": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "makeup-tools",
+            "image": "shopify://shop_images/TT_06952.jpg",
+            "title": "Makeup Brush"
+          }
+        },
+        "cat_sponges": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "skincare-tools",
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "title": "Sponges & Applications"
+          }
+        },
+        "cat_bags": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wellness-tools",
+            "image": "shopify://shop_images/TT_02644.jpg",
+            "title": "Lifestyle bags"
+          }
+        },
+        "cat_hair": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hair-tools",
+            "image": "shopify://shop_images/Dropdown_visual.jpg",
+            "title": "Hair Tools"
+          }
+        },
+        "cat_gifting": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "brush-sets",
+            "image": "shopify://shop_images/AE828.jpg",
+            "title": "Giftings"
+          }
+        }
+      },
+      "block_order": [
+        "cat_makeup",
+        "cat_sponges",
+        "cat_bags",
+        "cat_hair",
+        "cat_gifting"
+      ],
+      "settings": {
+        "container": "container",
+        "visible_collections": "best-sellers-1",
+        "heading": "",
+        "card_style": "6",
+        "text_alignment": "left",
+        "text_color": "#ffffff",
+        "image_ratio": "4/3",
+        "show_count": false,
+        "columns": 5,
+        "column_gap": "extra-small",
+        "row_gap": "small",
+        "enable_slider": false,
+        "enable_swipe_mobile": true,
+        "column_mobile": "2",
+        "padding_top": 24,
+        "padding_bottom": 8,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 8,
+        "custom_class": "aeris-best-sellers",
+        "animations": "inherit"
+      }
+    },
     "aeris_collection_hero": {
       "type": "aeris-collection-hero",
       "blocks": {
@@ -356,6 +430,7 @@
     "aeris_collection_hero",
     "slideshow_jK84VC",
     "collection_list_shop_all",
+    "collection_list_best_sellers",
     "banner",
     "product-grid"
   ]

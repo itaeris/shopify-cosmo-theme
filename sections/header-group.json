@@ -84,6 +84,7 @@
         },
         "product_XbTx6a": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "heading": "BEST SELLER",
             "container": "inherit",
