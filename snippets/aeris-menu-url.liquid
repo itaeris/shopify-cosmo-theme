@@ -4,6 +4,9 @@
   if aeris_menu_handle == 'shop-all' or aeris_menu_handle == 'shopall'
     assign aeris_menu_url = '/collections/all-products'
   endif
+  if aeris_menu_handle == 'new-arrival' or aeris_menu_handle == 'new-arrivals'
+    assign aeris_menu_url = '/collections/new-in'
+  endif
   if aeris_menu_handle == 'brushes-tools' or aeris_menu_handle == 'brushes-and-tools'
     assign aeris_menu_url = '/collections/accessories'
   endif

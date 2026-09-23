@@ -275,7 +275,8 @@
         "cleansers_image": "shopify://shop_images/blendie-bar.jpg",
         "hair_image": "shopify://shop_images/Dropdown_visual.jpg",
         "bags_image": "shopify://shop_images/TT_02644.jpg",
-        "bundles_image": "shopify://shop_images/AE828.jpg"
+        "bundles_image": "shopify://shop_images/AE828.jpg",
+        "arrivals_image": "shopify://shop_images/TT_02644.jpg"
       }
     },
     "banner": {

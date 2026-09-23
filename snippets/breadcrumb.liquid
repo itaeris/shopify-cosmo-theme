@@ -71,6 +71,12 @@
         {% endif %}
         <span class="breadcrumbs--last">{{ product.title }}</span>
       {% elsif template contains 'collection' and collection.handle %}
+        {% liquid
+          assign aeris_crumb_title = collection.title
+          if collection.handle == 'new-in'
+            assign aeris_crumb_title = 'New Arrivals'
+          endif
+        %}
         {% if collection.handle != 'all' %}
           <span aria-hidden="true" class="breadcrumbs--sep">
             {{- separator_icon -}}
@@ -84,7 +90,7 @@
         </span>
         {% if current_tags %}
           {% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
-          {{ collection.title | link_to: url }}
+          {{ aeris_crumb_title | link_to: url }}
           <span aria-hidden="true" class="breadcrumbs--sep">
             {{- separator_icon -}}
           </span>
@@ -92,7 +98,7 @@
             {{- current_tags | join: ' + ' -}}
           </span>
         {% else %}
-          <span class="breadcrumbs--last">{{ collection.title }}</span>
+          <span class="breadcrumbs--last">{{ aeris_crumb_title }}</span>
         {% endif %}
       {% elsif template == 'blog' %}
         <span aria-hidden="true" class="breadcrumbs--sep">

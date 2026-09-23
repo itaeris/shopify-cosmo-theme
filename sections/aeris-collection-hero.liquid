@@ -25,6 +25,10 @@
       assign show_hero = true
       assign banner_image = section.settings.bundles_image
       assign banner_title = 'Bundles'
+    when 'new-in', 'new-arrivals', 'new-arrival'
+      assign show_hero = true
+      assign banner_image = section.settings.arrivals_image
+      assign banner_title = 'New Arrivals'
   endcase
 
   if banner_image == blank and collection.image != blank
@@ -210,6 +214,11 @@
       "type": "image_picker",
       "id": "bundles_image",
       "label": "Bundles banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrivals_image",
+      "label": "New Arrivals banner"
     }
   ],
   "blocks": [
