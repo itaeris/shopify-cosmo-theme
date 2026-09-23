@@ -1,14 +1,11 @@
 <section class="aeris-rewards">
+  <nav class="aeris-rewards__crumbs" aria-label="breadcrumbs">
+    <a href="{{ routes.root_url }}">Home</a>
+    <span aria-hidden="true">›</span>
+    <span>Rewards Program</span>
+  </nav>
   <div class="aeris-rewards__banner">
-    <img src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}" alt="" width="2000" height="600">
-    <div class="aeris-rewards__banner-copy">
-      <nav class="aeris-rewards__crumbs" aria-label="breadcrumbs">
-        <a href="{{ routes.root_url }}">Home</a>
-        <span aria-hidden="true">›</span>
-        <span>Rewards Program</span>
-      </nav>
-      <p>Aeris Rewards</p>
-    </div>
+    <img src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}" alt="" width="2000" height="2000">
   </div>
 
   <div class="aeris-rewards__intro">
@@ -200,47 +197,31 @@
     padding-bottom: 0;
     color: #1c1c1c;
   }
-  .aeris-rewards__banner {
-    position: relative;
-    width: min(1080px, calc(100% - 3.2rem));
-    height: 120px;
-    margin: 1.6rem auto 0;
-    overflow: hidden;
-    background: #efe8df;
-  }
-  .aeris-rewards__banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    filter: saturate(0.7);
-  }
-  .aeris-rewards__banner-copy {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 1.6rem;
-    background: rgba(255, 248, 240, 0.35);
-    color: #1c1c1c;
-    text-align: center;
-  }
   .aeris-rewards__crumbs {
     display: flex;
     gap: 0.6rem;
     align-items: center;
-    font-size: 1.2rem;
+    justify-content: center;
+    padding: 1.8rem 1.6rem 1.4rem;
+    color: #1c1c1c;
+    font-size: 1.3rem;
   }
   .aeris-rewards__crumbs a {
     color: inherit;
     text-decoration: none;
   }
-  .aeris-rewards__banner p {
-    margin: auto;
-    color: #1c1c1c;
-    font-size: 1.3rem;
+  .aeris-rewards__banner {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #f3f1ec;
+  }
+  .aeris-rewards__banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
   }
   .aeris-rewards__intro,
   .aeris-rewards__redeem,
@@ -261,7 +242,10 @@
   }
   .aeris-rewards h1 {
     color: #1c1c1c;
-    font-size: clamp(3.2rem, 5vw, 4.8rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: clamp(3.2rem, 4vw, 4.6rem);
   }
   .aeris-rewards__intro > p,
   .aeris-rewards__tiers > p {
@@ -476,7 +460,7 @@
   }
   @media (min-width: 750px) {
     .aeris-rewards__banner {
-      height: 148px;
+      height: 420px;
     }
     .aeris-rewards__intro ol,
     .aeris-rewards__steps,
