@@ -8,9 +8,30 @@
   assign animation_effect = settings.animations
 -%}
 {{ 'blog.css' | asset_url | stylesheet_tag }}
+{%- if blog.handle == 'list' -%}
+  <style>
+    .aeris-journal .f-article-card__title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      line-height: 1.2;
+      min-height: calc(1.2em * 4);
+      max-height: calc(1.2em * 4);
+    }
+    .aeris-journal .f-article-card__excerpt .text-limit-2-lines {
+      line-height: 1.6;
+      min-height: calc(1.6em * 2);
+      max-height: calc(1.6em * 2);
+    }
+    .aeris-journal .f-article-card__readmore {
+      margin-top: 2rem;
+    }
+  </style>
+{%- endif -%}
 {%- paginate blog.articles by section.settings.posts_to_show -%}
   <div
-    class="f-blog container f-section-padding"
+    class="f-blog container f-section-padding{% if blog.handle == 'list' %} aeris-journal{% endif %}"
     style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
   >
     <h1 class="f-blog-title{% unless section.settings.show_title %} hidden{% endunless %} h2">

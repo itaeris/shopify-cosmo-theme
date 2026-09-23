@@ -528,6 +528,7 @@
         "collection_BUpqi8"
       ],
       "custom_css": [],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "accent",

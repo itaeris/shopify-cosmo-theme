@@ -154,9 +154,12 @@
   }
 }
 .f-popup--image-left .f-popup__image .f-image,
-.f-popup--image-left .f-popup__image svg {
+.f-popup--image-left .f-popup__image svg,
+.f-popup--image-left .f-popup__image img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 .f-popup__image responsive-image img {
   transform: scale(1) !important;

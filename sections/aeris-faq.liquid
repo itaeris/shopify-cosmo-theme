@@ -8,21 +8,119 @@
   </div>
 
   <div class="aeris-faq__head">
-    <h1>Discover more in our FAQ</h1>
-    <p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>
+    <h1>
+      <span data-legal-title-lang="id">Temukan jawaban di FAQ kami</span>
+      <span data-legal-title-lang="en" hidden>Discover more in our FAQ</span>
+    </h1>
+    <p>
+      <span data-legal-lang="id">Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</span>
+      <span data-legal-lang="en" hidden>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</span>
+    </p>
+    {% render 'aeris-legal-switch' %}
   </div>
 
   <div class="aeris-faq__layout">
     <aside class="aeris-faq__help">
       <img src="{{ 'TT_02644.jpg' | file_img_url: '900x' }}" alt="" width="900" height="1200">
       <div>
-        <h2>Still need help?</h2>
-        <p>Shoot our team an email &amp; we'll get back to you ASAP</p>
-        <a href="/pages/contact-us">Contact us</a>
+        <h2>
+          <span data-legal-title-lang="id">Masih butuh bantuan?</span>
+          <span data-legal-title-lang="en" hidden>Still need help?</span>
+        </h2>
+        <p>
+          <span data-legal-lang="id">Kirim email ke tim kami dan kami akan membalas secepatnya</span>
+          <span data-legal-lang="en" hidden>Shoot our team an email &amp; we'll get back to you ASAP</span>
+        </p>
+        <a href="/pages/contact-us">
+          <span data-legal-lang="id">Hubungi kami</span>
+          <span data-legal-lang="en" hidden>Contact us</span>
+        </a>
       </div>
     </aside>
 
     <div class="aeris-faq__list">
+      <div data-legal-lang="id">
+      <h2 class="aeris-faq__group">Produk</h2>
+      <details open>
+        <summary>Apakah produk Aeris vegan dan bebas uji coba pada hewan?</summary>
+        <p>Ya. Seluruh produk Aeris 100% vegan dan cruelty-free.</p>
+      </details>
+      <details>
+        <summary>Kapan pre-order saya tiba?</summary>
+        <p>Pre-order biasanya dikirim dalam 2–4 minggu, tergantung produk. Perkiraan waktu pengiriman tercantum di deskripsi produk.</p>
+      </details>
+      <details>
+        <summary>Bagaimana pesanan yang berisi pre-order dan ready stock?</summary>
+        <p>Barang ready stock ditahan dan dikirim bersamaan setelah barang pre-order siap. Jika pre-order membutuhkan 21 hari, seluruh pesanan dikirim sekitar 21 hari. Jika Anda ingin barang ready stock lebih cepat, buat pesanan terpisah.</p>
+      </details>
+      <details>
+        <summary>Apakah saya bisa retur atau menukar barang?</summary>
+        <p>Ya. Jika barang cacat atau rusak, kami akan menukarnya dengan yang baru. Hubungi kami beserta detailnya agar proses penukaran bisa dimulai.</p>
+      </details>
+      <details>
+        <summary>Bagaimana cara memproses retur?</summary>
+        <p>Untuk langkah retur dan penukaran, kunjungi halaman <a href="/pages/returns">Retur</a>, atau hubungi kami dan kami akan memandu Anda.</p>
+      </details>
+      <details>
+        <summary>Apakah kode diskon bisa digabung?</summary>
+        <p>Hanya satu promosi atau kode diskon yang bisa dipakai per pesanan. Kode promosi tidak bisa digabung dengan penawaran lain atau diskon gratis ongkir.</p>
+      </details>
+      <details>
+        <summary>Apakah ada toko offline?</summary>
+        <p>Ya. Anda bisa mengunjungi kami di <a href="/pages/store-location">lokasi toko</a> kami.</p>
+      </details>
+
+      <h2 class="aeris-faq__group">Pengiriman</h2>
+      <details>
+        <summary>Apakah kalian mengirim ke luar negeri?</summary>
+        <p>Ya, kami mengirim ke seluruh dunia.</p>
+      </details>
+      <details>
+        <summary>Apakah ongkir internasional tetap dikenakan meski sudah memenuhi minimum?</summary>
+        <p>Ya. Berat atau ukuran di atas batas gratis ongkir dikenakan biaya saat checkout. Barang besar atau berat, termasuk kotak tambahan dan aksesori, tidak termasuk gratis ongkir.</p>
+      </details>
+      <details>
+        <summary>Bagaimana pengiriman ke Singapura?</summary>
+        <p>Pesanan di atas 400 SGD dapat dikenakan pajak impor dan bea cukai setempat. Untuk mengurangi keterlambatan, pisahkan pembelian besar menjadi pesanan terpisah di bawah 400 SGD, dan jaga setiap pesanan dalam batas berat yang ditentukan.</p>
+      </details>
+      <details>
+        <summary>Kapan pesanan saya dikirim?</summary>
+        <p>Kami mengirim pesanan Senin sampai Jumat. Kami tidak mengirim pada Sabtu, Minggu, atau hari libur nasional.</p>
+        <p>Gojek dan pengiriman instan diproses Senin sampai Jumat, pukul 10.00–15.00. Pengiriman di hari yang sama membutuhkan pesanan dan pembayaran yang sudah terkonfirmasi sebelum pukul 13.00. Seseorang perlu berada di alamat untuk menerima paket.</p>
+      </details>
+      <details>
+        <summary>Berapa lama pengiriman domestik?</summary>
+        <p>Sediakan 2–4 hari kerja setelah konfirmasi pembayaran untuk verifikasi pembayaran, quality control, dan pengemasan. Setelah dikirim, Anda menerima email konfirmasi beserta detail pelacakan.</p>
+      </details>
+      <details>
+        <summary>Berapa lama pengiriman internasional?</summary>
+        <p>Pesanan internasional biasanya tiba dalam 5–15 hari kerja setelah dikirim. Proses bea cukai dapat menambah waktu. Bea cukai atau pajak impor menjadi tanggung jawab pembeli.</p>
+      </details>
+      <details>
+        <summary>Bagaimana cara melacak pesanan?</summary>
+        <p>Nomor resi dikirim ke email terdaftar dalam 24 jam setelah pengiriman. Pesanan domestik memakai JNE, dan pesanan internasional memakai DHL. Anda juga bisa <a href="/pages/track-your-order">melacak pesanan</a> di situs kami.</p>
+      </details>
+      <details>
+        <summary>Apakah ada pengiriman di hari yang sama?</summary>
+        <p>Ya, hanya untuk alamat Jakarta, untuk pesanan yang selesai sebelum pukul 10.00 pada hari kerja, melalui Gojek.</p>
+      </details>
+
+      <h2 class="aeris-faq__group">Pembayaran</h2>
+      <details>
+        <summary>Bagaimana jika pesanan saya dibatalkan?</summary>
+        <p>Pesanan dibatalkan otomatis jika pembayaran tidak selesai dalam jendela pembayaran 24 jam.</p>
+      </details>
+      <details>
+        <summary>Di mana saya menemukan konfirmasi pesanan?</summary>
+        <p>Email konfirmasi dikirim setelah pesanan dibuat. Jika tidak menemukannya, periksa folder spam atau hubungi kami agar kami kirim ulang. Status pesanan juga bisa dilihat dengan masuk ke akun Anda.</p>
+      </details>
+      <details>
+        <summary>Metode pembayaran apa yang diterima?</summary>
+        <p>Kami menerima kartu kredit, transfer bank, QRIS, GoPay, dan ShopeePay.</p>
+      </details>
+      </div>
+
+      <div data-legal-lang="en" hidden>
       <h2 class="aeris-faq__group">Products</h2>
       <details open>
         <summary>Are Aeris products vegan and cruelty-free?</summary>
@@ -101,9 +199,11 @@
         <summary>What payment methods do you accept?</summary>
         <p>We accept credit card, bank transfer, QRIS, GoPay, and ShopeePay.</p>
       </details>
+      </div>
     </div>
   </div>
 </section>
+<script src="{{ 'aeris-legal.js' | asset_url }}" defer></script>
 
 {% style %}
   .aeris-faq {
@@ -137,8 +237,40 @@
     margin: 0.8rem 0 0;
     line-height: 1.6;
   }
+  .aeris-faq__head .aeris-legal__switch {
+    justify-content: center;
+    margin: 1.6rem 0 0;
+  }
+  .aeris-faq__switch-btn,
+  .aeris-legal__switch-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #8a847e;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+  }
+  .aeris-faq .aeris-legal__switch-btn.is-active {
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-underline-offset: 0.28em;
+  }
+  .aeris-faq .aeris-legal__switch {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .aeris-faq .aeris-legal__switch-sep {
+    color: #cfc8c1;
+  }
+  .aeris-faq [hidden],
+  .aeris-faq .is-hidden {
+    display: none !important;
+  }
   .aeris-faq__layout {
-    width: min(1180px, calc(100% - 3.2rem));
+    width: min(1240px, calc(100% - 3.2rem));
     margin: 3.2rem auto 0;
     display: grid;
     gap: 2.4rem;
@@ -146,8 +278,9 @@
   }
   .aeris-faq__help {
     position: relative;
-    min-height: 42rem;
+    min-height: 54rem;
     overflow: hidden;
+    border-radius: 2.4rem;
     background: #2a241c;
     color: #fff;
     text-align: center;
@@ -167,15 +300,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 42rem;
-    padding: 2.4rem 2rem;
+    min-height: 54rem;
+    padding: 3.2rem 2.4rem;
     background: rgba(0, 0, 0, 0.35);
   }
   .aeris-faq__help h2 {
     margin: 0;
     font-family: Newsreader, Georgia, serif;
     font-weight: 500;
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     color: #fff;
   }
   .aeris-faq__help p {
@@ -238,7 +371,7 @@
   }
   @media (min-width: 990px) {
     .aeris-faq__layout {
-      grid-template-columns: 28rem minmax(0, 1fr);
+      grid-template-columns: 36rem minmax(0, 1fr);
       gap: 4.8rem;
     }
     .aeris-faq__help {

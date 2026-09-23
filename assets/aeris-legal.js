@@ -10,7 +10,7 @@
   ready(function () {
     var storageKey = 'aeris-legal-lang';
 
-    document.querySelectorAll('.aeris-legal').forEach(function (root) {
+    document.querySelectorAll('.aeris-legal, .aeris-faq').forEach(function (root) {
       var buttons = root.querySelectorAll('[data-legal-switch]');
       if (!buttons.length) return;
 
