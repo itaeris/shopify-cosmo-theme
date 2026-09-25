@@ -27,7 +27,11 @@
         <p class="aeris-reviews__number">—</p>
         <p class="aeris-reviews__based">No reviews yet</p>
       {%- endif -%}
-      <a class="aeris-reviews__write" href="#AerisReviewForm">Write a review</a>
+      {%- if customer -%}
+        <a class="aeris-reviews__write" href="#AerisReviewForm">Write a review</a>
+      {%- else -%}
+        <a class="aeris-reviews__write" href="{{ routes.account_login_url }}?return_url={{ product.url | url_param_escape }}">Log in to review</a>
+      {%- endif -%}
     </div>
 
     <div class="aeris-reviews__body">
@@ -53,39 +57,42 @@
       {%- endif -%}
 
       {%- if review_blog.comments_enabled? and review_article != blank -%}
-        <div id="AerisReviewForm">
-          {% form 'new_comment', review_article, class: 'aeris-reviews__form' %}
-            {%- if form.posted_successfully? -%}
-              <p class="aeris-reviews__status" role="status">Thank you. Your review was sent.</p>
-            {%- endif -%}
-            {%- if form.errors -%}
-              <p class="aeris-reviews__status" role="alert">{{ form.errors | default_errors }}</p>
-            {%- endif -%}
-            <fieldset class="aeris-reviews__stars-input">
-              <legend>Rating</legend>
-              {%- for i in (1..5) -%}
-                <label>
-                  <input type="radio" name="aeris_stars" value="{{ i }}" {% if i == 5 %}checked{% endif %}>
-                  <span>{{ i }}</span>
-                </label>
-              {%- endfor -%}
-            </fieldset>
-            <label class="aeris-reviews__field">
-              <span>Name</span>
-              <input type="text" name="comment[author]" value="{{ form.author }}" required>
-            </label>
-            <label class="aeris-reviews__field">
-              <span>Email</span>
-              <input type="email" name="comment[email]" value="{{ form.email }}" required>
-            </label>
-            <label class="aeris-reviews__field">
-              <span>Review</span>
-              <textarea name="aeris_review_text" rows="4" required></textarea>
-            </label>
-            <input type="hidden" name="comment[body]" data-aeris-review-body>
-            <button type="submit">Submit review</button>
-          {% endform %}
-        </div>
+        {%- if customer -%}
+          <div id="AerisReviewForm">
+            {% form 'new_comment', review_article, class: 'aeris-reviews__form' %}
+              {%- if form.posted_successfully? -%}
+                <p class="aeris-reviews__status" role="status">Thank you. Your review was sent.</p>
+              {%- endif -%}
+              {%- if form.errors -%}
+                <p class="aeris-reviews__status" role="alert">{{ form.errors | default_errors }}</p>
+              {%- endif -%}
+              <fieldset class="aeris-reviews__stars-input">
+                <legend>Rating</legend>
+                {%- for i in (1..5) -%}
+                  <label>
+                    <input type="radio" name="aeris_stars" value="{{ i }}" {% if i == 5 %}checked{% endif %}>
+                    <span>{{ i }}</span>
+                  </label>
+                {%- endfor -%}
+              </fieldset>
+              <input type="hidden" name="comment[author]" value="{{ customer.name | escape }}">
+              <input type="hidden" name="comment[email]" value="{{ customer.email | escape }}">
+              <label class="aeris-reviews__field">
+                <span>Review</span>
+                <textarea name="aeris_review_text" rows="4" required></textarea>
+              </label>
+              <input type="hidden" name="comment[body]" data-aeris-review-body>
+              <button type="submit">Submit review</button>
+            {% endform %}
+          </div>
+        {%- else -%}
+          <p class="aeris-reviews__empty" id="AerisReviewForm">
+            Log in or create an account to write a review.
+            <a href="{{ routes.account_login_url }}?return_url={{ product.url | url_param_escape }}">Log in</a>
+            or
+            <a href="{{ routes.account_register_url }}?return_url={{ product.url | url_param_escape }}">Create account</a>
+          </p>
+        {%- endif -%}
       {%- else -%}
         <p class="aeris-reviews__empty">Reviews can be written once blog comments are turned on for the Journal blog in Shopify admin.</p>
       {%- endif -%}
@@ -112,6 +119,7 @@
   .aeris-reviews__tabs span { letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.2rem; }
   .aeris-reviews__number { margin: 1.2rem 0 0; font-family: Newsreader, Georgia, serif; font-size: 4.8rem; line-height: 1; }
   .aeris-reviews__based, .aeris-reviews__empty, .aeris-reviews__meta { color: #6f6862; }
+  .aeris-reviews__empty a { color: #1c1c1c; }
   .aeris-reviews__write, .aeris-reviews__form button {
     display: inline-flex; margin-top: 1.6rem; padding: 1rem 1.6rem; border: 0; border-radius: 999px;
     background: #1c1c1c; color: #fff; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.2rem; cursor: pointer;
