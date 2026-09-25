@@ -11,6 +11,8 @@
   max-width: 100%;
   display: inline-block;
   min-width: var(--image-width);
+  overflow: hidden;
+  border-radius: var(--card-corner-radius, 1.2rem);
 }
 .multicolumn-card__image .f-image--placeholder {
   display: inline-block;

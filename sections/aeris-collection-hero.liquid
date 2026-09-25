@@ -129,7 +129,7 @@
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
     }
     .aeris-collection-hero__chips {
-      padding: 2.4rem 0 0.8rem;
+      padding: 2.4rem 0 2.4rem;
     }
     .aeris-collection-hero__chip-list {
       list-style: none;
@@ -148,12 +148,19 @@
       background: #eceae4;
       text-decoration: none;
     }
-    .aeris-collection-hero__chip-media,
+    .aeris-collection-hero__chip-media {
+      position: absolute;
+      inset: 0;
+      display: block;
+      overflow: hidden;
+      border-radius: inherit;
+    }
     .aeris-collection-hero__chip-image {
       width: 100%;
       height: 100%;
       display: block;
       object-fit: cover;
+      border-radius: inherit;
     }
     .aeris-collection-hero__chip-label {
       position: absolute;

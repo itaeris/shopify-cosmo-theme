@@ -1,5 +1,7 @@
 .f-image-comparison-slider {
   --color-foreground: 34, 34, 34;
+  overflow: hidden;
+  border-radius: var(--card-corner-radius, 1.2rem);
 }
 .f-image-comparison-slider[data-animation] {
   --percent: 95%;

@@ -130,6 +130,16 @@
   width: 12.5rem;
   margin-inline-start: 2rem;
   flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--card-corner-radius, 1.2rem);
+}
+.f-testimonial--unbalanced .f-testimonial__image img,
+.f-testimonial--unbalanced .f-testimonial__image .f-image,
+.f-testimonial--unbalanced .f-testimonial__image .placeholder-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-corner-radius, 1.2rem);
 }
 .f-testimonial--unbalanced .f-testimonial__text {
   margin-top: 2rem;

@@ -58,6 +58,15 @@
 .f-article-template__hero--large > .f-image {
   height: 22rem;
 }
+.f-article-template__hero-container [class*='f-article-template__hero'],
+.f-article-template__hero-container .f-image,
+.f-article-template__hero-container img,
+.f-article-template__content img {
+  border-radius: 1.2rem;
+}
+.f-article-template__hero-container .f-image {
+  overflow: hidden;
+}
 @media (min-width: 768px) {
   .f-article-template__hero--small > .f-image {
     height: 27rem;

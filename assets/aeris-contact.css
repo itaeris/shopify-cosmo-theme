@@ -23,6 +23,8 @@
   width: min(1280px, calc(100% - 8rem));
   margin: 0 auto 7.2rem;
   background: #f6f3ee;
+  border-radius: 1.2rem;
+  overflow: hidden;
 }
 
 .aeris-contact__media {

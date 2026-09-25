@@ -73,8 +73,25 @@
     --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
   }
   {% if custom_class contains 'aeris-best-sellers' %}
+    #{{ section_id }} {
+      padding-bottom: 4.8rem;
+      overflow: visible;
+    }
+    #shopify-section-{{ section.id }} {
+      overflow: visible;
+      position: relative;
+      z-index: 1;
+    }
     #{{ section_id }} .collection-card {
       position: relative;
+    }
+    #{{ section_id }} .collection-card__image-wrapper,
+    #{{ section_id }} .collection-card__image,
+    #{{ section_id }} .collection-card__image img {
+      border-radius: 1.2rem;
+    }
+    #{{ section_id }} .collection-card__image-wrapper {
+      overflow: hidden;
     }
     #{{ section_id }} .collection-card__info {
       position: absolute;
@@ -83,8 +100,9 @@
       bottom: 0;
       z-index: 1;
       margin: 0;
-      padding: 1.4rem 1.6rem;
+      padding: 1.4rem 1.6rem 1.8rem;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100%);
+      border-radius: 0 0 1.2rem 1.2rem;
     }
     #{{ section_id }} .collection-card__title {
       color: #fff;

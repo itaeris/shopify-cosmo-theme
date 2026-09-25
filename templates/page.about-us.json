@@ -91,7 +91,7 @@
         ".image-with-text__heading {text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.5rem; line-height: 1.55; max-width: 38rem;}",
         ".image-with-text__text {max-width: 42rem; font-size: 1.4rem; line-height: 1.7;}",
         ".image-with-text__text p {margin-bottom: 1.8rem;}",
-        ".image-with-text__media {border-radius: 0;}"
+        ".image-with-text__media {border-radius: 1.2rem; overflow: hidden;}"
       ],
       "settings": {
         "container": "container",
@@ -284,7 +284,9 @@
         "content_6p66ke",
         "image_card_w8hfGh"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".collapsible-tabs__image-col .f-card {border-radius: 0;}"
+      ],
       "settings": {
         "container": "container-full",
         "color_schema": "scheme-7",
