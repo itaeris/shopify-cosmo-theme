@@ -47,4 +47,6 @@
 .f-favorite-collection__product .product-card {
   padding: 1.6rem;
   background-color: var(--color-bg-2);
+  border-radius: var(--card-corner-radius);
+  overflow: hidden;
 }

@@ -257,11 +257,38 @@
   box-sizing: content-box;
 }
 
-.f-card {
+.f-favorite-collection__image,
+.f-favorite-collection__image .f-image,
+.f-favorite-collection__image img,
+.f-favorite-collection__image .placeholder-svg {
   border-radius: var(--card-corner-radius);
 }
-.f-card > .f-image {
+.f-favorite-collection__image {
+  overflow: hidden;
+}
+
+.f-card {
   border-radius: var(--card-corner-radius);
+  overflow: hidden;
+}
+.f-card > .f-image,
+.product-card__image,
+.f-image .placeholder-svg,
+.product-card__image .placeholder-svg {
+  border-radius: 0;
+}
+.product-card__image {
+  overflow: hidden;
+}
+
+.f-section__gallery-images {
+  --card-corner-radius: 0px;
+}
+.f-section__gallery-images .gallery-images__item,
+.f-section__gallery-images .f-image,
+.f-section__gallery-images img,
+.f-section__gallery-images .placeholder-svg {
+  border-radius: 0;
 }
 
 .f-section-padding {

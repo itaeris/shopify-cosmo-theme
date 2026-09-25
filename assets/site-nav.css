@@ -108,7 +108,7 @@
   top: 100%;
   inset-inline-start: 0;
   width: 100%;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 5.6rem;
   overflow: hidden;
   max-height: calc(95vh - var(--f-header-height));
   overflow-y: auto;

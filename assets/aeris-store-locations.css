@@ -80,6 +80,7 @@
   height: 32rem;
   background: #f4f0ea;
   border: 1px dashed #cfc8bf;
+  border-radius: 1.2rem;
 }
 
 .aeris-stores__photo-image,
@@ -99,6 +100,8 @@
   height: 100%;
   gap: 0.8rem;
   color: #8a847c;
+  border-radius: 1.2rem;
+  overflow: hidden;
 }
 
 .aeris-stores__photo-svg {
@@ -143,6 +146,7 @@
   height: 32rem;
   background: #f4f0ea;
   border: 1px solid #ece7e1;
+  border-radius: 1.2rem;
 }
 
 .aeris-stores__map iframe {
