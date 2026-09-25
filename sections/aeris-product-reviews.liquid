@@ -1,0 +1,95 @@
+{%- liquid
+  assign rating = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value | default: product.metafields.reviews.rating_count
+-%}
+<section class="aeris-reviews">
+  <div class="container aeris-reviews__grid">
+    <div class="aeris-reviews__score">
+      <div class="aeris-reviews__tabs"><span>Reviews</span></div>
+      {%- if rating != blank -%}
+        <p class="aeris-reviews__number">{{ rating.rating | round: 1 }}</p>
+        <p class="aeris-reviews__stars" aria-hidden="true">★★★★★</p>
+        <p class="aeris-reviews__based">Based on {{ rating_count }} reviews</p>
+      {%- else -%}
+        <p class="aeris-reviews__number">—</p>
+        <p class="aeris-reviews__based">No reviews yet</p>
+      {%- endif -%}
+      <a class="aeris-reviews__write" href="#shopify-product-reviews">Write a review</a>
+    </div>
+    <div class="aeris-reviews__body">
+      <h2>Reviews</h2>
+      {%- if rating != blank -%}
+        <p class="aeris-reviews__inline">{{ rating.rating | round: 1 }} ★★★★★</p>
+      {%- endif -%}
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">
+        {{ product.metafields.spr.reviews }}
+      </div>
+      {%- if product.metafields.spr.reviews == blank and rating == blank -%}
+        <p class="aeris-reviews__empty">Stars, photos, and the review form appear here after Judge.me is installed and this product has reviews.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% style %}
+  .aeris-reviews {
+    padding: 4.8rem 0 6.4rem;
+  }
+  .aeris-reviews__grid {
+    display: grid;
+    gap: 2.4rem;
+  }
+  .aeris-reviews__score {
+    padding: 2.4rem;
+    background: #f6f3ee;
+    border-radius: 1.2rem;
+  }
+  .aeris-reviews__tabs span {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+  .aeris-reviews__number {
+    margin: 1.2rem 0 0;
+    font-family: Newsreader, Georgia, serif;
+    font-size: 4.8rem;
+    line-height: 1;
+  }
+  .aeris-reviews__stars,
+  .aeris-reviews__inline {
+    letter-spacing: 0.12em;
+  }
+  .aeris-reviews__based,
+  .aeris-reviews__empty {
+    color: #6f6862;
+  }
+  .aeris-reviews__write {
+    display: inline-flex;
+    margin-top: 1.6rem;
+    padding: 1rem 1.6rem;
+    border-radius: 999px;
+    background: #1c1c1c;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+  .aeris-reviews__body h2 {
+    margin: 0 0 1.2rem;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+  }
+  @media (min-width: 990px) {
+    .aeris-reviews__grid {
+      grid-template-columns: minmax(24rem, 34rem) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+{% endstyle %}
+{% schema %}
+{
+  "name": "Aeris product reviews",
+  "settings": [],
+  "presets": [{ "name": "Aeris product reviews" }]
+}
+{% endschema %}

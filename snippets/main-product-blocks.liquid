@@ -670,6 +670,8 @@
               </div>
             </modal-dialog>
           {% endif %}
+        {%- when 'aeris_personalise' -%}
+          {% render 'aeris-product-personalise', block: block, product_form_id: product_form_id %}
         {%- when 'buy_buttons' -%}
           <div {{ block.shopify_attributes }}>
             {%- liquid

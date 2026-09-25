@@ -63,6 +63,12 @@
           "disabled": true,
           "settings": {}
         },
+        "aeris_personalise": {
+          "type": "aeris_personalise",
+          "settings": {
+            "charm_label": "Butterfly Charm"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -157,6 +163,7 @@
         "c3fe57e7-f87d-482d-a723-0b40a6f4ff8d",
         "variant_picker",
         "quantity_selector",
+        "aeris_personalise",
         "buy_buttons",
         "0202d9f6-9275-431a-be80-93368ef98507",
         "shipping_TqiCge",
@@ -474,10 +481,15 @@
         "divider_width": "container",
         "animations": "inherit"
       }
+    },
+    "aeris_product_reviews": {
+      "type": "aeris-product-reviews",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "aeris_product_reviews",
     "multicolumn_eX6pK6",
     "testimonials_FcqFjd",
     "custom_content_4Y7LQm",

@@ -1,0 +1,240 @@
+{%- liquid
+  assign charm_label = block.settings.charm_label | default: 'Butterfly Charm'
+  assign show_personalise = false
+  if product.handle contains 'coco-vanity' or product.handle contains 'vanity-bag' or product.tags contains 'personalise'
+    assign show_personalise = true
+  endif
+-%}
+{%- if show_personalise -%}
+<div class="aeris-personalise" data-aeris-personalise>
+  <button class="aeris-personalise__toggle" type="button" aria-expanded="false">
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+      <path d="M2.5 11.5l7.2-7.2 2 2-7.2 7.2H2.5v-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+    Personalise
+  </button>
+
+  <div class="aeris-personalise__panel" hidden>
+    <p class="aeris-personalise__heading">Choose your charm</p>
+    <label class="aeris-personalise__charm">
+      <input type="checkbox" name="properties[Charm]" value="{{ charm_label }}" form="{{ product_form_id }}">
+      <span class="aeris-personalise__charm-box" aria-hidden="true">
+        {%- if block.settings.charm_image != blank -%}
+          {{ block.settings.charm_image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}
+        {%- else -%}
+          <span class="aeris-personalise__charm-mark"></span>
+        {%- endif -%}
+      </span>
+      <span>{{ charm_label }}</span>
+    </label>
+
+    <p class="aeris-personalise__heading">Personalise your</p>
+    <p class="aeris-personalise__hint">Up to 3 letters. Added on the product and sent with the order.</p>
+
+    <label class="aeris-personalise__field">
+      <span>Letters</span>
+      <input
+        type="text"
+        name="properties[Monogram]"
+        form="{{ product_form_id }}"
+        maxlength="3"
+        placeholder="JS"
+        data-aeris-letters
+        autocomplete="off"
+      >
+    </label>
+    <label class="aeris-personalise__field">
+      <span>Font</span>
+      <select name="properties[Monogram font]" form="{{ product_form_id }}" data-aeris-font>
+        <option value="Serif" selected>Serif</option>
+        <option value="Sans">Sans</option>
+      </select>
+    </label>
+    <label class="aeris-personalise__field">
+      <span>Size</span>
+      <select name="properties[Monogram size]" form="{{ product_form_id }}">
+        <option value="24pt">24pt</option>
+        <option value="36pt" selected>36pt</option>
+        <option value="48pt">48pt</option>
+      </select>
+    </label>
+    <fieldset class="aeris-personalise__colours">
+      <legend>Colour</legend>
+      <label><input type="radio" name="properties[Monogram colour]" value="Gold" form="{{ product_form_id }}" checked><span style="--swatch:#c4a574"></span></label>
+      <label><input type="radio" name="properties[Monogram colour]" value="Silver" form="{{ product_form_id }}"><span style="--swatch:#c9c9c9"></span></label>
+      <label><input type="radio" name="properties[Monogram colour]" value="Black" form="{{ product_form_id }}"><span style="--swatch:#1c1c1c"></span></label>
+    </fieldset>
+  </div>
+</div>
+
+<style>
+  .aeris-personalise__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    min-height: 4.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #1c1c1c;
+    border-radius: 999px;
+    background: #fff;
+    color: #1c1c1c;
+    cursor: pointer;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+  .aeris-personalise__panel {
+    margin-bottom: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid #e6e1da;
+    border-radius: 1.2rem;
+    background: #faf8f5;
+  }
+  .aeris-personalise__heading {
+    margin: 0 0 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+  }
+  .aeris-personalise__hint {
+    margin: 0 0 1.2rem;
+    color: #6f6862;
+    font-size: 1.3rem;
+  }
+  .aeris-personalise__charm {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    width: 12rem;
+    margin-bottom: 1.6rem;
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .aeris-personalise__charm input {
+    position: absolute;
+    opacity: 0;
+  }
+  .aeris-personalise__charm-box {
+    display: grid;
+    place-items: center;
+    width: 9.6rem;
+    height: 9.6rem;
+    border: 1px solid #ddd6cc;
+    background: #fff;
+  }
+  .aeris-personalise__charm input:checked + .aeris-personalise__charm-box {
+    outline: 2px solid #1c1c1c;
+    outline-offset: 2px;
+  }
+  .aeris-personalise__charm-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .aeris-personalise__charm-mark {
+    width: 2.4rem;
+    height: 1.6rem;
+    border-radius: 40% 40% 50% 50%;
+    background: #1c1c1c;
+  }
+  .aeris-personalise__field {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+  }
+  .aeris-personalise__field input,
+  .aeris-personalise__field select {
+    width: 100%;
+    min-height: 4rem;
+    padding: 0 1.2rem;
+    border: 1px solid #e3dbd2;
+    border-radius: 999px;
+    background: #fff;
+  }
+  .aeris-personalise__colours {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    border: 0;
+  }
+  .aeris-personalise__colours legend {
+    margin-right: 0.4rem;
+    font-size: 1.3rem;
+  }
+  .aeris-personalise__colours label {
+    position: relative;
+  }
+  .aeris-personalise__colours input {
+    position: absolute;
+    opacity: 0;
+  }
+  .aeris-personalise__colours span {
+    display: block;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--swatch);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  }
+  .aeris-personalise__colours input:checked + span {
+    outline: 2px solid #1c1c1c;
+    outline-offset: 2px;
+  }
+  .aeris-monogram {
+    position: absolute;
+    left: 50%;
+    bottom: 18%;
+    z-index: 2;
+    transform: translateX(-50%);
+    color: #c4a574;
+    font-family: Newsreader, Georgia, serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+  }
+  .aeris-monogram.is-sans {
+    font-family: Montserrat, sans-serif;
+  }
+</style>
+<script>
+  (function () {
+    var root = document.querySelector('[data-aeris-personalise]');
+    if (!root) return;
+    var toggle = root.querySelector('.aeris-personalise__toggle');
+    var panel = root.querySelector('.aeris-personalise__panel');
+    var letters = root.querySelector('[data-aeris-letters]');
+    var font = root.querySelector('[data-aeris-font]');
+    var media = document.querySelector('.f-product__media-wrapper');
+    var mark = document.createElement('span');
+    mark.className = 'aeris-monogram';
+    mark.hidden = true;
+    if (media) {
+      media.style.position = 'relative';
+      media.appendChild(mark);
+    }
+    toggle.addEventListener('click', function () {
+      var open = panel.hidden;
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    function paint() {
+      var value = (letters.value || '').slice(0, 3).toUpperCase();
+      letters.value = value;
+      mark.textContent = value;
+      mark.hidden = value.length === 0;
+      mark.classList.toggle('is-sans', font.value === 'Sans');
+    }
+    letters.addEventListener('input', paint);
+    font.addEventListener('change', paint);
+  })();
+</script>
+{%- endif -%}
