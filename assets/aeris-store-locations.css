@@ -63,9 +63,9 @@
 
 .aeris-stores__row {
   display: grid;
-  grid-template-columns: minmax(26rem, 34rem) minmax(0, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 2.4rem;
-  align-items: center;
+  align-items: start;
   padding: 1.6rem 0;
   border-top: 1px solid #ece7e1;
 }
@@ -77,7 +77,7 @@
 .aeris-stores__photo {
   margin-bottom: 1.4rem;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  height: 32rem;
   background: #f4f0ea;
   border: 1px dashed #cfc8bf;
 }
@@ -140,7 +140,7 @@
 
 .aeris-stores__map {
   overflow: hidden;
-  height: 24rem;
+  height: 32rem;
   background: #f4f0ea;
   border: 1px solid #ece7e1;
 }
@@ -156,20 +156,13 @@
   display: none;
 }
 
-.aeris-stores.is-single .aeris-stores__map {
-  position: sticky;
-  top: 8rem;
-  height: 62rem;
-}
-
 @media (max-width: 989px) {
   .aeris-stores__row {
     grid-template-columns: 1fr;
-    align-items: start;
   }
 
-  .aeris-stores.is-single .aeris-stores__map {
-    position: static;
-    height: 36rem;
+  .aeris-stores__photo,
+  .aeris-stores__map {
+    height: 24rem;
   }
 }
