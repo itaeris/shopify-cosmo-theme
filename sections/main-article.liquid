@@ -150,6 +150,7 @@
               {%- endif -%}
 
               {%- for comment in article.comments -%}
+                {%- if comment.content contains 'AERIS_REVIEW|' -%}{% continue %}{%- endif -%}
                 <article id="{{ comment.id }}" class="f-article-template__comments-comment">
                   {{ comment.content }}
                   <footer class="text-subtext">
