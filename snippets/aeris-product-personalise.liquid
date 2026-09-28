@@ -1,5 +1,4 @@
 {%- liquid
-  assign charm_label = block.settings.charm_label | default: 'Butterfly Charm'
   assign show_personalise = false
   if product.handle contains 'coco-vanity' or product.handle contains 'vanity-bag' or product.tags contains 'personalise'
     assign show_personalise = true
@@ -15,20 +14,7 @@
   </button>
 
   <div class="aeris-personalise__panel" hidden>
-    <p class="aeris-personalise__heading">Choose your charm</p>
-    <label class="aeris-personalise__charm">
-      <input type="checkbox" name="properties[Charm]" value="{{ charm_label }}" form="{{ product_form_id }}">
-      <span class="aeris-personalise__charm-box" aria-hidden="true">
-        {%- if block.settings.charm_image != blank -%}
-          {{ block.settings.charm_image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy' }}
-        {%- else -%}
-          <span class="aeris-personalise__charm-mark"></span>
-        {%- endif -%}
-      </span>
-      <span>{{ charm_label }}</span>
-    </label>
-
-    <p class="aeris-personalise__heading">Personalise your</p>
+    <p class="aeris-personalise__heading">Personalise your Coco</p>
     <p class="aeris-personalise__hint">Up to 3 letters. Added on the product and sent with the order.</p>
 
     <label class="aeris-personalise__field">
@@ -102,44 +88,6 @@
     margin: 0 0 1.2rem;
     color: #6f6862;
     font-size: 1.3rem;
-  }
-  .aeris-personalise__charm {
-    display: grid;
-    justify-items: center;
-    gap: 0.6rem;
-    width: 12rem;
-    margin-bottom: 1.6rem;
-    text-align: center;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .aeris-personalise__charm input {
-    position: absolute;
-    opacity: 0;
-  }
-  .aeris-personalise__charm-box {
-    display: grid;
-    place-items: center;
-    width: 9.6rem;
-    height: 9.6rem;
-    border: 1px solid #ddd6cc;
-    background: #fff;
-  }
-  .aeris-personalise__charm input:checked + .aeris-personalise__charm-box {
-    outline: 2px solid #1c1c1c;
-    outline-offset: 2px;
-  }
-  .aeris-personalise__charm-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .aeris-personalise__charm-mark {
-    width: 2.4rem;
-    height: 1.6rem;
-    border-radius: 40% 40% 50% 50%;
-    background: #1c1c1c;
   }
   .aeris-personalise__field {
     display: grid;
