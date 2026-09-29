@@ -1,0 +1,45 @@
+<a
+  class="aeris-whatsapp"
+  href="https://wa.me/6285286142105"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat WhatsApp 085286142105"
+>
+  <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M20.5 3.5A11 11 0 0 0 2.1 17.8L1 23l5.3-1.1A11 11 0 0 0 20.5 3.5zM12 20.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.5l.4-.5c.1-.1.1-.3.2-.4.1-.1 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.4 1.4.6 2 .6 2.6.5.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.1-.4-.2z"/>
+  </svg>
+</a>
+<style>
+  .aeris-whatsapp {
+    position: fixed;
+    z-index: 110;
+    inset-inline-end: 1.6rem;
+    inset-block-end: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.18);
+  }
+  .aeris-whatsapp:hover {
+    background: #1ebe5d;
+    color: #fff;
+  }
+  @media (max-width: 767.98px) {
+    .aeris-whatsapp {
+      inset-block-end: calc(var(--f-mobile-navbar-height, 0px) + 1.6rem);
+    }
+  }
+  :has(.sticky-atc-bar.sticky-atc-bar--show) .aeris-whatsapp {
+    inset-block-end: calc(var(--f-sticky-atc-bar-height, 0px) + 1.6rem);
+  }
+  @media (max-width: 767.98px) {
+    :has(.sticky-atc-bar.sticky-atc-bar--show) .aeris-whatsapp {
+      inset-block-end: calc(var(--f-mobile-navbar-height, 0px) + var(--f-sticky-atc-bar-height, 0px) + 1.6rem);
+    }
+  }
+</style>

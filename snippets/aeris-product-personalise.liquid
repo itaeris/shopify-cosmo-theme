@@ -31,24 +31,15 @@
     </label>
     <label class="aeris-personalise__field">
       <span>Font</span>
-      <select name="properties[Monogram font]" form="{{ product_form_id }}" data-aeris-font>
-        <option value="Serif" selected>Serif</option>
-        <option value="Sans">Sans</option>
-      </select>
+      <input type="text" name="properties[Monogram font]" form="{{ product_form_id }}" value="Montserrat" readonly>
     </label>
     <label class="aeris-personalise__field">
       <span>Size</span>
-      <select name="properties[Monogram size]" form="{{ product_form_id }}">
-        <option value="24pt">24pt</option>
-        <option value="36pt" selected>36pt</option>
-        <option value="48pt">48pt</option>
-      </select>
+      <input type="text" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt" readonly>
     </label>
     <fieldset class="aeris-personalise__colours">
       <legend>Colour</legend>
       <label><input type="radio" name="properties[Monogram colour]" value="Gold" form="{{ product_form_id }}" checked><span style="--swatch:#c4a574"></span></label>
-      <label><input type="radio" name="properties[Monogram colour]" value="Silver" form="{{ product_form_id }}"><span style="--swatch:#c9c9c9"></span></label>
-      <label><input type="radio" name="properties[Monogram colour]" value="Black" form="{{ product_form_id }}"><span style="--swatch:#1c1c1c"></span></label>
     </fieldset>
   </div>
 </div>
@@ -137,20 +128,22 @@
     outline: 2px solid #1c1c1c;
     outline-offset: 2px;
   }
+  .aeris-monogram-host {
+    position: relative;
+  }
   .aeris-monogram {
     position: absolute;
     left: 50%;
-    bottom: 18%;
+    top: 74%;
     z-index: 2;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     color: #c4a574;
-    font-family: Newsreader, Georgia, serif;
-    font-size: 2.8rem;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 11pt;
+    line-height: 1;
     letter-spacing: 0.08em;
     pointer-events: none;
-  }
-  .aeris-monogram.is-sans {
-    font-family: Montserrat, sans-serif;
   }
 </style>
 <script>
@@ -160,14 +153,13 @@
     var toggle = root.querySelector('.aeris-personalise__toggle');
     var panel = root.querySelector('.aeris-personalise__panel');
     var letters = root.querySelector('[data-aeris-letters]');
-    var font = root.querySelector('[data-aeris-font]');
-    var media = document.querySelector('.f-product__media-wrapper');
+    var host = document.querySelector('.f-product__media--image .f-image') || document.querySelector('media-gallery');
     var mark = document.createElement('span');
     mark.className = 'aeris-monogram';
     mark.hidden = true;
-    if (media) {
-      media.style.position = 'relative';
-      media.appendChild(mark);
+    if (host) {
+      host.classList.add('aeris-monogram-host');
+      host.appendChild(mark);
     }
     toggle.addEventListener('click', function () {
       var open = panel.hidden;
@@ -179,10 +171,8 @@
       letters.value = value;
       mark.textContent = value;
       mark.hidden = value.length === 0;
-      mark.classList.toggle('is-sans', font.value === 'Sans');
     }
     letters.addEventListener('input', paint);
-    font.addEventListener('change', paint);
   })();
 </script>
 {%- endif -%}

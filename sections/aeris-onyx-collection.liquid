@@ -13,6 +13,10 @@
   assign hero_text = section.settings.hero_text
   assign hero_url = hero_block.settings.link | default: hero_product.url
   assign hero_form_id = 'AerisOnyxForm-' | append: section.id
+  assign hero_image = section.settings.banner_image
+  if hero_image == blank and hero_product != blank
+    assign hero_image = hero_product.featured_image
+  endif
 -%}
 
 <section
@@ -24,36 +28,20 @@
       <h2 class="aeris-onyx__banner-title">{{ hero_title }}</h2>
     {%- endif -%}
 
-    {%- if hero_product.images.size > 0 -%}
-      <div class="aeris-onyx__carousel" data-onyx-carousel>
-        {%- if hero_product.images.size > 1 -%}
-          <button type="button" class="aeris-onyx__arrow aeris-onyx__arrow--prev" data-onyx-prev aria-label="Previous">
-            <span aria-hidden="true">‹</span>
-          </button>
-        {%- endif -%}
-        <div class="aeris-onyx__viewport">
-          <div class="aeris-onyx__track" data-onyx-track>
-            {%- for image in hero_product.images limit: 6 -%}
-              <div class="aeris-onyx__slide">
-                {{
-                  image
-                  | image_url: width: 1400
-                  | image_tag:
-                    loading: 'lazy',
-                    widths: '500, 800, 1100, 1400',
-                    sizes: '(min-width: 750px) 48rem, 86vw',
-                    class: 'aeris-onyx__slide-image',
-                    alt: hero_title
-                }}
-              </div>
-            {%- endfor -%}
-          </div>
-        </div>
-        {%- if hero_product.images.size > 1 -%}
-          <button type="button" class="aeris-onyx__arrow aeris-onyx__arrow--next" data-onyx-next aria-label="Next">
-            <span aria-hidden="true">›</span>
-          </button>
-        {%- endif -%}
+    {%- if hero_image != blank -%}
+      <div class="aeris-onyx__banner">
+        {{
+          hero_image
+          | image_url: width: 2000
+          | image_tag:
+            loading: 'lazy',
+            widths: '800, 1200, 1600, 2000',
+            sizes: '100vw',
+            class: 'aeris-onyx__banner-image',
+            alt: hero_title
+        }}
+      </div>
+    {%- endif -%}
 
     {%- if hero_product != blank or hero_subtitle != blank or hero_text != blank -%}
       <div class="aeris-onyx__banner-card">
@@ -114,39 +102,7 @@
         {%- endif -%}
       </div>
     {%- endif -%}
-      </div>
-    {%- endif -%}
   </div>
-
-  <script>
-    (function () {
-      var root = document.getElementById('AerisOnyx-{{ section.id }}');
-      if (!root) return;
-      var track = root.querySelector('[data-onyx-track]');
-      if (!track) return;
-      var slides = track.children;
-      var index = 0;
-      function visibleCount() {
-        return window.matchMedia('(min-width: 750px)').matches ? 3 : 1;
-      }
-      function go(next) {
-        if (!slides.length) return;
-        var visible = visibleCount();
-        var max = Math.max(slides.length - visible, 0);
-        if (next > max) index = 0;
-        else if (next < 0) index = max;
-        else index = next;
-        root.style.setProperty('--onyx-visible', visible);
-        track.style.transform = 'translateX(' + index * -(100 / visible) + '%)';
-      }
-      window.addEventListener('resize', function () { go(index); });
-      var prev = root.querySelector('[data-onyx-prev]');
-      var next = root.querySelector('[data-onyx-next]');
-      if (prev) prev.addEventListener('click', function () { go(index - 1); });
-      if (next) next.addEventListener('click', function () { go(index + 1); });
-      go(0);
-    })();
-  </script>
 
   {%- if section.blocks.size > 0 -%}
     <div class="aeris-onyx__products">
@@ -223,59 +179,23 @@
     background: #f6f1ea;
   }
 
-  #AerisOnyx-{{ section.id }} .aeris-onyx__carousel {
-    position: relative;
+  #AerisOnyx-{{ section.id }} .aeris-onyx__banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    margin-top: 2rem;
-  }
-
-  #AerisOnyx-{{ section.id }} .aeris-onyx__viewport {
+    height: 28rem;
+    margin-top: 2.4rem;
     overflow: hidden;
   }
 
-  #AerisOnyx-{{ section.id }} .aeris-onyx__track {
-    display: flex;
-    transition: transform 0.45s ease;
-  }
-
-  #AerisOnyx-{{ section.id }} .aeris-onyx__slide {
-    flex: 0 0 calc(100% / var(--onyx-visible, 1));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 36rem;
-  }
-
-  #AerisOnyx-{{ section.id }} .aeris-onyx__slide-image {
-    width: 100%;
-    max-width: none;
-    height: 36rem;
-    max-height: 36rem;
+  #AerisOnyx-{{ section.id }} .aeris-onyx__banner-image {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
     object-fit: contain;
   }
-
-  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow {
-    position: absolute;
-    top: 16rem;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4rem;
-    height: 4rem;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: #fff;
-    color: #1c1c1c;
-    font-size: 2.8rem;
-    line-height: 1;
-    cursor: pointer;
-  }
-
-  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--prev { left: 1.6rem; }
-  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--next { right: 1.6rem; }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__banner-title {
     margin: 0;
@@ -451,17 +371,8 @@
       padding-top: 5.2rem;
     }
 
-    #AerisOnyx-{{ section.id }} .aeris-onyx__slide,
-    #AerisOnyx-{{ section.id }} .aeris-onyx__slide-image {
-      height: 46rem;
-    }
-
-    #AerisOnyx-{{ section.id }} .aeris-onyx__slide {
-      min-height: 46rem;
-    }
-
-    #AerisOnyx-{{ section.id }} .aeris-onyx__arrow {
-      top: 20rem;
+    #AerisOnyx-{{ section.id }} .aeris-onyx__banner {
+      height: 36rem;
     }
 
     #AerisOnyx-{{ section.id }} .aeris-onyx__grid {
