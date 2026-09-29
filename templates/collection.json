@@ -18,6 +18,66 @@
         "padding_bottom": 0
       }
     },
+    "aeris_collection_hero": {
+      "type": "aeris-collection-hero",
+      "blocks": {
+        "chip_all": {
+          "type": "chip",
+          "settings": {
+            "title": "All",
+            "link": "/collections/accessories",
+            "image": "shopify://shop_images/ABA_7558.jpg"
+          }
+        },
+        "chip_face": {
+          "type": "chip",
+          "settings": {
+            "title": "Face Brushes",
+            "link": "/collections/brushes",
+            "image": "shopify://shop_images/ABA_8264.jpg"
+          }
+        },
+        "chip_eye": {
+          "type": "chip",
+          "settings": {
+            "title": "Eye Brushes",
+            "link": "/collections/makeup-tools",
+            "image": "shopify://shop_images/AE828.jpg"
+          }
+        },
+        "chip_sets": {
+          "type": "chip",
+          "settings": {
+            "title": "Brush Sets",
+            "link": "/collections/aeris-brush-sets",
+            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg"
+          }
+        },
+        "chip_tools": {
+          "type": "chip",
+          "settings": {
+            "title": "Tools",
+            "link": "/collections/puffs",
+            "image": "shopify://shop_images/blendie-bar.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "chip_all",
+        "chip_face",
+        "chip_eye",
+        "chip_sets",
+        "chip_tools"
+      ],
+      "settings": {
+        "accessories_image": "shopify://shop_images/ABA_7635.jpg",
+        "cleansers_image": "shopify://shop_images/blendie-bar.jpg",
+        "hair_image": "shopify://shop_images/Dropdown_visual.jpg",
+        "bags_image": "shopify://shop_images/TT_02644.jpg",
+        "bundles_image": "shopify://shop_images/AE828.jpg",
+        "arrivals_image": "shopify://shop_images/TT_02644.jpg"
+      }
+    },
     "slideshow_jK84VC": {
       "type": "slideshow",
       "blocks": {
@@ -28,7 +88,7 @@
             "image_overlay_opacity": 0,
             "content_position": "center",
             "text_alignment": "center",
-            "text_color": "#FFFFFF",
+            "text_color": "#ffffff",
             "title": "BRUSH CLEANSER",
             "heading_size": "h2",
             "heading_color": "",
@@ -99,8 +159,8 @@
         "slide_8gciht",
         "slide_pmPFGd"
       ],
-      "name": "t:sections.slideshow.name",
       "disabled": true,
+      "name": "t:sections.slideshow.name",
       "settings": {
         "container": "container",
         "slideshow_height": "small",
@@ -175,6 +235,7 @@
         ".collection-card__title {font-size: 1.4rem; letter-spacing: 0.01em;}"
       ],
       "settings": {
+        "visible_collections": "all-products",
         "container": "container",
         "color_schema": "",
         "section_header_padding_bottom": "medium",
@@ -215,8 +276,7 @@
         "divider_width": "container",
         "custom_id": "",
         "custom_class": "",
-        "animations": "inherit",
-        "visible_collections": "all-products"
+        "animations": "inherit"
       }
     },
     "collection_list_best_sellers": {
@@ -271,86 +331,48 @@
         "cat_gifting"
       ],
       "settings": {
-        "container": "container",
         "visible_collections": "best-sellers-1",
+        "container": "container",
+        "color_schema": "",
+        "section_header_padding_bottom": "medium",
+        "section_header_content_spacing": "medium",
+        "header_layout": "vertical",
         "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "subheading": "",
+        "description": "",
+        "title_font": "heading",
+        "title_size": "h6",
         "card_style": "6",
         "text_alignment": "left",
         "text_color": "#ffffff",
         "image_ratio": "4/3",
         "show_count": false,
+        "inline_count": false,
         "columns": 5,
         "column_gap": "extra-small",
         "row_gap": "small",
+        "show_all_button_on_top": false,
+        "button_label": "",
+        "button_url": "",
+        "button_style": "btn--primary",
         "enable_slider": false,
+        "show_dots": false,
+        "show_nav": false,
         "enable_swipe_mobile": true,
         "column_mobile": "2",
         "padding_top": 24,
         "padding_bottom": 48,
         "padding_top_mobile": 16,
         "padding_bottom_mobile": 32,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
         "custom_class": "aeris-best-sellers",
         "animations": "inherit"
-      }
-    },
-    "aeris_collection_hero": {
-      "type": "aeris-collection-hero",
-      "blocks": {
-        "chip_all": {
-          "type": "chip",
-          "settings": {
-            "title": "All",
-            "link": "/collections/accessories",
-            "image": "shopify://shop_images/TT_06952.jpg"
-          }
-        },
-        "chip_face": {
-          "type": "chip",
-          "settings": {
-            "title": "Face Brushes",
-            "link": "/collections/brushes",
-            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg"
-          }
-        },
-        "chip_eye": {
-          "type": "chip",
-          "settings": {
-            "title": "Eye Brushes",
-            "link": "/collections/makeup-tools",
-            "image": "shopify://shop_images/AE828.jpg"
-          }
-        },
-        "chip_sets": {
-          "type": "chip",
-          "settings": {
-            "title": "Brush Sets",
-            "link": "/collections/aeris-brush-sets",
-            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg"
-          }
-        },
-        "chip_tools": {
-          "type": "chip",
-          "settings": {
-            "title": "Tools",
-            "link": "/collections/puffs",
-            "image": "shopify://shop_images/blendie-bar.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "chip_all",
-        "chip_face",
-        "chip_eye",
-        "chip_sets",
-        "chip_tools"
-      ],
-      "settings": {
-        "accessories_image": "shopify://shop_images/TT_06952.jpg",
-        "cleansers_image": "shopify://shop_images/blendie-bar.jpg",
-        "hair_image": "shopify://shop_images/Dropdown_visual.jpg",
-        "bags_image": "shopify://shop_images/TT_02644.jpg",
-        "bundles_image": "shopify://shop_images/AE828.jpg",
-        "arrivals_image": "shopify://shop_images/TT_02644.jpg"
       }
     },
     "banner": {

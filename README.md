@@ -59,14 +59,14 @@ Login dengan akun yang punya akses Aeris. Browser akan terbuka untuk authorize.
 
 ```bash
 # macOS / Linux / WSL
-HOME="$PWD/.shopify-user" npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362
+HOME="$PWD/.shopify-user" npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362 --theme-editor-sync
 ```
 
 Windows PowerShell:
 
 ```powershell
 $env:HOME = "$PWD\.shopify-user"
-npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362
+npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362 --theme-editor-sync
 ```
 
 Storefront password-protected. CLI akan minta **store password** (bukan password akun Shopify).
@@ -85,24 +85,7 @@ Biarkan terminal ini tetap jalan saat edit. File Liquid/JSON/CSS sync otomatis.
 
 ### Perintah lain (device yang sudah login)
 
-```bash
-HOME="$PWD/.shopify-user" npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362
-HOME="$PWD/.shopify-user" npx shopify theme push --store aerisbeaute.myshopify.com --theme 150027960362
-```
-
-Atau `npm run theme:pull` / `npm run theme:push` — tetap set `HOME` dulu seperti di atas.
-
-Store dan theme default ada di `shopify.theme.toml`.
-
-## Perintah lain
-
-```bash
-# Tarik file terbaru dari theme remote
-npm run theme:pull
-
-# Upload file lokal ke theme remote
-npm run theme:push
-```
+Jangan pakai `theme push` tanpa `--only`. Perintah itu mengunggah JSON template dan mengosongkan gambar di theme editor. Langkah aman ada di [Alur kerja](#alur-kerja).
 
 Store dan theme default ada di `shopify.theme.toml`.
 
@@ -138,12 +121,74 @@ Banner dropdown Shop All: **Ultra Luxurious Bristles** / MERLOT is now available
 
 ## Alur kerja
 
-1. `npm run theme:dev` — biarkan terminal ini tetap jalan
-2. Edit file Liquid / JSON / CSS
-3. Perubahan sync ke theme **Copy of Cosmo**
-4. Cek desktop dan mobile di preview
-5. Commit, lalu push ke GitHub
-6. Publish theme dari admin Shopify hanya setelah disetujui
+Gambar yang diisi di theme editor tersimpan di `templates/*.json`, `config/settings_data.json`, dan `sections/*-group.json`. Jangan upload file itu dari lokal, kecuali memang sengaja mengubah susunan section. Push seluruh tema menimpa isian gambar di admin sampai kotaknya kosong.
+
+`$env:HOME` di PowerShell hanya berlaku di jendela terminal yang sama. Set sekali, lalu perintah berikutnya di jendela itu tidak perlu diulang.
+
+### 1. Tarik setting gambar dari admin
+
+Jalankan di awal, atau setiap kali ada yang mengisi gambar di theme editor.
+
+macOS / Linux / WSL:
+
+```bash
+cd shopify-cosmo
+HOME="$PWD/.shopify-user" npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362 --only "templates/*.json" --only config/settings_data.json --only "sections/*.json"
+```
+
+Windows PowerShell:
+
+```powershell
+cd shopify-cosmo
+$env:HOME = "$PWD\.shopify-user"
+npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362 --only "templates/*.json" --only config/settings_data.json --only "sections/*.json"
+```
+
+### 2. Nyalakan preview, biarkan terminalnya tetap terbuka
+
+macOS / Linux / WSL:
+
+```bash
+HOME="$PWD/.shopify-user" npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362 --theme-editor-sync
+```
+
+Windows PowerShell:
+
+```powershell
+$env:HOME = "$PWD\.shopify-user"
+npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362 --theme-editor-sync
+```
+
+Kalau CLI menanyakan file yang beda antara lokal dan remote, pilih **Keep the remote version**. Itu mempertahankan gambar yang sudah diisi di admin.
+
+Preview: [http://127.0.0.1:9292](http://127.0.0.1:9292)
+
+### 3. Edit kodenya
+
+Ubah file Liquid, CSS, atau JS, lalu simpan. Terminal menulis `Synced`. Refresh preview.
+
+### 4. Kalau `theme dev` tidak jalan, upload hanya file yang diubah
+
+Ganti path-nya dengan file yang benar-benar diedit.
+
+macOS / Linux / WSL:
+
+```bash
+HOME="$PWD/.shopify-user" npx shopify theme push --store aerisbeaute.myshopify.com --theme 150027960362 --only snippets/nama-file.liquid --nodelete
+```
+
+Windows PowerShell:
+
+```powershell
+$env:HOME = "$PWD\.shopify-user"
+npx shopify theme push --store aerisbeaute.myshopify.com --theme 150027960362 --only snippets/nama-file.liquid --nodelete
+```
+
+Jangan jalankan `theme push` tanpa `--only`.
+
+### 5. Setelah beres
+
+Cek desktop dan mobile di preview. Commit, lalu push ke GitHub. Publish theme dari admin Shopify hanya setelah disetujui.
 
 ## Yang tidak di-commit
 

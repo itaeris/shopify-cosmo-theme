@@ -319,12 +319,12 @@
         "image_nq9Veb",
         "image_EDHUJW"
       ],
+      "disabled": true,
       "custom_css": [
         ".text-heading {max-width: 74rem; margin: 0 auto;}",
         "@media (min-width: 1024px) and (max-width: 1279px) {.highlight-text-image__image {--image-width: 80px !important; }}",
         "@media (min-width: 1280px) {.text-heading {max-width: 93rem; }}"
       ],
-      "disabled": true,
       "settings": {
         "container": "container",
         "color_scheme": "",
@@ -419,7 +419,7 @@
       "settings": {
         "container": "container",
         "color_schema": "scheme-8",
-        "collection": "",
+        "collection": "best-sellers-1",
         "enable_sticky_column": true,
         "section_header_padding_bottom": "large",
         "heading": "Unlock your<em> true power</em>",
@@ -428,7 +428,7 @@
         "heading_size": "h-xl",
         "heading_color": "",
         "subheading": "New Arrivals",
-        "description": "<p>MERLOT is a  curated beauty essentials are designed to enhance your natural glow, boost confidence, and make every day feel special.</p>",
+        "description": "<p>MERLOT is a &nbsp;curated beauty essentials are designed to enhance your natural glow, boost confidence, and make every day feel special.</p>",
         "button_label": "Shop Now",
         "button_link": "",
         "button_style": "btn--primary",
@@ -456,7 +456,8 @@
           "settings": {
             "product": "the-onyx-2-0-15pc-face-eye-brush-set",
             "title": "Onyx 2.0 Complete Set",
-            "subtitle": "15 pcs makeup brush"
+            "subtitle": "15 pcs makeup brush",
+            "link": ""
           }
         },
         "slide_single": {
@@ -464,7 +465,8 @@
           "settings": {
             "product": "the-onyx-2-0-individuals",
             "title": "Onyx 2.0 Single Brush",
-            "subtitle": "Choose from 15 single brushes"
+            "subtitle": "Choose from 15 single brushes",
+            "link": ""
           }
         }
       },
@@ -517,8 +519,8 @@
         "collection_WPJMBT",
         "collection_BUpqi8"
       ],
-      "custom_css": [],
       "disabled": true,
+      "custom_css": [],
       "settings": {
         "container": "container",
         "color_schema": "accent",
@@ -592,6 +594,7 @@
       ],
       "disabled": true,
       "settings": {
+        "visible_collections": "",
         "container": "container",
         "color_schema": "",
         "section_header_padding_bottom": "large",
@@ -976,8 +979,8 @@
         "product_FkqcRJ",
         "product_BwkEMi"
       ],
-      "custom_css": [],
       "disabled": true,
+      "custom_css": [],
       "settings": {
         "container": "container",
         "color_schema": "scheme-10",
@@ -1084,8 +1087,8 @@
         "testimonial_tUweFx",
         "testimonial_6VYtEh"
       ],
-      "custom_css": [],
       "disabled": true,
+      "custom_css": [],
       "settings": {
         "container": "container",
         "color_schema": "scheme-7",
@@ -1098,7 +1101,7 @@
         "heading_color": "",
         "description": "",
         "design": "unbalanced",
-        "stars_color": "#C4A574",
+        "stars_color": "#c4a574",
         "card_color_schema": "scheme-6",
         "columns": 4,
         "column_gap": "medium",
@@ -1323,7 +1326,7 @@
         "image_Lxaz6J"
       ],
       "custom_css": [
-        ".metro-column .btn, .section__header .btn {border-radius: 999px;}"
+        ".metro-column .btn,.section__header .btn {border-radius: 999px;}"
       ],
       "settings": {
         "container": "container-full",
