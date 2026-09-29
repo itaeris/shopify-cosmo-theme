@@ -454,42 +454,29 @@
         "slide_month": {
           "type": "feature",
           "settings": {
-            "label": "Product of the month",
             "product": "the-onyx-2-0-15pc-face-eye-brush-set",
-            "title": "The Onyx 2.0 Collection",
-            "subtitle": "Complete Set",
-            "text": "Our best selling brush for everyday use"
+            "title": "Onyx 2.0 Complete Set",
+            "subtitle": "15 pcs makeup brush"
           }
         },
-        "slide_beginner": {
+        "slide_single": {
           "type": "feature",
           "settings": {
-            "label": "Beginner friendly",
-            "product": "the-coral-travel-7-pcs-face-eye-brush-set",
-            "title": "The Coral Travel",
-            "subtitle": "7 pcs Complete Set",
-            "text": "A compact set to start your routine"
-          }
-        },
-        "slide_best": {
-          "type": "feature",
-          "settings": {
-            "label": "Best sellers",
-            "product": "aeris-beaute-the-signature-4-in-1-brush",
-            "title": "The Signature 4-In-1 Brush",
-            "subtitle": "Everyday essential",
-            "text": "One brush for powder, blush, contour, and highlight"
+            "product": "the-onyx-2-0-individuals",
+            "title": "Onyx 2.0 Single Brush",
+            "subtitle": "Choose from 15 single brushes"
           }
         }
       },
       "block_order": [
         "slide_month",
-        "slide_beginner",
-        "slide_best"
+        "slide_single"
       ],
       "settings": {
-        "background": "#f3eee8",
-        "text_color": "#111111",
+        "banner_title": "The Onyx 2.0 Collection",
+        "hero_subtitle": "Complete Set",
+        "hero_text": "Our best selling brush for everyday use",
+        "grid_heading": "The Onyx 2.0 Collection",
         "atc_label": "ADD TO BAG",
         "learn_more_label": "LEARN MORE"
       }
@@ -830,7 +817,6 @@
         "image_comparsion_MKPzdU",
         "text_yzDt4M"
       ],
-      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "",
