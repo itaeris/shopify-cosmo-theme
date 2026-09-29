@@ -42,7 +42,7 @@
       ],
       "custom_css": [
         ".f-hero--small {--hero-height: 26rem;}",
-        "@media (min-width: 768px) {.f-hero--small {--hero-height: 28rem;}}",
+        "@media (min-width: 768px) {.f-hero--small {--hero-height: 28rem; }}",
         ".f-hero_heading {font-weight: 400; letter-spacing: 0.02em;}"
       ],
       "settings": {
@@ -272,6 +272,7 @@
             "heading_color": "",
             "description": "",
             "button_label": "",
+            "button_link": "",
             "button_style": "btn--white",
             "animations": "inherit"
           }
@@ -399,13 +400,52 @@
     "press_logos": {
       "type": "aeris-press-logos",
       "blocks": {
-        "logo_1": { "type": "logo", "settings": {} },
-        "logo_2": { "type": "logo", "settings": {} },
-        "logo_3": { "type": "logo", "settings": {} },
-        "logo_4": { "type": "logo", "settings": {} },
-        "logo_5": { "type": "logo", "settings": {} }
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-femaledaily.jpg",
+            "link": ""
+          }
+        },
+        "logo_VAU6Pf": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {
+            "link": ""
+          }
+        }
       },
-      "block_order": ["logo_1", "logo_2", "logo_3", "logo_4", "logo_5"],
+      "block_order": [
+        "logo_1",
+        "logo_VAU6Pf",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5"
+      ],
       "settings": {
         "container": "container",
         "color_schema": "background-1",
