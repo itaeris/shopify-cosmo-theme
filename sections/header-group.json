@@ -63,7 +63,7 @@
         "banner_AXMdXa": {
           "type": "banner",
           "settings": {
-            "heading": "NEW ARRIVAL",
+            "heading": "SHOP ALL",
             "container": "inherit",
             "columns": 3,
             "image": "shopify://shop_images/Dropdown_visual.jpg",
@@ -100,6 +100,7 @@
         },
         "collection_k7dmeV": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "heading": "SHOP ALL",
             "card_style": "1",

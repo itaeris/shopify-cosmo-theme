@@ -41,14 +41,31 @@
           assign is_mega_item = true
           assign three_level = false
           assign has_mega_item = false
-          if link.links != blank
-            if link.levels == 2
+          assign title_handle = link.title | handleize
+          assign column = 6
+          assign dropdown_source = link
+          assign use_dropdown = false
+          if title_handle == 'new-arrival' or title_handle == 'new-arrivals'
+            assign use_dropdown = false
+          elsif title_handle == 'shop-all' or title_handle == 'shopall'
+            for source_link in menu_links
+              assign source_handle = source_link.title | handleize
+              if source_handle == 'new-arrival' or source_handle == 'new-arrivals'
+                assign dropdown_source = source_link
+              endif
+            endfor
+            if dropdown_source.links != blank and dropdown_source.title != link.title
+              assign use_dropdown = true
+            endif
+          elsif link.links != blank
+            assign use_dropdown = true
+          endif
+          if use_dropdown and dropdown_source.links != blank
+            if dropdown_source.levels == 2
               assign three_level = true
               assign is_mega_item = enable_mega_menu
             endif
           endif
-          assign title_handle = link.title | handleize
-          assign column = 6
         -%}
 
         {%- for block in section.blocks -%}
@@ -407,7 +424,7 @@
             assign li_class = li_class | append: ' f-site-nav__item--current'
           endif
 
-          if link.links != blank
+          if use_dropdown
             assign li_class = li_class | append: ' f-site-nav__item--has-child'
           endif
 
@@ -416,7 +433,7 @@
           endif
 
           assign has_dropdown = false
-          if link.links != blank
+          if use_dropdown
             assign has_dropdown = true
           elsif has_mega_item and block_type != blank
             assign has_dropdown = true
@@ -424,7 +441,7 @@
 
           assign dropdown_html = ''
         -%}
-        {%- if link.links != blank -%}
+        {%- if use_dropdown -%}
           {%- liquid
             unless is_mega_item and has_mega_item
               assign dropdown_container = 'w-full'
@@ -449,7 +466,7 @@
                         </a>
                       </li>
                     {%- endif -%}
-                    {% for childlink in link.links %}
+                    {% for childlink in dropdown_source.links %}
                       <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
                         <a
                           href="{% render 'aeris-menu-url', menu_link: childlink %}"

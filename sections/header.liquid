@@ -262,21 +262,35 @@
                 {% for link in menu_links %}
                   {% liquid
                     assign li_class = 'f-mobile-nav__item'
-                    if link.links != blank
-                      if link.levels == 2
+                    assign title_handle = link.title | handleize
+                    assign dropdown_source = link
+                    assign use_dropdown = false
+                    if title_handle == 'new-arrival' or title_handle == 'new-arrivals'
+                      assign use_dropdown = false
+                    elsif title_handle == 'shop-all' or title_handle == 'shopall'
+                      for source_link in menu_links
+                        assign source_handle = source_link.title | handleize
+                        if source_handle == 'new-arrival' or source_handle == 'new-arrivals'
+                          assign dropdown_source = source_link
+                        endif
+                      endfor
+                      if dropdown_source.links != blank and dropdown_source.title != link.title
+                        assign use_dropdown = true
                       endif
+                    elsif link.links != blank
+                      assign use_dropdown = true
                     endif
 
                     if link.active
                       assign li_class = li_class | append: ' f-mobile-nav__item--current'
                     endif
-                    if link.links != blank
+                    if use_dropdown
                       assign li_class = li_class | append: ' f-mobile-nav__item--has-child'
                     endif
                   %}
                   <li
                     class="{{ li_class }}"
-                    {% if link.links != blank %}
+                    {% if use_dropdown %}
                       data-menu-toggle-item
                     {% endif %}
                     data-collapsible-parent
@@ -284,7 +298,7 @@
                     <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-mobile-nav__link">
                       {{ link.title }}
                     </a>
-                    {% if link.links != blank %}
+                    {% if use_dropdown %}
                       <collapsible-tab>
                         <span class="f-mobile-nav__arrow" data-trigger>
                           <span class="no-js-hidden f-mobile-nav__arrow-icon">
@@ -313,7 +327,7 @@
                                 <a href="/pages/store-location" class="f-mobile-nav__sub-link">ALL</a>
                               </li>
                             {%- endif -%}
-                            {% for childlink in link.links %}
+                            {% for childlink in dropdown_source.links %}
                               <li
                                 class="f-mobile-nav__subitem{% if childlink.links != blank %} f-mobile-nav__sub-item--has-child{% endif %}"
                                 {% if childlink.links != blank %}
