@@ -54,8 +54,6 @@
             <span aria-hidden="true">›</span>
           </button>
         {%- endif -%}
-      </div>
-    {%- endif -%}
 
     {%- if hero_product != blank or hero_subtitle != blank or hero_text != blank -%}
       <div class="aeris-onyx__banner-card">
@@ -116,6 +114,8 @@
         {%- endif -%}
       </div>
     {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 
   <script>
@@ -126,15 +126,25 @@
       if (!track) return;
       var slides = track.children;
       var index = 0;
+      function visibleCount() {
+        return window.matchMedia('(min-width: 750px)').matches ? 3 : 1;
+      }
       function go(next) {
         if (!slides.length) return;
-        index = (next + slides.length) % slides.length;
-        track.style.transform = 'translateX(' + index * -100 + '%)';
+        var visible = visibleCount();
+        var max = Math.max(slides.length - visible, 0);
+        if (next > max) index = 0;
+        else if (next < 0) index = max;
+        else index = next;
+        root.style.setProperty('--onyx-visible', visible);
+        track.style.transform = 'translateX(' + index * -(100 / visible) + '%)';
       }
+      window.addEventListener('resize', function () { go(index); });
       var prev = root.querySelector('[data-onyx-prev]');
       var next = root.querySelector('[data-onyx-next]');
       if (prev) prev.addEventListener('click', function () { go(index - 1); });
       if (next) next.addEventListener('click', function () { go(index + 1); });
+      go(0);
     })();
   </script>
 
@@ -209,14 +219,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 2rem 4.4rem;
+    padding: 4.8rem 0 0;
     background: #f6f1ea;
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__carousel {
     position: relative;
-    width: min(100%, 92rem);
-    margin-top: 2.4rem;
+    width: 100%;
+    margin-top: 2rem;
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__viewport {
@@ -229,24 +239,24 @@
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__slide {
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% / var(--onyx-visible, 1));
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 32rem;
+    min-height: 36rem;
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__slide-image {
-    width: auto;
-    max-width: min(48rem, 78%);
-    height: 32rem;
-    max-height: 32rem;
+    width: 100%;
+    max-width: none;
+    height: 36rem;
+    max-height: 36rem;
     object-fit: contain;
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__arrow {
     position: absolute;
-    top: 50%;
+    top: 16rem;
     z-index: 2;
     display: flex;
     align-items: center;
@@ -261,12 +271,11 @@
     color: #1c1c1c;
     font-size: 2.8rem;
     line-height: 1;
-    transform: translateY(-50%);
     cursor: pointer;
   }
 
-  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--prev { left: 0; }
-  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--next { right: 0; }
+  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--prev { left: 1.6rem; }
+  #AerisOnyx-{{ section.id }} .aeris-onyx__arrow--next { right: 1.6rem; }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__banner-title {
     margin: 0;
@@ -279,11 +288,16 @@
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__banner-card {
-    width: min(100%, 36rem);
-    margin-top: 1.6rem;
-    padding: 0;
+    position: relative;
+    left: auto;
+    bottom: auto;
+    z-index: 2;
+    width: min(36rem, calc(100% - 4rem));
+    margin: 3.2rem auto 0;
+    padding: 0 2rem 4.4rem;
     background: transparent;
     text-align: center;
+    transform: none;
   }
 
   #AerisOnyx-{{ section.id }} .aeris-onyx__card-title,
@@ -434,16 +448,20 @@
 
   @media (min-width: 750px) {
     #AerisOnyx-{{ section.id }} .aeris-onyx__stage {
-      padding: 5.2rem 3rem 5.6rem;
+      padding-top: 5.2rem;
     }
 
     #AerisOnyx-{{ section.id }} .aeris-onyx__slide,
     #AerisOnyx-{{ section.id }} .aeris-onyx__slide-image {
-      height: 42rem;
+      height: 46rem;
     }
 
     #AerisOnyx-{{ section.id }} .aeris-onyx__slide {
-      min-height: 42rem;
+      min-height: 46rem;
+    }
+
+    #AerisOnyx-{{ section.id }} .aeris-onyx__arrow {
+      top: 20rem;
     }
 
     #AerisOnyx-{{ section.id }} .aeris-onyx__grid {
