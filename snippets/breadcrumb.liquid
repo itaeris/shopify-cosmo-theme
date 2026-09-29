@@ -89,6 +89,9 @@
             assign aeris_crumb_title = 'Sponges & Tools'
             assign aeris_brush_child = true
           endif
+          if collection.handle == 'skincare-tools'
+            assign aeris_crumb_title = 'Sponge & Applications'
+          endif
         %}
         {% if collection.handle != 'all' %}
           <span aria-hidden="true" class="breadcrumbs--sep">
