@@ -780,9 +780,13 @@
             "product": "",
             "width": "50%",
             "before_heading": "Before",
+            "before_image": "shopify://shop_images/ABA_2364.jpg",
+            "before_image_mobile": "shopify://shop_images/ABA_2364.jpg",
             "before_color_scheme": "",
             "before_heading_plain_text": true,
             "after_heading": "After",
+            "after_image": "shopify://shop_images/ABA_2364-initial.jpg",
+            "after_image_mobile": "shopify://shop_images/ABA_2364-initial.jpg",
             "after_color_scheme": "",
             "after_heading_plain_text": true,
             "block_custom_class": ""

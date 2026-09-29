@@ -201,7 +201,7 @@
         "cat_bags": {
           "type": "featured_collection",
           "settings": {
-            "collection": "wellness-tools",
+            "collection": "lifestyle-bags",
             "image": "shopify://shop_images/TT_02644.jpg",
             "title": "Lifestyle bags"
           }
@@ -301,7 +301,7 @@
         "cat_bags": {
           "type": "featured_collection",
           "settings": {
-            "collection": "wellness-tools",
+            "collection": "lifestyle-bags",
             "image": "shopify://shop_images/TT_02644.jpg",
             "title": "Lifestyle bags"
           }
