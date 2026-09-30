@@ -5,7 +5,7 @@
   rel="noopener noreferrer"
   aria-label="Chat WhatsApp 085286142105"
 >
-  <img src="{{ 'aeris-whatsapp.png' | asset_url }}" alt="" width="64" height="64">
+  <img src="{{ 'aeris-whatsapp.png' | asset_url }}" alt="" width="60" height="60">
 </a>
 <style>
   .aeris-whatsapp {
@@ -14,33 +14,20 @@
     inset-inline-end: 1.6rem;
     inset-block-end: 1.6rem;
     display: block;
-    width: 6.4rem;
-    height: 6.4rem;
-    background: transparent;
+    width: 6rem;
+    height: 6rem;
+    background: none;
     line-height: 0;
   }
   .aeris-whatsapp img {
     display: block;
-    width: 6.4rem;
-    height: 6.4rem;
+    width: 100%;
+    height: 100%;
   }
   .aeris-whatsapp:hover {
-    transform: translateY(-2px);
+    background: none;
+    transform: scale(1.06);
   }
-  @media (max-width: 767.98px) {
-    .aeris-whatsapp {
-      inset-block-end: calc(var(--f-mobile-navbar-height, 0px) + 1.6rem);
-    }
-  }
-  :has(.sticky-atc-bar.sticky-atc-bar--show) .aeris-whatsapp {
-    inset-block-end: calc(var(--f-sticky-atc-bar-height, 0px) + 1.6rem);
-  }
-  @media (max-width: 767.98px) {
-    :has(.sticky-atc-bar.sticky-atc-bar--show) .aeris-whatsapp {
-      inset-block-end: calc(var(--f-mobile-navbar-height, 0px) + var(--f-sticky-atc-bar-height, 0px) + 1.6rem);
-    }
-  }
-</style>
   @media (max-width: 767.98px) {
     .aeris-whatsapp {
       inset-block-end: calc(var(--f-mobile-navbar-height, 0px) + 1.6rem);
