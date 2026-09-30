@@ -29,18 +29,9 @@
         autocomplete="off"
       >
     </label>
-    <label class="aeris-personalise__field">
-      <span>Font</span>
-      <input type="text" name="properties[Monogram font]" form="{{ product_form_id }}" value="Montserrat" readonly>
-    </label>
-    <label class="aeris-personalise__field">
-      <span>Size</span>
-      <input type="text" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt" readonly>
-    </label>
-    <fieldset class="aeris-personalise__colours">
-      <legend>Colour</legend>
-      <label><input type="radio" name="properties[Monogram colour]" value="Gold" form="{{ product_form_id }}" checked><span style="--swatch:#c4a574"></span></label>
-    </fieldset>
+    <input type="hidden" name="properties[Monogram font]" form="{{ product_form_id }}" value="Montserrat">
+    <input type="hidden" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt">
+    <input type="hidden" name="properties[Monogram colour]" form="{{ product_form_id }}" value="Gold">
   </div>
 </div>
 
@@ -85,11 +76,10 @@
     grid-template-columns: 8rem 1fr;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0;
     font-size: 1.3rem;
   }
-  .aeris-personalise__field input,
-  .aeris-personalise__field select {
+  .aeris-personalise__field input {
     width: 100%;
     min-height: 4rem;
     padding: 0 1.2rem;
@@ -97,44 +87,13 @@
     border-radius: 999px;
     background: #fff;
   }
-  .aeris-personalise__colours {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin: 0.4rem 0 0;
-    padding: 0;
-    border: 0;
-  }
-  .aeris-personalise__colours legend {
-    margin-right: 0.4rem;
-    font-size: 1.3rem;
-  }
-  .aeris-personalise__colours label {
-    position: relative;
-  }
-  .aeris-personalise__colours input {
-    position: absolute;
-    opacity: 0;
-  }
-  .aeris-personalise__colours span {
-    display: block;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 50%;
-    background: var(--swatch);
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-  }
-  .aeris-personalise__colours input:checked + span {
-    outline: 2px solid #1c1c1c;
-    outline-offset: 2px;
-  }
   .aeris-monogram-host {
     position: relative;
   }
   .aeris-monogram {
     position: absolute;
     left: 50%;
-    top: 74%;
+    top: 67.5%;
     z-index: 2;
     transform: translate(-50%, -50%);
     color: #c4a574;
@@ -153,13 +112,43 @@
     var toggle = root.querySelector('.aeris-personalise__toggle');
     var panel = root.querySelector('.aeris-personalise__panel');
     var letters = root.querySelector('[data-aeris-letters]');
-    var host = document.querySelector('.f-product__media--image .f-image') || document.querySelector('media-gallery');
     var mark = document.createElement('span');
     mark.className = 'aeris-monogram';
     mark.hidden = true;
-    if (host) {
-      host.classList.add('aeris-monogram-host');
-      host.appendChild(mark);
+
+    function activeHost() {
+      return document.querySelector('.f-product__media.is-selected .f-image')
+        || document.querySelector('.f-product__media--image .f-image')
+        || document.querySelector('media-gallery');
+    }
+
+    function place() {
+      var host = activeHost();
+      if (!host) return;
+      if (mark.parentElement !== host) {
+        if (mark.parentElement) mark.parentElement.classList.remove('aeris-monogram-host');
+        host.classList.add('aeris-monogram-host');
+        host.appendChild(mark);
+      }
+      var img = host.querySelector('img');
+      var src = img ? (img.currentSrc || img.getAttribute('src') || '') : '';
+      var top = '67.5%';
+      if (src.indexOf('ABA_7377') !== -1) top = '74.9%';
+      else if (src.indexOf('ABA_7378') !== -1) top = '71.4%';
+      mark.style.top = top;
+    }
+
+    place();
+    document.addEventListener('variant:changed', function () {
+      setTimeout(place, 60);
+    });
+    var gallery = document.querySelector('media-gallery');
+    if (gallery && window.MutationObserver) {
+      new MutationObserver(place).observe(gallery, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+      });
     }
     toggle.addEventListener('click', function () {
       var open = panel.hidden;

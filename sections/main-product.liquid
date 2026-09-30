@@ -1235,6 +1235,30 @@
           "content": "t:sections.main-product.blocks.complementary_products.settings.paragraph.content"
         },
         {
+          "type": "select",
+          "id": "source",
+          "label": "Product source",
+          "default": "automatic",
+          "options": [
+            {
+              "value": "automatic",
+              "label": "Automatic"
+            },
+            {
+              "value": "manual",
+              "label": "Manual"
+            }
+          ],
+          "info": "Automatic uses complementary products from the Search & Discovery app. Manual uses the products selected below."
+        },
+        {
+          "type": "product_list",
+          "id": "manual_products",
+          "label": "Products",
+          "limit": 10,
+          "info": "Used when Product source is Manual."
+        },
+        {
           "type": "text",
           "id": "block_heading",
           "default": "Pairs well with",

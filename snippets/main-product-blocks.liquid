@@ -918,85 +918,35 @@
             </noscript>
           {% endif %}
         {%- when 'complementary' -%}
-          <product-recommendations
-            class="f-complementary-products block{% if block.settings.make_collapsible_row %} is-accordion{% else %} relative{% endif %}"
-            data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"
-          >
-            {%- if recommendations.performed and recommendations.products_count > 0 -%}
-              {%- liquid
-                assign number_of_slides = recommendations.products_count | plus: 0.0 | divided_by: block.settings.products_per_page | ceil
-                assign enable_slider = false
-                if number_of_slides > 1 and block.settings.enable_slider
-                  assign enable_slider = true
-                endif
-              -%}
-              {% capture block_content %}
-                <flickity-component
-                    class="f-grid f-grid-1-cols{% if enable_slider %} flickity-enable{% endif %} {{ slide_class }}"
-                    data-slider-options='{"pageDots": true, "prevNextButtons": false, "groupCells": 1, "cellSelector": ".f-complementary-products__slide", "wrapAround": true, "adaptiveHeight": true}'
-                    data-slider-columns="1"
-                    data-enable-slider="{{ enable_slider }}"
-                    style="--pagination-width: 2.5rem;--button-size: 3.6rem;--button-size-mobile: 3.6rem;"
-                >
-                    {%- for i in (1..number_of_slides) -%}
-                        <div class="f-complementary-products__slide w-full">
-                            {%- for product in recommendations.products limit: block.settings.products_per_page offset: continue -%}
-                                <div class="f-column">
-                                    {% render 'product-card', 
-                                        product: product, 
-                                        custom_class: 'bg-secondary', 
-                                        is_complementary: true, 
-                                        list_layout: true,
-                                        index: forloop.index,
-                                        section_index: section.index,
-                                        image_ratio: block.settings.image_ratio, 
-                                        enable_quick_add: block.settings.enable_quick_add, 
-                                        enable_quick_view: block.settings.enable_quick_view,
-                                        color_schema: 'background-1',
-                                        show_product_option: block.settings.pcard_show_color_swatch
-                                    %}
-                                </div>
-                            {%- endfor -%}
-                        </div>
-                    {%- endfor -%}
-                </flickity-component>
-              {% endcapture %}
-              {% if block.settings.make_collapsible_row %}
-                <collapsible-tab
-                  class="collapsible__item no-js-hidden"
-                  data-block-id="collapsible-tab-{{ block.id }}"
-                  open="true"
-                >
-                  <button class="collapsible__button" data-trigger>
-                    {% if block.settings.icon != blank and block.settings.icon != 'none' %}
-                      {% render 'icon', name: block.settings.icon %}
-                    {% endif %}
-                    <span>{{ block.settings.block_heading }}</span>
-                    <span data-collapsible-icon>
-                      <svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <svg width="2" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1.333v9.334" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                  </button>
-                  <div class="collapsible__content" data-content hidden>
-                    <div class="collapsible__content-inner">
-                      {{ block_content }}
-                    </div>
-                  </div>
-                </collapsible-tab>
-              {% else %}
-                {% unless block.settings.block_heading == blank %}
-                  <h3 class="f-complementary-products__block-heading font-body-bolder h6">
-                    {{ block.settings.block_heading }}
-                  </h3>
-                {% endunless %}
-                {{ block_content }}
-              {% endif %}
-            {% endif %}
-          </product-recommendations>
+          {%- liquid
+            assign buy_source = block.settings.source | default: 'automatic'
+          -%}
+          {%- if buy_source == 'manual' -%}
+            {%- if block.settings.manual_products != blank -%}
+              <div class="f-complementary-products block{% if block.settings.make_collapsible_row %} is-accordion{% else %} relative{% endif %}">
+                {% render 'aeris-buy-it-with',
+                  products: block.settings.manual_products,
+                  block: block,
+                  section: section,
+                  current_product: product
+                %}
+              </div>
+            {%- endif -%}
+          {%- else -%}
+            <product-recommendations
+              class="f-complementary-products block{% if block.settings.make_collapsible_row %} is-accordion{% else %} relative{% endif %}"
+              data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary"
+            >
+              {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                {% render 'aeris-buy-it-with',
+                  products: recommendations.products,
+                  block: block,
+                  section: section,
+                  current_product: product
+                %}
+              {%- endif -%}
+            </product-recommendations>
+          {%- endif -%}
           {% if settings.pcard_show_quickview_button == false and block.settings.enable_quick_view %}
             <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
           {% endif %}

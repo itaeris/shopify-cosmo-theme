@@ -101,6 +101,12 @@
         "complementary_WGHcVt": {
           "type": "complementary",
           "settings": {
+            "source": "manual",
+            "manual_products": [
+              "the-onyx-2-0-15pc-face-eye-brush-set",
+              "aeris-beaute-cloud-conceal-puff",
+              "aeris-beaute-the-loulou-leather-pouch"
+            ],
             "block_heading": "BUY IT WITH",
             "make_collapsible_row": false,
             "icon": "price_tag",
