@@ -12,7 +12,7 @@
 {%- capture block_content -%}
   <flickity-component
     class="f-grid f-grid-1-cols{% if enable_slider %} flickity-enable{% endif %}"
-    data-slider-options='{"pageDots": true, "prevNextButtons": false, "groupCells": 1, "cellSelector": ".f-complementary-products__slide", "wrapAround": true, "adaptiveHeight": true}'
+    data-slider-options='{"pageDots": true, "prevNextButtons": false, "groupCells": 1, "cellSelector": ".f-complementary-products__slide", "wrapAround": true, "adaptiveHeight": false}'
     data-slider-columns="1"
     data-enable-slider="{{ enable_slider }}"
     style="--pagination-width: 2.5rem;--button-size: 3.6rem;--button-size-mobile: 3.6rem;"
