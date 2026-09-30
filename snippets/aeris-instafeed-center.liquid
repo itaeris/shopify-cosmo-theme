@@ -1,0 +1,162 @@
+<style>
+  .shopify-section:has(#insta-feed) .f-apps-wrapper,
+  .shopify-section:has(#insta-feed) .container {
+    max-width: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #insta-feed,
+  .instafeed-new-layout-container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .aeris-instafeed-center {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    grid-column: 1 / -1;
+    width: auto !important;
+    height: auto !important;
+    padding: 3.2rem 2rem;
+    background: #ded7cc;
+    color: #222;
+    text-align: center;
+  }
+  .aeris-instafeed-center__kicker {
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .aeris-instafeed-center__title {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  .aeris-instafeed-center__text {
+    max-width: 32rem;
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  #insta-feed .aeris-instafeed-center__text a {
+    color: #222 !important;
+    font-weight: 600;
+    opacity: 1 !important;
+    text-decoration: none;
+  }
+  #insta-feed .aeris-instafeed-center .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0.4rem 0 0 !important;
+    padding: 1.3rem 2.6rem !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background-color: #222 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    font-family: var(--font-body-family) !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    position: static !important;
+  }
+  #insta-feed .aeris-instafeed-center .btn::before,
+  #insta-feed .aeris-instafeed-center .btn::after {
+    opacity: 0.45 !important;
+  }
+  @media (min-width: 990px) {
+    .aeris-instafeed-grid {
+      display: grid !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 0 !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+    .aeris-instafeed-grid > .instafeed-new-layout-item {
+      width: auto !important;
+      height: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      aspect-ratio: 1 / 1;
+    }
+    .aeris-instafeed-grid > .instafeed-new-layout-item img,
+    .aeris-instafeed-grid > .instafeed-new-layout-item video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
+    .aeris-instafeed-center {
+      grid-column: 3 / 5;
+      grid-row: 1 / 3;
+      padding: 2.4rem 3.2rem;
+    }
+    .aeris-instafeed-center__title {
+      font-size: 4rem;
+    }
+  }
+</style>
+<script>
+  (function () {
+    var html =
+      '<p class="aeris-instafeed-center__kicker">Follow us</p>' +
+      '<h2 class="aeris-instafeed-center__title">On Instagram</h2>' +
+      '<p class="aeris-instafeed-center__text">Tag <a href="https://www.instagram.com/aerisbeaute/">@aerisbeaute</a> in your Instagram photos for a chance to be featured here.</p>' +
+      '<a class="btn btn--primary" href="https://www.instagram.com/aerisbeaute/">Follow us</a>';
+
+    function place() {
+      document.querySelectorAll('.aeris-instafeed-center').forEach(function (panel) {
+        if (!panel.parentElement || !panel.parentElement.classList.contains('instafeed-new-layout-wrapper')) {
+          panel.remove();
+        }
+      });
+      document.querySelectorAll('.instafeed-new-layout-wrapper').forEach(function (grid) {
+        if (grid.querySelector(':scope > .aeris-instafeed-center')) {
+          grid.classList.add('aeris-instafeed-grid');
+          return;
+        }
+        var panel = document.createElement('div');
+        panel.className = 'aeris-instafeed-center';
+        panel.innerHTML = html;
+        grid.classList.add('aeris-instafeed-grid');
+        grid.insertBefore(panel, grid.firstChild);
+      });
+    }
+
+    place();
+    var tries = 0;
+    var timer = setInterval(function () {
+      place();
+      tries += 1;
+      if (document.querySelector('.instafeed-new-layout-wrapper > .aeris-instafeed-center') || tries > 60) {
+        clearInterval(timer);
+      }
+    }, 500);
+
+    var feed = document.getElementById('insta-feed');
+    if (feed && window.MutationObserver) {
+      new MutationObserver(function () {
+        if (!feed.querySelector('.instafeed-new-layout-wrapper > .aeris-instafeed-center')) place();
+      }).observe(feed, { childList: true, subtree: true });
+    }
+  })();
+</script>
