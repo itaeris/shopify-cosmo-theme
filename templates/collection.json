@@ -294,7 +294,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "skincare-tools",
-            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "image": "shopify://shop_images/TT_02998.jpg",
             "title": "Sponges & Applications"
           }
         },
@@ -308,6 +308,7 @@
         },
         "cat_hair": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "hair-tools",
             "image": "shopify://shop_images/Dropdown_visual.jpg",
@@ -318,7 +319,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "brush-sets",
-            "image": "shopify://shop_images/AE828.jpg",
+            "image": "shopify://shop_images/ABA_8454.jpg",
             "title": "Giftings"
           }
         }
