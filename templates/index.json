@@ -1329,6 +1329,7 @@
         "image_cEjarh",
         "image_Lxaz6J"
       ],
+      "disabled": true,
       "custom_css": [
         ".metro-column .btn,.section__header .btn {border-radius: 999px;}"
       ],
@@ -1343,7 +1344,7 @@
         "heading_size": "h1",
         "heading_color": "",
         "subheading": "Follow Us",
-        "description": "<p>Tag <strong>@aerisbeaute</strong> in your Instagram photos for a <br/>chance to be featured here.</p>",
+        "description": "<p>Tag <strong>@aerisbeaute</strong> in your Instagram photos for a&nbsp;<br/>chance to be featured here.</p>",
         "button_label": "follow us",
         "button_link": "https://www.instagram.com/aerisbeaute/",
         "button_style": "btn--primary",
@@ -1364,6 +1365,44 @@
         "custom_id": "",
         "custom_class": "",
         "animations": "inherit"
+      }
+    },
+    "1790740842fe0194c0": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_J8twBz": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_J8twBz"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "165422614227341852": {
@@ -1411,6 +1450,7 @@
     "testimonials_FcqFjd",
     "collapsible_tabs_FCfpmk",
     "gallery_images_n7N9gp",
+    "1790740842fe0194c0",
     "165422614227341852"
   ]
 }
