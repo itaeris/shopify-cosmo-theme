@@ -118,16 +118,19 @@
 
 .aeris-stores__card h2 {
   margin: 0;
-  font-family: var(--font-heading-family);
+  font-family: var(--aeris-store-name-font, var(--font-heading-family));
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: var(--aeris-store-name-weight, 500);
+  font-style: var(--aeris-store-name-style, normal);
   line-height: 1.3;
 }
 
 .aeris-stores__card p {
   margin: 0.4rem 0 0;
-  font-family: var(--font-body-family);
+  font-family: var(--aeris-store-floor-font, var(--font-body-family));
   font-size: 1.4rem;
+  font-weight: var(--aeris-store-floor-weight, 400);
+  font-style: var(--aeris-store-floor-style, normal);
 }
 
 .aeris-stores__card a {
