@@ -419,7 +419,7 @@
       "settings": {
         "container": "container",
         "color_schema": "scheme-8",
-        "collection": "best-sellers-1",
+        "collection": "new-arrival",
         "enable_sticky_column": true,
         "section_header_padding_bottom": "large",
         "heading": "Unlock your<em> true power</em>",
@@ -1243,6 +1243,44 @@
         "animations": "inherit"
       }
     },
+    "1790751899f00dcc78": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_dB7bWU": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_dB7bWU"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "gallery_images_n7N9gp": {
       "type": "gallery-images",
       "blocks": {
@@ -1373,7 +1411,7 @@
       "settings": {
         "container": "container",
         "color_schema": "background-1",
-        "heading": "Join the Cosmo Club",
+        "heading": "Join A-List Rewards Member",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h2",
@@ -1391,44 +1429,6 @@
         "custom_class": "",
         "animations": "inherit",
         "enable_bg_zoom_effect": true
-      }
-    },
-    "1790751899f00dcc78": {
-      "type": "apps",
-      "blocks": {
-        "instafeed_app_block_dB7bWU": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "",
-            "title_color": "",
-            "title_size_v2": 0,
-            "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_dB7bWU"
-      ],
-      "settings": {
-        "container": "container",
-        "color_schema": "",
-        "heading": "",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_color": "",
-        "description": "",
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     }
   },
