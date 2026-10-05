@@ -127,9 +127,9 @@
             "show_image": true,
             "image": "shopify://shop_images/ABA_0261copy.jpg",
             "image_link": "",
-            "title": "Natural and organic Ingredients",
+            "title": "Award Winning Products",
             "heading_size": "h4",
-            "text": "<p>From nourishing botanical extracts to nutrient-rich plant oils, each ingredient is carefully chosen for its effectiveness and purity.</p>",
+            "text": "<p>Won 10 Awards in the last 8 years</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
@@ -142,9 +142,9 @@
             "show_image": true,
             "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
             "image_link": "",
-            "title": "Eco-friendly packaging",
+            "title": "Backed by PRO MUA",
             "heading_size": "h4",
-            "text": "<p>We are committed to minimizing our environmental footprint, which is why our packages recyclable, biodegradable.</p>",
+            "text": "<p>Our brushes are backed by PRO MUA. We collaborated with Bubah Alfian to curate some of our best selling brushes</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
@@ -285,6 +285,7 @@
         "content_6p66ke",
         "image_card_w8hfGh"
       ],
+      "disabled": true,
       "custom_css": [
         ".collapsible-tabs__image-col .f-card {border-radius: 0;}"
       ],
@@ -369,6 +370,7 @@
         "1655461864d14fab66-2",
         "1655461864d14fab66-3"
       ],
+      "disabled": true,
       "custom_css": [
         ".section__header {--header-padding-bottom: 3.2rem;}",
         ".f-press__list {display: none;}"
@@ -446,6 +448,7 @@
         "logo_4",
         "logo_5"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "background-1",
