@@ -253,6 +253,9 @@
         "tab_zJhbwC",
         "tab_tNBxrX"
       ],
+      "custom_css": [
+        ".f-tabs__header-group {display: none;}"
+      ],
       "settings": {
         "container": "container",
         "color_schema": "background-1",
@@ -415,13 +418,14 @@
       "type": "favorite-collection",
       "custom_css": [
         "@media (min-width: 768px) {.section__header--text {max-width: 47rem; }}",
-        ".section__heading { max-width: 7.2em; }",
-        ".section__heading em { display: inline; font-style: italic; }"
+        ".section__heading {max-width: 7.2em;}",
+        ".section__heading em {display: inline; font-style: italic;}"
       ],
       "settings": {
         "container": "container",
         "color_schema": "scheme-8",
         "collection": "best-sellers-1",
+        "image": "shopify://shop_images/Artboard_1.jpg",
         "enable_sticky_column": true,
         "section_header_padding_bottom": "large",
         "heading": "<em>Refined</em> Space for Your <em>Essentials</em>",
@@ -430,7 +434,7 @@
         "heading_size": "h-xl",
         "heading_color": "",
         "subheading": "New Arrivals",
-        "description": "<p>MERLOT is a &nbsp;curated beauty essentials are designed to enhance your natural glow, boost confidence, and make every day feel special.</p>",
+        "description": "<p>Carry your glow in chic, effortless style with the NEW Coco Vanity Bag in Noir & Cherry. Designed with a timeless structured silhouette and luxurious gold hardware, the Coco Vanity Bag is the ultimate home for your makeup, skincare, and fragrance essentials.</p>",
         "button_label": "Shop Now",
         "button_link": "",
         "button_style": "btn--primary",
@@ -480,6 +484,7 @@
         "banner_title": "The Onyx 2.0 Collection",
         "hero_subtitle": "Complete Set",
         "hero_text": "Our best selling brush for everyday use",
+        "banner_image": "shopify://shop_images/Merlot_single_brushes_mobile_b20ba7a0-6047-4887-b619-879a9d315536.jpg",
         "grid_heading": "The Onyx 2.0 Collection",
         "atc_label": "ADD TO BAG",
         "learn_more_label": "LEARN MORE"
@@ -798,13 +803,13 @@
           "type": "text",
           "settings": {
             "color_scheme": "",
-            "title": "The balance of <em>high-performance</em>",
+            "title": "<strong>Free Monograming </strong>With every purchase of&nbsp;<em>Coco Vanity Bag&nbsp;</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
-            "subheading": "Wear it four way",
-            "text": "<p>Experience the perfect blend of advanced formulas and skin-loving ingredients, delivering powerful results while maintaining harmony for a healthy, radiant complexion.</p>",
+            "subheading": "PERSONALISE YOUR BAG",
+            "text": "<p>Make the Coco Vanity Bag uniquely yours or your loved ones with free custom monogramming. Perfect for gifting&nbsp;<br/></p>",
             "alignment": "center",
             "align_text": "left",
             "padding_left": 100,
@@ -1245,6 +1250,44 @@
         "animations": "inherit"
       }
     },
+    "1790751899f00dcc78": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_dB7bWU": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_dB7bWU"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "",
+        "heading": "",
+        "highlight_style": "none",
+        "enable_highlight_text_color": false,
+        "heading_size": "h2",
+        "heading_color": "",
+        "description": "",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "gallery_images_n7N9gp": {
       "type": "gallery-images",
       "blocks": {
@@ -1375,7 +1418,7 @@
       "settings": {
         "container": "container",
         "color_schema": "background-1",
-        "heading": "Join the Cosmo Club",
+        "heading": "Join A-List Rewards",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h2",
@@ -1393,44 +1436,6 @@
         "custom_class": "",
         "animations": "inherit",
         "enable_bg_zoom_effect": true
-      }
-    },
-    "1790751899f00dcc78": {
-      "type": "apps",
-      "blocks": {
-        "instafeed_app_block_dB7bWU": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "",
-            "title_color": "",
-            "title_size_v2": 0,
-            "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_dB7bWU"
-      ],
-      "settings": {
-        "container": "container",
-        "color_schema": "",
-        "heading": "",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_color": "",
-        "description": "",
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     }
   },
