@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "slideshow_AcBqQ9": {
       "type": "slideshow",
@@ -481,6 +481,7 @@
         "banner_title": "The Onyx 2.0 Collection",
         "hero_subtitle": "Complete Set",
         "hero_text": "Our best selling brush for everyday use",
+        "banner_image": "shopify://shop_images/Copy_of_ABA_9994.jpg",
         "grid_heading": "The Onyx 2.0 Collection",
         "atc_label": "ADD TO BAG",
         "learn_more_label": "LEARN MORE"
