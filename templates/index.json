@@ -414,7 +414,9 @@
     "favorite_collection_hXrDpg": {
       "type": "favorite-collection",
       "custom_css": [
-        "@media (min-width: 768px) {.section__header--text {max-width: 47rem; }}"
+        "@media (min-width: 768px) {.section__header--text {max-width: 47rem; }}",
+        ".section__heading { max-width: 7.2em; }",
+        ".section__heading em { display: inline; font-style: italic; }"
       ],
       "settings": {
         "container": "container",
@@ -422,7 +424,7 @@
         "collection": "best-sellers-1",
         "enable_sticky_column": true,
         "section_header_padding_bottom": "large",
-        "heading": "Unlock your<em> true power</em>",
+        "heading": "<em>Refined</em> Space for Your <em>Essentials</em>",
         "highlight_style": "none",
         "enable_highlight_text_color": false,
         "heading_size": "h-xl",
