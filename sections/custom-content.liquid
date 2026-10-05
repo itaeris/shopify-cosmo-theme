@@ -1,4 +1,9 @@
 {{ 'custom-content.css' | asset_url | stylesheet_tag }}
+<style>
+  .f-custom .highlight-text {
+    font-style: italic;
+  }
+</style>
 {%- liquid
   assign section_id = section.settings.custom_id | default: section.id
   assign custom_class = section.settings.custom_class
