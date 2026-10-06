@@ -192,6 +192,10 @@
         "show_featured_media": false
       }
     },
+    "aeris_product_reviews": {
+      "type": "aeris-product-reviews",
+      "settings": {}
+    },
     "multicolumn_eX6pK6": {
       "type": "multicolumn",
       "blocks": {
@@ -243,6 +247,7 @@
         "column_Ga4FJ3",
         "column_GemAqb"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container",
@@ -352,6 +357,7 @@
         "testimonial_tUweFx",
         "testimonial_6VYtEh"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "container",
@@ -487,10 +493,6 @@
         "divider_width": "container",
         "animations": "inherit"
       }
-    },
-    "aeris_product_reviews": {
-      "type": "aeris-product-reviews",
-      "settings": {}
     }
   },
   "order": [
