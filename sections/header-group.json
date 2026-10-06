@@ -17,7 +17,7 @@
         "announcement_bfeDTn": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Complimentary shipping with min spending of IDR 500,000</p>",
+            "text": "<p>Complimentary shipping with min spending of IDR 150,000</p>",
             "link": "",
             "homepage_only": false,
             "hide_on_page": "",
@@ -29,7 +29,7 @@
         "announcement_EqMdWP": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Get free Aeris special tumbler worth 700K with min purchase of 1Mio</p>",
+            "text": "<p>Free Drawstring Pouch min purchase of 199K</p>",
             "link": "",
             "homepage_only": false,
             "hide_on_page": "",
