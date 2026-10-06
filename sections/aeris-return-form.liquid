@@ -1,0 +1,264 @@
+{{ 'aeris-return-form.css' | asset_url | stylesheet_tag }}
+
+<section class="aeris-return" id="AerisReturn-{{ section.id }}">
+  <div class="aeris-return__breadcrumb">
+    <div class="container">
+      <nav class="breadcrumbs flex justify-center" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}" title="Home">{{ 'general.breadcrumbs.home' | t }}</a>
+        <span aria-hidden="true" class="breadcrumbs--sep">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="breadcrumbs--last">Retur / Refund</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="aeris-return__wrap">
+    {%- form 'contact', id: 'AerisReturnForm', class: 'aeris-return__form' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="aeris-return__success" role="status">
+          <p class="aeris-return__kicker">Aeris Beauté</p>
+          <h1 class="aeris-return__title">Pengajuan Anda telah berhasil diterima.</h1>
+          <p>Tim Aeris akan melakukan verifikasi terhadap informasi dan bukti yang diberikan.</p>
+          <p>Mohon menunggu proses review dan pastikan nomor WhatsApp yang dicantumkan tetap aktif.</p>
+          <p>Terima kasih telah menghubungi Aeris Beauté.</p>
+        </div>
+      {%- else -%}
+        <p class="aeris-return__kicker">Aeris Beauté</p>
+        <h1 class="aeris-return__title">Syarat &amp; Ketentuan Retur / Refund</h1>
+        <div class="aeris-return__terms">
+          <ol>
+            <li>Pengajuan penggantian barang hanya dapat dilakukan maksimal 14 hari kalender sejak produk diterima.</li>
+            <li>Produk yang diajukan untuk penggantian harus dalam kondisi belum pernah digunakan sama sekali.</li>
+            <li>Produk harus dikembalikan dalam kondisi asli, lengkap, dan tidak mengalami kerusakan akibat penggunaan.</li>
+            <li>Penggantian barang hanya dapat diproses setelah produk yang dikembalikan diterima dan diperiksa oleh tim Aeris.</li>
+            <li>Keputusan mengenai kelayakan penggantian barang berdasarkan hasil pemeriksaan Aeris.</li>
+          </ol>
+        </div>
+
+        <h2 class="aeris-return__section-title">Form Pengajuan Retur / Refund</h2>
+
+        {%- if form.errors -%}
+          <p class="aeris-return__error" role="alert">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+
+        <input type="hidden" name="contact[subject]" value="Pengajuan Retur / Refund">
+        <input type="hidden" name="contact[email]" id="AerisReturnEmailTarget" value="{{ shop.email | escape }}">
+        <input type="hidden" name="contact[Alasan]" id="AerisReturnReasons" value="">
+        <input type="hidden" name="contact[body]" id="AerisReturnBody" value="">
+
+        <div class="aeris-return__section">
+          <h3 class="aeris-return__section-title">Data Customer</h3>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnName">Nama</label>
+            <input class="aeris-return__input" id="AerisReturnName" name="contact[name]" type="text" autocomplete="name" required>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnPhone">No Telp / WhatsApp</label>
+            <input class="aeris-return__input" id="AerisReturnPhone" name="contact[phone]" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnEmail">Email <span class="aeris-return__optional">(opsional)</span></label>
+            <input class="aeris-return__input" id="AerisReturnEmail" type="email" autocomplete="email">
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnAddress">Alamat</label>
+            <textarea class="aeris-return__textarea" id="AerisReturnAddress" name="contact[Alamat]" required></textarea>
+          </div>
+        </div>
+
+        <div class="aeris-return__section">
+          <h3 class="aeris-return__section-title">Data Pesanan</h3>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnOrder">Order ID</label>
+            <input class="aeris-return__input" id="AerisReturnOrder" name="contact[Order ID]" type="text" required>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnChannel">Order Via</label>
+            <select class="aeris-return__select" id="AerisReturnChannel" name="contact[Order Via]" required>
+              <option value="" selected disabled>Pilih</option>
+              <option>Official Website</option>
+              <option>Official WhatsApp Store</option>
+            </select>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnProduct">Nama Produk</label>
+            <input class="aeris-return__input" id="AerisReturnProduct" name="contact[Nama Produk]" type="text" required>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnVariant">Varian</label>
+            <input class="aeris-return__input" id="AerisReturnVariant" name="contact[Varian]" type="text" required>
+          </div>
+        </div>
+
+        <div class="aeris-return__section">
+          <h3 class="aeris-return__section-title">Data Pengajuan</h3>
+          <fieldset class="aeris-return__choices">
+            <legend class="aeris-return__label">Alasan</legend>
+            <label class="aeris-return__choice"><input type="checkbox" name="alasan" value="Barang rusak / cacat"> Barang rusak / cacat</label>
+            <label class="aeris-return__choice"><input type="checkbox" name="alasan" value="Salah kirim barang"> Salah kirim barang</label>
+            <label class="aeris-return__choice"><input type="checkbox" name="alasan" value="Barang kurang / tidak lengkap"> Barang kurang / tidak lengkap</label>
+            <label class="aeris-return__choice"><input type="checkbox" name="alasan" value="Alasan lainnya"> Alasan lainnya</label>
+          </fieldset>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnDetail">Detail Kendala / Deskripsi Masalah</label>
+            <textarea class="aeris-return__textarea" id="AerisReturnDetail" name="contact[Detail Kendala]" required></textarea>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnPhoto">Foto Produk</label>
+            <input class="aeris-return__file" id="AerisReturnPhoto" name="contact[Foto Produk]" type="file" accept="image/*" required>
+          </div>
+          <div class="aeris-return__field">
+            <label class="aeris-return__label" for="AerisReturnVideo">Video Unboxing <span class="aeris-return__optional">(opsional)</span></label>
+            <input class="aeris-return__file" id="AerisReturnVideo" name="contact[Video Unboxing]" type="file" accept="video/*">
+          </div>
+
+          <fieldset class="aeris-return__choices" id="AerisReturnResolution">
+            <legend class="aeris-return__label">Penyelesaian yang Diinginkan</legend>
+            <label class="aeris-return__choice">
+              <input type="radio" name="contact[Penyelesaian]" value="Pengembalian Barang & Store Credit (Pengembalian Dana)" data-panel="credit" required>
+              Pengembalian Barang &amp; Store Credit (Pengembalian Dana)
+            </label>
+            <label class="aeris-return__choice">
+              <input type="radio" name="contact[Penyelesaian]" value="Penggantian Barang" data-panel="replace">
+              Penggantian Barang
+            </label>
+          </fieldset>
+
+          <div class="aeris-return__panel" data-return-panel="credit">
+            <h3 class="aeris-return__section-title">Syarat &amp; Ketentuan Pengembalian Dana (Store Credit)</h3>
+            <p>Refund akan diberikan dalam bentuk Store Credit yang dapat digunakan untuk pembelian berikutnya di website Aeris. Nilai Store Credit dihitung berdasarkan harga bersih produk setelah voucher atau diskon yang digunakan, dan tidak termasuk biaya pengiriman maupun potongan/subsidi ongkir.</p>
+            <p>Customer wajib mengembalikan produk ke Gudang Aeris untuk proses pemeriksaan.</p>
+            <p>Biaya pengiriman untuk mengembalikan produk ke Gudang Aeris menjadi tanggung jawab customer.</p>
+            <label class="aeris-return__choice">
+              <input type="checkbox" id="AerisReturnCreditConfirm" name="contact[Konfirmasi Store Credit]" value="Ya">
+              Saya telah membaca dan menyetujui ketentuan refund, di mana refund diberikan dalam bentuk Store Credit dan tidak mencakup biaya pengiriman maupun potongan/subsidi ongkir.
+            </label>
+          </div>
+
+          <div class="aeris-return__panel" data-return-panel="replace">
+            <h3 class="aeris-return__section-title">Syarat &amp; Ketentuan Penggantian Barang</h3>
+            <p>Pengajuan penggantian barang hanya berlaku maksimal 14 hari kalender sejak produk diterima. Produk yang diajukan harus dalam kondisi belum pernah digunakan sama sekali, lengkap dengan kemasan dan kelengkapannya.</p>
+            <p>Penggantian barang hanya dapat diproses setelah produk diterima dan melalui proses pemeriksaan oleh tim Aeris. Keputusan mengenai kelayakan penggantian barang ditentukan berdasarkan hasil pemeriksaan.</p>
+            <label class="aeris-return__choice">
+              <input type="checkbox" id="AerisReturnReplaceConfirm" name="contact[Konfirmasi Penggantian Barang]" value="Ya">
+              Saya menyatakan bahwa produk yang diajukan belum pernah digunakan dan masih dalam kondisi sesuai dengan ketentuan penggantian barang Aeris.
+            </label>
+          </div>
+        </div>
+
+        <div class="aeris-return__section">
+          <h3 class="aeris-return__section-title">Pernyataan Customer</h3>
+          <div class="aeris-return__statements">
+            <label class="aeris-return__choice">
+              <input type="checkbox" name="contact[Pernyataan informasi benar]" value="Ya" required>
+              Saya menyatakan bahwa seluruh informasi yang diberikan dalam formulir ini adalah benar.
+            </label>
+            <label class="aeris-return__choice">
+              <input type="checkbox" name="contact[Pernyataan verifikasi]" value="Ya" required>
+              Saya memahami bahwa pengajuan retur, penggantian barang, atau Store Credit akan melalui proses verifikasi dan pemeriksaan oleh tim Aeris.
+            </label>
+            <label class="aeris-return__choice">
+              <input type="checkbox" name="contact[Pernyataan penolakan]" value="Ya" required>
+              Saya memahami bahwa pengajuan dapat ditolak apabila tidak memenuhi Syarat &amp; Ketentuan yang berlaku.
+            </label>
+            <label class="aeris-return__choice">
+              <input type="checkbox" name="contact[Pernyataan syarat]" value="Ya" required>
+              Saya telah membaca dan menyetujui Syarat &amp; Ketentuan Pengembalian Barang / Dana Aeris.
+            </label>
+          </div>
+          <div class="aeris-return__submit-wrap">
+            <button class="aeris-return__submit" type="submit">Kirim</button>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.getElementById('AerisReturn-{{ section.id }}');
+    const form = root && root.querySelector('#AerisReturnForm');
+    if (!form || form.dataset.ready === 'true') return;
+    form.dataset.ready = 'true';
+
+    const panels = [...form.querySelectorAll('[data-return-panel]')];
+    const radios = [...form.querySelectorAll('#AerisReturnResolution input')];
+    const creditConfirm = form.querySelector('#AerisReturnCreditConfirm');
+    const replaceConfirm = form.querySelector('#AerisReturnReplaceConfirm');
+
+    const showPanel = (name) => {
+      panels.forEach((panel) => {
+        const active = panel.dataset.returnPanel === name;
+        panel.classList.toggle('is-visible', active);
+      });
+      if (creditConfirm) creditConfirm.required = name === 'credit';
+      if (replaceConfirm) replaceConfirm.required = name === 'replace';
+    };
+
+    radios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) showPanel(radio.dataset.panel);
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      const reasons = [...form.querySelectorAll('input[name="alasan"]:checked')].map((input) => input.value);
+      if (!reasons.length) {
+        event.preventDefault();
+        const first = form.querySelector('input[name="alasan"]');
+        if (first) first.setCustomValidity('Pilih minimal satu alasan.');
+        form.reportValidity();
+        if (first) first.setCustomValidity('');
+        return;
+      }
+
+      const emailField = form.querySelector('#AerisReturnEmail');
+      const emailTarget = form.querySelector('#AerisReturnEmailTarget');
+      if (emailField && emailTarget && emailField.value.trim()) {
+        emailTarget.value = emailField.value.trim();
+      }
+
+      const value = (selector) => {
+        const field = form.querySelector(selector);
+        return field && 'value' in field ? field.value.trim() : '';
+      };
+      const photo = form.querySelector('#AerisReturnPhoto');
+      const video = form.querySelector('#AerisReturnVideo');
+      const resolution = form.querySelector('#AerisReturnResolution input:checked');
+
+      form.querySelector('#AerisReturnReasons').value = reasons.join(', ');
+      form.querySelector('#AerisReturnBody').value = [
+        'Pengajuan Retur / Refund',
+        'Nama: ' + value('#AerisReturnName'),
+        'No Telp / WhatsApp: ' + value('#AerisReturnPhone'),
+        'Email: ' + (value('#AerisReturnEmail') || '-'),
+        'Alamat: ' + value('#AerisReturnAddress'),
+        'Order ID: ' + value('#AerisReturnOrder'),
+        'Order Via: ' + value('#AerisReturnChannel'),
+        'Nama Produk: ' + value('#AerisReturnProduct'),
+        'Varian: ' + value('#AerisReturnVariant'),
+        'Alasan: ' + reasons.join(', '),
+        'Detail Kendala: ' + value('#AerisReturnDetail'),
+        'Foto Produk: ' + (photo && photo.files[0] ? photo.files[0].name : '-'),
+        'Video Unboxing: ' + (video && video.files[0] ? video.files[0].name : '-'),
+        'Penyelesaian: ' + (resolution ? resolution.value : '-')
+      ].join('\n');
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aeris return form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aeris return form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,50 @@
+{%- liquid
+  assign policy_handle = policy.url | split: '/' | last
+  assign is_refund_policy = false
+  if policy_handle == 'refund-policy' or policy_handle == 'refund_policy'
+    assign is_refund_policy = true
+  endif
+-%}
+
+{% if is_refund_policy %}
+  {{ 'aeris-legal.css' | asset_url | stylesheet_tag }}
+  <section class="aeris-legal aeris-legal--returns">
+    <div class="aeris-legal__wrapper">
+      <aside class="aeris-legal__media">
+        <div class="aeris-legal__image-wrap">
+          <img
+            class="aeris-legal__image"
+            src="{{ 'TT_02644.jpg' | file_url }}"
+            alt="Return and Refund"
+            width="1400"
+            height="1750"
+            loading="eager"
+          >
+        </div>
+        <h1 class="aeris-legal__title">
+          <span data-legal-title-lang="id">Retur dan Refund</span>
+          <span data-legal-title-lang="en" hidden>Return and Refund</span>
+        </h1>
+      </aside>
+      <div class="aeris-legal__content">
+        {% render 'aeris-legal-switch' %}
+        {% render 'aeris-legal-returns' %}
+      </div>
+    </div>
+  </section>
+  <script src="{{ 'aeris-legal.js' | asset_url }}" defer></script>
+{% else %}
+  <div class="f-section container">
+    <h1 class="f__page-title text-center h2">{{ policy.title | escape }}</h1>
+    <div class="container">
+      <div class="rte">{{ policy.body }}</div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Policy",
+  "settings": []
+}
+{% endschema %}

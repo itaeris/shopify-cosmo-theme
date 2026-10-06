@@ -1,6 +1,6 @@
 {%- liquid
   assign is_legal_page = false
-  if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy'
+  if page.handle == 'terms-of-service' or page.handle == 'privacy-policy' or page.handle == 'terms' or page.handle == 'privacy' or page.handle == 'returns' or page.handle == 'return-policy' or page.handle == 'refund-policy'
     assign is_legal_page = true
   endif
 -%}
@@ -15,6 +15,10 @@
       assign document = 'privacy'
       assign page_title = 'Privacy Policy'
       assign legal_image = 'Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg'
+    elsif page.handle == 'returns' or page.handle == 'return-policy' or page.handle == 'refund-policy'
+      assign document = 'returns'
+      assign page_title = 'Return and Refund'
+      assign legal_image = 'TT_02644.jpg'
     endif
   -%}
   <section class="aeris-legal aeris-legal--{{ document }}">
@@ -34,6 +38,9 @@
           {%- if document == 'privacy' -%}
             <span data-legal-title-lang="id">Kebijakan Privasi</span>
             <span data-legal-title-lang="en" hidden>Privacy Policy</span>
+          {%- elsif document == 'returns' -%}
+            <span data-legal-title-lang="id">Retur dan Refund</span>
+            <span data-legal-title-lang="en" hidden>Return and Refund</span>
           {%- else -%}
             <span data-legal-title-lang="id">Syarat dan Ketentuan</span>
             <span data-legal-title-lang="en" hidden>Terms of Service</span>
@@ -44,6 +51,8 @@
         {% render 'aeris-legal-switch' %}
         {% if document == 'privacy' %}
           {% render 'aeris-legal-privacy' %}
+        {% elsif document == 'returns' %}
+          {% render 'aeris-legal-returns' %}
         {% else %}
           {% render 'aeris-legal-terms' %}
         {% endif %}
