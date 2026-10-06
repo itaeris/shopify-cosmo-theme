@@ -1,38 +1,48 @@
 {%- liquid
   assign show_hero = false
   assign banner_image = blank
-  assign banner_title = collection.title
-  assign show_title = true
+  assign banner_title = blank
 
   case collection.handle
-    when 'accessories', 'brushes', 'makeup-tools', 'aeris-brush-sets', 'brush-sets', 'puffs'
-      assign show_hero = true
-      assign banner_image = section.settings.accessories_image
-      assign show_title = false
-    when 'cleansers'
-      assign show_hero = true
-      assign banner_image = section.settings.cleansers_image
-      assign banner_title = 'Brush Cleanser'
-    when 'hair-tools'
-      assign show_hero = true
-      assign banner_image = section.settings.hair_image
-      assign banner_title = 'Hair Tools'
-    when 'wellness-tools'
-      assign show_hero = true
-      assign banner_image = section.settings.bags_image
-      assign banner_title = 'Lifestyle Bags'
-    when 'gift-sets'
-      assign show_hero = true
-      assign banner_image = section.settings.bundles_image
-      assign banner_title = 'Bundles'
     when 'new-in', 'new-arrivals', 'new-arrival'
       assign show_hero = true
-      assign banner_image = section.settings.arrivals_image
       assign banner_title = 'New Arrivals'
+      assign banner_image = section.settings.arrivals_image
+    when 'best-sellers-1', 'best-sellers', 'best-seller'
+      assign show_hero = true
+      assign banner_title = 'Best Sellers'
+      assign banner_image = section.settings.arrivals_image
+    when 'all', 'all-products', 'shop-all'
+      assign show_hero = true
+      assign banner_title = 'Shop All'
+      assign banner_image = section.settings.arrivals_image
+    when 'accessories', 'brushes-tools'
+      assign show_hero = true
+      assign banner_title = 'Brushes & Tools'
+      assign banner_image = section.settings.accessories_image
+    when 'cleansers', 'brush-cleaner'
+      assign show_hero = true
+      assign banner_title = 'Brush Cleaner'
+      assign banner_image = section.settings.cleansers_image
+    when 'hair-tools'
+      assign show_hero = true
+      assign banner_title = 'Hair Tools'
+      assign banner_image = section.settings.hair_image
+    when 'wellness-tools', 'lifestyle-bags'
+      assign show_hero = true
+      assign banner_title = 'Lifestyle Bags'
+      assign banner_image = section.settings.bags_image
+    when 'gift-sets'
+      assign show_hero = true
+      assign banner_title = 'Bundles'
+      assign banner_image = section.settings.bundles_image
   endcase
 
   if banner_image == blank and collection.image != blank
     assign banner_image = collection.image
+  endif
+  if show_hero and banner_image == blank
+    assign banner_image = section.settings.arrivals_image
   endif
 -%}
 {%- if show_hero -%}
@@ -51,7 +61,7 @@
             class: 'aeris-collection-hero__image'
         }}
       {%- endif -%}
-      {%- if show_title and banner_title != blank -%}
+      {%- if banner_title != blank -%}
         <h1 class="aeris-collection-hero__title">{{ banner_title }}</h1>
       {%- endif -%}
     </div>
@@ -90,43 +100,49 @@
       </div>
     {%- endif -%}
   </section>
+    {%- endif -%}
 
   <style>
     #shopify-section-{{ section.id }} {
       padding: 0;
     }
-    .aeris-collection-hero__banner {
+    #shopify-section-{{ section.id }} .aeris-collection-hero__banner {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: auto;
+      aspect-ratio: 1440 / 340;
       overflow: hidden;
       background: #f3f1ec;
+      container-type: inline-size;
     }
-    .aeris-collection-hero__image {
+    #shopify-section-{{ section.id }} .aeris-collection-hero__image {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       max-width: none;
       object-fit: cover;
-      object-position: center;
+      object-position: center center;
       display: block;
     }
-    .aeris-collection-hero__title {
+    #shopify-section-{{ section.id }} .aeris-collection-hero__title {
       position: absolute;
       inset: 0;
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 1.6rem;
+      padding: 0 2cqw;
       color: #fff;
       font-family: Newsreader, Georgia, serif;
       font-weight: 400;
-      font-size: clamp(2.8rem, 4.2vw, 5.2rem);
+      font-size: 3.61cqw;
       letter-spacing: 0.16em;
       line-height: 1;
       text-align: center;
       text-transform: uppercase;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+      text-shadow: 0 0.04em 0.35em rgba(0, 0, 0, 0.28);
     }
     .aeris-collection-hero__chips {
       padding: 2.4rem 0 2.4rem;
@@ -180,9 +196,6 @@
       white-space: nowrap;
     }
     @media (min-width: 750px) {
-      .aeris-collection-hero__banner {
-        height: 340px;
-      }
       .aeris-collection-hero__chip-list {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         gap: 1.6rem;
@@ -192,7 +205,6 @@
       }
     }
   </style>
-{%- endif -%}
 
 {% schema %}
 {

@@ -4747,13 +4747,19 @@ button,
   transition-delay: 0.175s;
 }
 
+.btn:not(.btn--plain):not(.btn--underline):not(.btn--link):not(.btn--icon) {
+  --color-btn-bg-hover: #222222;
+  --color-btn-text-hover: #ffffff;
+  --color-btn-before: #222222;
+}
+
 .btn--primary,
 .spr-button,
 .spr-button-primary {
-  --color-border: var(--color-btn-bg);
-  background: var(--color-btn-bg);
-  color: var(--color-btn-text);
-  border: none;
+  --color-border: #222222;
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #222222;
 }
 
 .btn--secondary {
@@ -5196,12 +5202,18 @@ shopify-accelerated-checkout-cart {
   letter-spacing: 0;
   text-transform: none;
 }
-.f-badge--soldout {
-  background-color: var(--color-badge-soldout);
-}
 .f-badge--hot,
 .f-badge--bestseller {
   background-color: #2d221f;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.f-badge--soldout {
+  background-color: var(--color-badge-soldout);
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-style: normal;

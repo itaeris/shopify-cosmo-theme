@@ -1,7 +1,7 @@
 {%- liquid
   assign variant = product.selected_or_first_available_variant
-  assign compare_at_price = variant.compare_at_price
-  assign price = variant.price
+  assign compare_at_price = product.compare_at_price
+  assign price = product.price
   assign on_sale = false
   if compare_at_price > price
     assign on_sale = true
@@ -256,7 +256,7 @@
           {% endfor %}
         </div>
       {% endif %}
-      {% if show_on_sale_badge and product.available and list_layout != true %}
+      {% if show_on_sale_badge and list_layout != true %}
         {% liquid
           assign sale_badge = ''
           assign amount = 0

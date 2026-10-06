@@ -142,14 +142,21 @@
   .aeris-circle__btn {
     display: inline-block;
     padding: 0.85rem 1.6rem;
-    background: #111;
-    color: #fff;
+    background: #fff;
+    color: #333;
     text-decoration: none;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 1.1rem;
     line-height: 1;
+    border: 1px solid #222222;
     border-radius: 999px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .aeris-circle__btn:hover {
+    background: #222222;
+    color: #fff;
+    border-color: #222222;
   }
   .aeris-circle__benefits {
     padding-top: 3.6rem;

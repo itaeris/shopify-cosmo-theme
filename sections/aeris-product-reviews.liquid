@@ -121,8 +121,12 @@
   .aeris-reviews__based, .aeris-reviews__empty, .aeris-reviews__meta { color: #6f6862; }
   .aeris-reviews__empty a { color: #1c1c1c; }
   .aeris-reviews__write, .aeris-reviews__form button {
-    display: inline-flex; margin-top: 1.6rem; padding: 1rem 1.6rem; border: 0; border-radius: 999px;
-    background: #1c1c1c; color: #fff; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.2rem; cursor: pointer;
+    display: inline-flex; margin-top: 1.6rem; padding: 1rem 1.6rem; border: 1px solid #222222; border-radius: 999px;
+    background: #fff; color: #333; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; font-size: 1.2rem; cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .aeris-reviews__write:hover, .aeris-reviews__form button:hover {
+    background: #222222; color: #fff; border-color: #222222;
   }
   .aeris-reviews__list { list-style: none; margin: 0 0 2.4rem; padding: 0; display: grid; gap: 1.6rem; }
   .aeris-reviews__list p { margin: 0.4rem 0 0; }

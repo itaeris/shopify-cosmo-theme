@@ -19,6 +19,9 @@
     flex-flow: column;
     overflow: hidden;
   }
+  .announcement-bar.color-inverse {
+    background-color: #582933;
+  }
   .announcement-bar__inner {
     position: relative;
   }
@@ -82,8 +85,9 @@
   .announcement-bar__marquee-group {
     display: flex;
     align-items: center;
-    gap: 2.8rem;
-    padding-inline-end: 2.8rem;
+    flex: 0 0 auto;
+    gap: 1.6rem;
+    padding-inline-end: 1.6rem;
     white-space: nowrap;
   }
   .announcement-bar__marquee-item {
@@ -121,7 +125,7 @@
       <div class="announcement-bar__marquee">
         <div class="announcement-bar__marquee-track">
           {% for replica in (1..2) %}
-            <div class="announcement-bar__marquee-group" {% if replica == 2 %}aria-hidden="true"{% endif %}>
+            <div class="announcement-bar__marquee-group" {% if replica > 1 %}aria-hidden="true"{% endif %}>
               {%- for block in section.blocks -%}
                 {%- if block.type == 'announcement' and block.settings.text != blank -%}
                   {% liquid

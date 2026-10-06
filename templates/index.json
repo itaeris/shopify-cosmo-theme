@@ -253,6 +253,9 @@
         "tab_zJhbwC",
         "tab_tNBxrX"
       ],
+      "custom_css": [
+        ".f-tabs__header-group { display: none; }"
+      ],
       "settings": {
         "container": "container",
         "color_schema": "background-1",
