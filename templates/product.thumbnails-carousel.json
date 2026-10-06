@@ -150,7 +150,6 @@
         "shipping_TqiCge",
         "complementary_WGHcVt",
         "collapsible_tab_YfYLeV",
-        "44a0cb66-4d76-437d-a088-4170647fb088",
         "0eccc6ff-be1a-4dae-b8a8-e7de214e7f57",
         "efc484d1-1da8-4e34-96ca-b826f0736b94"
       ],
@@ -467,8 +466,8 @@
         "heading_color": "",
         "description": "",
         "design": "unbalanced",
-        "card_color_schema": "scheme-6",
         "stars_color": "#222222",
+        "card_color_schema": "scheme-6",
         "columns": 4,
         "column_gap": "medium",
         "enable_slider": true,
