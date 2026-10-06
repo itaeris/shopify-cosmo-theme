@@ -254,7 +254,7 @@
         "tab_tNBxrX"
       ],
       "custom_css": [
-        ".f-tabs__header-group { display: none; }"
+        ".f-tabs__header-group {display: none;}"
       ],
       "settings": {
         "container": "container",
@@ -804,12 +804,12 @@
           "type": "text",
           "settings": {
             "color_scheme": "",
-            "title": "<strong>Free Monograming</strong> with every purchase of <em>Coco Vanity Bag</em>",
+            "title": "<strong>Free Monogramming</strong> with every purchase of <em>Coco Vanity Bag</em>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
-            "subheading": "personalise your bag",
+            "subheading": "personalize your bag",
             "text": "<p>Make the Coco Vanity Bag uniquely yours or your loved ones with free custom monogramming. Perfect for gifting.</p>",
             "alignment": "center",
             "align_text": "left",
