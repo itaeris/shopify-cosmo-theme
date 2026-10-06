@@ -29,6 +29,9 @@
   id="AerisOnyx-{{ section.id }}"
   class="aeris-onyx"
 >
+  {%- if section.settings.slider_heading != blank -%}
+    <h2 class="aeris-onyx__heading">{{ section.settings.slider_heading | escape }}</h2>
+  {%- endif -%}
   <div class="aeris-onyx__slider" data-onyx-slider>
     <div class="aeris-onyx__track" data-onyx-track>
       {%- if hero_image != blank and shown < 4 -%}
@@ -169,6 +172,18 @@
     color: #1c1c1c;
   }
 
+  #AerisOnyx-{{ section.id }} .aeris-onyx__heading {
+    margin: 0;
+    padding: 5.6rem 2.4rem 3.2rem;
+    text-align: center;
+    font-family: var(--font-heading-family);
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+    font-size: clamp(2.8rem, 3.2vw, 4.8rem);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
   #AerisOnyx-{{ section.id }} .aeris-onyx__slider {
     position: relative;
     overflow: hidden;
@@ -229,6 +244,11 @@
   "tag": "section",
   "class": "aeris-onyx-section",
   "settings": [
+    {
+      "type": "text",
+      "id": "slider_heading",
+      "label": "Heading above slider"
+    },
     {
       "type": "text",
       "id": "banner_title",

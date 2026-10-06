@@ -36,6 +36,9 @@
       assign show_hero = true
       assign banner_title = 'Bundles'
       assign banner_image = section.settings.bundles_image
+    when 'promo', 'promotion'
+      assign show_hero = true
+      assign banner_title = 'Promo'
   endcase
 
   if banner_image == blank and collection.image != blank
