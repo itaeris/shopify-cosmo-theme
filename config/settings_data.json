@@ -62,7 +62,7 @@
     "pcard_sale_badge_type": "show_percentage",
     "pcard_mobile_hide_quick_view": true,
     "color_swatches_enable": true,
-    "custom_colors": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #212121,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080,\r\nchocolate: #6e4b32,\r\nnoir: #1a1a1a,\r\ncherry: #6e2436",
+    "custom_colors": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #212121,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080,\r\nchocolate: #6e4b32,\r\nnoir: #1a1a1a,\r\ncherry: #6e2436,\r\nrose: #c5a299,\r\ngray: #4a4038,\r\nbeige: #b5a08e",
     "qv_show_dynamic_checkout_button": false,
     "social_twitter_link": "",
     "social_facebook_link": "https://www.facebook.com/aerisbeaute/",

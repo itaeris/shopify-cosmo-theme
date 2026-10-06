@@ -288,6 +288,9 @@
                       assign li_class = li_class | append: ' f-mobile-nav__item--has-child'
                     endif
                   %}
+                  {%- if title_handle == 'store-locations' or title_handle == 'store-location' -%}
+                    {% render 'aeris-nav-extra', context: 'mobile', menu_id: mobile_menu, item: 'collaboration' %}
+                  {%- endif -%}
                   <li
                     class="{{ li_class }}"
                     {% if use_dropdown %}
@@ -392,6 +395,9 @@
                       </collapsible-tab>
                     {% endif %}
                   </li>
+                  {%- if title_handle == 'shop-all' or title_handle == 'shopall' -%}
+                    {% render 'aeris-nav-extra', context: 'mobile', menu_id: mobile_menu, item: 'promotion' %}
+                  {%- endif -%}
                 {% endfor %}
               </ul>
             </div>

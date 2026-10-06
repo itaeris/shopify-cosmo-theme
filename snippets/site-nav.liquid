@@ -33,10 +33,14 @@
   <site-nav class="f-site-nav lg-down:hidden{{ space_class }}">
     <ul class="f-site-nav__list flex flex-wrap h-full list-none" role="list">
       {%- for link in menu_links -%}
+        {%- if menu_part == 'last' and forloop.index <= split_index -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- if menu_part == 'last' and aeris_collab_done != true -%}
+          {%- assign aeris_collab_done = true -%}
+          {% render 'aeris-nav-extra', context: 'desktop', menu_id: menu_id, item: 'collaboration' %}
+        {%- endif -%}
         {%- liquid
-          if menu_part == 'last' and forloop.index <= split_index
-            continue
-          endif
           assign li_class = 'f-site-nav__item'
           assign is_mega_item = true
           assign three_level = false
@@ -553,6 +557,9 @@
             </header-menu>
           {%- endif -%}
         </li>
+        {%- if title_handle == 'shop-all' or title_handle == 'shopall' -%}
+          {% render 'aeris-nav-extra', context: 'desktop', menu_id: menu_id, item: 'promotion' %}
+        {%- endif -%}
         {%- if menu_part == 'first' and forloop.index >= split_index -%}
           {%- break -%}
         {%- endif -%}

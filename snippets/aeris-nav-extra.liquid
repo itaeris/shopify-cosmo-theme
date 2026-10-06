@@ -1,0 +1,40 @@
+{%- liquid
+  assign extra_menu_id = menu_id | default: 'main-menu'
+  assign extra_links = linklists[extra_menu_id].links
+  assign has_promotion = false
+  assign has_collaboration = false
+  for extra_link in extra_links
+    assign extra_handle = extra_link.title | handleize
+    if extra_handle == 'promotion'
+      assign has_promotion = true
+    endif
+    if extra_handle == 'collaboration'
+      assign has_collaboration = true
+    endif
+  endfor
+-%}
+{%- if item == 'promotion' and has_promotion == false -%}
+  {%- if context == 'mobile' -%}
+    <li class="f-mobile-nav__item">
+      <a href="/pages/promotion" class="f-mobile-nav__link f-mobile-nav__link--promotion">Promotion</a>
+    </li>
+  {%- else -%}
+    <li class="f-site-nav__item">
+      <a href="/pages/promotion" class="f-site-nav__link f-site-nav__link--promotion focus-inset">
+        <span>Promotion</span>
+      </a>
+    </li>
+  {%- endif -%}
+{%- elsif item == 'collaboration' and has_collaboration == false -%}
+  {%- if context == 'mobile' -%}
+    <li class="f-mobile-nav__item">
+      <a href="/pages/collaboration" class="f-mobile-nav__link">Collaboration</a>
+    </li>
+  {%- else -%}
+    <li class="f-site-nav__item">
+      <a href="/pages/collaboration" class="f-site-nav__link focus-inset">
+        <span>Collaboration</span>
+      </a>
+    </li>
+  {%- endif -%}
+{%- endif -%}

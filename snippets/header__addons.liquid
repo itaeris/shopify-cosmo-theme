@@ -23,11 +23,6 @@
 %}
 
 <div class="site-header__addons flex items-center {{ custom_class }}">
-  {% if show_country_selector %}
-    <div class="site-header__element f-tablet-hidden">
-      {% render 'country-selector', plain: true, class: 'site-header__link', form_id: form_id %}
-    </div>
-  {% endif %}
   {% if show_language_selector %}
     <div class="site-header__element f-tablet-hidden">
       {% render 'language-selector', plain: true, class: 'site-header__link', form_id: form_id %}
@@ -102,6 +97,19 @@
       </shopify-account>
     </header-account>
   {%- endif -%}
+  {% if show_country_selector %}
+    {% liquid
+      assign country_form_id = form_id | append: 'country'
+    %}
+    <div class="site-header__element site-header__currency">
+      {% render 'country-selector',
+        plain: true,
+        compact: true,
+        class: 'site-header__link',
+        form_id: country_form_id
+      %}
+    </div>
+  {% endif %}
   <div class="site-header__element {{ cart_class }}">
     {% render 'cart-link', block: block, link_class: 'site-header__link', color_schema: color_schema %}
   </div>

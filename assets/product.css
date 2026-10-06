@@ -43,6 +43,10 @@
   color: rgba(var(--color-foreground), 1);
   opacity: 0.3;
 }
+.variant-picker__option--soldout .variant-picker__option-button--color,
+.variant-picker__option--soldout .variant-picker__option-button--swatch {
+  opacity: 1;
+}
 .variant-picker__option--soldout .variant-picker__option-button::before {
   content: "";
   position: absolute;

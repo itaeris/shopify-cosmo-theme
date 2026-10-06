@@ -269,6 +269,8 @@ if (!customElements.get("product-info")) {
         const shouldFetchFullPage =
           this.dataset.updateUrl === "true" && shouldSwapProduct;
 
+        if (!shouldSwapProduct) this.previewSelectedMedia();
+
         this.renderProductInfo({
           requestUrl: this.buildRequestUrlWithParams(
             productUrl,
@@ -488,6 +490,44 @@ if (!customElements.get("product-info")) {
           addButton.removeAttribute("disabled");
           addButtonText.textContent = window.FoxThemeStrings.addToCart;
         }
+      }
+
+      previewSelectedMedia() {
+        const dataEl = this.querySelector("#ProductData");
+        if (!dataEl || !this.productMedia) return;
+
+        let product;
+        try {
+          product = JSON.parse(dataEl.textContent);
+        } catch (error) {
+          return;
+        }
+
+        const variants = product && product.variants;
+        if (!Array.isArray(variants) || !this.variantSelectors) return;
+
+        const selectedOptions = [];
+        this.variantSelectors
+          .querySelectorAll("[data-picker-field]")
+          .forEach((field) => {
+            const checked = field.querySelector('input[type="radio"]:checked');
+            const select = field.querySelector("select");
+            const value = checked
+              ? checked.value
+              : select
+                ? select.value
+                : "";
+            if (!value) return;
+            selectedOptions.push(value);
+            const selectedLabel = field.querySelector(".selected-value");
+            if (selectedLabel) selectedLabel.textContent = value;
+          });
+        if (!selectedOptions.length) return;
+
+        const variant = variants.find((item) =>
+          selectedOptions.every((value, index) => item.options[index] === value)
+        );
+        if (variant) this.updateMedia(variant);
       }
 
       updateMedia(variant) {

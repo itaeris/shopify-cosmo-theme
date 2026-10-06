@@ -64,8 +64,12 @@
           data-disclosure-toggle
         >
           <span class="f-country-flags f-country-flags--{{ localization.country.iso_code }}"></span>
-          {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
-          {{ localization.country.currency.symbol }})
+          {%- if compact -%}
+            {{- localization.country.currency.iso_code -}}
+          {%- else -%}
+            {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
+            {{ localization.country.currency.symbol }})
+          {%- endif -%}
           {% comment %} theme-check-disable {% endcomment %}
           {{ 'icon-arrow-down.svg' | inline_asset_content }}
           {% comment %} theme-check-enable {% endcomment %}
