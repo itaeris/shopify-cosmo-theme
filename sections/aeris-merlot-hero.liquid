@@ -353,12 +353,17 @@
   }
 
   #AerisHero-{{ section.id }} .aeris-hero__button {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     margin-top: 22px;
-    padding: 11px 28px;
+    padding: 0 40px;
+    height: 46px;
 
     min-width: 0;
 
@@ -369,22 +374,44 @@
     border-radius: 999px;
 
     font-family: var(--font-body-family);
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.2;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.01em;
+    text-transform: uppercase;
 
     text-decoration: none;
 
-    transition:
-      background 0.3s ease,
-      color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+
+  #AerisHero-{{ section.id }} .aeris-hero__button::before,
+  #AerisHero-{{ section.id }} .aeris-hero__button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    background: #222222;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.75, 0, 0.125, 1);
   }
 
   #AerisHero-{{ section.id }} .aeris-hero__button:hover {
     background: #222222;
     color: #ffffff;
+  }
+
+  #AerisHero-{{ section.id }} .aeris-hero__button:hover::before,
+  #AerisHero-{{ section.id }} .aeris-hero__button:hover::after {
+    transform: translateX(0);
+  }
+
+  #AerisHero-{{ section.id }} .aeris-hero__button:hover::after {
+    transition-delay: 0.175s;
   }
 
   #AerisHero-{{ section.id }} .aeris-hero__arrow {
@@ -550,11 +577,12 @@
 
     #AerisHero-{{ section.id }} .aeris-hero__button {
       margin-top: 16px;
-      padding: 10px 22px;
+      height: 42px;
+      padding: 0 28px;
 
       min-width: 0;
 
-      font-size: 16px;
+      font-size: 15px;
     }
 
     #AerisHero-{{ section.id }} .aeris-hero__arrow {
@@ -580,6 +608,8 @@
   @media (prefers-reduced-motion: reduce) {
     #AerisHero-{{ section.id }} .aeris-hero__slide,
     #AerisHero-{{ section.id }} .aeris-hero__button,
+    #AerisHero-{{ section.id }} .aeris-hero__button::before,
+    #AerisHero-{{ section.id }} .aeris-hero__button::after,
     #AerisHero-{{ section.id }} .aeris-hero__arrow,
     #AerisHero-{{ section.id }} .aeris-hero__dot {
       transition: none;
