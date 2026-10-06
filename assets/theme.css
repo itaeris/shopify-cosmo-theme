@@ -5187,16 +5187,48 @@ shopify-accelerated-checkout-cart {
   width: max-content;
 }
 .f-badge--sale {
-  background-color: var(--color-badge-sale);
+  background-color: #990000;
+  color: #fff;
+  border-radius: 0.4rem;
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .f-badge--soldout {
   background-color: var(--color-badge-soldout);
 }
-.f-badge--hot {
-  background-color: var(--color-badge-hot, #c32b2b);
+.f-badge--hot,
+.f-badge--bestseller {
+  background-color: #2d221f;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .f-badge--new {
-  background-color: var(--color-badge-new, #008c62);
+  background-color: #f7f4f1;
+  color: #2d221f;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.f-badge--bestseller,
+.product-card__image-wrapper > .f-badge--sale {
+  border-radius: 0.4rem;
+}
+.product-card__image-wrapper > .f-badge--sale {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  z-index: 2;
+  padding: 0.55rem 0.7rem;
+  font-size: 1.6rem;
 }
 .f-badge span[data-sale-value] {
   margin-inline-start: 0.4rem;

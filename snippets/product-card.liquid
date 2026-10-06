@@ -64,6 +64,25 @@
   assign mobile_hide_quick_view = settings.pcard_mobile_hide_quick_view
 
   assign custom_tags = product.tags | where: 'tag__'
+  assign is_best_seller = false
+  assign is_new_arrival = false
+  for aeris_collection in product.collections
+    if aeris_collection.handle == 'best-sellers-1' or aeris_collection.handle == 'best-sellers' or aeris_collection.handle == 'best-seller'
+      assign is_best_seller = true
+    endif
+    if aeris_collection.handle == 'new-in' or aeris_collection.handle == 'new-arrival' or aeris_collection.handle == 'new-arrivals'
+      assign is_new_arrival = true
+    endif
+  endfor
+  for aeris_tag in product.tags
+    assign aeris_tag_handle = aeris_tag | handleize
+    if aeris_tag_handle == 'best-seller' or aeris_tag_handle == 'bestseller' or aeris_tag_handle == 'best-sellers'
+      assign is_best_seller = true
+    endif
+    if aeris_tag_handle == 'new' or aeris_tag_handle == 'new-arrival' or aeris_tag_handle == 'new-in'
+      assign is_new_arrival = true
+    endif
+  endfor
 
   assign choose_options_tag = 'a'
   unless settings.pcard_choose_options_actions == 'product_page'
@@ -208,7 +227,7 @@
         </div>
       {% endif %}
 
-      {% if product.available == false or on_sale or custom_tags.size > 0 %}
+      {% if product.available == false or is_best_seller or is_new_arrival or custom_tags.size > 0 %}
         <div class="product-card__badge">
           {%- if product.available == false
             and show_soldout
@@ -218,41 +237,49 @@
               {{ 'products.product.sold_out' | t }}
             </span>
           {% endif %}
-          {% if show_on_sale_badge
-            and product.available
-            and list_layout != true
-          %}
-            {% liquid
-              assign sale_badge = ''
-              assign amount = 0
-              case settings.pcard_sale_badge_type
-                when 'show_percentage'
-                  if compare_at_price > price
-                    assign amount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
-                  endif
-                  assign sale_badge = amount | times: -1 | append: '%'
-                when 'show_amount'
-                  if compare_at_price > price
-                    assign amount = compare_at_price | minus: price | money
-                  endif
-                  assign sale_badge = 'products.product.price.save_price_html' | t: amount: amount
-                else
-                  assign sale_badge = 'products.product.on_sale' | t
-              endcase
-            %}
-            <span class="f-badge f-badge--sale" aria-hidden="true">
-              {{- sale_badge -}}
-            </span>
+          {% if is_best_seller and list_layout != true %}
+            <span class="f-badge f-badge--bestseller">BEST-SELLER</span>
+          {% elsif is_new_arrival and list_layout != true %}
+            <span class="f-badge f-badge--new">NEW</span>
           {% endif %}
           {% for tag in custom_tags %}
             {%- liquid
               assign tag_content = tag | split: '__' | last
               assign type = tag_content | split: '_' | first
               assign tag_name = tag_content | split: '_' | last
+              assign tag_type_handle = type | handleize
             -%}
+            {% if tag_type_handle == 'new' and is_new_arrival %}
+              {% continue %}
+            {% endif %}
             <span class="f-badge f-badge--{{ type }}">{{ tag_name }}</span>
           {% endfor %}
         </div>
+      {% endif %}
+      {% if show_on_sale_badge and product.available and list_layout != true %}
+        {% liquid
+          assign sale_badge = ''
+          assign amount = 0
+          case settings.pcard_sale_badge_type
+            when 'show_percentage'
+              if compare_at_price > price
+                assign amount = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round
+              endif
+              assign sale_badge = amount | times: -1 | append: '%'
+            when 'show_amount'
+              if compare_at_price > price
+                assign amount = compare_at_price | minus: price | money
+              endif
+              assign sale_badge = 'products.product.price.save_price_html' | t: amount: amount
+            else
+              assign sale_badge = 'products.product.on_sale' | t
+          endcase
+        %}
+        {% if sale_badge != '' and sale_badge != '-0%' %}
+          <span class="f-badge f-badge--sale" aria-hidden="true">
+            {{- sale_badge -}}
+          </span>
+        {% endif %}
       {% endif %}
       {% unless list_layout %}
         {% if enable_quick_add or enable_quick_view %}
