@@ -1,6 +1,7 @@
 {%- liquid
   assign show_hero = false
   assign banner_image = blank
+  assign banner_image_mobile = blank
   assign banner_title = blank
 
   case collection.handle
@@ -8,37 +9,47 @@
       assign show_hero = true
       assign banner_title = 'New Arrivals'
       assign banner_image = section.settings.arrivals_image
+      assign banner_image_mobile = section.settings.arrivals_image_mobile
     when 'best-sellers-1', 'best-sellers', 'best-seller'
       assign show_hero = true
       assign banner_title = 'Best Sellers'
       assign banner_image = section.settings.arrivals_image
+      assign banner_image_mobile = section.settings.arrivals_image_mobile
     when 'all', 'all-products', 'shop-all'
       assign show_hero = true
       assign banner_title = 'Shop All'
       assign banner_image = section.settings.arrivals_image
+      assign banner_image_mobile = section.settings.arrivals_image_mobile
     when 'accessories', 'brushes-tools'
       assign show_hero = true
       assign banner_title = 'Brushes & Tools'
       assign banner_image = section.settings.accessories_image
+      assign banner_image_mobile = section.settings.accessories_image_mobile
     when 'cleansers', 'brush-cleaner'
       assign show_hero = true
       assign banner_title = 'Brush Cleaner'
       assign banner_image = section.settings.cleansers_image
+      assign banner_image_mobile = section.settings.cleansers_image_mobile
     when 'hair-tools'
       assign show_hero = true
       assign banner_title = 'Hair Tools'
       assign banner_image = section.settings.hair_image
+      assign banner_image_mobile = section.settings.hair_image_mobile
     when 'wellness-tools', 'lifestyle-bags'
       assign show_hero = true
       assign banner_title = 'Lifestyle Bags'
       assign banner_image = section.settings.bags_image
+      assign banner_image_mobile = section.settings.bags_image_mobile
     when 'gift-sets'
       assign show_hero = true
       assign banner_title = 'Bundles'
       assign banner_image = section.settings.bundles_image
+      assign banner_image_mobile = section.settings.bundles_image_mobile
     when 'promo', 'promotion'
       assign show_hero = true
       assign banner_title = 'Promo'
+      assign banner_image = section.settings.promo_image
+      assign banner_image_mobile = section.settings.promo_image_mobile
   endcase
 
   if banner_image == blank and collection.image != blank
@@ -46,24 +57,20 @@
   endif
   if show_hero and banner_image == blank
     assign banner_image = section.settings.arrivals_image
+    if banner_image_mobile == blank
+      assign banner_image_mobile = section.settings.arrivals_image_mobile
+    endif
   endif
 -%}
 {%- if show_hero -%}
   <section class="aeris-collection-hero" id="AerisCollectionHero-{{ section.id }}">
     <div class="aeris-collection-hero__banner">
-      {%- if banner_image != blank -%}
-        {{
-          banner_image
-          | image_url: width: 3000
-          | image_tag:
-            loading: 'eager',
-            fetchpriority: 'high',
-            widths: '750, 1100, 1500, 2000, 2400, 3000',
-            sizes: '100vw',
-            alt: banner_title,
-            class: 'aeris-collection-hero__image'
-        }}
-      {%- endif -%}
+      {% render 'aeris-banner-picture',
+        image: banner_image,
+        mobile_image: banner_image_mobile,
+        alt: banner_title,
+        image_class: 'aeris-collection-hero__image'
+      %}
       {%- if banner_title != blank -%}
         <h1 class="aeris-collection-hero__title">{{ banner_title }}</h1>
       {%- endif -%}
@@ -113,10 +120,15 @@
       position: relative;
       width: 100%;
       height: auto;
-      aspect-ratio: 1440 / 340;
+      aspect-ratio: 3 / 2;
       overflow: hidden;
       background: #f3f1ec;
       container-type: inline-size;
+    }
+    @media (min-width: 750px) {
+      #shopify-section-{{ section.id }} .aeris-collection-hero__banner {
+        aspect-ratio: 1440 / 340;
+      }
     }
     #shopify-section-{{ section.id }} .aeris-collection-hero__image {
       position: absolute;
@@ -214,34 +226,92 @@
   "name": "Aeris collection hero",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "accessories_image",
-      "label": "Brushes & Tools banner"
+      "type": "paragraph",
+      "content": "Desktop 2880 × 680 px. HP 1500 × 1000 px. Kalau foto HP kosong, foto desktop dipotong mengikuti layar."
     },
     {
       "type": "image_picker",
-      "id": "cleansers_image",
-      "label": "Brush Cleanser banner"
+      "id": "promo_image",
+      "label": "Promo, desktop",
+      "info": "2880 × 680 px. Kosongkan untuk memakai gambar koleksi Promo."
     },
     {
       "type": "image_picker",
-      "id": "hair_image",
-      "label": "Hair Tools banner"
-    },
-    {
-      "type": "image_picker",
-      "id": "bags_image",
-      "label": "Lifestyle Bags banner"
-    },
-    {
-      "type": "image_picker",
-      "id": "bundles_image",
-      "label": "Bundles banner"
+      "id": "promo_image_mobile",
+      "label": "Promo, HP",
+      "info": "1500 × 1000 px."
     },
     {
       "type": "image_picker",
       "id": "arrivals_image",
-      "label": "New Arrivals banner"
+      "label": "New Arrivals, Best Sellers, Shop All, desktop",
+      "info": "2880 × 680 px. Satu foto untuk ketiga koleksi itu."
+    },
+    {
+      "type": "image_picker",
+      "id": "arrivals_image_mobile",
+      "label": "New Arrivals, Best Sellers, Shop All, HP",
+      "info": "1500 × 1000 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "accessories_image",
+      "label": "Brushes & Tools, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "accessories_image_mobile",
+      "label": "Brushes & Tools, HP",
+      "info": "1500 × 1000 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "cleansers_image",
+      "label": "Brush Cleanser, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "cleansers_image_mobile",
+      "label": "Brush Cleanser, HP",
+      "info": "1500 × 1000 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "hair_image",
+      "label": "Hair Tools, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "hair_image_mobile",
+      "label": "Hair Tools, HP",
+      "info": "1500 × 1000 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "bags_image",
+      "label": "Lifestyle Bags, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "bags_image_mobile",
+      "label": "Lifestyle Bags, HP",
+      "info": "1500 × 1000 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "bundles_image",
+      "label": "Bundles, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "bundles_image_mobile",
+      "label": "Bundles, HP",
+      "info": "1500 × 1000 px."
     }
   ],
   "blocks": [

@@ -6329,6 +6329,52 @@ details[open]:not(.parent-group) > summary > [data-collapsible-icon] svg:first-c
   padding-left: 3.2rem;
   padding-right: 3.2rem;
 }
+@media (max-width: 1023.98px) {
+  .site-header--design-5 .container-full {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+  .site-header--design-5 .site-header__inner {
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .site-header--design-5 .site-header__left,
+  .site-header--design-5 .site-header__right {
+    width: auto;
+  }
+  .site-header--design-5 .site-header__mobile-logo--center .mobile-nav-toggle {
+    order: 3;
+    flex: 0 0 auto;
+    margin-inline: 0.4rem 0;
+  }
+  .site-header--design-5 .site-header__center {
+    order: 1;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin-inline-end: auto;
+    justify-content: flex-start;
+  }
+  .site-header--design-5 .site-header__right {
+    order: 2;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  .site-header--design-5 .site-header__addons {
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+  .site-header--design-5 .site-header__currency {
+    margin-inline: 0;
+  }
+  .site-header--design-5 .f-disclosure {
+    padding: 0 0.2rem;
+  }
+  .site-header--design-5 .site-header__link,
+  .site-header--design-5 .site-header__link.site-header__search-toggle-mobile {
+    padding: 0.4rem !important;
+  }
+}
 .site-header--design-5 .site-header__right {
   column-gap: 2rem;
   align-items: center;
@@ -6494,9 +6540,17 @@ body:not(.header-pinned) .header-scrolled .header {
   .site-header__mobile-logo--center .site-header__center {
     justify-content: center;
   }
+  .site-header--design-5 .site-header__mobile-logo--center .site-header__center {
+    justify-content: flex-start;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
   .site-header__mobile-logo--center .mobile-nav-toggle {
     margin-inline-end: 0;
     flex: 1;
+  }
+  .site-header--design-5 .site-header__mobile-logo--center .mobile-nav-toggle {
+    flex: 0 0 auto;
   }
   .site-header--design-1 .site-header__mobile-logo--center .site-header__left, .site-header--design-4 .site-header__mobile-logo--center .site-header__left {
     justify-content: center;

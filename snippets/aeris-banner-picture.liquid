@@ -1,0 +1,28 @@
+{%- if image != blank or mobile_image != blank -%}
+  <picture>
+    {%- if mobile_image != blank -%}
+      <source
+        media="(max-width: 749px)"
+        srcset="{{ mobile_image | image_url: width: 750 }} 750w, {{ mobile_image | image_url: width: 1100 }} 1100w, {{ mobile_image | image_url: width: 1500 }} 1500w"
+        sizes="100vw"
+      >
+    {%- endif -%}
+    {%- liquid
+      assign picture_image = image
+      if picture_image == blank
+        assign picture_image = mobile_image
+      endif
+    -%}
+    {{
+      picture_image
+      | image_url: width: 3000
+      | image_tag:
+        loading: 'eager',
+        fetchpriority: 'high',
+        widths: '750, 1100, 1500, 2000, 2400, 3000',
+        sizes: '100vw',
+        alt: alt,
+        class: image_class
+    }}
+  </picture>
+{%- endif -%}
