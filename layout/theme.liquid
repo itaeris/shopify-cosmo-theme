@@ -23,7 +23,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% render 'aeris-lock-zoom' %}
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -282,6 +283,7 @@
 
     {% render 'theme-script' %}
     {% render 'cookie-banner' %}
+    {% render 'aeris-currency' %}
     {% render 'aeris-whatsapp' %}
     {% render 'aeris-instafeed-center' %}
     {%- if settings.pcard_show_quickview_button

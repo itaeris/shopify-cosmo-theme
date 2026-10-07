@@ -530,7 +530,7 @@
         {%- endif -%}
         <li class="{{ li_class }}" data-index="{{ forloop.index0 }}">
           {%- if is_hover or has_dropdown == false -%}
-            <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-site-nav__link focus-inset">
+            <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-site-nav__link focus-inset{% if title_handle == 'promotion' %} f-site-nav__link--promotion{% endif %}">
               <span>{{- link.title -}}</span>
               {%- if has_dropdown -%}
                 <span class="f-site-nav__arrow{% if is_mega_item and has_mega_item %} no-js-hidden{% endif %}">
@@ -544,7 +544,7 @@
           {%- else -%}
             <header-menu>
               <details id="Details-menu-drawer-menu-item-{{ forloop.index0 }}">
-                <summary class="f-site-nav__link focus-inset">
+                <summary class="f-site-nav__link focus-inset{% if title_handle == 'promotion' %} f-site-nav__link--promotion{% endif %}">
                   <span>{{- link.title -}}</span>
                   <span class="f-site-nav__arrow{% if is_mega_item and has_mega_item %} no-js-hidden{% endif %}">
                     {% comment %} theme-check-disable {% endcomment %}

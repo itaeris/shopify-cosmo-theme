@@ -1,0 +1,44 @@
+<style>
+  html,
+  body {
+    touch-action: pan-x pan-y;
+  }
+</style>
+<script>
+  (function () {
+    var blockGesture = function (event) {
+      event.preventDefault();
+    };
+
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (type) {
+      document.addEventListener(type, blockGesture, { passive: false });
+    });
+
+    document.addEventListener(
+      'touchmove',
+      function (event) {
+        if (event.touches.length > 1) blockGesture(event);
+      },
+      { passive: false }
+    );
+
+    document.addEventListener(
+      'wheel',
+      function (event) {
+        if (event.ctrlKey) blockGesture(event);
+      },
+      { passive: false, capture: true }
+    );
+
+    document.addEventListener(
+      'keydown',
+      function (event) {
+        if (!event.ctrlKey && !event.metaKey) return;
+        var zoomKey = event.key === '+' || event.key === '-' || event.key === '=' || event.key === '_' || event.key === '0';
+        var zoomCode = event.code === 'NumpadAdd' || event.code === 'NumpadSubtract' || event.code === 'Numpad0';
+        if (zoomKey || zoomCode) blockGesture(event);
+      },
+      { capture: true }
+    );
+  })();
+</script>

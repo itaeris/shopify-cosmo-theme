@@ -3,7 +3,6 @@
   assign show_cart = section.settings.show_cart
   assign show_account = section.settings.show_account
   assign show_language_selector = section.settings.show_language_selector
-  assign show_country_selector = section.settings.show_country_selector
   assign mobile_show_search = section.settings.mobile_show_search
   assign mobile_show_cart = section.settings.mobile_show_cart
   comment
@@ -68,11 +67,9 @@
     endif
   %}
   {% render 'header__search', section: section, search_form_class: search_form_class, color_schema: color_schema %}
-  {% comment %} {% if shop.customer_accounts_enabled and show_account %}
-    <div class="site-header__element hidden md:block">
-      {% render 'user-links', block: block, link_class: 'site-header__link', color_schema: color_schema %}
-    </div>
-  {% endif %} {% endcomment %}
+  <div class="site-header__element {{ cart_class }}">
+    {% render 'cart-link', block: block, link_class: 'site-header__link', color_schema: color_schema %}
+  </div>
   {%- if shop.customer_accounts_enabled and show_account -%}
     {% liquid
       assign text = 'layout.customer.log_in' | t
@@ -80,7 +77,7 @@
         assign text = 'layout.customer.account' | t
       endif
     %}
-    <header-account class="header__account hidden md:block" data-tippy-theme="color-{{ color_schema }}" data-tippy-content="{{ text }}" data-tippy-placement="bottom">
+    <header-account class="header__account" data-tippy-theme="color-{{ color_schema }}" data-tippy-content="{{ text }}" data-tippy-placement="bottom">
       <shopify-account menu="{{ section.settings.customer_account_menu }}">
         {% if customer %}
           <div class="account-button__fallback" aria-label="{{ 'customer.account_fallback' | t }}"></div>
@@ -97,20 +94,4 @@
       </shopify-account>
     </header-account>
   {%- endif -%}
-  {% if show_country_selector %}
-    {% liquid
-      assign country_form_id = form_id | append: 'country'
-    %}
-    <div class="site-header__element site-header__currency">
-      {% render 'country-selector',
-        plain: true,
-        compact: true,
-        class: 'site-header__link',
-        form_id: country_form_id
-      %}
-    </div>
-  {% endif %}
-  <div class="site-header__element {{ cart_class }}">
-    {% render 'cart-link', block: block, link_class: 'site-header__link', color_schema: color_schema %}
-  </div>
 </div>

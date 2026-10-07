@@ -6374,6 +6374,14 @@ details[open]:not(.parent-group) > summary > [data-collapsible-icon] svg:first-c
   .site-header--design-5 .site-header__link.site-header__search-toggle-mobile {
     padding: 0.4rem !important;
   }
+  .site-header--design-5 .header__account {
+    display: inline-flex;
+    align-items: center;
+  }
+  .site-header--design-5 .header__account .f-icon-user {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
 }
 .site-header--design-5 .site-header__right {
   column-gap: 2rem;
@@ -6725,6 +6733,8 @@ shopify-account::part(signed-out-avatar) {
 .f-site-nav__item:focus-within > .f-site-nav__link--promotion,
 .f-mobile-nav__link--promotion {
   color: #d0121a !important;
+  font-style: italic;
+  font-weight: 700 !important;
 }
 .f-site-nav__dropdown {
   position: absolute;

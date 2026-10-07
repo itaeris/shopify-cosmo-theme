@@ -298,7 +298,7 @@
                     {% endif %}
                     data-collapsible-parent
                   >
-                    <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-mobile-nav__link">
+                    <a href="{% render 'aeris-menu-url', menu_link: link %}" class="f-mobile-nav__link{% if title_handle == 'promotion' %} f-mobile-nav__link--promotion{% endif %}">
                       {{ link.title }}
                     </a>
                     {% if use_dropdown %}
