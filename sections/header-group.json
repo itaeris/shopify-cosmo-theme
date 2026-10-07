@@ -216,9 +216,10 @@
         },
         "slide_WPaDFX": {
           "type": "slide",
-          "disabled": true,
           "settings": {
+            "background_image": "shopify://shop_images/Coco_desktop.jpg",
             "show_small_image": false,
+            "small_image": "shopify://shop_images/Coco_mobile.jpg",
             "heading": "",
             "subtitle": "",
             "button_text": "Discover now",

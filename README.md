@@ -6,7 +6,7 @@ Theme remote yang dipakai untuk development:
 
 - Store: `aerisbeaute.myshopify.com`
 - Theme: **Copy of Cosmo** (`#150027960362`) — unpublished
-- Preview: https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362
+- Preview: [https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362](https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362)
 
 Jangan push langsung ke theme live. Review dulu di Copy of Cosmo, baru publish dari admin Shopify.
 
@@ -35,6 +35,8 @@ cd shopify-cosmo
 npm install
 ```
 
+
+
 ### 2. Login Shopify (sekali per device)
 
 Pakai `HOME` ke folder project supaya token CLI tidak ditulis ke `~/.config`:
@@ -55,7 +57,7 @@ npx shopify auth login
 
 Login dengan akun yang punya akses Aeris. Browser akan terbuka untuk authorize.
 
-### 3. Jalankan localhost
+### 3. Jalankan [localhost](http://localhost)
 
 ```bash
 # macOS / Linux / WSL
@@ -83,6 +85,8 @@ Biarkan terminal ini tetap jalan saat edit. File Liquid/JSON/CSS sync otomatis.
 - Buka `http://127.0.0.1:9292` — header Aeris, bukan theme live
 - URL admin preview: `https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362`
 
+
+
 ### Perintah lain (device yang sudah login)
 
 Jangan pakai `theme push` tanpa `--only`. Perintah itu mengunggah JSON template dan mengosongkan gambar di theme editor. Langkah aman ada di [Alur kerja](#alur-kerja).
@@ -107,13 +111,15 @@ Homepage dirakit di `templates/index.json`. Section-nya ada di `sections/`.
 
 Bagian yang sudah dikustom:
 
-| Area | File |
-| --- | --- |
-| Hero Merlot | `sections/aeris-merlot-hero.liquid` |
+
+| Area                      | File                                                 |
+| ------------------------- | ---------------------------------------------------- |
+| Hero Merlot               | `sections/aeris-merlot-hero.liquid`                  |
 | Header + mega menu banner | `sections/header.liquid`, `snippets/site-nav.liquid` |
-| Footer Aeris | `sections/aeris-footer.liquid` |
-| Header group settings | `sections/header-group.json` |
-| Footer group settings | `sections/footer-group.json` |
+| Footer Aeris              | `sections/aeris-footer.liquid`                       |
+| Header group settings     | `sections/header-group.json`                         |
+| Footer group settings     | `sections/footer-group.json`                         |
+
 
 Hero copy campaign saat ini: **MERLOT** / Unlock Your True Power / Discover now.
 
@@ -139,10 +145,13 @@ HOME="$PWD/.shopify-user" npx shopify theme pull --store aerisbeaute.myshopify.c
 Windows PowerShell:
 
 ```powershell
-cd shopify-cosmo
+cd C:\Users\Lewz\Documents\shopify-cosmo-theme
+New-Item -ItemType Directory -Force -Path .shopify-user
 $env:HOME = "$PWD\.shopify-user"
 npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362 --only "templates/*.json" --only config/settings_data.json --only "sections/*.json"
 ```
+
+
 
 ### 2. Nyalakan preview, biarkan terminalnya tetap terbuka
 
@@ -155,7 +164,6 @@ HOME="$PWD/.shopify-user" npx shopify theme dev --store aerisbeaute.myshopify.co
 Windows PowerShell:
 
 ```powershell
-$env:HOME = "$PWD\.shopify-user"
 npx shopify theme dev --store aerisbeaute.myshopify.com --theme 150027960362 --theme-editor-sync
 ```
 
