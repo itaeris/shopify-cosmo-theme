@@ -1,0 +1,254 @@
+{{ 'aeris-contact.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign whatsapp_link = section.settings.whatsapp_link
+  if whatsapp_link == blank
+    assign whatsapp_link = settings.social_whatsapp_link
+  endif
+  if whatsapp_link == blank
+    assign whatsapp_link = 'https://wa.me/'
+  endif
+  assign image_alt = section.settings.image.alt | default: section.settings.image_alt | default: section.settings.kicker
+-%}
+
+<section class="aeris-contact" aria-labelledby="AerisContactTitle-{{ section.id }}">
+  <div class="aeris-contact__breadcrumb">
+    <div class="container">
+      <nav class="breadcrumbs flex justify-center" role="navigation" aria-label="breadcrumbs">
+        <a href="{{ routes.root_url }}" title="Home">{{ 'general.breadcrumbs.home' | t }}</a>
+        <span aria-hidden="true" class="breadcrumbs--sep">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="breadcrumbs--last">{{ section.settings.breadcrumb }}</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="aeris-contact__intro">
+    <div class="aeris-contact__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag:
+            class: 'aeris-contact__image',
+            alt: image_alt,
+            widths: '600, 900, 1200, 1600',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            loading: 'eager'
+        }}
+      {%- else -%}
+        <img
+          class="aeris-contact__image"
+          src="{{ 'Dropdown_visual.jpg' | file_url }}"
+          alt="{{ image_alt | escape }}"
+          width="1400"
+          height="1050"
+          loading="eager"
+        >
+      {%- endif -%}
+    </div>
+    <div class="aeris-contact__copy">
+      {%- if section.settings.kicker != blank -%}
+        <p class="aeris-contact__kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+      <h1 class="aeris-contact__title" id="AerisContactTitle-{{ section.id }}">
+        {{ section.settings.heading | escape | newline_to_br }}
+      </h1>
+      {%- if section.settings.hours != blank -%}
+        <p class="aeris-contact__hours">{{ section.settings.hours }}</p>
+      {%- endif -%}
+      {%- if section.settings.whatsapp_label != blank -%}
+        <a class="aeris-contact__whatsapp" href="{{ whatsapp_link }}" target="_blank" rel="noopener">
+          {{ section.settings.whatsapp_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="aeris-contact__form-wrap">
+    {%- if section.settings.form_heading != blank -%}
+      <h2 class="aeris-contact__form-title">{{ section.settings.form_heading }}</h2>
+    {%- endif -%}
+
+    {%- form 'contact', id: 'AerisContactForm', class: 'aeris-contact__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="aeris-contact__status" role="status">
+          {{ section.settings.success_message }}
+        </p>
+      {%- endif -%}
+
+      <input type="hidden" name="contact[subject]" value="{{ section.settings.form_heading | escape }}">
+
+      <div class="aeris-contact__row">
+        <div class="aeris-contact__field">
+          <label class="visually-hidden" for="AerisContactName">{{ section.settings.name_placeholder }}</label>
+          <input
+            class="aeris-contact__input"
+            id="AerisContactName"
+            name="contact[name]"
+            type="text"
+            autocomplete="name"
+            placeholder="{{ section.settings.name_placeholder | escape }}"
+            required
+            aria-required="true"
+            value="{% if customer %}{{ customer.name }}{% endif %}"
+          >
+        </div>
+        <div class="aeris-contact__field">
+          <label class="visually-hidden" for="AerisContactPhone">{{ section.settings.phone_placeholder }}</label>
+          <input
+            class="aeris-contact__input"
+            id="AerisContactPhone"
+            name="contact[phone]"
+            type="tel"
+            autocomplete="tel"
+            placeholder="{{ section.settings.phone_placeholder | escape }}"
+          >
+        </div>
+      </div>
+
+      <div class="aeris-contact__field">
+        <label class="visually-hidden" for="AerisContactEmail">{{ section.settings.email_placeholder }}</label>
+        <input
+          class="aeris-contact__input"
+          id="AerisContactEmail"
+          name="contact[email]"
+          type="email"
+          autocomplete="email"
+          spellcheck="false"
+          autocapitalize="off"
+          placeholder="{{ section.settings.email_placeholder | escape }}"
+          required
+          aria-required="true"
+          value="{% if customer %}{{ customer.email }}{% endif %}"
+        >
+      </div>
+
+      <div class="aeris-contact__field">
+        <label class="visually-hidden" for="AerisContactMessage">{{ section.settings.message_placeholder }}</label>
+        <textarea
+          class="aeris-contact__textarea"
+          id="AerisContactMessage"
+          name="contact[body]"
+          placeholder="{{ section.settings.message_placeholder | escape }}"
+          required
+          aria-required="true"
+        ></textarea>
+      </div>
+
+      <div class="aeris-contact__submit-wrap">
+        <button class="aeris-contact__submit" type="submit">{{ section.settings.submit_label }}</button>
+      </div>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "tag": "section",
+  "class": "aeris-contact-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb",
+      "label": "Breadcrumb label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Eyebrow",
+      "default": "Contact Us"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Need Help?\nReach Out To Us!"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Mon-Fri: 9am - 6pm GMT+7"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_label",
+      "label": "WhatsApp label",
+      "default": "Contact our Whatsapp"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp link",
+      "info": "Leave blank to use the WhatsApp link in Theme settings → Social media."
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Partnership Inquiry"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you — your message has been sent. We’ll get back to you soon."
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name placeholder",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Phone placeholder",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Your message"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Button label",
+      "default": "Submit now"
+    }
+  ]
+}
+{% endschema %}

@@ -338,6 +338,25 @@
           "image_pakuwon": "shopify://shop_images/Aeris_Pakuwon_SBY.jpg",
           "image_trans_studio": "shopify://shop_images/AERIS_TSM_MAKASSAR.jpg"
         }
+      },
+      "aeris-contact": {
+        "type": "aeris-contact",
+        "settings": {
+          "image": "shopify://shop_images/Dropdown_visual.jpg",
+          "image_alt": "Contact Us",
+          "breadcrumb": "Contact Us",
+          "kicker": "Contact Us",
+          "heading": "Need Help?\nReach Out To Us!",
+          "hours": "Mon-Fri: 9am - 6pm GMT+7",
+          "whatsapp_label": "Contact our Whatsapp",
+          "form_heading": "Partnership Inquiry",
+          "success_message": "Thank you — your message has been sent. We’ll get back to you soon.",
+          "name_placeholder": "Name",
+          "phone_placeholder": "Phone",
+          "email_placeholder": "Email",
+          "message_placeholder": "Your message",
+          "submit_label": "Submit now"
+        }
       }
     },
     "content_for_index": [],
