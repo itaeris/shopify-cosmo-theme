@@ -36,9 +36,9 @@
         {%- if menu_part == 'last' and forloop.index <= split_index -%}
           {%- continue -%}
         {%- endif -%}
-        {%- if menu_part == 'last' and aeris_collab_done != true -%}
-          {%- assign aeris_collab_done = true -%}
-          {% render 'aeris-nav-extra', context: 'desktop', menu_id: menu_id, item: 'collaboration' %}
+        {%- assign aeris_nav_handle = link.title | handleize -%}
+        {%- if aeris_nav_handle == 'collaboration' -%}
+          {%- continue -%}
         {%- endif -%}
         {%- liquid
           assign li_class = 'f-site-nav__item'
@@ -471,6 +471,10 @@
                       </li>
                     {%- endif -%}
                     {% for childlink in dropdown_source.links %}
+                      {% assign aeris_child_handle = childlink.title | handleize %}
+                      {% if aeris_child_handle == 'collaboration' %}
+                        {% continue %}
+                      {% endif %}
                       <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
                         <a
                           href="{% render 'aeris-menu-url', menu_link: childlink %}"
@@ -492,6 +496,10 @@
                           >
                             <ul class="list-none" role="list" tabindex="-1">
                               {% for grandlink in childlink.links %}
+                                {% assign aeris_grand_handle = grandlink.title | handleize %}
+                                {% if aeris_grand_handle == 'collaboration' %}
+                                  {% continue %}
+                                {% endif %}
                                 <li class="f-site-nav__sub-item f-site-nav__sub-item--level3">
                                   <a
                                     href="{% render 'aeris-menu-url', menu_link: grandlink %}"

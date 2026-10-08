@@ -224,6 +224,7 @@
           assign aeris_stores_page = false
           assign aeris_personal_page = false
           assign aeris_faq_page = false
+          assign aeris_collab_page = false
           if template.name == 'page'
             if page.handle == 'track-your-order' or page.handle == 'track-order'
               assign aeris_track_page = true
@@ -247,6 +248,9 @@
           if page.handle == 'faqs' or page.handle == 'faq' or template.suffix == 'faqs'
             assign aeris_faq_page = true
           endif
+          if page.handle == 'collaboration' or template.suffix == 'collaboration'
+            assign aeris_collab_page = true
+          endif
           if request.path == '/pages/personalisation' or request.path == '/pages/personalization'
             assign aeris_personal_page = true
           endif
@@ -266,6 +270,12 @@
             {{ content_for_layout }}
           {%- else -%}
             {% section 'aeris-faq' %}
+          {%- endif -%}
+        {%- elsif aeris_collab_page -%}
+          {%- if template.suffix == 'collaboration' -%}
+            {{ content_for_layout }}
+          {%- else -%}
+            {% section 'aeris-collaboration' %}
           {%- endif -%}
         {%- else -%}
           {{ content_for_layout }}

@@ -101,6 +101,10 @@
                                 </li>
                               {%- endif -%}
                               {%- for childlink in link.links -%}
+                                {%- assign aeris_child_handle = childlink.title | handleize -%}
+                                {%- if aeris_child_handle == 'collaboration' -%}
+                                  {%- continue -%}
+                                {%- endif -%}
                                 <li>
                                   {%- if childlink.links == blank -%}
                                     <a
@@ -137,6 +141,10 @@
                                         </button>
                                         <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                           {%- for grandchildlink in childlink.links -%}
+                                            {%- assign aeris_grand_handle = grandchildlink.title | handleize -%}
+                                            {%- if aeris_grand_handle == 'collaboration' -%}
+                                              {%- continue -%}
+                                            {%- endif -%}
                                             <li>
                                               <a
                                                 href="{% render 'aeris-menu-url', menu_link: grandchildlink %}"

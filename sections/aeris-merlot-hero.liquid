@@ -39,6 +39,9 @@
   if page.handle == 'faqs' or page.handle == 'faq' or template.suffix == 'faqs'
     assign hide_hero = true
   endif
+  if page.handle == 'collaboration' or template.suffix == 'collaboration'
+    assign hide_hero = true
+  endif
   if template.name == 'login' or template.name == 'register'
     assign hide_hero = true
   endif

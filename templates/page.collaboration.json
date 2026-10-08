@@ -9,15 +9,41 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "aeris-page-banner",
+    "aeris_collaboration": {
+      "type": "aeris-collaboration",
       "settings": {
-        "title": "Collaboration",
-        "image": "shopify://shop_images/Dropdown_visual.jpg"
-      }
+        "heading": "Collaboration",
+        "intro": "<p>Aeris Beauté partners with makeup artists and creators who care about tools that are vegan, cruelty-free, and made for everyday use. Each collaboration is practical, personal, and built to last.</p>"
+      },
+      "blocks": {
+        "collab_artists": {
+          "type": "story",
+          "settings": {
+            "image": "shopify://shop_images/Aeris_Merlot_Collection.jpg",
+            "label": "Artists",
+            "title": "Aeris Circle for artists",
+            "text": "<p>For professional makeup artists, beauty students, and studios. Work with Aeris on the brushes and bags you use with clients, and stay close to the team through events and masterclasses.</p>",
+            "link": "/pages/contact-us"
+          }
+        },
+        "collab_creators": {
+          "type": "story",
+          "settings": {
+            "image": "shopify://shop_images/Coco_desktop.jpg",
+            "label": "Creators",
+            "title": "Aeris Circle for creators",
+            "text": "<p>For makeup lovers and content creators. Share Aeris in your routine, earn from your posts, and be featured on our social channels.</p>",
+            "link": "/pages/contact-us"
+          }
+        }
+      },
+      "block_order": [
+        "collab_artists",
+        "collab_creators"
+      ]
     }
   },
   "order": [
-    "banner"
+    "aeris_collaboration"
   ]
 }

@@ -288,8 +288,8 @@
                       assign li_class = li_class | append: ' f-mobile-nav__item--has-child'
                     endif
                   %}
-                  {%- if title_handle == 'store-locations' or title_handle == 'store-location' -%}
-                    {% render 'aeris-nav-extra', context: 'mobile', menu_id: mobile_menu, item: 'collaboration' %}
+                  {%- if title_handle == 'collaboration' -%}
+                    {%- continue -%}
                   {%- endif -%}
                   <li
                     class="{{ li_class }}"
@@ -331,6 +331,10 @@
                               </li>
                             {%- endif -%}
                             {% for childlink in dropdown_source.links %}
+                              {% assign aeris_child_handle = childlink.title | handleize %}
+                              {% if aeris_child_handle == 'collaboration' %}
+                                {% continue %}
+                              {% endif %}
                               <li
                                 class="f-mobile-nav__subitem{% if childlink.links != blank %} f-mobile-nav__sub-item--has-child{% endif %}"
                                 {% if childlink.links != blank %}
@@ -375,6 +379,10 @@
                                     >
                                       <ul class="list-none">
                                         {% for grandlink in childlink.links %}
+                                          {% assign aeris_grand_handle = grandlink.title | handleize %}
+                                          {% if aeris_grand_handle == 'collaboration' %}
+                                            {% continue %}
+                                          {% endif %}
                                           <li class="f-mobile-nav__sub-item f-mobile-nav__sub-item--level3">
                                             <a
                                               href="{% render 'aeris-menu-url', menu_link: grandlink %}"
