@@ -360,10 +360,6 @@
       },
       "aeris-collaboration": {
         "type": "aeris-collaboration",
-        "settings": {
-          "heading": "Collaboration",
-          "intro": "<p>Aeris Beauté partners with makeup artists and creators who care about tools that are vegan, cruelty-free, and made for everyday use. Each collaboration is practical, personal, and built to last.</p>"
-        },
         "blocks": {
           "collab_artists": {
             "type": "story",
@@ -389,23 +385,15 @@
         "block_order": [
           "collab_artists",
           "collab_creators"
-        ]
+        ],
+        "settings": {
+          "banner_image": "shopify://shop_images/TT_02644.jpg",
+          "heading": "Custom Tailored",
+          "intro": "<p>Aeris Beauté partners with makeup artists and creators who care about tools that are vegan, cruelty-free, and made for everyday use. Each collaboration is practical, personal, and built to last.</p>"
+        }
       },
       "aeris-faq": {
         "type": "aeris-faq",
-        "settings": {
-          "heading_id": "Temukan jawaban di FAQ kami",
-          "heading_en": "Discover more in our FAQ",
-          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
-          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>",
-          "help_heading_id": "Masih butuh bantuan?",
-          "help_heading_en": "Still need help?",
-          "help_text_id": "Kirim email ke tim kami dan kami akan membalas secepatnya",
-          "help_text_en": "Shoot our team an email & we'll get back to you ASAP",
-          "help_button_id": "Hubungi kami",
-          "help_button_en": "Contact us",
-          "help_link": "/pages/contact-us"
-        },
         "blocks": {
           "faq_group_id_1": {
             "type": "group",
@@ -817,7 +805,20 @@
           "faq_q_en_6_0",
           "faq_q_en_6_1",
           "faq_q_en_6_2"
-        ]
+        ],
+        "settings": {
+          "heading_id": "Temukan jawaban di FAQ kami",
+          "heading_en": "Discover more in our FAQ",
+          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
+          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>",
+          "help_heading_id": "Masih butuh bantuan?",
+          "help_heading_en": "Still need help?",
+          "help_text_id": "Kirim email ke tim kami dan kami akan membalas secepatnya",
+          "help_text_en": "Shoot our team an email & we'll get back to you ASAP",
+          "help_button_id": "Hubungi kami",
+          "help_button_en": "Contact us",
+          "help_link": "/pages/contact-us"
+        }
       }
     },
     "content_for_index": [],

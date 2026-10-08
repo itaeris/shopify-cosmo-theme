@@ -12,7 +12,8 @@
     "aeris_collaboration": {
       "type": "aeris-collaboration",
       "settings": {
-        "heading": "Collaboration",
+        "banner_image": "shopify://shop_images/TT_02644.jpg",
+        "heading": "Custom Tailored",
         "intro": "<p>Aeris Beauté partners with makeup artists and creators who care about tools that are vegan, cruelty-free, and made for everyday use. Each collaboration is practical, personal, and built to last.</p>"
       },
       "blocks": {
