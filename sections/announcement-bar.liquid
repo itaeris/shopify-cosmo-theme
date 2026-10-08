@@ -245,8 +245,47 @@
     }
 
     connectedCallback() {
+      this.fillMarquee();
       if (this.querySelector('.announcement-bar__close')) {
         this.querySelector('.announcement-bar__close').addEventListener('click', this.handleClick.bind(this));
+      }
+    }
+
+    fillMarquee() {
+      const marquee = this.querySelector('.announcement-bar__marquee');
+      const track = this.querySelector('.announcement-bar__marquee-track');
+      if (!marquee || !track) return;
+
+      const groups = [...track.querySelectorAll('.announcement-bar__marquee-group')];
+      if (!groups.length) return;
+
+      const source = groups[0];
+      const sequence = source.innerHTML;
+      groups.slice(1).forEach((group) => group.remove());
+
+      const clone = source.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+
+      const fill = () => {
+        const target = marquee.clientWidth;
+        if (!target) return;
+        let guard = 0;
+        while (source.offsetWidth < target && guard < 24) {
+          const holder = document.createElement('div');
+          holder.innerHTML = '<span class="announcement-bar__marquee-sep">·</span>' + sequence;
+          [...holder.children].forEach((node) => {
+            node.setAttribute('aria-hidden', 'true');
+            source.appendChild(node);
+          });
+          guard += 1;
+        }
+        clone.innerHTML = source.innerHTML;
+      };
+
+      fill();
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(fill).observe(marquee);
       }
     }
   }
