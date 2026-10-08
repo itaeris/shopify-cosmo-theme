@@ -9,36 +9,57 @@
 
   <div class="aeris-faq__head">
     <h1>
-      <span data-legal-title-lang="id">Temukan jawaban di FAQ kami</span>
-      <span data-legal-title-lang="en" hidden>Discover more in our FAQ</span>
+      <span data-legal-title-lang="id">{{ section.settings.heading_id }}</span>
+      <span data-legal-title-lang="en" hidden>{{ section.settings.heading_en }}</span>
     </h1>
-    <p>
-      <span data-legal-lang="id">Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</span>
-      <span data-legal-lang="en" hidden>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</span>
-    </p>
+    <div class="aeris-faq__intro" data-legal-lang="id">{{ section.settings.intro_id }}</div>
+    <div class="aeris-faq__intro" data-legal-lang="en" hidden>{{ section.settings.intro_en }}</div>
     {% render 'aeris-legal-switch' %}
   </div>
 
   <div class="aeris-faq__layout">
     <aside class="aeris-faq__help">
-      <img src="{{ 'TT_02644.jpg' | file_img_url: '900x' }}" alt="" width="900" height="1200">
+      {% if section.settings.help_image != blank %}
+        {{ section.settings.help_image | image_url: width: 1200 | image_tag: alt: '', widths: '450, 900, 1200', sizes: '36rem' }}
+      {% else %}
+        <img src="{{ 'TT_02644.jpg' | file_img_url: '900x' }}" alt="" width="900" height="1200">
+      {% endif %}
       <div>
         <h2>
-          <span data-legal-title-lang="id">Masih butuh bantuan?</span>
-          <span data-legal-title-lang="en" hidden>Still need help?</span>
+          <span data-legal-title-lang="id">{{ section.settings.help_heading_id }}</span>
+          <span data-legal-title-lang="en" hidden>{{ section.settings.help_heading_en }}</span>
         </h2>
         <p>
-          <span data-legal-lang="id">Kirim email ke tim kami dan kami akan membalas secepatnya</span>
-          <span data-legal-lang="en" hidden>Shoot our team an email &amp; we'll get back to you ASAP</span>
+          <span data-legal-lang="id">{{ section.settings.help_text_id }}</span>
+          <span data-legal-lang="en" hidden>{{ section.settings.help_text_en }}</span>
         </p>
-        <a href="/pages/contact-us">
-          <span data-legal-lang="id">Hubungi kami</span>
-          <span data-legal-lang="en" hidden>Contact us</span>
+        <a href="{{ section.settings.help_link | default: '/pages/contact-us' }}">
+          <span data-legal-lang="id">{{ section.settings.help_button_id }}</span>
+          <span data-legal-lang="en" hidden>{{ section.settings.help_button_en }}</span>
         </a>
       </div>
     </aside>
 
     <div class="aeris-faq__list">
+      {% if section.blocks.size > 0 %}
+        {% assign faq_languages = 'id,en' | split: ',' %}
+        {% for lang in faq_languages %}
+          <div data-legal-lang="{{ lang }}"{% if lang == 'en' %} hidden{% endif %}>
+            {% for block in section.blocks %}
+              {% if block.settings.language == lang %}
+                {% if block.type == 'group' %}
+                  <h2 class="aeris-faq__group" {{ block.shopify_attributes }}>{{ block.settings.title }}</h2>
+                {% elsif block.type == 'question' %}
+                  <details {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+                    <summary>{{ block.settings.question }}</summary>
+                    {{ block.settings.answer }}
+                  </details>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      {% else %}
       <div data-legal-lang="id">
       <h2 class="aeris-faq__group">Produk</h2>
       <details open>
@@ -200,6 +221,7 @@
         <p>We accept credit card, bank transfer, QRIS, GoPay, and ShopeePay.</p>
       </details>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -233,7 +255,9 @@
     font-weight: 500;
     font-size: clamp(3rem, 4vw, 4.2rem);
   }
-  .aeris-faq__head p {
+  .aeris-faq__head p,
+  .aeris-faq__intro,
+  .aeris-faq__intro p {
     margin: 0.8rem 0 0;
     line-height: 1.6;
   }
@@ -389,7 +413,144 @@
 {% schema %}
 {
   "name": "Aeris FAQ",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Judul"
+    },
+    {
+      "type": "text",
+      "id": "heading_id",
+      "label": "Judul, Indonesia",
+      "default": "Temukan jawaban di FAQ kami"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Judul, English",
+      "default": "Discover more in our FAQ"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_id",
+      "label": "Pengantar, Indonesia",
+      "default": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_en",
+      "label": "Pengantar, English",
+      "default": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>"
+    },
+    {
+      "type": "header",
+      "content": "Kartu bantuan"
+    },
+    {
+      "type": "image_picker",
+      "id": "help_image",
+      "label": "Gambar"
+    },
+    {
+      "type": "text",
+      "id": "help_heading_id",
+      "label": "Judul kartu, Indonesia",
+      "default": "Masih butuh bantuan?"
+    },
+    {
+      "type": "text",
+      "id": "help_heading_en",
+      "label": "Judul kartu, English",
+      "default": "Still need help?"
+    },
+    {
+      "type": "text",
+      "id": "help_text_id",
+      "label": "Teks kartu, Indonesia",
+      "default": "Kirim email ke tim kami dan kami akan membalas secepatnya"
+    },
+    {
+      "type": "text",
+      "id": "help_text_en",
+      "label": "Teks kartu, English",
+      "default": "Shoot our team an email & we'll get back to you ASAP"
+    },
+    {
+      "type": "text",
+      "id": "help_button_id",
+      "label": "Tombol, Indonesia",
+      "default": "Hubungi kami"
+    },
+    {
+      "type": "text",
+      "id": "help_button_en",
+      "label": "Tombol, English",
+      "default": "Contact us"
+    },
+    {
+      "type": "url",
+      "id": "help_link",
+      "label": "Tautan tombol"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Grup",
+      "settings": [
+        {
+          "type": "select",
+          "id": "language",
+          "label": "Bahasa",
+          "options": [
+            { "value": "id", "label": "Indonesia" },
+            { "value": "en", "label": "English" }
+          ],
+          "default": "id"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Judul grup",
+          "default": "Produk"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Pertanyaan",
+      "settings": [
+        {
+          "type": "select",
+          "id": "language",
+          "label": "Bahasa",
+          "options": [
+            { "value": "id", "label": "Indonesia" },
+            { "value": "en", "label": "English" }
+          ],
+          "default": "id"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pertanyaan"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Jawaban",
+          "default": "<p></p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Buka saat halaman dimuat",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
   "presets": [
     {
       "name": "Aeris FAQ"

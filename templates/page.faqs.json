@@ -9,141 +9,436 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {}
-    },
-    "breadcrumb_PwVe6h": {
-      "type": "breadcrumb",
-      "custom_css": [
-        "@media (max-width: 767px) {.breadcrumbs {justify-content: center; }}"
-      ],
-      "settings": {
-        "brc_container": "container",
-        "brc_text_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "1655868348330b36da": {
-      "type": "collapsible-tabs",
+    "aeris_faq": {
+      "type": "aeris-faq",
       "blocks": {
-        "image_card_34XMfQ": {
-          "type": "image_card",
+        "faq_group_id_1": {
+          "type": "group",
           "settings": {
-            "image_position": "left",
-            "image_alignment": "center",
-            "image_width": 33,
-            "layout": "layout6",
-            "text_color": "#fcfaf7",
-            "image_ratio": "adapt",
-            "image_overlay_opacity": 30,
-            "sub_heading": "",
-            "heading": "Still need help?",
-            "highlight_style": "none",
-            "enable_highlight_text_color": false,
-            "heading_size": "h2",
-            "heading_color": "",
-            "description": "<p>Shoot our team an email & we’ll get <br/>back to you ASAP</p>",
-            "button_label": "contact us",
-            "button_style": "btn--white",
-            "animations": "inherit"
+            "language": "id",
+            "title": "Produk"
           }
         },
-        "1655868348d34715f4-0": {
-          "type": "content",
+        "faq_q_id_1_0": {
+          "type": "question",
           "settings": {
-            "icon": "none",
-            "title": "How long does it take to process an order?",
-            "content": "<p>Order processing times vary depending on the product and location. Typically, it takes <strong>1-3 business days</strong> to process an order before it is shipped. You will receive a confirmation email with tracking details once your order has been dispatched.</p>",
-            "custom_liquid": "",
-            "content_page": "",
+            "language": "id",
+            "question": "Apakah produk Aeris vegan dan bebas uji coba pada hewan?",
+            "answer": "<p>Ya. Seluruh produk Aeris 100% vegan dan cruelty-free.</p>",
             "open": true
           }
         },
-        "1655868348d34715f4-1": {
-          "type": "content",
+        "faq_q_id_1_1": {
+          "type": "question",
           "settings": {
-            "icon": "none",
-            "title": "Do you ship internationally?",
-            "content": "<p>Yes, we offer international shipping! Delivery times and costs may vary depending on your location.</p>",
-            "custom_liquid": "",
-            "content_page": "",
+            "language": "id",
+            "question": "Kapan pre-order saya tiba?",
+            "answer": "<p>Pre-order biasanya dikirim dalam 2–4 minggu, tergantung produk. Perkiraan waktu pengiriman tercantum di deskripsi produk.</p>",
             "open": false
           }
         },
-        "9891166a-7648-4555-84e2-cfb0e9832a21": {
-          "type": "content",
+        "faq_q_id_1_2": {
+          "type": "question",
           "settings": {
-            "icon": "none",
-            "title": "What is your return policy?",
-            "content": "<p>Our return policy allows returns within [X] days of purchase, provided the item is unused and in its original packaging. Some exclusions may apply.</p>",
-            "custom_liquid": "",
-            "content_page": "",
+            "language": "id",
+            "question": "Bagaimana pesanan yang berisi pre-order dan ready stock?",
+            "answer": "<p>Barang ready stock ditahan dan dikirim bersamaan setelah barang pre-order siap. Jika pre-order membutuhkan 21 hari, seluruh pesanan dikirim sekitar 21 hari. Jika Anda ingin barang ready stock lebih cepat, buat pesanan terpisah.</p>",
             "open": false
           }
         },
-        "18680409-0b8f-43b1-97dc-07c8957da9f8": {
-          "type": "content",
+        "faq_q_id_1_3": {
+          "type": "question",
           "settings": {
-            "icon": "none",
-            "title": "What are your sizing options?",
-            "content": "<p>We offer a variety of sizing options, ranging from [XS to XXL] (or custom sizes depending on the product). Please check our size chart for exact measurements.</p>",
-            "custom_liquid": "",
-            "content_page": "",
+            "language": "id",
+            "question": "Apakah saya bisa retur atau menukar barang?",
+            "answer": "<p>Ya. Jika barang cacat atau rusak, kami akan menukarnya dengan yang baru. Hubungi kami beserta detailnya agar proses penukaran bisa dimulai.</p>",
             "open": false
           }
         },
-        "content_AG6CUJ": {
-          "type": "content",
+        "faq_q_id_1_4": {
+          "type": "question",
           "settings": {
-            "icon": "none",
-            "title": "Do you offer custom sizing?",
-            "content": "<p>Yes, we provide custom sizing for select products. Please contact our support team for more details.</p>",
-            "custom_liquid": "",
-            "content_page": "",
+            "language": "id",
+            "question": "Bagaimana cara memproses retur?",
+            "answer": "<p>Untuk langkah retur dan penukaran, kunjungi halaman <a href=\"/pages/returns\">Retur</a>, atau hubungi kami dan kami akan memandu Anda.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_1_5": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Apakah kode diskon bisa digabung?",
+            "answer": "<p>Hanya satu promosi atau kode diskon yang bisa dipakai per pesanan. Kode promosi tidak bisa digabung dengan penawaran lain atau diskon gratis ongkir.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_1_6": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Apakah ada toko offline?",
+            "answer": "<p>Ya. Anda bisa mengunjungi kami di <a href=\"/pages/store-location\">lokasi toko</a> kami.</p>",
+            "open": false
+          }
+        },
+        "faq_group_id_2": {
+          "type": "group",
+          "settings": {
+            "language": "id",
+            "title": "Pengiriman"
+          }
+        },
+        "faq_q_id_2_0": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Apakah kalian mengirim ke luar negeri?",
+            "answer": "<p>Ya, kami mengirim ke seluruh dunia.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_1": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Apakah ongkir internasional tetap dikenakan meski sudah memenuhi minimum?",
+            "answer": "<p>Ya. Berat atau ukuran di atas batas gratis ongkir dikenakan biaya saat checkout. Barang besar atau berat, termasuk kotak tambahan dan aksesori, tidak termasuk gratis ongkir.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_2": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Bagaimana pengiriman ke Singapura?",
+            "answer": "<p>Pesanan di atas 400 SGD dapat dikenakan pajak impor dan bea cukai setempat. Untuk mengurangi keterlambatan, pisahkan pembelian besar menjadi pesanan terpisah di bawah 400 SGD, dan jaga setiap pesanan dalam batas berat yang ditentukan.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_3": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Kapan pesanan saya dikirim?",
+            "answer": "<p>Kami mengirim pesanan Senin sampai Jumat. Kami tidak mengirim pada Sabtu, Minggu, atau hari libur nasional.</p><p>Gojek dan pengiriman instan diproses Senin sampai Jumat, pukul 10.00–15.00. Pengiriman di hari yang sama membutuhkan pesanan dan pembayaran yang sudah terkonfirmasi sebelum pukul 13.00. Seseorang perlu berada di alamat untuk menerima paket.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_4": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Berapa lama pengiriman domestik?",
+            "answer": "<p>Sediakan 2–4 hari kerja setelah konfirmasi pembayaran untuk verifikasi pembayaran, quality control, dan pengemasan. Setelah dikirim, Anda menerima email konfirmasi beserta detail pelacakan.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_5": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Berapa lama pengiriman internasional?",
+            "answer": "<p>Pesanan internasional biasanya tiba dalam 5–15 hari kerja setelah dikirim. Proses bea cukai dapat menambah waktu. Bea cukai atau pajak impor menjadi tanggung jawab pembeli.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_6": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Bagaimana cara melacak pesanan?",
+            "answer": "<p>Nomor resi dikirim ke email terdaftar dalam 24 jam setelah pengiriman. Pesanan domestik memakai JNE, dan pesanan internasional memakai DHL. Anda juga bisa <a href=\"/pages/track-your-order\">melacak pesanan</a> di situs kami.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_2_7": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Apakah ada pengiriman di hari yang sama?",
+            "answer": "<p>Ya, hanya untuk alamat Jakarta, untuk pesanan yang selesai sebelum pukul 10.00 pada hari kerja, melalui Gojek.</p>",
+            "open": false
+          }
+        },
+        "faq_group_id_3": {
+          "type": "group",
+          "settings": {
+            "language": "id",
+            "title": "Pembayaran"
+          }
+        },
+        "faq_q_id_3_0": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Bagaimana jika pesanan saya dibatalkan?",
+            "answer": "<p>Pesanan dibatalkan otomatis jika pembayaran tidak selesai dalam jendela pembayaran 24 jam.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_3_1": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Di mana saya menemukan konfirmasi pesanan?",
+            "answer": "<p>Email konfirmasi dikirim setelah pesanan dibuat. Jika tidak menemukannya, periksa folder spam atau hubungi kami agar kami kirim ulang. Status pesanan juga bisa dilihat dengan masuk ke akun Anda.</p>",
+            "open": false
+          }
+        },
+        "faq_q_id_3_2": {
+          "type": "question",
+          "settings": {
+            "language": "id",
+            "question": "Metode pembayaran apa yang diterima?",
+            "answer": "<p>Kami menerima kartu kredit, transfer bank, QRIS, GoPay, dan ShopeePay.</p>",
+            "open": false
+          }
+        },
+        "faq_group_en_4": {
+          "type": "group",
+          "settings": {
+            "language": "en",
+            "title": "Products"
+          }
+        },
+        "faq_q_en_4_0": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Are Aeris products vegan and cruelty-free?",
+            "answer": "<p>Yes. All Aeris products are 100% vegan and cruelty-free.</p>",
+            "open": true
+          }
+        },
+        "faq_q_en_4_1": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "When will my pre-order arrive?",
+            "answer": "<p>Pre-orders typically take 2–4 weeks to ship, depending on the item. The product description lists the estimated delivery time.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_4_2": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How are orders with both pre-order and ready-stock items handled?",
+            "answer": "<p>Ready-stock items are held and shipped together once the pre-order item is ready. If a pre-order has a 21-day processing time, the whole order ships in about 21 days. If you want your ready-stock items sooner, place them as a separate order.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_4_3": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Can I return or exchange my item?",
+            "answer": "<p>Yes. If an item is defective or damaged, we will exchange it for a new one. Contact us with the details so we can start the exchange.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_4_4": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How do I process a return?",
+            "answer": "<p>For the full returns and exchange steps, visit our <a href=\"/pages/returns\">Returns</a> page, or contact us and we will guide you.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_4_5": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Can I combine discount codes?",
+            "answer": "<p>Only one promotion or discount code can be applied per order. Promotional codes cannot be combined with other offers or free-shipping discounts.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_4_6": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Do you have an offline store?",
+            "answer": "<p>Yes. You can visit us at our <a href=\"/pages/store-location\">store locations</a>.</p>",
+            "open": false
+          }
+        },
+        "faq_group_en_5": {
+          "type": "group",
+          "settings": {
+            "language": "en",
+            "title": "Shipping"
+          }
+        },
+        "faq_q_en_5_0": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes, we ship worldwide.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_1": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Will I be charged shipping on an international order even if I meet the minimum?",
+            "answer": "<p>Yes. Any weight or size over the free-shipping limit is charged at checkout. Bulky or heavy items, including extra boxes and accessories, are excluded from free shipping.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_2": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How does delivery to Singapore work?",
+            "answer": "<p>Orders over 400 SGD can be charged local import taxes and customs duties. To reduce delays, split a large purchase into separate orders under 400 SGD, and keep each order within the stated weight limit.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_3": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "When will you ship my order?",
+            "answer": "<p>We dispatch orders Monday through Friday. We do not ship on Saturday, Sunday, or public holidays.</p><p>Gojek and instant delivery are processed Monday through Friday, 10:00 AM–3:00 PM. Same-day delivery needs the order and payment confirmed before 1:00 PM. Someone should be available at the address to receive the package.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_4": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How long does domestic shipping take?",
+            "answer": "<p>Allow 2–4 business days after payment confirmation for us to verify the payment, finish quality control, and pack the order. Once it ships, you receive a confirmation email with tracking details.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_5": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How long does international shipping take?",
+            "answer": "<p>International orders typically arrive within 5–15 business days after dispatch. Customs clearance can add time. Any customs duties or import taxes are the buyer's responsibility.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_6": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "How can I track my order?",
+            "answer": "<p>The tracking number is sent to your registered email within 24 hours of shipment. Domestic orders use JNE, and international orders use DHL. You can also <a href=\"/pages/track-your-order\">track your order</a> on our site.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_5_7": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Do you offer same-day shipping?",
+            "answer": "<p>Yes, for Jakarta addresses only, on orders completed before 10:00 AM on business days, via Gojek.</p>",
+            "open": false
+          }
+        },
+        "faq_group_en_6": {
+          "type": "group",
+          "settings": {
+            "language": "en",
+            "title": "Payment"
+          }
+        },
+        "faq_q_en_6_0": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "What if my order is cancelled?",
+            "answer": "<p>Orders are cancelled automatically if payment is not completed within the 24-hour payment window.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_6_1": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "Where can I find my order confirmation?",
+            "answer": "<p>A confirmation email is sent once the order is placed. If you cannot find it, check your spam folder or contact us and we will resend it. You can also see the order status by signing in to your account.</p>",
+            "open": false
+          }
+        },
+        "faq_q_en_6_2": {
+          "type": "question",
+          "settings": {
+            "language": "en",
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept credit card, bank transfer, QRIS, GoPay, and ShopeePay.</p>",
             "open": false
           }
         }
       },
       "block_order": [
-        "image_card_34XMfQ",
-        "1655868348d34715f4-0",
-        "1655868348d34715f4-1",
-        "9891166a-7648-4555-84e2-cfb0e9832a21",
-        "18680409-0b8f-43b1-97dc-07c8957da9f8",
-        "content_AG6CUJ"
+        "faq_group_id_1",
+        "faq_q_id_1_0",
+        "faq_q_id_1_1",
+        "faq_q_id_1_2",
+        "faq_q_id_1_3",
+        "faq_q_id_1_4",
+        "faq_q_id_1_5",
+        "faq_q_id_1_6",
+        "faq_group_id_2",
+        "faq_q_id_2_0",
+        "faq_q_id_2_1",
+        "faq_q_id_2_2",
+        "faq_q_id_2_3",
+        "faq_q_id_2_4",
+        "faq_q_id_2_5",
+        "faq_q_id_2_6",
+        "faq_q_id_2_7",
+        "faq_group_id_3",
+        "faq_q_id_3_0",
+        "faq_q_id_3_1",
+        "faq_q_id_3_2",
+        "faq_group_en_4",
+        "faq_q_en_4_0",
+        "faq_q_en_4_1",
+        "faq_q_en_4_2",
+        "faq_q_en_4_3",
+        "faq_q_en_4_4",
+        "faq_q_en_4_5",
+        "faq_q_en_4_6",
+        "faq_group_en_5",
+        "faq_q_en_5_0",
+        "faq_q_en_5_1",
+        "faq_q_en_5_2",
+        "faq_q_en_5_3",
+        "faq_q_en_5_4",
+        "faq_q_en_5_5",
+        "faq_q_en_5_6",
+        "faq_q_en_5_7",
+        "faq_group_en_6",
+        "faq_q_en_6_0",
+        "faq_q_en_6_1",
+        "faq_q_en_6_2"
       ],
       "settings": {
-        "container": "container",
-        "color_schema": "",
-        "section_header_padding_bottom": "large",
-        "section_header_content_spacing": "small",
-        "heading": "Discover more in our FAQ",
-        "highlight_style": "none",
-        "enable_highlight_text_color": false,
-        "heading_size": "h2",
-        "heading_color": "",
-        "subheading": "",
-        "description": "<p>Have a question or comment? Don't be shy: Reach out and say hi! <br/>Support hours: Monday-Friday, 7am-3pm</p>",
-        "item_heading_font": "heading",
-        "item_heading_size": "h4",
-        "column_gap": "extra-large",
-        "content_width": "full",
-        "padding_top": 36,
-        "padding_bottom": 100,
-        "show_section_divider": false,
-        "divider_width": "container",
-        "custom_id": "",
-        "custom_class": "",
-        "animations": "inherit"
+        "heading_id": "Temukan jawaban di FAQ kami",
+        "heading_en": "Discover more in our FAQ",
+        "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
+        "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>",
+        "help_heading_id": "Masih butuh bantuan?",
+        "help_heading_en": "Still need help?",
+        "help_text_id": "Kirim email ke tim kami dan kami akan membalas secepatnya",
+        "help_text_en": "Shoot our team an email & we'll get back to you ASAP",
+        "help_button_id": "Hubungi kami",
+        "help_button_en": "Contact us",
+        "help_link": "/pages/contact-us"
       }
     }
   },
   "order": [
-    "main",
-    "breadcrumb_PwVe6h",
-    "1655868348330b36da"
+    "aeris_faq"
   ]
 }

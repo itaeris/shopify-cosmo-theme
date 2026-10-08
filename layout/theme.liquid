@@ -262,7 +262,11 @@
         {%- elsif aeris_personal_page -%}
           {% section 'aeris-personalisation' %}
         {%- elsif aeris_faq_page -%}
-          {% section 'aeris-faq' %}
+          {%- if template.suffix == 'faqs' -%}
+            {{ content_for_layout }}
+          {%- else -%}
+            {% section 'aeris-faq' %}
+          {%- endif -%}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}
