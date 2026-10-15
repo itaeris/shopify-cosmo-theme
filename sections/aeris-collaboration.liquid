@@ -1,3 +1,127 @@
+{%- liquid
+  assign aeris_index_page = false
+  if template.suffix == blank or template.suffix == 'collaboration'
+    if page.handle == 'collaboration' or page.handle == 'custom-tailored'
+      assign aeris_index_page = true
+    endif
+  endif
+  assign aeris_article_id = ''
+  unless aeris_index_page
+    for block in section.blocks
+      if block.settings.handle != blank
+        if block.settings.handle == page.handle or block.settings.handle == template.suffix
+          assign aeris_article_id = block.id
+        endif
+      endif
+    endfor
+  endunless
+-%}
+{%- if aeris_article_id != blank -%}
+  {%- for block in section.blocks -%}
+    {%- if block.id == aeris_article_id -%}
+      <article class="aeris-story" {{ block.shopify_attributes }}>
+        <div class="aeris-story__wrap">
+          {%- if block.settings.label != blank -%}
+            <p class="aeris-story__kicker">{{ block.settings.label }}</p>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h1 class="aeris-story__title">{{ block.settings.title }}</h1>
+          {%- endif -%}
+          {%- if block.settings.date != blank -%}
+            <p class="aeris-story__date">{{ block.settings.date }}</p>
+          {%- endif -%}
+          {%- if block.settings.image != blank -%}
+            <div class="aeris-story__media">
+              {{
+                block.settings.image
+                | image_url: width: 2400
+                | image_tag:
+                  alt: block.settings.title,
+                  widths: '750, 1200, 1600, 2000, 2400',
+                  sizes: '100vw',
+                  class: 'aeris-story__image'
+              }}
+            </div>
+          {%- endif -%}
+          <div class="aeris-story__body">
+            {%- if block.settings.body != blank -%}
+              {{ block.settings.body }}
+            {%- elsif block.settings.text != blank -%}
+              {{ block.settings.text }}
+            {%- endif -%}
+          </div>
+          {%- if block.settings.image_2 != blank -%}
+            <div class="aeris-story__media">
+              {{
+                block.settings.image_2
+                | image_url: width: 2400
+                | image_tag:
+                  alt: block.settings.title,
+                  widths: '750, 1200, 1600, 2000, 2400',
+                  sizes: '100vw',
+                  class: 'aeris-story__image'
+              }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.body_2 != blank -%}
+            <div class="aeris-story__body">{{ block.settings.body_2 }}</div>
+          {%- endif -%}
+          {%- if block.settings.image_3 != blank -%}
+            <div class="aeris-story__media">
+              {{
+                block.settings.image_3
+                | image_url: width: 2400
+                | image_tag:
+                  alt: block.settings.title,
+                  widths: '750, 1200, 1600, 2000, 2400',
+                  sizes: '100vw',
+                  class: 'aeris-story__image'
+              }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.body_3 != blank -%}
+            <div class="aeris-story__body">{{ block.settings.body_3 }}</div>
+          {%- endif -%}
+          <p class="aeris-story__back">
+            <a href="/pages/collaboration">Back to {{ section.settings.heading | default: 'Custom Tailored' }}</a>
+          </p>
+        </div>
+        {%- if section.blocks.size > 1 -%}
+          <div class="aeris-story__more">
+            <h2>More stories</h2>
+            <div class="aeris-story__more-grid">
+              {%- for other in section.blocks -%}
+                {%- if other.id != aeris_article_id -%}
+                  <a class="aeris-story__more-card" href="{% if other.settings.handle != blank %}/pages/collaboration?view={{ other.settings.handle }}{% else %}/pages/collaboration{% endif %}">
+                    <div class="aeris-story__more-media">
+                      {%- if other.settings.image != blank -%}
+                        {{
+                          other.settings.image
+                          | image_url: width: 900
+                          | image_tag:
+                            alt: other.settings.title,
+                            widths: '400, 700, 900',
+                            sizes: '(min-width: 750px) 33vw, 100vw',
+                            class: 'aeris-story__more-image'
+                        }}
+                      {%- endif -%}
+                    </div>
+                    {%- if other.settings.label != blank -%}
+                      <p>{{ other.settings.label }}</p>
+                    {%- endif -%}
+                    {%- if other.settings.title != blank -%}
+                      <h3>{{ other.settings.title }}</h3>
+                    {%- endif -%}
+                  </a>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </article>
+    {%- endif -%}
+  {%- endfor -%}
+{%- elsif aeris_index_page -%}
 <section class="aeris-collab">
   <div class="aeris-collab__banner">
     {% render 'aeris-banner-picture',
@@ -19,8 +143,14 @@
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
           <article class="aeris-collab__card" {{ block.shopify_attributes }}>
-            {%- if block.settings.link != blank -%}
-              <a class="aeris-collab__link" href="{{ block.settings.link }}">
+            {%- liquid
+              assign card_url = block.settings.link
+              if block.settings.handle != blank
+                assign card_url = '/pages/collaboration?view=' | append: block.settings.handle
+              endif
+            -%}
+            {%- if card_url != blank -%}
+              <a class="aeris-collab__link" href="{{ card_url }}">
             {%- endif -%}
             <div class="aeris-collab__media">
               {%- if block.settings.image != blank -%}
@@ -44,7 +174,7 @@
             {%- if block.settings.text != blank -%}
               <div class="aeris-collab__text">{{ block.settings.text }}</div>
             {%- endif -%}
-            {%- if block.settings.link != blank -%}
+            {%- if card_url != blank -%}
               </a>
             {%- endif -%}
           </article>
@@ -53,6 +183,7 @@
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% style %}
   #shopify-section-{{ section.id }} {
@@ -166,6 +297,126 @@
   .aeris-collab__text p {
     margin: 0;
   }
+  .aeris-story {
+    padding: 6.4rem 0 8rem;
+    color: #1c1c1c;
+    background: #fff;
+    container-type: inline-size;
+  }
+  .aeris-story__wrap {
+    width: min(72rem, calc(100% - 4rem));
+    margin: 0 auto;
+    text-align: center;
+  }
+  .aeris-story__kicker {
+    margin: 0 0 1.6rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #8a8a8a;
+  }
+  .aeris-story__title {
+    margin: 0;
+    font-family: Newsreader, Georgia, serif;
+    font-size: clamp(3.6rem, 5vw, 5.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .aeris-story__date {
+    margin: 1.6rem 0 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.5rem;
+    color: #6e6e6e;
+  }
+  .aeris-story__media {
+    width: 100cqi;
+    max-width: none;
+    margin: 3.2rem 0 3.2rem calc(50% - 50cqi);
+    aspect-ratio: 2.35 / 1;
+    overflow: hidden;
+  }
+  .aeris-story__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+  .aeris-story__body {
+    margin: 0 0 3.2rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+  .aeris-story__body:empty {
+    display: none;
+  }
+  .aeris-story__body p {
+    margin: 0 0 1.6rem;
+  }
+  .aeris-story__body p:last-child {
+    margin-bottom: 0;
+  }
+  .aeris-story__back {
+    margin: 3.2rem 0 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.4rem;
+  }
+  .aeris-story__back a {
+    color: inherit;
+  }
+  .aeris-story__more {
+    width: min(1120px, calc(100% - 4rem));
+    margin: 6.4rem auto 0;
+  }
+  .aeris-story__more h2 {
+    margin: 0 0 2.4rem;
+    font-family: Newsreader, Georgia, serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .aeris-story__more-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+  .aeris-story__more-card {
+    color: inherit;
+    text-decoration: none;
+  }
+  .aeris-story__more-media {
+    aspect-ratio: 3 / 2;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    border-radius: 1.6rem;
+    background: #f3f1ec;
+  }
+  .aeris-story__more-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .aeris-story__more-card p {
+    margin: 0 0 0.4rem;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.3rem;
+    color: #8a8a8a;
+  }
+  .aeris-story__more-card h3 {
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
   @media (min-width: 750px) {
     .aeris-collab__banner {
       aspect-ratio: 1440 / 340;
@@ -173,6 +424,9 @@
     .aeris-collab__grid {
       grid-template-columns: 1fr 1fr;
       gap: 2.4rem 2.8rem;
+    }
+    .aeris-story__more-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 {% endstyle %}
@@ -214,7 +468,8 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Gambar"
+          "label": "Gambar di artikel",
+          "info": "Juga dipakai sebagai foto kartu. Lebar penuh, kiri ke kanan."
         },
         {
           "type": "text",
@@ -231,13 +486,52 @@
         {
           "type": "richtext",
           "id": "text",
-          "label": "Teks",
+          "label": "Ringkasan di kartu",
           "default": "<p>Tulis cerita kolaborasi di sini.</p>"
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Handle halaman",
+          "info": "Contoh: tailored-artists. Kartu membuka halaman artikel dengan tampilan cerita."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Tanggal"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Isi artikel"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Gambar 2",
+          "info": "Muncul setelah isi artikel, di antara teks."
+        },
+        {
+          "type": "richtext",
+          "id": "body_2",
+          "label": "Teks setelah gambar 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Gambar 3",
+          "info": "Muncul setelah teks gambar 2."
+        },
+        {
+          "type": "richtext",
+          "id": "body_3",
+          "label": "Teks setelah gambar 3"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Tautan"
+          "label": "Tautan",
+          "info": "Dipakai hanya jika Handle halaman kosong."
         }
       ]
     }

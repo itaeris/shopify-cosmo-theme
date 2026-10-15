@@ -368,7 +368,10 @@
               "label": "Artists",
               "title": "Aeris Circle for artists",
               "text": "<p>For professional makeup artists, beauty students, and studios. Work with Aeris on the brushes and bags you use with clients, and stay close to the team through events and masterclasses.</p>",
-              "link": "/pages/contact-us"
+              "handle": "tailored-artists",
+              "date": "October 15, 2026",
+              "body": "<p>For professional makeup artists, beauty students, and studios. Aeris Circle is how we work with the people who use our brushes and bags with clients every day.</p><p>Artists who join stay close to the team through events and masterclasses, and have a direct line when a job or a class needs something specific.</p><p>Aeris tools are vegan and cruelty-free, made to be used, kept, and brought into the routine you already have.</p>",
+              "link": "/pages/tailored-artists"
             }
           },
           "collab_creators": {
@@ -378,7 +381,10 @@
               "label": "Creators",
               "title": "Aeris Circle for creators",
               "text": "<p>For makeup lovers and content creators. Share Aeris in your routine, earn from your posts, and be featured on our social channels.</p>",
-              "link": "/pages/contact-us"
+              "handle": "tailored-creators",
+              "date": "October 15, 2026",
+              "body": "<p>For makeup lovers and content creators. Aeris Circle is a way to share the tools you actually use, with the people who follow your routine.</p><p>Share Aeris in your posts, earn from those posts, and be featured on our social channels when the work fits.</p><p>The pieces are vegan and cruelty-free, practical enough for everyday use, and personal enough to keep.</p>",
+              "link": "/pages/tailored-creators"
             }
           }
         },
@@ -673,15 +679,6 @@
               "open": false
             }
           },
-          "faq_q_en_5_2": {
-            "type": "question",
-            "settings": {
-              "language": "en",
-              "question": "How does delivery to Singapore work?",
-              "answer": "<p>Orders over 400 SGD can be charged local import taxes and customs duties. To reduce delays, split a large purchase into separate orders under 400 SGD, and keep each order within the stated weight limit.</p>",
-              "open": false
-            }
-          },
           "faq_q_en_5_3": {
             "type": "question",
             "settings": {
@@ -795,7 +792,6 @@
           "faq_group_en_5",
           "faq_q_en_5_0",
           "faq_q_en_5_1",
-          "faq_q_en_5_2",
           "faq_q_en_5_3",
           "faq_q_en_5_4",
           "faq_q_en_5_5",
@@ -809,8 +805,8 @@
         "settings": {
           "heading_id": "Temukan jawaban di FAQ kami",
           "heading_en": "Discover more in our FAQ",
-          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
-          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>",
+          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br/>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
+          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br/>Support hours: Monday–Friday, 7am–3pm</p>",
           "help_heading_id": "Masih butuh bantuan?",
           "help_heading_en": "Still need help?",
           "help_text_id": "Kirim email ke tim kami dan kami akan membalas secepatnya",

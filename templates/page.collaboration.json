@@ -24,7 +24,10 @@
             "label": "Artists",
             "title": "Aeris Circle for artists",
             "text": "<p>For professional makeup artists, beauty students, and studios. Work with Aeris on the brushes and bags you use with clients, and stay close to the team through events and masterclasses.</p>",
-            "link": "/pages/contact-us"
+            "handle": "tailored-artists",
+            "date": "October 15, 2026",
+            "body": "<p>For professional makeup artists, beauty students, and studios. Aeris Circle is how we work with the people who use our brushes and bags with clients every day.</p><p>Artists who join stay close to the team through events and masterclasses, and have a direct line when a job or a class needs something specific.</p><p>Aeris tools are vegan and cruelty-free, made to be used, kept, and brought into the routine you already have.</p>",
+            "link": "/pages/tailored-artists"
           }
         },
         "collab_creators": {
@@ -34,7 +37,10 @@
             "label": "Creators",
             "title": "Aeris Circle for creators",
             "text": "<p>For makeup lovers and content creators. Share Aeris in your routine, earn from your posts, and be featured on our social channels.</p>",
-            "link": "/pages/contact-us"
+            "handle": "tailored-creators",
+            "date": "October 15, 2026",
+            "body": "<p>For makeup lovers and content creators. Aeris Circle is a way to share the tools you actually use, with the people who follow your routine.</p><p>Share Aeris in your posts, earn from those posts, and be featured on our social channels when the work fits.</p><p>The pieces are vegan and cruelty-free, practical enough for everyday use, and personal enough to keep.</p>",
+            "link": "/pages/tailored-creators"
           }
         }
       },
