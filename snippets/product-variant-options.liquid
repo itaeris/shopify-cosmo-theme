@@ -121,7 +121,19 @@
       </label>
     </div>
   {%- elsif picker_type == 'image' -%}
-    <div class="variant-picker__option{% if option_disabled %} variant-picker__option--soldout{% endif %}">
+    {%- liquid
+      assign value_order = 99
+      assign value_downcase = value | downcase
+      assign order_names = block.settings.variant_order | downcase | split: ','
+      for order_name in order_names
+        assign order_name = order_name | strip
+        if order_name == value_downcase
+          assign value_order = forloop.index
+          break
+        endif
+      endfor
+    -%}
+    <div class="variant-picker__option{% if option_disabled %} variant-picker__option--soldout{% endif %}" style="order: {{ value_order }};">
       <input
         type="radio"
         id="{{ input_id }}"
