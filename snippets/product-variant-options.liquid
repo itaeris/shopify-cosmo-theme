@@ -148,7 +148,7 @@
             {{ 'image' | placeholder_svg_tag: 'aeris-variant-image__placeholder' }}
           {%- endif -%}
         </span>
-        <span class="aeris-variant-image__name">{{ value }}</span>
+        <span class="visually-hidden">{{ value }}</span>
       </label>
     </div>
   {%- elsif picker_type == 'button' -%}

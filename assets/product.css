@@ -1687,11 +1687,6 @@ product-modal .f-modal__content {
 .aeris-variant-image__placeholder {
   fill: rgba(0, 0, 0, 0.18);
 }
-.aeris-variant-image__name {
-  font-size: 1.3rem;
-  line-height: 1.3;
-  text-align: center;
-}
 .variant-picker__input.aeris-variant-image input[type=radio]:checked + label {
   color: inherit;
 }
@@ -1701,7 +1696,4 @@ product-modal .f-modal__content {
 }
 .aeris-variant-image .variant-picker__option--soldout .aeris-variant-image__media {
   opacity: 0.45;
-}
-.aeris-variant-image .variant-picker__option--soldout .aeris-variant-image__name {
-  text-decoration: line-through;
 }
