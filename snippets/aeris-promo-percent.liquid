@@ -1,6 +1,7 @@
 {%- comment -%}
   Outputs the promo percentage (0 if none) for a product, based on the
-  tag/percent slots in Theme settings → Aeris promo. First matching slot wins.
+  tag/percent slots in Theme settings → Aeris promo, then on the
+  `aeris_promo` metaobject entries (fields: tag, percent). First match wins.
 
   Usage:
   {% capture aeris_promo_percent %}{% render 'aeris-promo-percent', product: product %}{% endcapture %}
@@ -32,5 +33,25 @@
       break
     endif
   endfor
+
+  if promo_percent == 0
+    for promo_entry in shop.metaobjects.aeris_promo.values
+      assign entry_tag = promo_entry.tag.value | strip | downcase
+      assign entry_percent = promo_entry.percent.value | default: 0
+      if entry_tag == blank or entry_percent <= 0
+        continue
+      endif
+      for product_tag in product.tags
+        assign product_tag_downcase = product_tag | downcase
+        if product_tag_downcase == entry_tag
+          assign promo_percent = entry_percent
+          break
+        endif
+      endfor
+      if promo_percent > 0
+        break
+      endif
+    endfor
+  endif
   echo promo_percent
 -%}

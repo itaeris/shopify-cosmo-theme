@@ -18,7 +18,12 @@ Panduan memasang promo dengan **tag produk**. Cukup pasang tag di produk, lalu:
 | Automatic discount | Admin → Discounts | Memotong harga di cart & checkout |
 | Aeris promo (slot 1–5) | Theme settings | Menampilkan harga coret di website |
 
-Ada **5 slot promo**, jadi sampai 5 promo dengan persentase berbeda bisa berjalan bersamaan.
+Promo bisa didaftarkan di dua tempat. Keduanya bisa dipakai bersamaan:
+
+- **Theme settings → Aeris promo:** 5 slot tetap.
+- **Content → Metaobjects → Aeris promo:** daftar promo yang bisa **ditambah sendiri tanpa batas** (tombol **Add entry**). Disarankan untuk tim admin. Setup awalnya ada di [Setup sekali: Metaobject Aeris promo](#setup-sekali-metaobject-aeris-promo).
+
+Kalau satu tag ada di dua tempat, slot di Theme settings yang dipakai.
 
 ---
 
@@ -51,7 +56,20 @@ Produk yang diberi tag `payday` (sekarang atau nanti) otomatis masuk ke collecti
 5. Atur **Active dates**, yaitu tanggal mulai dan selesai.
 6. **Save**.
 
-### 4. Isi slot di theme
+### 4. Daftarkan promo supaya harga coret tampil
+
+Pilih salah satu:
+
+**A. Lewat Metaobject (disarankan, bisa tambah sendiri)**
+
+1. **Content → Metaobjects → Aeris promo → Add entry**.
+2. Isi:
+   - **Name:** `Payday 30%` (hanya label, bebas)
+   - **Tag:** `payday`
+   - **Percent:** `30`
+3. **Save**. Kalau definisi dibuat dengan opsi **Publishable**, ubah status entry ke **Active**.
+
+**B. Lewat Theme settings (5 slot)**
 
 1. **Online Store → Themes → Customize**.
 2. Klik ikon **Theme settings** (gear) → **Aeris promo**.
@@ -67,9 +85,35 @@ Produk yang diberi tag `payday` (sekarang atau nanti) otomatis masuk ke collecti
 
 ---
 
+## Setup sekali: Metaobject Aeris promo
+
+Langkah ini cukup dilakukan **sekali** oleh admin. Setelah itu, tim tinggal **Add entry** untuk setiap promo baru.
+
+1. **Settings → Custom data → Metaobjects → Add definition**.
+2. **Name:** `Aeris promo`. Pastikan **Type** otomatis terisi `aeris_promo`. Type ini **harus persis** `aeris_promo`, karena theme membaca nama ini.
+3. Tambahkan field:
+
+   | Field name | Key | Type | Catatan |
+   |---|---|---|---|
+   | Name | `name` | Single line text | Label promo, untuk admin saja |
+   | Tag | `tag` | Single line text | Tag produk, misalnya `payday` |
+   | Percent | `percent` | Integer | Validasi: min 1, max 90 |
+
+   Key **`tag`** dan **`percent`** harus persis seperti di tabel.
+4. Di bagian **Access / Options**:
+   - Aktifkan **Storefronts** (Storefront access). **Wajib.** Tanpa ini, theme tidak bisa membaca daftar promo.
+   - Opsional: aktifkan **Publishable** supaya setiap entry punya status Draft/Active. Entry Draft tidak dipakai theme, cocok untuk menyiapkan promo lebih awal.
+5. **Save**.
+
+Menu **Content → Metaobjects → Aeris promo** sekarang muncul dengan tombol **Add entry**.
+
+---
+
 ## Mematikan promo
 
-1. **Theme settings → Aeris promo** → set **Discount** slot itu ke **0%**, atau kosongkan Tag-nya.
+1. Matikan tampilan harga coret di theme:
+   - **Metaobject:** hapus entry-nya, set ke **Draft** (kalau Publishable), atau isi **Percent** dengan 0.
+   - **Theme settings:** set **Discount** slot itu ke **0%**, atau kosongkan Tag-nya.
 2. Automatic discount berhenti sendiri sesuai **Active dates**. Kalau perlu berhenti lebih cepat, buka **Discounts** dan **Deactivate**.
 3. Opsional: hapus tag dari produk (**Products** → centang → **"…" → Remove tags**).
 
@@ -82,13 +126,13 @@ Produk yang diberi tag `payday` (sekarang atau nanti) otomatis masuk ke collecti
 Ubah di **dua** tempat:
 
 1. **Discounts** → buka discount-nya → ubah **Value**.
-2. **Theme settings → Aeris promo** → ubah **Discount** di slot yang sama.
+2. Ubah juga persentasenya di tempat promo itu didaftarkan: entry **Metaobject** (Percent), atau **Theme settings → Aeris promo** (Discount di slot yang sama).
 
 ---
 
 ## Aturan & batasan
 
-- **Satu produk, satu tag promo.** Kalau satu produk punya beberapa tag promo, theme memakai slot dengan **nomor terkecil**. Di checkout, Shopify bisa saja memakai diskon lain, tergantung pengaturan *Combinations* di Discounts. Supaya tidak beda, pastikan satu produk hanya ikut satu promo.
+- **Satu produk, satu tag promo.** Kalau satu produk punya beberapa tag promo, theme memakai slot Theme settings dengan **nomor terkecil**. Kalau tidak ada yang cocok di slot, theme memakai entry Metaobject pertama yang cocok. Di checkout, Shopify bisa saja memakai diskon lain, tergantung pengaturan *Combinations* di Discounts. Supaya tidak beda, pastikan satu produk hanya ikut satu promo.
 - **Harga coret manual tetap dipakai.** Kalau produk sudah punya **Compare-at price** yang lebih besar dari Price, theme menampilkan harga manual itu dan **tidak** menambah diskon dari tag. Ini supaya harga tidak terlihat terpotong dua kali.
 - **Pembulatan:** harga setelah diskon dibulatkan ke bawah ke rupiah. Untuk harga normal (misalnya 199.000), hasilnya sama dengan checkout.
 - **Desty:** kalau Desty menyinkronkan harga ke Shopify, cara ini aman, karena Price dan Compare-at price produk tidak diubah. Diskon hanya ada di Automatic discount dan tampilan theme.
@@ -113,7 +157,7 @@ Kalau Desty menyinkronkan harga, perubahan manual ini bisa tertimpa lagi oleh ha
 
 | File | Isi |
 |---|---|
-| `snippets/aeris-promo-percent.liquid` | Mencari slot yang cocok dengan tag produk, lalu output persentasenya (0 kalau tidak ada) |
+| `snippets/aeris-promo-percent.liquid` | Mencari slot Theme settings, lalu entry metaobject `aeris_promo` (`tag`, `percent`), yang cocok dengan tag produk. Output persentasenya (0 kalau tidak ada) |
 | `snippets/price.liquid` | Harga di halaman produk, quick view, sticky ATC, search |
 | `snippets/product-card.liquid` | Harga & badge sale di kartu produk |
 | `config/settings_schema.json` | Grup **Aeris promo**: `aeris_promo_tag` / `aeris_promo_percent` (slot 1), `aeris_promo_tag_N` / `aeris_promo_percent_N` (slot 2–5) |

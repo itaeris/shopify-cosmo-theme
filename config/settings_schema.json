@@ -1454,7 +1454,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Harga coret otomatis untuk produk ber-tag promo. Persentase tiap promo HARUS sama dengan Automatic discount-nya di Admin → Discounts. Kalau produk punya beberapa tag promo, promo dengan nomor terkecil yang dipakai. Persentase 0 = mati."
+        "content": "Harga coret otomatis untuk produk ber-tag promo. Persentase tiap promo HARUS sama dengan Automatic discount-nya di Admin → Discounts. Kalau produk punya beberapa tag promo, promo dengan nomor terkecil yang dipakai. Persentase 0 = mati. Butuh lebih dari 5 promo? Tambahkan di Content → Metaobjects → Aeris promo."
       },
       {
         "type": "header",
