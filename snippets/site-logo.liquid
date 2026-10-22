@@ -100,9 +100,21 @@
                                   </a>
                                 </li>
                               {%- endif -%}
+                              {%- if link.handle == 'about-us' or link.handle == 'about' -%}
+                                {%- assign aeris_has_story = false -%}
+                                {%- for story_link in link.links -%}
+                                  {%- assign story_handle = story_link.title | handleize -%}
+                                  {%- if story_handle == 'our-story' -%}{%- assign aeris_has_story = true -%}{%- endif -%}
+                                {%- endfor -%}
+                                {%- unless aeris_has_story -%}
+                                  <li>
+                                    <a href="/pages/about-us" class="menu-drawer__menu-item list-menu__item focus-inset">OUR STORY</a>
+                                  </li>
+                                {%- endunless -%}
+                              {%- endif -%}
                               {%- for childlink in link.links -%}
                                 {%- assign aeris_child_handle = childlink.title | handleize -%}
-                                {%- if aeris_child_handle == 'collaboration' -%}
+                                {%- if aeris_child_handle == 'collaboration' or aeris_child_handle == 'custom-tailored' or aeris_child_handle == 'aeris-circle' -%}
                                   {%- continue -%}
                                 {%- endif -%}
                                 <li>
@@ -142,7 +154,7 @@
                                         <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                                           {%- for grandchildlink in childlink.links -%}
                                             {%- assign aeris_grand_handle = grandchildlink.title | handleize -%}
-                                            {%- if aeris_grand_handle == 'collaboration' -%}
+                                            {%- if aeris_grand_handle == 'collaboration' or aeris_grand_handle == 'custom-tailored' or aeris_grand_handle == 'aeris-circle' -%}
                                               {%- continue -%}
                                             {%- endif -%}
                                             <li>

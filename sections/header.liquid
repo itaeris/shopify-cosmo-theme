@@ -288,7 +288,7 @@
                       assign li_class = li_class | append: ' f-mobile-nav__item--has-child'
                     endif
                   %}
-                  {%- if title_handle == 'collaboration' -%}
+                  {%- if title_handle == 'collaboration' or title_handle == 'custom-tailored' or title_handle == 'aeris-circle' -%}
                     {%- continue -%}
                   {%- endif -%}
                   <li
@@ -330,9 +330,21 @@
                                 <a href="/pages/store-location" class="f-mobile-nav__sub-link">ALL</a>
                               </li>
                             {%- endif -%}
+                            {%- if link.handle == 'about-us' or link.handle == 'about' -%}
+                              {%- assign aeris_has_story = false -%}
+                              {%- for story_link in link.links -%}
+                                {%- assign story_handle = story_link.title | handleize -%}
+                                {%- if story_handle == 'our-story' -%}{%- assign aeris_has_story = true -%}{%- endif -%}
+                              {%- endfor -%}
+                              {%- unless aeris_has_story -%}
+                                <li class="f-mobile-nav__subitem">
+                                  <a href="/pages/about-us" class="f-mobile-nav__sub-link">OUR STORY</a>
+                                </li>
+                              {%- endunless -%}
+                            {%- endif -%}
                             {% for childlink in dropdown_source.links %}
                               {% assign aeris_child_handle = childlink.title | handleize %}
-                              {% if aeris_child_handle == 'collaboration' %}
+                              {% if aeris_child_handle == 'collaboration' or aeris_child_handle == 'custom-tailored' or aeris_child_handle == 'aeris-circle' %}
                                 {% continue %}
                               {% endif %}
                               <li
@@ -380,7 +392,7 @@
                                       <ul class="list-none">
                                         {% for grandlink in childlink.links %}
                                           {% assign aeris_grand_handle = grandlink.title | handleize %}
-                                          {% if aeris_grand_handle == 'collaboration' %}
+                                          {% if aeris_grand_handle == 'collaboration' or aeris_grand_handle == 'custom-tailored' or aeris_grand_handle == 'aeris-circle' %}
                                             {% continue %}
                                           {% endif %}
                                           <li class="f-mobile-nav__sub-item f-mobile-nav__sub-item--level3">

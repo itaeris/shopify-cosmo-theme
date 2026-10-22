@@ -2,6 +2,13 @@
 
 {%- liquid
   assign whatsapp_link = section.settings.whatsapp_link
+  if whatsapp_link == blank and section.settings.whatsapp_number != blank
+    assign whatsapp_digits = section.settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+    if whatsapp_digits.first == '0'
+      assign whatsapp_digits = whatsapp_digits | remove_first: '0' | prepend: '62'
+    endif
+    assign whatsapp_link = 'https://wa.me/' | append: whatsapp_digits
+  endif
   if whatsapp_link == blank
     assign whatsapp_link = settings.social_whatsapp_link
   endif
@@ -198,10 +205,17 @@
       "default": "Contact our Whatsapp"
     },
     {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "WhatsApp number",
+      "default": "+6281389857947",
+      "info": "Nomor WA CS, contoh +6281389857947 atau 081389857947."
+    },
+    {
       "type": "url",
       "id": "whatsapp_link",
       "label": "WhatsApp link",
-      "info": "Leave blank to use the WhatsApp link in Theme settings → Social media."
+      "info": "Opsional. Kalau diisi, link ini dipakai menggantikan WhatsApp number."
     },
     {
       "type": "header",

@@ -37,7 +37,7 @@
           {%- continue -%}
         {%- endif -%}
         {%- assign aeris_nav_handle = link.title | handleize -%}
-        {%- if aeris_nav_handle == 'collaboration' -%}
+        {%- if aeris_nav_handle == 'collaboration' or aeris_nav_handle == 'custom-tailored' or aeris_nav_handle == 'aeris-circle' -%}
           {%- continue -%}
         {%- endif -%}
         {%- liquid
@@ -470,9 +470,21 @@
                         </a>
                       </li>
                     {%- endif -%}
+                    {%- if link.handle == 'about-us' or link.handle == 'about' -%}
+                      {%- assign aeris_has_story = false -%}
+                      {%- for story_link in link.links -%}
+                        {%- assign story_handle = story_link.title | handleize -%}
+                        {%- if story_handle == 'our-story' -%}{%- assign aeris_has_story = true -%}{%- endif -%}
+                      {%- endfor -%}
+                      {%- unless aeris_has_story -%}
+                        <li class="f-site-nav__sub-item">
+                          <a href="/pages/about-us" class="f-site-nav__sub-link focus-inset no-js-hidden"><span>OUR STORY</span></a>
+                        </li>
+                      {%- endunless -%}
+                    {%- endif -%}
                     {% for childlink in dropdown_source.links %}
                       {% assign aeris_child_handle = childlink.title | handleize %}
-                      {% if aeris_child_handle == 'collaboration' %}
+                      {% if aeris_child_handle == 'collaboration' or aeris_child_handle == 'custom-tailored' or aeris_child_handle == 'aeris-circle' %}
                         {% continue %}
                       {% endif %}
                       <li class="f-site-nav__sub-item{% if childlink.links != blank %} f-site-nav__sub-item--has-child{% endif %}">
@@ -497,7 +509,7 @@
                             <ul class="list-none" role="list" tabindex="-1">
                               {% for grandlink in childlink.links %}
                                 {% assign aeris_grand_handle = grandlink.title | handleize %}
-                                {% if aeris_grand_handle == 'collaboration' %}
+                                {% if aeris_grand_handle == 'collaboration' or aeris_grand_handle == 'custom-tailored' or aeris_grand_handle == 'aeris-circle' %}
                                   {% continue %}
                                 {% endif %}
                                 <li class="f-site-nav__sub-item f-site-nav__sub-item--level3">

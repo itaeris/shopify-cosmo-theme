@@ -32,17 +32,9 @@
         "chip_face": {
           "type": "chip",
           "settings": {
-            "title": "Face Brushes",
+            "title": "Single Brush",
             "link": "/collections/brushes",
-            "image": "shopify://shop_images/ABA_8264.jpg"
-          }
-        },
-        "chip_eye": {
-          "type": "chip",
-          "settings": {
-            "title": "Eye Brushes",
-            "link": "/collections/makeup-tools",
-            "image": "shopify://shop_images/AE828.jpg"
+            "image": "shopify://shop_images/eye_brush.jpg"
           }
         },
         "chip_sets": {
@@ -50,7 +42,7 @@
           "settings": {
             "title": "Brush Sets",
             "link": "/collections/aeris-brush-sets",
-            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg"
+            "image": "shopify://shop_images/brush_set_857378f6-687e-420e-8579-cfe2ff4370b4.jpg"
           }
         },
         "chip_tools": {
@@ -58,14 +50,13 @@
           "settings": {
             "title": "Tools",
             "link": "/collections/puffs",
-            "image": "shopify://shop_images/blendie-bar.jpg"
+            "image": "shopify://shop_images/tools_1b6bedc3-0394-4494-9ecf-b77d704dde15.jpg"
           }
         }
       },
       "block_order": [
         "chip_all",
         "chip_face",
-        "chip_eye",
         "chip_sets",
         "chip_tools"
       ],
@@ -319,9 +310,9 @@
         "cat_gifting": {
           "type": "featured_collection",
           "settings": {
-            "collection": "brush-sets",
+            "collection": "gift-sets",
             "image": "shopify://shop_images/ABA_8454.jpg",
-            "title": "Giftings"
+            "title": "Bundles"
           }
         }
       },

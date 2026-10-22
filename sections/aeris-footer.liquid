@@ -235,6 +235,8 @@
           {% if section.settings.shop_menu != blank %}
             <ul>
               {% for link in section.settings.shop_menu.links %}
+                {%- assign aeris_footer_handle = link.title | handleize -%}
+                {%- if aeris_footer_handle == 'aeris-circle' -%}{%- continue -%}{%- endif -%}
                 <li>
                   <a href="{% render 'aeris-menu-url', menu_link: link %}">
                     {{ link.title }}
@@ -256,6 +258,8 @@
           {% if section.settings.about_menu != blank %}
             <ul>
               {% for link in section.settings.about_menu.links %}
+                {%- assign aeris_footer_handle = link.title | handleize -%}
+                {%- if aeris_footer_handle == 'aeris-circle' -%}{%- continue -%}{%- endif -%}
                 <li>
                   <a href="{% render 'aeris-menu-url', menu_link: link %}">
                     {{ link.title }}
@@ -278,6 +282,8 @@
             <ul>
               {%- assign aeris_has_track = false -%}
               {% for link in section.settings.info_menu.links %}
+                {%- assign aeris_footer_handle = link.title | handleize -%}
+                {%- if aeris_footer_handle == 'aeris-circle' -%}{%- continue -%}{%- endif -%}
                 {%- assign aeris_info_handle = link.title | handleize -%}
                 {%- if aeris_info_handle == 'track-your-order' or aeris_info_handle == 'track-order' or link.url contains 'track-your-order' -%}
                   {%- assign aeris_has_track = true -%}
