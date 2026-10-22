@@ -6732,9 +6732,8 @@ shopify-account::part(signed-out-avatar) {
 .f-site-nav__item:hover > .f-site-nav__link--promotion,
 .f-site-nav__item:focus-within > .f-site-nav__link--promotion,
 .f-mobile-nav__link--promotion {
-  color: #d0121a !important;
-  font-style: italic;
-  font-weight: 700 !important;
+  color: #582933 !important;
+  font-weight: 600 !important;
 }
 .f-site-nav__dropdown {
   position: absolute;

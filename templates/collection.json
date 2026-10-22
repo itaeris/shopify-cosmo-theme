@@ -345,7 +345,7 @@
         "heading_color": "",
         "subheading": "",
         "description": "",
-        "title_font": "heading",
+        "title_font": "body",
         "title_size": "h6",
         "card_style": "6",
         "text_alignment": "center",

@@ -40,6 +40,9 @@
   if aeris_menu_handle == 'contact-us' or aeris_menu_handle == 'contact' or aeris_menu_handle == 'contactus'
     assign aeris_menu_url = '/pages/contact-us'
   endif
+  if aeris_menu_handle == 'faq' or aeris_menu_handle == 'faqs'
+    assign aeris_menu_url = '/pages/faqs'
+  endif
   if aeris_menu_handle == 'store-locations' or aeris_menu_handle == 'store-location'
     assign aeris_menu_url = '/pages/store-location'
   endif
