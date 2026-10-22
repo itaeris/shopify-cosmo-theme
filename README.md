@@ -119,6 +119,7 @@ Bagian yang sudah dikustom:
 | Footer Aeris              | `sections/aeris-footer.liquid`                       |
 | Header group settings     | `sections/header-group.json`                         |
 | Footer group settings     | `sections/footer-group.json`                         |
+| Promo harga coret dari tag | `snippets/aeris-promo-percent.liquid`, `snippets/price.liquid` — panduan: [PROMO.md](PROMO.md) |
 
 
 Hero copy campaign saat ini: **MERLOT** / Unlock Your True Power / Discover now.

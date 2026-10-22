@@ -2,6 +2,24 @@
   assign variant = product.selected_or_first_available_variant
   assign compare_at_price = product.compare_at_price
   assign price = product.price
+  assign aeris_promo = false
+  assign aeris_has_compare = false
+  if compare_at_price > price
+    assign aeris_has_compare = true
+  endif
+  if aeris_has_compare == false
+    capture aeris_promo_percent
+      render 'aeris-promo-percent', product: product
+    endcapture
+    assign aeris_promo_percent = aeris_promo_percent | strip | plus: 0
+    if aeris_promo_percent > 0
+      assign aeris_promo = true
+    endif
+  endif
+  if aeris_promo
+    assign compare_at_price = price
+    assign price = 100 | minus: aeris_promo_percent | times: compare_at_price | divided_by: 100
+  endif
   assign on_sale = false
   if compare_at_price > price
     assign on_sale = true

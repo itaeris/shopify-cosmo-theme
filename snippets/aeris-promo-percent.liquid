@@ -1,0 +1,36 @@
+{%- comment -%}
+  Outputs the promo percentage (0 if none) for a product, based on the
+  tag/percent slots in Theme settings → Aeris promo. First matching slot wins.
+
+  Usage:
+  {% capture aeris_promo_percent %}{% render 'aeris-promo-percent', product: product %}{% endcapture %}
+{%- endcomment -%}
+{%- liquid
+  assign promo_percent = 0
+  for slot in (1..5)
+    if slot == 1
+      assign slot_tag = settings.aeris_promo_tag
+      assign slot_percent = settings.aeris_promo_percent | default: 0
+    else
+      assign tag_key = 'aeris_promo_tag_' | append: slot
+      assign percent_key = 'aeris_promo_percent_' | append: slot
+      assign slot_tag = settings[tag_key]
+      assign slot_percent = settings[percent_key] | default: 0
+    endif
+    assign slot_tag = slot_tag | strip | downcase
+    if slot_tag == blank or slot_percent <= 0
+      continue
+    endif
+    for product_tag in product.tags
+      assign product_tag_downcase = product_tag | downcase
+      if product_tag_downcase == slot_tag
+        assign promo_percent = slot_percent
+        break
+      endif
+    endfor
+    if promo_percent > 0
+      break
+    endif
+  endfor
+  echo promo_percent
+-%}

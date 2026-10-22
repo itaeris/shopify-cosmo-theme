@@ -1450,6 +1450,111 @@
     ]
   },
   {
+    "name": "Aeris promo",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Harga coret otomatis untuk produk ber-tag promo. Persentase tiap promo HARUS sama dengan Automatic discount-nya di Admin → Discounts. Kalau produk punya beberapa tag promo, promo dengan nomor terkecil yang dipakai. Persentase 0 = mati."
+      },
+      {
+        "type": "header",
+        "content": "Promo 1"
+      },
+      {
+        "type": "text",
+        "id": "aeris_promo_tag",
+        "label": "Tag",
+        "default": "discount"
+      },
+      {
+        "type": "range",
+        "id": "aeris_promo_percent",
+        "label": "Discount",
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Promo 2"
+      },
+      {
+        "type": "text",
+        "id": "aeris_promo_tag_2",
+        "label": "Tag"
+      },
+      {
+        "type": "range",
+        "id": "aeris_promo_percent_2",
+        "label": "Discount",
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Promo 3"
+      },
+      {
+        "type": "text",
+        "id": "aeris_promo_tag_3",
+        "label": "Tag"
+      },
+      {
+        "type": "range",
+        "id": "aeris_promo_percent_3",
+        "label": "Discount",
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Promo 4"
+      },
+      {
+        "type": "text",
+        "id": "aeris_promo_tag_4",
+        "label": "Tag"
+      },
+      {
+        "type": "range",
+        "id": "aeris_promo_percent_4",
+        "label": "Discount",
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Promo 5"
+      },
+      {
+        "type": "text",
+        "id": "aeris_promo_tag_5",
+        "label": "Tag"
+      },
+      {
+        "type": "range",
+        "id": "aeris_promo_percent_5",
+        "label": "Discount",
+        "min": 0,
+        "max": 90,
+        "step": 1,
+        "unit": "%",
+        "default": 0
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.social_media.name",
     "settings": [
       {
