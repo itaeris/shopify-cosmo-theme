@@ -2,25 +2,25 @@
   assign aeris_menu_url = menu_link.url | default: '#'
   assign aeris_menu_handle = menu_link.title | handleize
   if aeris_menu_handle == 'shop-all' or aeris_menu_handle == 'shopall'
-    assign aeris_menu_url = '/collections/all-products'
+    assign aeris_menu_url = '/collections/shop-all'
   endif
   if aeris_menu_handle == 'new-arrival' or aeris_menu_handle == 'new-arrivals'
-    assign aeris_menu_url = '/collections/new-in'
+    assign aeris_menu_url = '/collections/new-arrival'
   endif
   if aeris_menu_handle == 'best-seller' or aeris_menu_handle == 'best-sellers'
     assign aeris_menu_url = '/collections/best-sellers-1'
   endif
   if aeris_menu_handle == 'brushes-tools' or aeris_menu_handle == 'brushes-and-tools'
-    assign aeris_menu_url = '/collections/accessories'
+    assign aeris_menu_url = '/collections/brushes-tools'
   endif
   if aeris_menu_handle == 'brush-cleaner' or aeris_menu_handle == 'brush-cleanser'
-    assign aeris_menu_url = '/collections/cleansers'
+    assign aeris_menu_url = '/collections/brush-cleaner'
   endif
   if aeris_menu_handle == 'hair-tools'
     assign aeris_menu_url = '/collections/hair-tools'
   endif
   if aeris_menu_handle == 'lifestyle-bags'
-    assign aeris_menu_url = '/collections/wellness-tools'
+    assign aeris_menu_url = '/collections/lifestyle-bags'
   endif
   if aeris_menu_handle == 'bundles'
     assign aeris_menu_url = '/collections/gift-sets'
@@ -62,7 +62,7 @@
     assign aeris_menu_url = '/pages/store-location#dp-mall'
   endif
   if aeris_menu_handle == 'personalization' or aeris_menu_handle == 'personalisation'
-    assign aeris_menu_url = '/collections/all-products?view=personalisation'
+    assign aeris_menu_url = '/collections/shop-all?view=personalisation'
   endif
   if aeris_menu_handle == 'journal' or aeris_menu_handle == 'aeris-journal'
     assign aeris_menu_url = '/blogs/list'

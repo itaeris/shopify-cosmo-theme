@@ -61,6 +61,14 @@
       assign banner_image_mobile = section.settings.arrivals_image_mobile
     endif
   endif
+
+  assign show_chips = false
+  if collection.handle == 'brushes-tools' or collection.handle == 'accessories'
+    assign show_chips = true
+  endif
+  if section.blocks.size == 0
+    assign show_chips = false
+  endif
 -%}
 {%- if show_hero -%}
   <section class="aeris-collection-hero" id="AerisCollectionHero-{{ section.id }}">
@@ -76,7 +84,7 @@
       {%- endif -%}
     </div>
 
-    {%- if collection.handle == 'accessories' and section.blocks.size > 0 -%}
+    {%- if show_chips -%}
       <div class="aeris-collection-hero__chips">
         <div class="container">
           <ul class="aeris-collection-hero__chip-list">
