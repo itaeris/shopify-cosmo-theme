@@ -1650,3 +1650,58 @@ product-modal .f-modal__content {
 .f-product-quickview .f-product-single__block--buy_buttons {
   margin-top: 3.2rem;
 }
+.aeris-variant-image .variant-picker__option-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.aeris-variant-image .variant-picker__option {
+  overflow: visible;
+}
+.aeris-variant-image__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 7.2rem;
+  cursor: pointer;
+}
+.aeris-variant-image__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 0.1rem solid var(--color-border);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: #f1eee9;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.aeris-variant-image__img,
+.aeris-variant-image__placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.aeris-variant-image__placeholder {
+  fill: rgba(0, 0, 0, 0.18);
+}
+.aeris-variant-image__name {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  text-align: center;
+}
+.variant-picker__input.aeris-variant-image input[type=radio]:checked + label {
+  color: inherit;
+}
+.aeris-variant-image input[type=radio]:checked + label .aeris-variant-image__media {
+  border-color: var(--color-text-body);
+  box-shadow: 0 0 0 0.1rem var(--color-text-body);
+}
+.aeris-variant-image .variant-picker__option--soldout .aeris-variant-image__media {
+  opacity: 0.45;
+}
+.aeris-variant-image .variant-picker__option--soldout .aeris-variant-image__name {
+  text-decoration: line-through;
+}

@@ -50,6 +50,18 @@
               endif
             endif
           endif
+
+          if picker_type == 'image'
+            assign type_picker = 'button'
+            assign image_option_names = block.settings.image_option_names | default: 'Variasi,Color,Colour,Warna' | downcase | split: ','
+            for image_option_name in image_option_names
+              assign image_option_name = image_option_name | strip
+              if image_option_name == option_name_downcase
+                assign type_picker = 'image'
+                break
+              endif
+            endfor
+          endif
         %}
         
         <div class="variant-picker__field-wrapper">
@@ -77,6 +89,25 @@
                       picker_type: type_picker
                     -%}
                   </select>
+                </div>
+              </div>
+            {% when 'image' %}
+              <div class="variant-picker__field" data-picker-field="radio" data-option-name="{{ option.name }}">
+                <div class="js variant-picker__input aeris-variant-image">
+                  <label class="form__label">
+                    <span class="font-semibold">{{ option_label }}:</span>
+                    {% if show_selected_value %}
+                      <span class="selected-value">{{ option.selected_value }}</span>
+                    {% endif %}
+                  </label>
+                  <div class="variant-picker__option-values">
+                    {%- render 'product-variant-options',
+                      product: product,
+                      option: option,
+                      block: block,
+                      picker_type: type_picker
+                    -%}
+                  </div>
                 </div>
               </div>
             {% when 'color', 'swatch' %}

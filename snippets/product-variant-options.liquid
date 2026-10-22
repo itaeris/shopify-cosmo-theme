@@ -120,6 +120,37 @@
         {{- value -}}
       </label>
     </div>
+  {%- elsif picker_type == 'image' -%}
+    <div class="variant-picker__option{% if option_disabled %} variant-picker__option--soldout{% endif %}">
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="{{ input_name | escape }}"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if value.selected %}
+          checked
+        {% endif %}
+        {% if option_disabled %}
+          class="disabled"
+        {% endif %}
+        {{ input_dataset }}
+      >
+      <label class="aeris-variant-image__option" for="{{ input_id }}">
+        <span class="aeris-variant-image__media">
+          {%- if value.variant.image != blank -%}
+            {{
+              value.variant.image
+              | image_url: width: 240
+              | image_tag: loading: 'lazy', alt: value, class: 'aeris-variant-image__img'
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'aeris-variant-image__placeholder' }}
+          {%- endif -%}
+        </span>
+        <span class="aeris-variant-image__name">{{ value }}</span>
+      </label>
+    </div>
   {%- elsif picker_type == 'button' -%}
     <div class="variant-picker__option{% if option_disabled %} variant-picker__option--soldout{% endif %}">
       <input
