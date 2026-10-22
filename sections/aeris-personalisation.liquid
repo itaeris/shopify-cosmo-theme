@@ -20,12 +20,20 @@
   </div>
 
   <div class="aeris-personal__banner">
-    <img
-      src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}"
-      alt="Personalisation"
-      width="2000"
-      height="800"
-    >
+    {%- if section.settings.banner_image != blank or section.settings.banner_image_mobile != blank -%}
+      {% render 'aeris-banner-picture',
+        image: section.settings.banner_image,
+        mobile_image: section.settings.banner_image_mobile,
+        alt: 'Personalisation'
+      %}
+    {%- else -%}
+      <img
+        src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}"
+        alt="Personalisation"
+        width="2000"
+        height="800"
+      >
+    {%- endif -%}
     <h1>Personalisation</h1>
   </div>
 
@@ -89,6 +97,10 @@
     overflow: hidden;
     background: #1c1c1c;
   }
+  .aeris-personal__banner picture {
+    display: block;
+    height: 100%;
+  }
   .aeris-personal__banner img {
     width: 100%;
     height: 100%;
@@ -105,10 +117,10 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-family: Newsreader, Georgia, serif;
-    font-weight: 400;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
     font-size: clamp(3.2rem, 4vw, 5.6rem);
-    letter-spacing: 0.16em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     text-align: center;
   }
@@ -204,7 +216,20 @@
 {% schema %}
 {
   "name": "Aeris personalisation",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner, desktop",
+      "info": "2880 × 680 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image_mobile",
+      "label": "Banner, HP",
+      "info": "1500 × 800 px. Kalau kosong, foto desktop dipotong mengikuti layar."
+    }
+  ],
   "presets": [
     {
       "name": "Aeris personalisation"

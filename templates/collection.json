@@ -70,12 +70,13 @@
         "chip_tools"
       ],
       "settings": {
+        "arrivals_image": "shopify://shop_images/new_arrival.jpg",
+        "arrivals_image_mobile": "shopify://shop_images/new_arrival_best_seller_-_HP.jpg",
         "accessories_image": "shopify://shop_images/ABA_7558.jpg",
         "cleansers_image": "shopify://shop_images/Screenshot_2026-10-07_at_10.29.35.png",
         "hair_image": "shopify://shop_images/clean_girl_aesthetic.jpg",
         "bags_image": "shopify://shop_images/ABA_7394.jpg",
-        "bundles_image": "shopify://shop_images/ABA_8454.jpg",
-        "arrivals_image": "shopify://shop_images/TT_02644.jpg"
+        "bundles_image": "shopify://shop_images/ABA_8454.jpg"
       }
     },
     "slideshow_jK84VC": {
