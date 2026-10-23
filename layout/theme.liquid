@@ -26,20 +26,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     {% render 'aeris-lock-zoom' %}
     <meta name="theme-color" content="">
-    <script>
-      (function () {
-        var path = location.pathname.replace(/\/$/, '');
-        if (path === '/pages/personalization' || path === '/pages/personalisation') {
-          document.documentElement.classList.add('aeris-personal-route');
-        }
-      })();
-    </script>
-    <style>
-      .aeris-personal-fallback { display: none; }
-      html.aeris-personal-route .aeris-personal-fallback { display: block; }
-      html.aeris-personal-route #MainContent > :not(.aeris-personal-fallback) { display: none !important; }
-      html.aeris-personal-route .aeris-hero { display: none !important; }
-    </style>
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
@@ -83,11 +69,6 @@
         &ndash; {{ shop.name -}}
       {%- endunless -%}
     </title>
-    <script>
-      if (document.documentElement.classList.contains('aeris-personal-route')) {
-        document.title = 'Personalization \u2013 {{ shop.name | escape }}';
-      }
-    </script>
 
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
@@ -238,11 +219,6 @@
         role="main"
         tabindex="-1"
       >
-        {%- if template.name == '404' -%}
-          <div class="aeris-personal-fallback">
-            {% section 'aeris-personalisation' %}
-          </div>
-        {%- endif -%}
         {%- liquid
           assign aeris_track_page = false
           assign aeris_legal_page = false

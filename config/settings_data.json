@@ -113,6 +113,16 @@
     "colors_background_1": "#FFFFFF",
     "colors_background_2": "#F3F3F3",
     "sections": {
+      "aeris-personalisation": {
+        "type": "aeris-personalisation",
+        "settings": {
+          "products_heading": "Start with your bag",
+          "product_list": [
+            "aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
+            "aeris-beaute-the-loulou-leather-pouch-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable"
+          ]
+        }
+      },
       "announcement-bar": {
         "type": "announcement-bar",
         "blocks": {
