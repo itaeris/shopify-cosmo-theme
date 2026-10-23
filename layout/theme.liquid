@@ -56,8 +56,8 @@
         FAQs
       {%- elsif collection.handle == 'skincare-tools' -%}
         Puff & Application
-      {%- elsif request.page_type == 'policy' and request.path contains 'refund-policy' -%}
-        Return &amp; Exchange Policy
+      {%- elsif request.page_type == 'policy' and request.path contains 'refund-policy' and settings.aeris_refund_policy_title != blank -%}
+        {{ settings.aeris_refund_policy_title | escape }}
       {%- else -%}
         {{ page_title }}
       {%- endif -%}
@@ -285,8 +285,17 @@
           {%- endif -%}
         {%- elsif aeris_tailored_article -%}
           {% section 'aeris-collaboration' %}
-        {%- elsif request.page_type == 'policy' and request.path contains 'refund-policy' -%}
-          {{ content_for_layout | replace: '<h1>Refund policy</h1>', '<h1>Return &amp; Exchange Policy</h1>' }}
+        {%- elsif request.page_type == 'policy' -%}
+          {%- capture policy_group -%}{% sections 'policy-group' %}{%- endcapture -%}
+          {%- unless policy_group contains 'data-aeris-policy-content' -%}
+            {%- if request.path contains 'refund-policy' and settings.aeris_refund_policy_title != blank -%}
+              {%- capture refund_policy_heading -%}<h1>{{ settings.aeris_refund_policy_title | escape }}</h1>{%- endcapture -%}
+              {{ content_for_layout | replace: '<h1>Refund policy</h1>', refund_policy_heading }}
+            {%- else -%}
+              {{ content_for_layout }}
+            {%- endif -%}
+          {%- endunless -%}
+          {{ policy_group }}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}

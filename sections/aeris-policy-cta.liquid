@@ -1,0 +1,84 @@
+{%- liquid
+  assign show_cta = false
+  if section.settings.policy == 'all' or request.path contains section.settings.policy
+    assign show_cta = true
+  endif
+-%}
+
+{%- if show_cta -%}
+  <div class="shopify-policy__container aeris-policy-cta">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="aeris-policy-cta__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="rte aeris-policy-cta__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <a
+        class="btn btn--primary"
+        href="{{ section.settings.button_link }}"
+        {% if section.settings.new_tab %}
+          target="_blank" rel="noopener"
+        {% endif %}
+      >
+        {{- section.settings.button_label | escape -}}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Policy button",
+  "enabled_on": {
+    "groups": ["custom.policy"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "policy",
+      "label": "Tampil di",
+      "options": [
+        { "value": "all", "label": "Semua policy" },
+        { "value": "refund-policy", "label": "Refund / Return policy" },
+        { "value": "privacy-policy", "label": "Privacy policy" },
+        { "value": "terms-of-service", "label": "Terms of service" },
+        { "value": "shipping-policy", "label": "Shipping policy" }
+      ],
+      "default": "refund-policy"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Judul"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Teks"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Teks tombol",
+      "default": "Return & Exchange Form"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link tombol"
+    },
+    {
+      "type": "checkbox",
+      "id": "new_tab",
+      "label": "Buka di tab baru",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy button"
+    }
+  ]
+}
+{% endschema %}

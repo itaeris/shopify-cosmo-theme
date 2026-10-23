@@ -1555,6 +1555,22 @@
     ]
   },
   {
+    "name": "Aeris policies",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Judul, teks, dan tombol policy diedit di sidebar halaman policy (group Policy). Kalau section Policy content tidak dipakai, teks diambil dari Admin → Settings → Policies."
+      },
+      {
+        "type": "text",
+        "id": "aeris_refund_policy_title",
+        "label": "Judul tab browser refund policy",
+        "info": "Juga dipakai sebagai judul halaman kalau section Policy content tidak dipakai. Kosongkan untuk pakai judul bawaan Shopify.",
+        "default": "Return & Exchange Policy"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.social_media.name",
     "settings": [
       {

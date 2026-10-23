@@ -1,0 +1,80 @@
+{%- if request.path contains section.settings.policy -%}
+  <div class="shopify-policy__container aeris-policy-content" data-aeris-policy-content>
+    {%- if section.settings.title != blank -%}
+      <div class="shopify-policy__title">
+        <h1>{{ section.settings.title | escape }}</h1>
+      </div>
+    {%- endif -%}
+    <div class="shopify-policy__body">
+      <div class="rte">
+        {%- for block in section.blocks -%}
+          <div class="aeris-policy-content__block" {{ block.shopify_attributes }}>
+            {%- if block.settings.heading != blank -%}
+              <p class="aeris-policy-content__heading"><strong>{{ block.settings.heading | escape }}</strong></p>
+            {%- endif -%}
+            {{ block.settings.content }}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Policy content",
+  "enabled_on": {
+    "groups": ["custom.policy"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Menggantikan teks dari Admin → Settings → Policies untuk policy yang dipilih."
+    },
+    {
+      "type": "select",
+      "id": "policy",
+      "label": "Policy",
+      "options": [
+        { "value": "refund-policy", "label": "Refund / Return policy" },
+        { "value": "privacy-policy", "label": "Privacy policy" },
+        { "value": "terms-of-service", "label": "Terms of service" },
+        { "value": "shipping-policy", "label": "Shipping policy" }
+      ],
+      "default": "refund-policy"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Judul",
+      "default": "Return & Exchange Policy"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Teks",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Subjudul"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Isi"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy content",
+      "blocks": [
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

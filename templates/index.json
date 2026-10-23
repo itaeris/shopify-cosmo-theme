@@ -436,7 +436,7 @@
         "subheading": "New Arrivals",
         "description": "<p>Carry your glow in chic, effortless style with the NEW Coco Vanity Bag in the color Noir & Cherry</p>",
         "button_label": "Shop Now",
-        "button_link": "",
+        "button_link": "shopify://products/aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
         "button_style": "btn--primary",
         "limit": 3,
         "column_gap": "double-extra-small",
@@ -525,7 +525,7 @@
         "banner_title": "The Onyx 2.0 Collection",
         "hero_subtitle": "Complete Set",
         "hero_text": "Our best selling brush for everyday use",
-        "banner_image": "shopify://shop_images/Copy_of_ABA_9994.jpg",
+        "banner_image": "shopify://shop_images/ABA_0234.jpg",
         "grid_heading": "The Onyx 2.0 Collection",
         "atc_label": "ADD TO BAG",
         "learn_more_label": "LEARN MORE"
@@ -828,13 +828,13 @@
             "product": "",
             "width": "50%",
             "before_heading": "Before",
-            "before_image": "shopify://shop_images/ABA_2364.jpg",
-            "before_image_mobile": "shopify://shop_images/ABA_2364.jpg",
+            "before_image": "shopify://shop_images/20261023-193153.jpg",
+            "before_image_mobile": "shopify://shop_images/20261023-193153.jpg",
             "before_color_scheme": "",
             "before_heading_plain_text": true,
             "after_heading": "After",
-            "after_image": "shopify://shop_images/ABA_2364-initial.jpg",
-            "after_image_mobile": "shopify://shop_images/ABA_2364-initial.jpg",
+            "after_image": "shopify://shop_images/CDA.jpg",
+            "after_image_mobile": "shopify://shop_images/CDA.jpg",
             "after_color_scheme": "",
             "after_heading_plain_text": true,
             "block_custom_class": ""
@@ -1212,7 +1212,7 @@
           "settings": {
             "icon": "none",
             "title": "What is your return policy?",
-            "content": "<p>We have a 7-day return policy, which means you have 7 days after receiving your item to request a return.</p><p>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.</p>",
+            "content": "<p>We have a 14-day return policy, which means you have 14days after receiving your item to request a return.</p><p>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. Please fill out our <a href=\"https://forms.gle/BZXfDe2WwS2tdPmR7\" target=\"_blank\" title=\"https://forms.gle/BZXfDe2WwS2tdPmR7\"><strong>Return & Refund Form</strong></a> should you want to request one.</p>",
             "custom_liquid": "",
             "content_page": "",
             "open": false
@@ -1222,8 +1222,8 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "title": "Can I exchange my items?",
-            "content": "<p>Yes, only if you receive a defective or damaged product. We will happily exchange it for a new one. Please contact us with proof of the defect to initiate an exchange.</p>",
+            "title": "Do you have an offline store?",
+            "content": "<p>Yes, we do! You can visit us at our <a href=\"/pages/store-location\" target=\"_blank\" title=\"Store Location\"><strong>Store Locations</strong></a></p>",
             "custom_liquid": "",
             "content_page": "",
             "open": false

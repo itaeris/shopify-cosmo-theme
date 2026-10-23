@@ -1,5 +1,31 @@
 {{ 'aeris-return-form.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign has_app_form = false
+  if section.settings.form_embed != blank
+    assign has_app_form = true
+  endif
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_form = true
+    endif
+  endfor
+-%}
+
+{%- capture return_terms -%}
+  <p class="aeris-return__kicker">Aeris Beauté</p>
+  <h1 class="aeris-return__title">Syarat &amp; Ketentuan Retur / Refund</h1>
+  <div class="aeris-return__terms">
+    <ol>
+      <li>Pengajuan penggantian barang hanya dapat dilakukan maksimal 14 hari kalender sejak produk diterima.</li>
+      <li>Produk yang diajukan untuk penggantian harus dalam kondisi belum pernah digunakan sama sekali.</li>
+      <li>Produk harus dikembalikan dalam kondisi asli, lengkap, dan tidak mengalami kerusakan akibat penggunaan.</li>
+      <li>Penggantian barang hanya dapat diproses setelah produk yang dikembalikan diterima dan diperiksa oleh tim Aeris.</li>
+      <li>Keputusan mengenai kelayakan penggantian barang berdasarkan hasil pemeriksaan Aeris.</li>
+    </ol>
+  </div>
+{%- endcapture -%}
+
 <section class="aeris-return" id="AerisReturn-{{ section.id }}">
   <div class="aeris-return__breadcrumb">
     <div class="container">
@@ -16,6 +42,17 @@
   </div>
 
   <div class="aeris-return__wrap">
+    {%- if has_app_form -%}
+      <div class="aeris-return__form">
+        {{ return_terms }}
+        <div class="aeris-return__app">
+          {{ section.settings.form_embed }}
+          {%- for block in section.blocks -%}
+            {% render block %}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
     {%- form 'contact', id: 'AerisReturnForm', class: 'aeris-return__form' -%}
       {%- if form.posted_successfully? -%}
         <div class="aeris-return__success" role="status">
@@ -26,17 +63,7 @@
           <p>Terima kasih telah menghubungi Aeris Beauté.</p>
         </div>
       {%- else -%}
-        <p class="aeris-return__kicker">Aeris Beauté</p>
-        <h1 class="aeris-return__title">Syarat &amp; Ketentuan Retur / Refund</h1>
-        <div class="aeris-return__terms">
-          <ol>
-            <li>Pengajuan penggantian barang hanya dapat dilakukan maksimal 14 hari kalender sejak produk diterima.</li>
-            <li>Produk yang diajukan untuk penggantian harus dalam kondisi belum pernah digunakan sama sekali.</li>
-            <li>Produk harus dikembalikan dalam kondisi asli, lengkap, dan tidak mengalami kerusakan akibat penggunaan.</li>
-            <li>Penggantian barang hanya dapat diproses setelah produk yang dikembalikan diterima dan diperiksa oleh tim Aeris.</li>
-            <li>Keputusan mengenai kelayakan penggantian barang berdasarkan hasil pemeriksaan Aeris.</li>
-          </ol>
-        </div>
+        {{ return_terms }}
 
         <h2 class="aeris-return__section-title">Form Pengajuan Retur / Refund</h2>
 
@@ -175,6 +202,7 @@
         </div>
       {%- endif -%}
     {%- endform -%}
+    {%- endif -%}
   </div>
 </section>
 
@@ -254,7 +282,22 @@
 {% schema %}
 {
   "name": "Aeris return form",
-  "settings": [],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Form bawaan Shopify tidak bisa mengirim file foto/video. Tambahkan form dari app (Add block → Apps) atau tempel kode embed di bawah; begitu ada, form bawaan disembunyikan."
+    },
+    {
+      "type": "html",
+      "id": "form_embed",
+      "label": "Kode embed form"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
   "presets": [
     {
       "name": "Aeris return form"

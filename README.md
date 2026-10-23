@@ -35,8 +35,6 @@ cd shopify-cosmo
 npm install
 ```
 
-
-
 ### 2. Login Shopify (sekali per device)
 
 Pakai `HOME` ke folder project supaya token CLI tidak ditulis ke `~/.config`:
@@ -85,8 +83,6 @@ Biarkan terminal ini tetap jalan saat edit. File Liquid/JSON/CSS sync otomatis.
 - Buka `http://127.0.0.1:9292` — header Aeris, bukan theme live
 - URL admin preview: `https://aerisbeaute.myshopify.com/?preview_theme_id=150027960362`
 
-
-
 ### Perintah lain (device yang sudah login)
 
 Jangan pakai `theme push` tanpa `--only`. Perintah itu mengunggah JSON template dan mengosongkan gambar di theme editor. Langkah aman ada di [Alur kerja](#alur-kerja).
@@ -111,7 +107,6 @@ Homepage dirakit di `templates/index.json`. Section-nya ada di `sections/`.
 
 Bagian yang sudah dikustom:
 
-
 | Area                      | File                                                 |
 | ------------------------- | ---------------------------------------------------- |
 | Hero Merlot               | `sections/aeris-merlot-hero.liquid`                  |
@@ -120,7 +115,6 @@ Bagian yang sudah dikustom:
 | Header group settings     | `sections/header-group.json`                         |
 | Footer group settings     | `sections/footer-group.json`                         |
 | Promo harga coret dari tag | `snippets/aeris-promo-percent.liquid`, `snippets/price.liquid` — panduan: [PROMO.md](PROMO.md) |
-
 
 Hero copy campaign saat ini: **MERLOT** / Unlock Your True Power / Discover now.
 
@@ -151,8 +145,6 @@ New-Item -ItemType Directory -Force -Path .shopify-user
 $env:HOME = "$PWD\.shopify-user"
 npx shopify theme pull --store aerisbeaute.myshopify.com --theme 150027960362 --only "templates/*.json" --only config/settings_data.json --only "sections/*.json"
 ```
-
-
 
 ### 2. Nyalakan preview, biarkan terminalnya tetap terbuka
 

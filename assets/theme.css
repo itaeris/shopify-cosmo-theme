@@ -154,6 +154,31 @@
   max-width: var(--container-width) !important;
 }
 
+#MainContent .shopify-policy__container:has(~ .shopify-section .aeris-policy-cta),
+#MainContent .shopify-section:has(+ .shopify-section .aeris-policy-cta) .shopify-policy__container {
+  margin-bottom: 0;
+}
+
+.aeris-policy-content__block + .aeris-policy-content__block {
+  margin-top: 3.2rem;
+}
+
+.aeris-policy-content__block .aeris-policy-content__heading {
+  margin-bottom: 0.4rem;
+}
+
+#MainContent .aeris-policy-cta {
+  margin-top: 3.2rem;
+}
+
+.aeris-policy-cta__heading {
+  margin-bottom: 1.2rem;
+}
+
+.aeris-policy-cta__text {
+  margin-bottom: 2.4rem;
+}
+
 .f-section,
 #MainContent .shopify-policy__container {
   margin-top: var(--spacing-sections-mobile);
