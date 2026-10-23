@@ -25,21 +25,6 @@
     },
     "16542290942ea85dfa": {
       "type": "hero",
-      "blocks": {
-        "1654229094960f6bc7-0": {
-          "type": "title",
-          "settings": {
-            "title": "Our Story",
-            "highlight_style": "none",
-            "enable_highlight_text_color": false,
-            "heading_size": "h1",
-            "heading_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "1654229094960f6bc7-0"
-      ],
       "custom_css": [
         ".f-hero--small {--hero-height: 26rem;}",
         "@media (min-width: 768px) {.f-hero--small {--hero-height: 28rem; }}",
@@ -47,8 +32,8 @@
       ],
       "settings": {
         "container": "container-full",
-        "image": "shopify://shop_images/Merlot_Travel_f71a78a2-732e-4695-b528-7f0a7eb2492b.jpg",
-        "image_overlay_opacity": 28,
+        "image": "shopify://shop_images/Dropdown_visual.jpg",
+        "image_overlay_opacity": 0,
         "hero_height": "small",
         "content_in_container": true,
         "content_position": "center",
@@ -64,13 +49,54 @@
         "enable_bg_zoom_effect": false
       }
     },
+    "story_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "intro_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Founded in 2018, Aeris is a modern beauty brand devoted to the tools of beauty.</strong>",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h3",
+            "heading_color": ""
+          }
+        },
+        "intro_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The beauty world has long obsessed over what goes on the skin, while the tools used to apply it were treated as an afterthought: mass-made, quickly replaced, rarely loved. Aeris was created to change that, with tools designed with the care usually reserved for fine objects.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "intro_heading",
+        "intro_text"
+      ],
+      "custom_css": [
+        ".rich-text__heading,.rich-text__text {max-width: 72rem; margin-inline: auto;}",
+        ".rich-text__heading {font-size: 2rem; line-height: 1.4;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_schema": "background-1",
+        "text_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
     "story_image_text": {
       "type": "image-with-text",
       "blocks": {
         "story_heading": {
           "type": "heading",
           "settings": {
-            "heading": "ESSENTIAL BEAUTY FORMULATIONS FROM CALIFORNIA. FOR THE SKIN AND SENSES.",
+            "heading": "<strong>Founder’s Note</strong>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
             "heading_size": "h3"
@@ -79,7 +105,7 @@
         "story_text": {
           "type": "text",
           "settings": {
-            "text": "<p>On the coast of Southern California, known for its perfect weather, ease of living and natural beauty, two friends with a common obsession for skincare and makeup (and over 20 years of collective experience in the industry) set off to reimagine what their daily routines could look and feel like.</p><p>Lauren as a busy mother, and Marianna with her jet-set schedule, identified a need for beauty that did more without overdoing it.</p><p>Their first product, Jet Lag Mask, embodied efficiency and simplicity.<br/>It was versatile.<br/>It was clean.<br/>It was multi-purpose.<br/>It sold out instantly.</p><p>Today the vision has grown into a carefully curated assortment of powerful-yet-gentle skincare products and hybrid makeup to make routines feel effortless and skin look luminous so every day feels like a summer Friday.</p>"
+            "text": "<p>For many of us, our mornings begin the same way: our reflection in the mirror, a brush in hand, and a choice about who we'll be today.</p><p>A brush becomes - inevitably - the most intimate object we own. We hold it every day, against our skin. It changes how we look and, more importantly, how we feel.</p><p>That is why we started Aeris: to create tools worthy of that ritual, made the way an heirloom is made - to be kept, not replaced.</p><p>We refine the weight and balance in your hand, and the bristles until they feel as soft on the 100th morning as on the first. Today, that same care goes into everything we make, from the brushes on your vanity to the case that holds it all. We care about details you may never notice, only feel.</p><p>Tools are all we make, and we make them with obsession. <em>Elevate your everyday™</em>.</p><p><em>— Patricia Davina, Founder</em></p>"
           }
         }
       },
@@ -88,7 +114,7 @@
         "story_text"
       ],
       "custom_css": [
-        ".image-with-text__heading {text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.5rem; line-height: 1.55; max-width: 38rem;}",
+        ".image-with-text__heading {font-size: 2rem; line-height: 1.4;}",
         ".image-with-text__text {max-width: 42rem; font-size: 1.4rem; line-height: 1.7;}",
         ".image-with-text__text p {margin-bottom: 1.8rem;}",
         ".image-with-text__media {border-radius: 1.2rem; overflow: hidden;}"
@@ -96,7 +122,7 @@
       "settings": {
         "container": "container",
         "color_schema": "background-1",
-        "image": "shopify://shop_images/TT_06952.jpg",
+        "image": "shopify://shop_images/Screenshot_2026-10-23_110517.png",
         "image_width": "50%",
         "image_position": "left",
         "vertical_alignment": "center",
@@ -107,7 +133,7 @@
         "align_content_container": "none",
         "mobile_padding_left": 15,
         "mobile_padding_right": 15,
-        "padding_top": 80,
+        "padding_top": 40,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
@@ -127,9 +153,9 @@
             "show_image": true,
             "image": "shopify://shop_images/ABA_0261copy.jpg",
             "image_link": "",
-            "title": "Award Winning Products",
+            "title": "Design Excellence",
             "heading_size": "h4",
-            "text": "<p>Won 10 Awards in the last 8 years</p>",
+            "text": "<p>Modern, timeless design where luxury meets performance. Made with world-class manufacturers trusted by leading global luxury brands, and recognised with 10 beauty awards.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
@@ -142,9 +168,9 @@
             "show_image": true,
             "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
             "image_link": "",
-            "title": "Backed by PRO MUA",
+            "title": "Vegan & Cruelty-Free",
             "heading_size": "h4",
-            "text": "<p>Our brushes are backed by PRO MUA. We collaborated with Bubah Alfian to curate some of our best selling brushes</p>",
+            "text": "<p>No animal-derived materials, and never tested on animals, with ethical standards held across our supply chain. Beauty should never come at another's expense.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
@@ -157,9 +183,9 @@
             "show_image": true,
             "image": "shopify://shop_images/TT_02644.jpg",
             "image_link": "",
-            "title": "Cruelty-free and vegan formulas",
+            "title": "Impact",
             "heading_size": "h4",
-            "text": "<p>None of our products or ingredients are tested on animals, and they contain absolutely no animal-derived ingredients whatsoever.</p>",
+            "text": "<p>We believe we should leave the world better than we found it. From ocean clean-ups to rainforest restoration, giving back has been part of Aeris since day one.</p>",
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
@@ -174,7 +200,8 @@
       ],
       "custom_css": [
         ".f-multicolumn__image {border-radius: 0; overflow: hidden;}",
-        ".f-multicolumn__title {margin-top: 1.6rem;}"
+        ".f-multicolumn__title {margin-top: 1.6rem;}",
+        ".f-multicolumn__title {font-style: italic;}"
       ],
       "settings": {
         "container": "container",
@@ -461,6 +488,7 @@
     "main",
     "story_breadcrumb",
     "16542290942ea85dfa",
+    "story_intro",
     "story_image_text",
     "multicolumn_fQrrWx",
     "collapsible_tabs_FCfpmk",

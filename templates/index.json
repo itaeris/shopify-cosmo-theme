@@ -1150,7 +1150,7 @@
           "settings": {
             "icon": "none",
             "title": "How long does it take to process an order?",
-            "content": "<p>Orders are processed within 1-2 business days. You'll receive a confirmation once it ships. During holidays or peak times, processing may take slightly longer than usual.</p>",
+            "content": "<p>For domestic shipping, please allow 2–4 business days after payment confirmation for us to verify your payment, complete quality control, and pack your order. Once dispatched, you will receive a confirmation email with your tracking details.<br/></p>",
             "custom_liquid": "",
             "content_page": "",
             "open": true
@@ -1161,7 +1161,7 @@
           "settings": {
             "icon": "none",
             "title": "Do you ship internationally?",
-            "content": "<p>Yes, we ship internationally! Delivery times and rates vary by location. Additional customs fees or duties may apply, depending on your country's regulations.</p>",
+            "content": "<p>Yes, we do ship worldwide! International orders typically arrive within 5–15 business days after dispatch. Please note that customs clearance delays are beyond our control, and any applicable customs duties or import taxes are the buyer's responsibility.</p>",
             "custom_liquid": "",
             "content_page": "",
             "open": false
@@ -1172,7 +1172,7 @@
           "settings": {
             "icon": "none",
             "title": "What is your return policy?",
-            "content": "<p>We accept returns within 30 days of purchase. Items must be unused and in original packaging. Refunds are processed once the return is received and inspected.</p>",
+            "content": "<p>We have a 7-day return policy, which means you have 7 days after receiving your item to request a return.</p><p>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.</p>",
             "custom_liquid": "",
             "content_page": "",
             "open": false
@@ -1182,8 +1182,8 @@
           "type": "content",
           "settings": {
             "icon": "none",
-            "title": "Can I modify or cancel my order after placing it?",
-            "content": "<p>Orders can be modified or canceled within a short window after purchase. Once processed, changes may not be possible. Contact us as soon as possible for assistance.</p>",
+            "title": "Can I exchange my items?",
+            "content": "<p>Yes, only if you receive a defective or damaged product. We will happily exchange it for a new one. Please contact us with proof of the defect to initiate an exchange.</p>",
             "custom_liquid": "",
             "content_page": "",
             "open": false

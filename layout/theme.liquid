@@ -56,6 +56,8 @@
         FAQs
       {%- elsif collection.handle == 'skincare-tools' -%}
         Puff & Application
+      {%- elsif request.page_type == 'policy' and request.path contains 'refund-policy' -%}
+        Return &amp; Exchange Policy
       {%- else -%}
         {{ page_title }}
       {%- endif -%}
@@ -283,6 +285,8 @@
           {%- endif -%}
         {%- elsif aeris_tailored_article -%}
           {% section 'aeris-collaboration' %}
+        {%- elsif request.page_type == 'policy' and request.path contains 'refund-policy' -%}
+          {{ content_for_layout | replace: '<h1>Refund policy</h1>', '<h1>Return &amp; Exchange Policy</h1>' }}
         {%- else -%}
           {{ content_for_layout }}
         {%- endif -%}

@@ -17,7 +17,11 @@
       "settings": {
         "background_color": "#582933",
         "text_color": "#ffffff",
-        "campaign_image": "shopify://shop_images/AE138_430x_d4660b20-725d-48c0-b633-bf51ff0f6aef.webp",
+        "campaign_image": "shopify://shop_images/footer_ka_ica_merlot.jpg",
+        "campaign_heading": "Ultra Luxurious Bristles",
+        "campaign_subtitle": "MERLOT is now available",
+        "campaign_link_text": "SHOP NOW",
+        "campaign_link": "",
         "social_heading": "Follow our TikTok",
         "tiktok_username": "@aeris.beaute",
         "tiktok_link": "https://www.tiktok.com/@aeris.beaute",
@@ -185,21 +189,21 @@
         "popup-0": {
           "type": "heading",
           "settings": {
-            "heading": "Get 10% Off be in the know",
+            "heading": "Get 10% Off Your First Purchase",
             "text_size": "large"
           }
         },
         "popup-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Sexy and sustainable goodies? Sign me up</p>"
+            "text": ""
           }
         },
         "popup-2": {
           "type": "form",
           "settings": {
             "design": "design-2",
-            "button_label": "Get 10% off"
+            "button_label": "Purchase Today"
           }
         },
         "social_PjCJFt": {

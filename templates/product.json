@@ -380,6 +380,7 @@
     },
     "custom_content_4Y7LQm": {
       "type": "custom-content",
+      "disabled": true,
       "blocks": {
         "image_comparsion_MKPzdU": {
           "type": "image_comparsion",
