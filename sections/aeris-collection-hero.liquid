@@ -27,7 +27,7 @@
       assign banner_image_mobile = section.settings.accessories_image_mobile
     when 'cleansers', 'brush-cleaner'
       assign show_hero = true
-      assign banner_title = 'Brush Cleaner'
+      assign banner_title = 'Brush Cleanser'
       assign banner_image = section.settings.cleansers_image
       assign banner_image_mobile = section.settings.cleansers_image_mobile
     when 'hair-tools'
@@ -47,7 +47,7 @@
       assign banner_image_mobile = section.settings.bundles_image_mobile
     when 'promo', 'promotion'
       assign show_hero = true
-      assign banner_title = 'Promo'
+      assign banner_title = 'Promotion'
       assign banner_image = section.settings.promo_image
       assign banner_image_mobile = section.settings.promo_image_mobile
   endcase
@@ -243,7 +243,13 @@
     }
     @media (min-width: 750px) {
       .aeris-collection-hero__chip-list {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .aeris-collection-hero__chip-list > li {
+        width: calc((100% - 3.2rem) / 5);
+        flex: none;
       }
     }
   </style>

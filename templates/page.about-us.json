@@ -78,11 +78,11 @@
         ".rich-text__heading {font-size: 2rem; line-height: 1.4;}"
       ],
       "settings": {
-        "container": "container",
+        "container": "container-full",
         "color_schema": "background-1",
-        "text_alignment": "left",
-        "padding_top": 60,
-        "padding_bottom": 20,
+        "text_alignment": "center",
+        "padding_top": 82,
+        "padding_bottom": 44,
         "show_section_divider": false,
         "divider_width": "container",
         "custom_id": "",
@@ -99,7 +99,7 @@
             "heading": "<strong>Founder’s Note</strong>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
-            "heading_size": "h3"
+            "heading_size": "h0"
           }
         },
         "story_text": {
@@ -151,10 +151,10 @@
           "type": "column",
           "settings": {
             "show_image": true,
-            "image": "shopify://shop_images/ABA_0261copy.jpg",
+            "image": "shopify://shop_images/Screenshot_2026-10-23_120614.png",
             "image_link": "",
             "title": "Design Excellence",
-            "heading_size": "h4",
+            "heading_size": "h3",
             "text": "<p>Modern, timeless design where luxury meets performance. Made with world-class manufacturers trusted by leading global luxury brands, and recognised with 10 beauty awards.</p>",
             "text_size": "medium",
             "button_text": "",
@@ -166,10 +166,10 @@
           "type": "column",
           "settings": {
             "show_image": true,
-            "image": "shopify://shop_images/Merlot_single_brushes_b0cbac1a-f211-4976-8b61-b993aa73b1b2.jpg",
+            "image": "shopify://shop_images/Screenshot_2026-10-23_120542.png",
             "image_link": "",
             "title": "Vegan & Cruelty-Free",
-            "heading_size": "h4",
+            "heading_size": "h3",
             "text": "<p>No animal-derived materials, and never tested on animals, with ethical standards held across our supply chain. Beauty should never come at another's expense.</p>",
             "text_size": "medium",
             "button_text": "",
@@ -181,10 +181,10 @@
           "type": "column",
           "settings": {
             "show_image": true,
-            "image": "shopify://shop_images/TT_02644.jpg",
+            "image": "shopify://shop_images/Screenshot_2026-10-23_121120.png",
             "image_link": "",
             "title": "Impact",
-            "heading_size": "h4",
+            "heading_size": "h3",
             "text": "<p>We believe we should leave the world better than we found it. From ocean clean-ups to rainforest restoration, giving back has been part of Aeris since day one.</p>",
             "text_size": "medium",
             "button_text": "",

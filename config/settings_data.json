@@ -340,8 +340,13 @@
       "aeris-store-locations": {
         "type": "aeris-store-locations",
         "settings": {
+          "place_font": "newsreader_n4",
+          "floor_font": "montserrat_n4",
           "image_pakuwon": "shopify://shop_images/Aeris_Pakuwon_SBY.jpg",
-          "image_trans_studio": "shopify://shop_images/AERIS_TSM_MAKASSAR.jpg"
+          "image_paskal": "shopify://shop_images/20261023-124657.jpg",
+          "image_living_world": "shopify://shop_images/WhatsApp_Image_2026-10-23_at_12.46.05.jpg",
+          "image_trans_studio": "shopify://shop_images/AERIS_TSM_MAKASSAR.jpg",
+          "image_dp_mall": "shopify://shop_images/20261023-124708.jpg"
         }
       },
       "aeris-contact": {

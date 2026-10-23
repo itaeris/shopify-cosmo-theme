@@ -14,7 +14,7 @@
         <span class="breadcrumbs--sep" aria-hidden="true">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 2.25L8.25 6L4.5 9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <span class="breadcrumbs--last">Personalisation</span>
+        <span class="breadcrumbs--last">Personalization</span>
       </nav>
     </div>
   </div>
@@ -24,17 +24,19 @@
       {% render 'aeris-banner-picture',
         image: section.settings.banner_image,
         mobile_image: section.settings.banner_image_mobile,
-        alt: 'Personalisation'
+        alt: 'Personalization',
+        image_class: 'aeris-personal__banner-image'
       %}
     {%- else -%}
       <img
-        src="{{ 'TT_02644.jpg' | file_img_url: '2000x' }}"
-        alt="Personalisation"
+        class="aeris-personal__banner-image"
+        src="{{ 'Coco_desktop.jpg' | file_img_url: '2000x' }}"
+        alt="Personalization"
         width="2000"
-        height="800"
+        height="472"
       >
     {%- endif -%}
-    <h1>Personalisation</h1>
+    <h1>Personalization</h1>
   </div>
 
   <div class="aeris-personal__intro container">
@@ -51,11 +53,11 @@
       <img src="{{ 'AE828.jpg' | file_img_url: '900x' }}" alt="Monogram your bag" width="900" height="1100">
       <span>2. Monogram your bag</span>
     </a>
-    <a class="aeris-personal__step" href="{{ pouch.url | default: '/products/aeris-beaute-clear-smart-travel-pouch' }}">
-      {%- if pouch.featured_image -%}
+    <a class="aeris-personal__step" href="{% if pouch.id != blank %}{{ pouch.url }}{% else %}/collections/lifestyle-bags{% endif %}">
+      {%- if pouch.id != blank and pouch.featured_image != blank -%}
         <img src="{{ pouch.featured_image | image_url: width: 900 }}" alt="Choose your charm" width="900" height="1100">
       {%- else -%}
-        <img src="{{ 'AE828.jpg' | file_img_url: '900x' }}" alt="Choose your charm" width="900" height="1100">
+        <img src="{{ 'Coco_desktop.jpg' | file_img_url: '900x' }}" alt="Choose your charm" width="900" height="1100">
       {%- endif -%}
       <span>3. Choose your charm</span>
     </a>
@@ -93,20 +95,21 @@
   .aeris-personal__banner {
     position: relative;
     width: 100%;
-    height: 200px;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
-    background: #1c1c1c;
+    background: #f3f1ec;
+    container-type: inline-size;
   }
-  .aeris-personal__banner picture {
-    display: block;
-    height: 100%;
-  }
-  .aeris-personal__banner img {
+  .aeris-personal__banner picture,
+  .aeris-personal__banner img,
+  .aeris-personal__banner-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     display: block;
   }
   .aeris-personal__banner h1 {
@@ -116,13 +119,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 2cqw;
     color: #fff;
-    font-family: Montserrat, sans-serif;
-    font-weight: 600;
-    font-size: clamp(3.2rem, 4vw, 5.6rem);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 400;
+    font-size: 3.61cqw;
+    letter-spacing: 0.16em;
+    line-height: 1;
     text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0.04em 0.35em rgba(0, 0, 0, 0.28);
   }
   .aeris-personal__intro {
     padding: 4.8rem 1.6rem 1.6rem;
@@ -201,7 +208,7 @@
   }
   @media (min-width: 750px) {
     .aeris-personal__banner {
-      height: 340px;
+      aspect-ratio: 1440 / 340;
     }
     .aeris-personal__steps {
       grid-template-columns: repeat(3, minmax(0, 280px));

@@ -1665,6 +1665,8 @@ product-modal .f-modal__content {
   gap: 0.6rem;
   width: 7.2rem;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 }
 .aeris-variant-image__media {
   position: relative;
@@ -1690,7 +1692,8 @@ product-modal .f-modal__content {
 .variant-picker__input.aeris-variant-image input[type=radio]:checked + label {
   color: inherit;
 }
-.aeris-variant-image input[type=radio]:checked + label .aeris-variant-image__media {
+.aeris-variant-image input[type=radio]:checked + label .aeris-variant-image__media,
+.aeris-variant-image__option.is-selected .aeris-variant-image__media {
   border-color: var(--color-text-body);
   box-shadow: 0 0 0 0.1rem var(--color-text-body);
 }

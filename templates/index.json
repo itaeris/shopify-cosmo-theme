@@ -457,6 +457,42 @@
     "aeris_onyx_collection_k4nXm2": {
       "type": "aeris-onyx-collection",
       "blocks": {
+        "feature_KYjDFY": {
+          "type": "feature",
+          "settings": {
+            "product": "merlot-easy-pair",
+            "title": "",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "feature_qyJnyL": {
+          "type": "feature",
+          "settings": {
+            "product": "aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
+            "title": "",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "feature_93mLap": {
+          "type": "feature",
+          "settings": {
+            "product": "aeris-beaute-merlot-complete-brush-set-make-up-brush-set-lengkap-vegan-best-seller-profesional-mua-aeris-x-bubah-alfian",
+            "title": "",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "feature_wLp4EJ": {
+          "type": "feature",
+          "settings": {
+            "product": "onyx-face-essentials",
+            "title": "",
+            "subtitle": "",
+            "link": ""
+          }
+        },
         "slide_month": {
           "type": "feature",
           "settings": {
@@ -477,6 +513,10 @@
         }
       },
       "block_order": [
+        "feature_KYjDFY",
+        "feature_qyJnyL",
+        "feature_93mLap",
+        "feature_wLp4EJ",
         "slide_month",
         "slide_single"
       ],
