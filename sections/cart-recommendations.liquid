@@ -11,6 +11,9 @@
       data-products-container
     >
       {%- for recommendation in recommendations.products -%}
+        {%- if recommendation.price == 0 or recommendation.title contains '[GWP]' -%}
+          {%- continue -%}
+        {%- endif -%}
         {% render 'product-card',
           product: recommendation,
           custom_class: 'f-cart-recommendations__item bg-secondary',

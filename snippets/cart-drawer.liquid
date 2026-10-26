@@ -107,6 +107,26 @@
                     items_in_cart: items_in_cart
                   %}
                 {% endfor %}
+                {%- liquid
+                  # One recommendation block for the whole cart, based on the newest paid item (gifts are price 0 or [GWP]).
+                  assign recommend_item = blank
+                  if settings.cart_recommendations_enable
+                    for item in cart.items
+                      if item.id == gift_wrap_id or item.original_price == 0 or item.product.title contains '[GWP]'
+                        continue
+                      endif
+                      assign recommend_item = item
+                      break
+                    endfor
+                  endif
+                -%}
+                {%- if recommend_item != blank -%}
+                  <cart-recommendations-component
+                    class="f-cart-recommendations"
+                    data-url="{{ routes.product_recommendations_url }}?section_id=cart-recommendations&product_id={{ recommend_item.product.id }}&limit=6"
+                  >
+                  </cart-recommendations-component>
+                {%- endif -%}
                 <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
                 <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
                   {{ 'accessibility.loading' | t }}
