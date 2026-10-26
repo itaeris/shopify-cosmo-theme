@@ -436,7 +436,7 @@
         "subheading": "New Arrivals",
         "description": "<p>Carry your glow in chic, effortless style with the NEW Coco Vanity Bag in the color Noir & Cherry</p>",
         "button_label": "Shop Now",
-        "button_link": "shopify://products/aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
+        "button_link": "shopify://products/coco-vanity-bag",
         "button_style": "btn--primary",
         "limit": 3,
         "column_gap": "double-extra-small",
@@ -515,7 +515,7 @@
         "feature_qyJnyL": {
           "type": "feature",
           "settings": {
-            "product": "aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
+            "product": "coco-vanity-bag",
             "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_2.jpg",
             "title": "",
             "subtitle": "",
@@ -525,7 +525,7 @@
         "feature_93mLap": {
           "type": "feature",
           "settings": {
-            "product": "aeris-beaute-merlot-complete-brush-set-make-up-brush-set-lengkap-vegan-best-seller-profesional-mua-aeris-x-bubah-alfian",
+            "product": "merlot-complete-brush-set",
             "title": "",
             "subtitle": "",
             "link": ""
@@ -912,7 +912,7 @@
             "padding_right": 100,
             "align_content_container": "none",
             "button_label": "SHOP COCO BAG",
-            "button_link": "shopify://products/aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
+            "button_link": "shopify://products/coco-vanity-bag",
             "button_style": "btn--primary",
             "width": "50%",
             "mobile_color_scheme": "",

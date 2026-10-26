@@ -39,6 +39,16 @@
     <h1>Personalization</h1>
   </div>
 
+  {%- if section.settings.coming_soon -%}
+  <div class="aeris-personal__intro aeris-personal__soon container">
+    {%- if section.settings.soon_heading != blank -%}
+      <h2>{{ section.settings.soon_heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.soon_text != blank -%}
+      <div class="rte">{{ section.settings.soon_text }}</div>
+    {%- endif -%}
+  </div>
+  {%- else -%}
   <div class="aeris-personal__intro container">
     <h2>Add a personal touch</h2>
     <p>Elevate your Vanity Bag or gift with a personalised monogram and bag charm. Simply, select personalisation before adding to bag.</p>
@@ -76,6 +86,7 @@
         {%- endfor -%}
       </div>
     </div>
+  {%- endif -%}
   {%- endif -%}
 </section>
 
@@ -126,6 +137,9 @@
     padding: 4.8rem 1.6rem 1.6rem;
     text-align: center;
     max-width: 760px;
+  }
+  .aeris-personal__soon {
+    padding-bottom: 8rem;
   }
   .aeris-personal__intro h2,
   .aeris-personal__products h2 {
@@ -198,6 +212,25 @@
 {
   "name": "Aeris personalisation",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "coming_soon",
+      "label": "Coming soon",
+      "info": "Kalau aktif, halaman hanya menampilkan banner dan pesan coming soon.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "soon_heading",
+      "label": "Judul coming soon",
+      "default": "Coming Soon"
+    },
+    {
+      "type": "richtext",
+      "id": "soon_text",
+      "label": "Teks coming soon",
+      "default": "<p>Personalised monograms and bag charms for your Coco Vanity Bag are on their way. Stay tuned.</p>"
+    },
     {
       "type": "image_picker",
       "id": "banner_image",

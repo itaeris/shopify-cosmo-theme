@@ -1555,6 +1555,98 @@
     ]
   },
   {
+    "name": "Aeris free gift",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Produk gift otomatis masuk ke cart begitu syarat tiap gift terpenuhi (minimum belanja dan/atau syarat produk), dan keluar lagi kalau tidak terpenuhi. Gift dengan syarat produk diprioritaskan. Tiap gift WAJIB punya discount Buy X get Y sendiri di Admin → Discounts (minimum & produk sama, combinations dicentang). Kalau Shopify tidak membuat gift-nya Rp 0, gift otomatis dikeluarkan lagi supaya customer tidak ikut membayar. Produk gift kosong, atau minimum 0 tanpa syarat produk = gift mati."
+      },
+      {
+        "type": "checkbox",
+        "id": "aeris_gift_enable",
+        "label": "Aktifkan free gift otomatis",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "aeris_gift_mode",
+        "label": "Kalau beberapa tier tercapai",
+        "options": [
+          { "value": "all", "label": "Dapat semua gift" },
+          { "value": "highest", "label": "Hanya gift tier tertinggi" }
+        ],
+        "default": "all"
+      },
+      {
+        "type": "header",
+        "content": "Gift 1"
+      },
+      {
+        "type": "product",
+        "id": "aeris_gift_product",
+        "label": "Produk gift",
+        "info": "Kosong = [GWP] Aeris Merlot Drawstring pouch."
+      },
+      {
+        "type": "number",
+        "id": "aeris_gift_min",
+        "label": "Minimum belanja (Rp)",
+        "default": 199000
+      },
+      {
+        "type": "product_list",
+        "id": "aeris_gift_trigger",
+        "label": "Syarat produk (opsional)",
+        "info": "Kalau diisi, gift hanya masuk kalau salah satu produk ini ada di cart (dan minimum belanja tercapai, kalau diisi).",
+        "limit": 50
+      },
+      {
+        "type": "header",
+        "content": "Gift 2"
+      },
+      {
+        "type": "product",
+        "id": "aeris_gift_product_2",
+        "label": "Produk gift"
+      },
+      {
+        "type": "number",
+        "id": "aeris_gift_min_2",
+        "label": "Minimum belanja (Rp)",
+        "default": 0
+      },
+      {
+        "type": "product_list",
+        "id": "aeris_gift_trigger_2",
+        "label": "Syarat produk (opsional)",
+        "info": "Kalau diisi, gift hanya masuk kalau salah satu produk ini ada di cart (dan minimum belanja tercapai, kalau diisi).",
+        "limit": 50
+      },
+      {
+        "type": "header",
+        "content": "Gift 3"
+      },
+      {
+        "type": "product",
+        "id": "aeris_gift_product_3",
+        "label": "Produk gift"
+      },
+      {
+        "type": "number",
+        "id": "aeris_gift_min_3",
+        "label": "Minimum belanja (Rp)",
+        "default": 0
+      },
+      {
+        "type": "product_list",
+        "id": "aeris_gift_trigger_3",
+        "label": "Syarat produk (opsional)",
+        "info": "Kalau diisi, gift hanya masuk kalau salah satu produk ini ada di cart (dan minimum belanja tercapai, kalau diisi).",
+        "limit": 50
+      }
+    ]
+  },
+  {
     "name": "Aeris policies",
     "settings": [
       {

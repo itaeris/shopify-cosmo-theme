@@ -70,6 +70,12 @@
     "aeris_promo_tag_2": "",
     "aeris_promo_percent_2": 0,
     "aeris_promo_percent_3": 0,
+    "aeris_gift_product": "",
+    "aeris_gift_product_2": "gwp-aeris-merlot-tumblr-website",
+    "aeris_gift_min_2": 0,
+    "aeris_gift_trigger_2": [
+      "merlot-complete-brush-set"
+    ],
     "social_twitter_link": "",
     "social_facebook_link": "https://www.facebook.com/aerisbeaute/",
     "social_pinterest_link": "",

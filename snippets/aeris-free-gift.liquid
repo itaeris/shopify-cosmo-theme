@@ -1,0 +1,160 @@
+{%- capture gift_tiers -%}
+  {%- for i in (1..3) -%}
+    {%- liquid
+      if i == 1
+        assign product_key = 'aeris_gift_product'
+        assign min_key = 'aeris_gift_min'
+        assign trigger_key = 'aeris_gift_trigger'
+      else
+        assign product_key = 'aeris_gift_product_' | append: i
+        assign min_key = 'aeris_gift_min_' | append: i
+        assign trigger_key = 'aeris_gift_trigger_' | append: i
+      endif
+      assign tier_product = settings[product_key]
+      if i == 1 and tier_product == blank
+        assign tier_product = all_products['aeris-merlot-drawstring-pouch']
+      endif
+      assign tier_variant = tier_product.selected_or_first_available_variant
+      assign tier_min = settings[min_key] | default: 0
+      assign tier_triggers = settings[trigger_key]
+    -%}
+    {%- if tier_variant != blank and tier_variant.available -%}
+      {%- if tier_min > 0 or tier_triggers != blank -%}
+        {"id":{{ tier_variant.id }},"min":{{ tier_min | times: 100 }},"triggers":[{{ tier_triggers | map: 'id' | join: ',' }}]},
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if settings.aeris_gift_enable and gift_tiers != blank -%}
+  <script>
+    (() => {
+      // Product-triggered gifts first, then the highest minimum: those win when Shopify can't discount every gift.
+      const TIERS = [{{ gift_tiers | remove_last: ',' }}].sort(
+        (a, b) => Math.sign(b.triggers.length) - Math.sign(a.triggers.length) || b.min - a.min
+      );
+      const ONLY_HIGHEST = {{ settings.aeris_gift_mode | json }} === 'highest';
+      const GIFT_IDS = TIERS.map((tier) => tier.id);
+      const FAILED_KEY = 'aeris-gift-failed';
+      const isCartPage = {{ template.name | json }} === 'cart';
+      let busy = false;
+
+      const post = (url, body) =>
+        fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(body),
+        }).then((response) => response.json());
+
+      const getCart = () => fetch('/cart.js', { headers: { Accept: 'application/json' } }).then((r) => r.json());
+
+      const paidItems = (cart) => cart.items.filter((item) => !GIFT_IDS.includes(item.variant_id));
+
+      const wantedIds = (cart) => {
+        const items = paidItems(cart);
+        const total = items.reduce((sum, item) => sum + item.final_line_price, 0);
+        const reached = TIERS.filter(
+          (tier) =>
+            total > 0 &&
+            total >= tier.min &&
+            (!tier.triggers.length || items.some((item) => tier.triggers.includes(item.product_id)))
+        );
+        if (ONLY_HIGHEST && reached.length) return [reached[0].id];
+        return reached.map((tier) => tier.id);
+      };
+
+      // Signature of the paid items, so a gift Shopify refused to discount isn't re-added in a loop.
+      const cartSignature = (cart) =>
+        paidItems(cart)
+          .map((item) => item.variant_id + 'x' + item.quantity)
+          .sort()
+          .join(',');
+
+      const readFailed = () => {
+        try { return JSON.parse(sessionStorage.getItem(FAILED_KEY)) || {}; } catch (e) { return {}; }
+      };
+      const saveFailed = (failed) => {
+        try { sessionStorage.setItem(FAILED_KEY, JSON.stringify(failed)); } catch (e) {}
+      };
+
+      const isFree = (cart, id) => {
+        const line = cart.items.find((item) => item.variant_id === id);
+        return !line || line.final_line_price === 0;
+      };
+
+      const render = (cart, fromThemeUpdate) => {
+        if (isCartPage) {
+          window.location.reload();
+          return;
+        }
+        if (fromThemeUpdate && cart.sections && cart.item_count > 0 && window.FoxThemeEvents) {
+          window.FoxThemeEvents.emit(PUB_SUB_EVENTS.cartUpdate, { ...cart, source: 'aeris-free-gift' });
+        } else {
+          document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: fromThemeUpdate } }));
+        }
+      };
+
+      const sync = async (fromThemeUpdate) => {
+        if (busy) return;
+        busy = true;
+        try {
+          let cart = await getCart();
+          const wanted = wantedIds(cart);
+          const signature = cartSignature(cart);
+          const failed = readFailed();
+          let changed = false;
+
+          // Remove gifts that no longer qualify and cap the rest at 1 in a single request.
+          const updates = {};
+          TIERS.forEach(({ id }) => {
+            const line = cart.items.find((item) => item.variant_id === id);
+            if (!line) return;
+            if (!wanted.includes(id)) updates[id] = 0;
+            else if (line.quantity > 1) updates[id] = 1;
+          });
+          if (Object.keys(updates).length) {
+            cart = await post('/cart/update.js', { updates, sections: 'cart-drawer' });
+            changed = true;
+          }
+
+          // Add missing gifts one at a time, in priority order. A gift is kept only if it is free
+          // and doesn't take the discount away from a gift that is already in the cart.
+          for (const { id } of TIERS) {
+            if (!wanted.includes(id) || failed[id] === signature) continue;
+            if (cart.items.some((item) => item.variant_id === id)) continue;
+
+            const freeBefore = GIFT_IDS.filter((giftId) => giftId !== id && isFree(cart, giftId));
+            const next = await post('/cart/update.js', { updates: { [id]: 1 }, sections: 'cart-drawer' });
+            const ok = isFree(next, id) && freeBefore.every((giftId) => isFree(next, giftId));
+
+            if (ok) {
+              cart = next;
+              delete failed[id];
+            } else {
+              cart = await post('/cart/update.js', { updates: { [id]: 0 }, sections: 'cart-drawer' });
+              failed[id] = signature;
+            }
+            changed = true;
+          }
+          saveFailed(failed);
+
+          if (changed) render(cart, fromThemeUpdate);
+        } catch (error) {
+          console.error('Aeris free gift:', error);
+        } finally {
+          busy = false;
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.FoxThemeEvents) {
+          window.FoxThemeEvents.subscribe(PUB_SUB_EVENTS.cartUpdate, (state) => {
+            if (state && state.source === 'aeris-free-gift') return;
+            sync(true);
+          });
+        }
+        sync(false);
+      });
+    })();
+  </script>
+{%- endif -%}

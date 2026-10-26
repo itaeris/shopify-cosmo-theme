@@ -15,7 +15,8 @@
   data-max-options="{{ product.options_with_values.size }}"
 >
   {%- liquid
-    assign color_group = 'aeris-beaute-the-signature-4-in-1-brush-alat-make-up-kuas-rias-lembut-premium-multifungsi-4in1-travel-portable-untuk-bedak-foundation-concealer-eyeshadow|Pink,aeris-beaute-the-signature-4-in-1-brush-new-color|Oat Milk' | split: ','
+    # Old and new handles are both listed; whichever no longer exists renders nothing.
+    assign color_group = 'signature-4-in-1-brush-pink|Pink,aeris-beaute-the-signature-4-in-1-brush-alat-make-up-kuas-rias-lembut-premium-multifungsi-4in1-travel-portable-untuk-bedak-foundation-concealer-eyeshadow|Pink,signature-4-in-1-brush-oatmilk|Oat Milk,aeris-beaute-the-signature-4-in-1-brush-new-color|Oat Milk' | split: ','
     assign color_group_active = false
     assign color_group_label = ''
     for color_group_item in color_group
