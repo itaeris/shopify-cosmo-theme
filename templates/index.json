@@ -477,6 +477,7 @@
         },
         "slide_aPRrxB": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_2.jpg",
             "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_2.jpg",

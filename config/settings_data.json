@@ -70,6 +70,7 @@
     "aeris_promo_tag_2": "",
     "aeris_promo_percent_2": 0,
     "aeris_promo_percent_3": 0,
+    "aeris_gift_enable": false,
     "aeris_gift_product": "",
     "aeris_gift_product_2": "gwp-aeris-merlot-tumblr-website",
     "aeris_gift_min_2": 0,
@@ -856,6 +857,16 @@
     "blocks": {
       "319724205969189013": {
         "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+        "disabled": false,
+        "settings": {}
+      },
+      "8605505498557855500": {
+        "type": "shopify://apps/bogos-io-free-gift/blocks/app-embed/0432bba6-720a-4e95-be5a-b868386f7aa6",
+        "disabled": false,
+        "settings": {}
+      },
+      "2858414731233960599": {
+        "type": "shopify://apps/deco-labels-badges/blocks/main/fd2caeda-48fd-4076-b5f9-8dfada7253f1",
         "disabled": false,
         "settings": {}
       }

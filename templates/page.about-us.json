@@ -82,8 +82,8 @@
         "color_schema": "background-1",
         "text_alignment": "center",
         "padding_top": 82,
-        "padding_bottom": 44,
-        "show_section_divider": false,
+        "padding_bottom": 10,
+        "show_section_divider": true,
         "divider_width": "container",
         "custom_id": "",
         "custom_class": "",
@@ -99,7 +99,7 @@
             "heading": "<strong>Founder’s Note</strong>",
             "highlight_style": "none",
             "enable_highlight_text_color": false,
-            "heading_size": "h0"
+            "heading_size": "h-xl"
           }
         },
         "story_text": {
