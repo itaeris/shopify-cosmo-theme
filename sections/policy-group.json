@@ -1,72 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "custom.policy",
   "name": "Policy",
   "sections": {
     "refund_content": {
       "type": "aeris-policy-content",
+      "settings": {
+        "policy": "refund-policy",
+        "title": "RETURN & REFUND POLICY"
+      }
+    },
+    "image_with_text_btTHAN": {
+      "type": "image-with-text",
       "blocks": {
-        "intro": {
-          "type": "text",
+        "heading_jqwQeB": {
+          "type": "heading",
+          "disabled": true,
           "settings": {
-            "heading": "",
-            "content": "<p>We have a 7-day return policy, which means you have 7 days after receiving your item to request a return.</p><p>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.</p><p>To start a return, you can contact us at <a href=\"mailto:hello@aerisbeaute.com\">hello@aerisbeaute.com</a> or +62 813-1546-3004. If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted.</p><p>You can always contact us for any return question at <a href=\"mailto:hello@aerisbeaute.com\">hello@aerisbeaute.com</a> or +62 813-1546-3004.</p>"
+            "heading": "Return & Exchange Policy",
+            "highlight_style": "none",
+            "enable_highlight_text_color": false,
+            "heading_size": "h2"
           }
         },
-        "damages": {
+        "text_BEK8di": {
           "type": "text",
           "settings": {
-            "heading": "Damages and issues",
-            "content": "<p>Please inspect your order upon reception and contact us immediately if the item is defective, damaged or if you receive the wrong item, so that we can evaluate the issue and make it right.</p>"
+            "text": "<p><strong>RETURN AND REFUND POLICY</strong></p><p>Your beauty routine deserves nothing less than the best. We want you to feel completely confident in every piece you bring home, so if something isn’t the right fit, you have <strong>14 days from delivery</strong> to request a return.</p><p>To ensure a smooth process, please make sure your return meets the following conditions:</p><ul><li>Items must be in the exact same condition that you received them: unworn and unused</li><li>Items must be returned in their original packaging.</li><li>A valid receipt or proof of purchase must be provided for a return to be accepted.</li></ul><p></p><p><strong>HOW TO REQUEST A RETURN</strong></p><p>Please fill out the Returns & Exchanges Form below.&nbsp;</p><p>If your return is accepted, we will provide you with a return shipping label, along with detailed instructions on how and where to send your package. <em>Please note that items sent back to us without first requesting a return will not be accepted.</em></p><p>You can always contact us for any return-related questions at hello@aerisbeaute.com.</p><p><strong>DAMAGES AND ISSUES</strong> Please inspect your order upon reception. We ask that you contact us immediately if the item is defective, damaged, or if you received the wrong item so that we can evaluate the issue and make it right for you as quickly as possible.</p><p><strong>EXCHANGES</strong> The fastest way to ensure you get exactly what you want is to return the item you currently have. Once your return is accepted and processed, you can make a separate purchase for the new item.</p><p><strong>REFUNDS</strong> We will notify you once we’ve received and inspected your return, and let you know if the refund was approved or not.</p><ul><li>If approved, we will refund your purchase in form of store credit</li><li>Please remember it can take about 2-3 days for you to see your store credit balance</li></ul>"
           }
         },
-        "exceptions": {
-          "type": "text",
+        "button_iRF4EP": {
+          "type": "button",
           "settings": {
-            "heading": "Exceptions / non-returnable items",
-            "content": "<p>Certain types of items cannot be returned, like perishable goods (such as food, flowers, or plants), custom products (such as special orders or personalized items), and personal care goods (such as beauty products). We also do not accept returns for hazardous materials, flammable liquids, or gases. Please get in touch if you have questions or concerns about your specific item.</p><p>Unfortunately, we cannot accept returns on sale items or gift cards.</p>"
-          }
-        },
-        "exchanges": {
-          "type": "text",
-          "settings": {
-            "heading": "Exchanges",
-            "content": "<p>The fastest way to ensure you get what you want is to return the item you have, and once the return is accepted, make a separate purchase for the new item.</p>"
-          }
-        },
-        "refunds": {
-          "type": "text",
-          "settings": {
-            "heading": "Refunds",
-            "content": "<p>We will notify you once we’ve received and inspected your return, and let you know if the refund was approved or not. If approved, you’ll be automatically refunded on your original payment method. Please remember it can take some time for your bank or credit card company to process and post the refund too.</p>"
+            "button_label": "RETURN & REFUND FORM",
+            "button_link": "https://docs.google.com/forms/d/e/1FAIpQLSfgpQ5--vZ88D_fbSddeQJ-6uGTeA-8hxyUcldt0Txq7A2lDQ/viewform",
+            "button_style": "btn--secondary",
+            "button_size": ""
           }
         }
       },
       "block_order": [
-        "intro",
-        "damages",
-        "exceptions",
-        "exchanges",
-        "refunds"
+        "heading_jqwQeB",
+        "text_BEK8di",
+        "button_iRF4EP"
       ],
+      "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "policy": "refund-policy",
-        "title": "Return & Exchange Policy"
+        "container": "container",
+        "color_schema": "",
+        "image": "shopify://shop_images/IMG_5239.jpg",
+        "image_width": "33%",
+        "image_position": "left",
+        "vertical_alignment": "center",
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "padding_left": 0,
+        "padding_right": 0,
+        "align_content_container": "none",
+        "mobile_padding_left": 15,
+        "mobile_padding_right": 15,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "show_section_divider": false,
+        "divider_width": "container",
+        "custom_id": "",
+        "custom_class": "",
+        "animations": "inherit"
       }
     },
     "return_form_button": {
       "type": "aeris-policy-cta",
+      "disabled": true,
       "settings": {
         "policy": "refund-policy",
         "heading": "",
         "text": "",
-        "button_label": "Return & Exchange Form",
-        "button_link": "https://forms.gle/iqFuSmas7FerAEPRA",
+        "button_label": "RETURN & EXCHANGE FORM",
+        "button_link": "https://forms.gle/HvNQjhXpKCaExq2W9",
         "new_tab": true
       }
     }
   },
   "order": [
     "refund_content",
+    "image_with_text_btTHAN",
     "return_form_button"
   ]
 }

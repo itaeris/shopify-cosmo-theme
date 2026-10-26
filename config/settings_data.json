@@ -51,7 +51,7 @@
     "cart_icon": "shopping-cart",
     "collection_list": [],
     "show_free_shipping_message": true,
-    "free_shipping_limit": "500000",
+    "free_shipping_limit": "150000",
     "pcard_image_ratio": "1/1",
     "pcard_show_vendor": false,
     "pcard_show_review_badge": false,
@@ -62,7 +62,8 @@
     "pcard_sale_badge_type": "show_percentage",
     "pcard_mobile_hide_quick_view": true,
     "color_swatches_enable": true,
-    "custom_colors": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #212121,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080,\r\nchocolate: #6e4b32,\r\nnoir: #1a1a1a,\r\ncherry: #6e2436,\r\nrose: #c5a299,\r\ngray: #4a4038,\r\nbeige: #b5a08e",
+    "color_swatches_shape": "circle",
+    "custom_colors": "red: #ff0000,\nyellow: #ffff00,\nblack: #212121,\nblue: #0000FF,\ngreen: #00ff00,\npurple: #800080,\nsilver: #c0c0c0,\nwhite: #ffffff,\nbrown: #7B3F00,\nlight-brown: #feb035,\ndark-turquoise: #23cddc,\norange: #fe9001,\ntan: #eacea7,\nviolet: #EE82EE,\npink: #FFC0CB,\ngrey: #808080,\nchocolate: #6e4b32,\nnoir: #1a1a1a,\ncherry: #6e2436,\nrose: #c5a299,\ngray: #4a4038,\nbeige: #b5a08e,\nbeige: #b5a08e,\nmarshmallow creme: #f2d6cc,\nblush noir: #d9a5a0,\nmarshmallow noir: #2b2422,\ncozy toffe: #a5764f",
     "qv_show_dynamic_checkout_button": false,
     "aeris_promo_tag": "",
     "aeris_promo_percent": 0,
@@ -344,7 +345,9 @@
           "show_on_mobile": true,
           "show_atc_button": true,
           "show_dynamic_checkout_buttons": false,
-          "show_quantity": true
+          "show_quantity": true,
+          "inherit_color_scheme": true,
+          "color_schema": ""
         }
       },
       "aeris-store-locations": {
@@ -830,8 +833,9 @@
         "settings": {
           "heading_id": "Temukan jawaban di FAQ kami",
           "heading_en": "Discover more in our FAQ",
-          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
-          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br>Support hours: Monday–Friday, 7am–3pm</p>",
+          "intro_id": "<p>Punya pertanyaan atau komentar? Jangan ragu untuk menyapa!<br/>Jam dukungan: Senin–Jumat, 07.00–15.00</p>",
+          "intro_en": "<p>Have a question or comment? Don't be shy: Reach out and say hi!<br/>Support hours: Monday–Friday, 7am–3pm</p>",
+          "help_image": "shopify://shop_images/AERIS-1206_F.jpg",
           "help_heading_id": "Masih butuh bantuan?",
           "help_heading_en": "Still need help?",
           "help_text_id": "Kirim email ke tim kami dan kami akan membalas secepatnya",

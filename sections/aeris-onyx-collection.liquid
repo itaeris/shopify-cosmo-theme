@@ -1,5 +1,7 @@
 {%- liquid
-  assign hero_block = section.blocks.first
+  assign feature_blocks = section.blocks | where: 'type', 'feature'
+  assign slide_blocks = section.blocks | where: 'type', 'slide'
+  assign hero_block = feature_blocks.first
   assign hero_product = hero_block.settings.product
   assign hero_title = section.settings.banner_title
   if hero_title == blank and hero_block != blank
@@ -16,13 +18,21 @@
     assign hero_image = hero_product.featured_image
   endif
   assign single_product = blank
-  for block in section.blocks offset: 1
+  for block in feature_blocks offset: 1
     if block.settings.product != blank
       assign single_product = block.settings.product
       break
     endif
   endfor
   assign shown = 0
+
+  assign first_slide = blank
+  for block in slide_blocks
+    if block.settings.image != blank
+      assign first_slide = block
+      break
+    endif
+  endfor
 -%}
 
 <section
@@ -32,8 +42,59 @@
   {%- if section.settings.slider_heading != blank -%}
     <h2 class="aeris-onyx__heading">{{ section.settings.slider_heading | escape }}</h2>
   {%- endif -%}
-  <div class="aeris-onyx__slider" data-onyx-slider>
+  <div
+    class="aeris-onyx__slider{% if first_slide != blank %} aeris-onyx__slider--banners{% endif %}"
+    data-onyx-slider
+    {% if first_slide != blank %}
+      style="--onyx-ratio: {{ first_slide.settings.image.aspect_ratio }}; --onyx-ratio-mobile: {{ first_slide.settings.image_mobile.aspect_ratio | default: first_slide.settings.image.aspect_ratio }};"
+    {% endif %}
+  >
     <div class="aeris-onyx__track" data-onyx-track>
+      {%- if first_slide != blank -%}
+        {%- for block in slide_blocks -%}
+          {%- if block.settings.image == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- liquid
+            assign slide_loading = 'lazy'
+            if forloop.first
+              assign slide_loading = 'eager'
+            endif
+            assign slide_alt = block.settings.alt | default: block.settings.image.alt
+          -%}
+          <div class="aeris-onyx__slide" data-onyx-slide {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a class="aeris-onyx__slide-link" href="{{ block.settings.link }}">
+            {%- else -%}
+              <div class="aeris-onyx__slide-link">
+            {%- endif -%}
+            <picture>
+              {%- if block.settings.image_mobile != blank -%}
+                <source
+                  media="(max-width: 749px)"
+                  srcset="{{ block.settings.image_mobile | image_url: width: 750 }} 750w, {{ block.settings.image_mobile | image_url: width: 1100 }} 1100w, {{ block.settings.image_mobile | image_url: width: 1500 }} 1500w"
+                  sizes="100vw"
+                >
+              {%- endif -%}
+              {{
+                block.settings.image
+                | image_url: width: 2400
+                | image_tag:
+                  loading: slide_loading,
+                  widths: '800, 1200, 1600, 2000, 2400',
+                  sizes: '100vw',
+                  class: 'aeris-onyx__slide-image',
+                  alt: slide_alt
+              }}
+            </picture>
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
       {%- if hero_image != blank and shown < 4 -%}
         <div class="aeris-onyx__slide" data-onyx-slide>
           <a class="aeris-onyx__slide-link" href="{{ hero_url | default: '#' }}">
@@ -92,14 +153,15 @@
           {%- assign shown = shown | plus: 1 -%}
         {%- endfor -%}
       {%- endif -%}
+      {%- endif -%}
     </div>
   </div>
 
-  {%- if section.blocks.size > 0 -%}
+  {%- if feature_blocks.size > 0 -%}
     <div class="aeris-onyx__products color-background-1">
       <div class="container">
         <div class="f-grid f-grid-2-cols md:f-grid-4-cols lg:f-grid-4-cols f-grid--gap-medium f-grid--row-gap-medium">
-          {%- for block in section.blocks -%}
+          {%- for block in feature_blocks -%}
             {%- if block.settings.product == blank -%}
               {%- continue -%}
             {%- endif -%}
@@ -161,6 +223,14 @@
       play();
     }, { passive: true });
 
+    document.addEventListener('shopify:block:select', (event) => {
+      const selected = slides.findIndex((slide) => slide === event.target);
+      if (selected === -1) return;
+      stop();
+      go(selected);
+    });
+    document.addEventListener('shopify:block:deselect', play);
+
     go(0);
     play();
   })();
@@ -208,6 +278,18 @@
     height: clamp(28rem, 42vw, 52rem);
   }
 
+  #AerisOnyx-{{ section.id }} .aeris-onyx__slider--banners .aeris-onyx__slide {
+    height: auto;
+    aspect-ratio: var(--onyx-ratio);
+  }
+
+  @media (max-width: 749px) {
+    #AerisOnyx-{{ section.id }} .aeris-onyx__slider--banners .aeris-onyx__slide {
+      aspect-ratio: var(--onyx-ratio-mobile);
+    }
+  }
+
+  #AerisOnyx-{{ section.id }} .aeris-onyx__slide picture,
   #AerisOnyx-{{ section.id }} .aeris-onyx__slide-link,
   #AerisOnyx-{{ section.id }} .aeris-onyx__slide-media {
     display: block;
@@ -271,7 +353,7 @@
       "type": "image_picker",
       "id": "banner_image",
       "label": "Banner image",
-      "info": "Leave empty to use the first product image."
+      "info": "Only used when there are no Slide blocks. Leave empty to use the first product image."
     },
     {
       "type": "text",
@@ -293,6 +375,37 @@
     }
   ],
   "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Once a slide is added, the slider only shows Slide blocks. The slider height follows the first slide's image."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image",
+          "info": "Optional. Leave empty to use the image above."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Image alt text"
+        }
+      ]
+    },
     {
       "type": "feature",
       "name": "Product",

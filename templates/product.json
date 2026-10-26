@@ -66,6 +66,7 @@
         },
         "aeris_personalise": {
           "type": "aeris_personalise",
+          "disabled": true,
           "settings": {
             "charm_label": "Butterfly Charm"
           }
@@ -94,8 +95,8 @@
           "type": "shipping",
           "settings": {
             "deliver_text": "Estimated delivery:",
-            "deliver_days": "5",
-            "shipping_text": "<p>Money back within 30 days for an exchange*.</p>",
+            "deliver_days": "4",
+            "shipping_text": "<p>Easy Return within 14 days* of purchase. For more information check our <a href=\"https://aerisbeaute.com/policies/refund-policy\" target=\"_blank\" title=\"https://aerisbeaute.com/policies/refund-policy\"><strong>Return & Refund Policy</strong></a></p>",
             "date_format": "%b %d"
           }
         },
@@ -380,7 +381,6 @@
     },
     "custom_content_4Y7LQm": {
       "type": "custom-content",
-      "disabled": true,
       "blocks": {
         "image_comparsion_MKPzdU": {
           "type": "image_comparsion",
@@ -430,6 +430,7 @@
         "image_comparsion_MKPzdU",
         "text_yzDt4M"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "color_schema": "",

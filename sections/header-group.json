@@ -206,6 +206,7 @@
           "type": "slide",
           "settings": {
             "background_image": "shopify://shop_images/Merlot_Travel.jpg",
+            "background_image_mobile": "shopify://shop_images/mobile_2_407bb3d9-abc5-4555-be23-23ba0b6d5876.png",
             "show_small_image": false,
             "small_image": "shopify://shop_images/mobile_2_407bb3d9-abc5-4555-be23-23ba0b6d5876.png",
             "heading": "",
@@ -218,6 +219,7 @@
           "type": "slide",
           "settings": {
             "background_image": "shopify://shop_images/Coco_desktop.jpg",
+            "background_image_mobile": "shopify://shop_images/Coco_mobile.jpg",
             "show_small_image": false,
             "small_image": "shopify://shop_images/Coco_mobile.jpg",
             "heading": "",
