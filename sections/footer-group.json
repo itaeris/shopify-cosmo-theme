@@ -183,6 +183,7 @@
         "7088e468-bc51-4955-8dee-d6a308bad48d": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/LOULOU-USP.jpg",
             "image_position": "left"
           }
         },
@@ -203,7 +204,7 @@
           "type": "form",
           "settings": {
             "design": "design-2",
-            "button_label": "Purchase Today"
+            "button_label": "Subscribe Today"
           }
         },
         "social_PjCJFt": {

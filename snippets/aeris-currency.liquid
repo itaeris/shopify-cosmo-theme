@@ -1,11 +1,58 @@
+{%- liquid
+  assign aeris_active_currency = localization.country.currency.iso_code
+  assign aeris_show_usd = false
+  if aeris_active_currency == 'USD' or localization.country.iso_code == 'US'
+    assign aeris_show_usd = true
+  endif
+-%}
 <div class="aeris-currency">
-  {% render 'country-selector',
-    compact: true,
-    position: 'up',
-    form_id: 'AerisCurrency',
-    class: 'aeris-currency__switcher'
-  %}
+  <link
+    rel="preload"
+    href="{{ 'localization-form.css' | asset_url }}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet';"
+  >
+  <link rel="stylesheet" href="{{ 'component-country-flag.css' | asset_url }}" media="print" onload="this.media='all'">
+  <div class="country-switcher aeris-currency__switcher">
+    <div class="f-disclosure f-disclosure--up" data-aeris-currency-root>
+      <h2 class="visually-hidden" id="CountryLabel-AerisCurrency">Currency</h2>
+      <button
+        type="button"
+        class="f-disclosure__toggle text-normal"
+        aria-expanded="false"
+        aria-controls="AerisCurrencyList"
+        aria-describedby="CountryLabel-AerisCurrency"
+        data-aeris-currency-toggle
+      >
+        <span
+          class="f-country-flags f-country-flags--{% if aeris_show_usd %}US{% else %}ID{% endif %}"
+          data-aeris-currency-flag
+        ></span>
+        <span data-aeris-currency-label>{% if aeris_active_currency == 'USD' %}USD{% else %}IDR{% endif %}</span>
+        {% comment %} theme-check-disable {% endcomment %}
+        {{ 'icon-arrow-down.svg' | inline_asset_content }}
+        {% comment %} theme-check-enable {% endcomment %}
+      </button>
+      <ul id="AerisCurrencyList" class="f-disclosure-list scroll-container text-left">
+        <li class="f-disclosure-list__item" data-aeris-currency-item="IDR">
+          <a class="f-disclosure-list__option" href="{{ request.path }}" data-aeris-currency="IDR">
+            <span class="f-country-flags f-country-flags--ID"></span>
+            Indonesia
+            <span class="localization-form__currency">(IDR Rp)</span>
+          </a>
+        </li>
+        <li class="f-disclosure-list__item" data-aeris-currency-item="USD">
+          <a class="f-disclosure-list__option" href="{{ request.path }}" data-aeris-currency="USD">
+            <span class="f-country-flags f-country-flags--US"></span>
+            United States
+            <span class="localization-form__currency">(USD $)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
+<script src="{{ 'aeris-currency.js' | asset_url }}" defer="defer"></script>
 <style>
   .aeris-currency {
     position: fixed;
