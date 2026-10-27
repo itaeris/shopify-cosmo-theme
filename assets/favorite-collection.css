@@ -50,3 +50,18 @@
   border-radius: var(--card-corner-radius);
   overflow: hidden;
 }
+@media (max-width: 767.98px) {
+  .f-favorite-collection__product .f-swiper {
+    align-items: stretch;
+  }
+  .f-favorite-collection__product .f-column {
+    display: flex;
+    align-self: stretch;
+  }
+  .f-favorite-collection__product .product-card {
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+}
