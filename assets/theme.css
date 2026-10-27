@@ -5267,6 +5267,21 @@ shopify-accelerated-checkout-cart {
   padding: 0.55rem 0.7rem;
   font-size: 1.6rem;
 }
+.product-card__image-wrapper {
+  container-type: inline-size;
+}
+@container (max-width: 210px) {
+  .product-card__badge {
+    max-width: calc(100cqi - 7.8rem);
+  }
+  .product-card__badge .f-badge--bestseller,
+  .product-card__badge .f-badge--new {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 0.3rem 0.45rem;
+    letter-spacing: 0.02em;
+  }
+}
 .f-badge span[data-sale-value] {
   margin-inline-start: 0.4rem;
 }
