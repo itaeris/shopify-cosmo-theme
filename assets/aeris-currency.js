@@ -71,7 +71,7 @@
         if (button) button.setAttribute("aria-expanded", "false");
       });
     },
-    true
+    true  
   );
 
   if (choice !== "USD" || active === "USD") return;

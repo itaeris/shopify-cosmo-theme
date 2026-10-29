@@ -124,6 +124,7 @@
       "aeris-personalisation": {
         "type": "aeris-personalisation",
         "settings": {
+          "coming_soon": false,
           "products_heading": "Start with your bag",
           "product_list": [
             "aeris-beaute-coco-vanity-bag-tas-pouch-make-up-skincare-travel-premium-aesthetic-fashionable",
