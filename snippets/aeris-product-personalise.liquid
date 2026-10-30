@@ -29,7 +29,7 @@
         autocomplete="off"
       >
     </label>
-    <input type="hidden" name="properties[Monogram font]" form="{{ product_form_id }}" value="Montserrat">
+    <input type="hidden" name="properties[Monogram font]" form="{{ product_form_id }}" value="Times New Roman">
     <input type="hidden" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt">
     <input type="hidden" name="properties[Monogram colour]" form="{{ product_form_id }}" value="Gold">
   </div>
@@ -93,12 +93,12 @@
   .aeris-monogram {
     position: absolute;
     left: 50%;
-    top: 67.5%;
+    top: 61%;
     z-index: 2;
     transform: translate(-50%, -50%);
     color: #c4a574;
-    font-family: Montserrat, sans-serif;
-    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
     font-size: 11pt;
     line-height: 1;
     letter-spacing: 0.08em;
@@ -132,9 +132,9 @@
       }
       var img = host.querySelector('img');
       var src = img ? (img.currentSrc || img.getAttribute('src') || '') : '';
-      var top = '67.5%';
-      if (src.indexOf('ABA_7377') !== -1) top = '74.9%';
-      else if (src.indexOf('ABA_7378') !== -1) top = '71.4%';
+      var top = '61%';
+      if (src.indexOf('COCO_PERSONALIZATION_-VHERRY') !== -1) top = '61.5%';
+      else if (src.indexOf('COCO_PERSONALIZATION_-BROWN') !== -1) top = '60.5%';
       mark.style.top = top;
     }
 

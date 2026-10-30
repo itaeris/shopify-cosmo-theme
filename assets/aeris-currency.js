@@ -116,11 +116,19 @@
     });
   }
 
-  var amountPattern = /(?:Rp|IDR)[\s\u00a0]*(\d{1,3}(?:,\d{3})+|\d+)/g;
+  var amountPattern =
+    /(?:Rp|IDR)[\s\u00a0]*(\d{1,3}(?:,\d{3})+|\d+)(?:([.,]\d{1,2})?[\s\u00a0]?(k|rb|jt)\b)?/gi;
+  var shorthand = { k: 1000, rb: 1000, jt: 1000000 };
 
   function convertText(text, rate) {
-    return text.replace(amountPattern, function (match, num) {
+    return text.replace(amountPattern, function (match, num, decimal, unit) {
       var idr = parseInt(num.replace(/,/g, ""), 10);
+      if (unit) {
+        idr = Math.round(
+          parseFloat(idr + "." + (decimal || "0").slice(1)) *
+            shorthand[unit.toLowerCase()]
+        );
+      }
       if (!idr) return match;
       return formatUsd(idr, rate);
     });
