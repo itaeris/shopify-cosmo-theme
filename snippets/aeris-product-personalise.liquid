@@ -99,9 +99,10 @@
     color: #c4a574;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 400;
-    font-size: 11pt;
+    font-size: 3.5vw;
     line-height: 1;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
     pointer-events: none;
   }
 </style>
@@ -132,13 +133,15 @@
       }
       var img = host.querySelector('img');
       var src = img ? (img.currentSrc || img.getAttribute('src') || '') : '';
-      var top = '61%';
-      if (src.indexOf('COCO_PERSONALIZATION_-VHERRY') !== -1) top = '61.5%';
-      else if (src.indexOf('COCO_PERSONALIZATION_-BROWN') !== -1) top = '60.5%';
+      var top = '59%';
+      if (src.indexOf('COCO_PERSONALIZATION_-VHERRY') !== -1) top = '59.5%';
+      else if (src.indexOf('COCO_PERSONALIZATION_-BROWN') !== -1) top = '58.3%';
       mark.style.top = top;
+      if (host.clientWidth) mark.style.fontSize = (host.clientWidth * 0.035).toFixed(2) + 'px';
     }
 
     place();
+    window.addEventListener('resize', place);
     document.addEventListener('variant:changed', function () {
       setTimeout(place, 60);
     });
