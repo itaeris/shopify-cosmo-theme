@@ -457,11 +457,20 @@
     "aeris_onyx_collection_k4nXm2": {
       "type": "aeris-onyx-collection",
       "blocks": {
-        "slide_4pdKwV": {
+        "slide_fCcz88": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_4.jpg",
-            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_4.jpg",
+            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_1_699c9eaa-9eb1-460a-8711-5e7984384d24.jpg",
+            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_1_699c9eaa-9eb1-460a-8711-5e7984384d24.jpg",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "slide_4GCp9c": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_2_b4295d8e-e91e-4a0d-86fe-c440031a5188.jpg",
+            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_2_b4295d8e-e91e-4a0d-86fe-c440031a5188.jpg",
             "link": "",
             "alt": ""
           }
@@ -475,21 +484,30 @@
             "alt": ""
           }
         },
+        "slide_3CRmNr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_5.jpg",
+            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_5.jpg",
+            "link": "",
+            "alt": ""
+          }
+        },
+        "slide_4pdKwV": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_4_da43a9a8-17d9-4787-bfc5-5a3049b49d1f.jpg",
+            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_4_da43a9a8-17d9-4787-bfc5-5a3049b49d1f.jpg",
+            "link": "",
+            "alt": ""
+          }
+        },
         "slide_aPRrxB": {
           "type": "slide",
           "disabled": true,
           "settings": {
             "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_2.jpg",
             "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_2.jpg",
-            "link": "",
-            "alt": ""
-          }
-        },
-        "slide_fCcz88": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_1.jpg",
-            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_1.jpg",
             "link": "",
             "alt": ""
           }
@@ -563,10 +581,12 @@
         }
       },
       "block_order": [
-        "slide_4pdKwV",
-        "slide_pa4V4F",
-        "slide_aPRrxB",
         "slide_fCcz88",
+        "slide_4GCp9c",
+        "slide_pa4V4F",
+        "slide_3CRmNr",
+        "slide_4pdKwV",
+        "slide_aPRrxB",
         "feature_cLAcxz",
         "feature_KYjDFY",
         "feature_qyJnyL",
