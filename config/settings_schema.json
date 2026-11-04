@@ -1663,6 +1663,30 @@
     ]
   },
   {
+    "name": "Aeris WhatsApp bubble",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "aeris_whatsapp_enable",
+        "label": "Tampilkan bubble WhatsApp",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "aeris_whatsapp_number",
+        "label": "Nomor WhatsApp",
+        "info": "Boleh ditulis 0852..., +62852..., atau 62852.... Spasi dan tanda strip diabaikan.",
+        "default": "085286142105"
+      },
+      {
+        "type": "textarea",
+        "id": "aeris_whatsapp_message",
+        "label": "Pesan pembuka (opsional)",
+        "info": "Teks yang otomatis terisi di chat WhatsApp customer."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.social_media.name",
     "settings": [
       {

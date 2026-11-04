@@ -1,9 +1,22 @@
+{%- liquid
+  assign wa_number = settings.aeris_whatsapp_number | default: '085286142105'
+  assign wa_digits = wa_number | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.'
+  if wa_digits.first == '0'
+    assign wa_digits = wa_digits | remove_first: '0' | prepend: '62'
+  endif
+  assign wa_link = 'https://wa.me/' | append: wa_digits
+  if settings.aeris_whatsapp_message != blank
+    assign wa_text = settings.aeris_whatsapp_message | strip | url_encode
+    assign wa_link = wa_link | append: '?text=' | append: wa_text
+  endif
+-%}
+{%- if settings.aeris_whatsapp_enable and wa_digits != blank -%}
 <a
   class="aeris-whatsapp"
-  href="https://wa.me/6285286142105"
+  href="{{ wa_link }}"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Chat WhatsApp 085286142105"
+  aria-label="Chat WhatsApp {{ wa_number | escape }}"
 >
   <img src="{{ 'aeris-whatsapp.png' | asset_url }}" alt="" width="52" height="52">
 </a>
@@ -42,3 +55,4 @@
     }
   }
 </style>
+{%- endif -%}
