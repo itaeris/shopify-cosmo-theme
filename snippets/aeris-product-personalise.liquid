@@ -10,7 +10,7 @@
   endif
 -%}
 {%- if show_personalise -%}
-<div class="aeris-personalise" data-aeris-personalise {% unless monogram_selected %}hidden{% endunless %}>
+<div class="aeris-personalise" data-aeris-personalise data-aeris-monogram-only {% unless monogram_selected %}hidden{% endunless %}>
   <button class="aeris-personalise__toggle" type="button" aria-expanded="false">
     <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
       <path d="M2.5 11.5l7.2-7.2 2 2-7.2 7.2H2.5v-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
@@ -43,6 +43,9 @@
 </div>
 
 <style>
+  .aeris-personalise[hidden] {
+    display: none !important;
+  }
   .aeris-personalise__toggle {
     display: flex;
     align-items: center;
@@ -172,13 +175,29 @@
       }
     }
 
+    function syncFromLabel() {
+      var label = document.querySelector('.variant-picker__input .selected-value');
+      if (!label) return;
+      syncVariant({ title: label.textContent || '' });
+    }
+
     place();
     window.addEventListener('resize', place);
     document.addEventListener('variant:changed', function (event) {
       var variant = event.detail && event.detail.variant;
-      syncVariant(variant);
+      if (variant) syncVariant(variant);
+      else syncFromLabel();
       setTimeout(place, 60);
     });
+    var selectedLabel = document.querySelector('.variant-picker__input .selected-value');
+    if (selectedLabel && window.MutationObserver) {
+      new MutationObserver(syncFromLabel).observe(selectedLabel, {
+        childList: true,
+        characterData: true,
+        subtree: true
+      });
+    }
+    syncFromLabel();
     var gallery = document.querySelector('media-gallery');
     if (gallery && window.MutationObserver) {
       new MutationObserver(place).observe(gallery, {
