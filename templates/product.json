@@ -66,10 +66,7 @@
         },
         "aeris_personalise": {
           "type": "aeris_personalise",
-          "settings": {
-            "charm_label": "Noir (Monogram)",
-            "charm_image": "shopify://shop_images/COCO_-_NOIR.jpg"
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
