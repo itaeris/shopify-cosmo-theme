@@ -3,9 +3,14 @@
   if product.handle contains 'coco-vanity' or product.handle contains 'vanity-bag' or product.tags contains 'personalise'
     assign show_personalise = true
   endif
+  assign selected_variant_title = product.selected_or_first_available_variant.title | downcase
+  assign monogram_selected = false
+  if selected_variant_title contains 'monogram'
+    assign monogram_selected = true
+  endif
 -%}
 {%- if show_personalise -%}
-<div class="aeris-personalise" data-aeris-personalise>
+<div class="aeris-personalise" data-aeris-personalise {% unless monogram_selected %}hidden{% endunless %}>
   <button class="aeris-personalise__toggle" type="button" aria-expanded="false">
     <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
       <path d="M2.5 11.5l7.2-7.2 2 2-7.2 7.2H2.5v-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
@@ -26,12 +31,14 @@
         maxlength="3"
         placeholder="JS"
         data-aeris-letters
+        data-aeris-monogram-field
         autocomplete="off"
+        {% unless monogram_selected %}disabled{% endunless %}
       >
     </label>
-    <input type="hidden" name="properties[Monogram font]" form="{{ product_form_id }}" value="Times New Roman">
-    <input type="hidden" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt">
-    <input type="hidden" name="properties[Monogram colour]" form="{{ product_form_id }}" value="Gold">
+    <input type="hidden" name="properties[Monogram font]" form="{{ product_form_id }}" value="Times New Roman" data-aeris-monogram-field {% unless monogram_selected %}disabled{% endunless %}>
+    <input type="hidden" name="properties[Monogram size]" form="{{ product_form_id }}" value="11pt" data-aeris-monogram-field {% unless monogram_selected %}disabled{% endunless %}>
+    <input type="hidden" name="properties[Monogram colour]" form="{{ product_form_id }}" value="Gold" data-aeris-monogram-field {% unless monogram_selected %}disabled{% endunless %}>
   </div>
 </div>
 
@@ -113,6 +120,7 @@
     var toggle = root.querySelector('.aeris-personalise__toggle');
     var panel = root.querySelector('.aeris-personalise__panel');
     var letters = root.querySelector('[data-aeris-letters]');
+    var fields = root.querySelectorAll('[data-aeris-monogram-field]');
     var mark = document.createElement('span');
     mark.className = 'aeris-monogram';
     mark.hidden = true;
@@ -140,9 +148,35 @@
       if (host.clientWidth) mark.style.fontSize = (host.clientWidth * 0.035).toFixed(2) + 'px';
     }
 
+    function isMonogram(variant) {
+      if (!variant) return false;
+      var parts = [variant.title, variant.public_title, variant.option1, variant.option2, variant.option3];
+      return parts.some(function (part) {
+        return part && String(part).toLowerCase().indexOf('monogram') !== -1;
+      });
+    }
+
+    function syncVariant(variant) {
+      var on = isMonogram(variant);
+      root.hidden = !on;
+      fields.forEach(function (field) {
+        field.disabled = !on;
+      });
+      if (!on) {
+        panel.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        mark.hidden = true;
+      } else {
+        paint();
+        place();
+      }
+    }
+
     place();
     window.addEventListener('resize', place);
-    document.addEventListener('variant:changed', function () {
+    document.addEventListener('variant:changed', function (event) {
+      var variant = event.detail && event.detail.variant;
+      syncVariant(variant);
       setTimeout(place, 60);
     });
     var gallery = document.querySelector('media-gallery');

@@ -466,15 +466,6 @@
             "alt": ""
           }
         },
-        "slide_4GCp9c": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_2_b4295d8e-e91e-4a0d-86fe-c440031a5188.jpg",
-            "image_mobile": "shopify://shop_images/WEB_BANNER_-_OCT_-_2_b4295d8e-e91e-4a0d-86fe-c440031a5188.jpg",
-            "link": "",
-            "alt": ""
-          }
-        },
         "slide_pa4V4F": {
           "type": "slide",
           "settings": {
@@ -521,11 +512,10 @@
             "link": ""
           }
         },
-        "feature_KYjDFY": {
+        "feature_93mLap": {
           "type": "feature",
           "settings": {
-            "product": "merlot-easy-pair",
-            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_3.jpg",
+            "product": "merlot-complete-brush-set",
             "title": "",
             "subtitle": "",
             "link": ""
@@ -541,10 +531,11 @@
             "link": ""
           }
         },
-        "feature_93mLap": {
+        "feature_KYjDFY": {
           "type": "feature",
           "settings": {
-            "product": "merlot-complete-brush-set",
+            "product": "merlot-easy-pair",
+            "image": "shopify://shop_images/WEB_BANNER_-_OCT_-_3.jpg",
             "title": "",
             "subtitle": "",
             "link": ""
@@ -582,15 +573,14 @@
       },
       "block_order": [
         "slide_fCcz88",
-        "slide_4GCp9c",
         "slide_pa4V4F",
         "slide_3CRmNr",
         "slide_4pdKwV",
         "slide_aPRrxB",
         "feature_cLAcxz",
-        "feature_KYjDFY",
-        "feature_qyJnyL",
         "feature_93mLap",
+        "feature_qyJnyL",
+        "feature_KYjDFY",
         "feature_wLp4EJ",
         "slide_month",
         "slide_single"
@@ -925,8 +915,8 @@
             "enable_highlight_text_color": false,
             "heading_size": "h-xl",
             "heading_color": "",
-            "subheading": "PRE-ORDER · 7 DAYS",
-            "text": "<p>Make the Coco Vanity Bag uniquely yours or your loved ones with free custom monogramming. Emboss orders are available now as a 7-day pre-order.</p>",
+            "subheading": "PRE-ORDER · 10 WORKING DAYS",
+            "text": "<p>Make the Coco Vanity Bag uniquely yours or your loved ones with free custom monogramming. Emboss orders are available now as a 10-days pre-order.</p>",
             "alignment": "center",
             "align_text": "left",
             "padding_left": 100,
